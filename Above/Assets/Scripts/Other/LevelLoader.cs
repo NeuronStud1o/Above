@@ -15,21 +15,16 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadAsynchronously(sceneIndex));
     }
 
-    IEnumerator LoadAsynchronously (int sceneIndex)
+    IEnumerator LoadAsynchronously(int sceneIndex)
     {
         LoadingScreen.SetActive(true);
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
-        while(!operation.isDone)
+        while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             slider.value = progress;
-
-            if (progress > 0.9)
-            {
-                fadeTransition.SetActive(true);
-            }
 
             yield return null;
         }
