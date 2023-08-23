@@ -92,7 +92,7 @@ public class ProgressEveryDayTasks : MonoBehaviour
 
             EveryDayTaskSlider[4].value = PlayerPrefs.GetInt("EveryDayTasksGamesPlayed");
 
-            if (PlayerPrefs.GetInt("EveryDayTasksGamesPlayed") >= 15)
+            if (PlayerPrefs.GetInt("EveryDayTasksGamesPlayed") >= 10)
             {
                 EveryDayTaskButtons[4].interactable = true;
                 EveryDayTaskText[4].GetComponent<TextManager>().enabled = true;
