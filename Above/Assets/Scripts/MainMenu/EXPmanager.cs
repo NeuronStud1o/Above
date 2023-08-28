@@ -48,7 +48,7 @@ public class EXPmanager : MonoBehaviour
 
         if (countEXP >= 100)
         {
-            countEXP = 0;
+            countEXP -= 100;
             levelEXP++;
 
             PlayerPrefs.SetInt("EXP", countEXP);

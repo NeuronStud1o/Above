@@ -2370,7 +2370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0, z: -10}
+  m_LocalPosition: {x: 0.04025, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 618725373}
@@ -6619,7 +6619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy:
   - {fileID: 2278741825720580269, guid: de96b47704a172b44a32b91ca4ff4383, type: 3}
-  - {fileID: 9201981704617803708, guid: c27581c28d062f7439d3bbe0375438b3, type: 3}
+  - {fileID: 7221275972052034100, guid: 152bf6bd80934f84580cd7c41e43c13b, type: 3}
   - {fileID: 6803671297448478356, guid: aedea8e02dde69f4f9013d5889c880d9, type: 3}
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   Distance: 20
@@ -8328,7 +8328,7 @@ MonoBehaviour:
   - {fileID: 2775779476811573806, guid: 4a8b154d076bb7243aa22e7cb94e8f5d, type: 3}
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   - {fileID: 8020356737198533823, guid: 715e02ecd72e1a04092ab6b14300e95b, type: 3}
-  - {fileID: 9029412562927336899, guid: 5537b32de22456d4aa471d062f90457d, type: 3}
+  - {fileID: 4939562088805895318, guid: a4cad5ad9b288c94196e1ba2841254e2, type: 3}
   Distance: 20
 --- !u!4 &1473674056
 Transform:

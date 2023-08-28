@@ -98,7 +98,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -2.8554146, y: 0.05949421}
-  m_Size: {x: 19.571632, y: 29.628256}
+  m_Size: {x: 17.389875, y: 26.325434}
   m_Direction: 0
 --- !u!114 &8314473424540465721
 MonoBehaviour:
@@ -113,4 +113,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyPoint: {fileID: 0}
-  Enemy: {fileID: 2278741825720580269}
