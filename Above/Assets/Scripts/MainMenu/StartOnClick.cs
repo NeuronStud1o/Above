@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StartOnClick : MonoBehaviour
 {
-    public Text text;
+    public TextMeshProUGUI text;
     public GameObject button;
     public Button pauseButton;
 

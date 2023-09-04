@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
 {
     public static int coinsF;
-    public Text moneyText;
+    public TextMeshProUGUI moneyText;
 
     public static int coinsS;
-    public Text moneyText2;
+    public TextMeshProUGUI moneyText2;
 
     void Start()
     {
