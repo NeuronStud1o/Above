@@ -9,7 +9,7 @@ public class EXPmanager : MonoBehaviour
     public Text level;
 
     public static int countEXP;
-    public int levelEXP;
+    public static int levelEXP;
 
     public Text hightScore;
 

@@ -16,6 +16,11 @@ public class CoinsManager : MonoBehaviour
     public Text moneyText2;
     public GameObject CoinsS;
 
+    void Awake()
+    {
+        StartOnClick.player = gameObject.GetComponent<Player>();
+    }
+
     void Start()
     {
         Buttons.Hero = gameObject;

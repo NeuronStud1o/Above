@@ -7,46 +7,23 @@ using static IsActiveButton;
 public class OnLoadGame : MonoBehaviour
 {
     public GameObject[] ActivationWindowsOnLoadGame;
-
     public GameObject FadeTransition;
 
-    private void Start()
+    private WaitForSeconds shortDelay = new WaitForSeconds(0.05f);
+
+    private IEnumerator Start()
     {
-        if (PlayerPrefs.HasKey("Slider") == false)
+        foreach (var window in ActivationWindowsOnLoadGame)
         {
-            PlayerPrefs.SetFloat("Slider", 1);
-        }
-        if (PlayerPrefs.HasKey("Slider2") == false)
-        {
-            PlayerPrefs.SetFloat("Slider2", 1);
-        }
-        if (PlayerPrefs.HasKey("Slider3") == false)
-        {
-            PlayerPrefs.SetFloat("Slider", 1);
-        }
-        if (PlayerPrefs.HasKey("Slider4") == false)
-        {
-            PlayerPrefs.SetFloat("Slider", 1);
+            window.SetActive(true);
+            yield return shortDelay;
         }
 
-        StartCoroutine("Wait");
-    }
-
-    IEnumerator Wait()
-    {
-        for (int i = 0; i < ActivationWindowsOnLoadGame.Length; i++)
+        foreach (var window in ActivationWindowsOnLoadGame)
         {
-            ActivationWindowsOnLoadGame[i].SetActive(true);
+            window.SetActive(false);
+            yield return shortDelay;
         }
-
-        yield return new WaitForSeconds(0.05f);
-
-        for (int i = 0; i < ActivationWindowsOnLoadGame.Length; i++)
-        {
-            ActivationWindowsOnLoadGame[i].SetActive(false);
-        }
-
-        yield return new WaitForSeconds(1.42f);
 
         FadeTransition.SetActive(false);
     }

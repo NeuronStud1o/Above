@@ -10,9 +10,16 @@ public class StartOnClick : MonoBehaviour
     public GameObject button;
     public Button pauseButton;
 
+    public static Player player;
+
+    void Start()
+    {
+        player.enabled = false;
+    }
+
    public void StartGame()
    {
-        Buttons.Hero.GetComponent<Player>().enabled = true;
+        player.enabled = true;
         pauseButton.interactable = true;
 
         text.enabled = false;
