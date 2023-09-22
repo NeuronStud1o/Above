@@ -12,6 +12,8 @@ public class LevelLoader : MonoBehaviour
 
     System.Random random = new System.Random();
 
+    private WaitForSeconds shortDelay = new WaitForSeconds(0.03f);
+
     public void StartGame()
     {
         StartCoroutine(LoadAsynchronously(loadSceneIndex));
@@ -28,9 +30,9 @@ public class LevelLoader : MonoBehaviour
 
         while(m < n / 10)
         {
-            slider.value += 0.05f;
-            m += 0.05f;
-            yield return new WaitForSeconds(0.1f);
+            slider.value += 0.02f;
+            m += 0.02f;
+            yield return shortDelay;
             print(slider.value);
         }
 
@@ -42,7 +44,7 @@ public class LevelLoader : MonoBehaviour
         {
             slider.value += 0.05f;
             m += 0.05f;
-            yield return new WaitForSeconds(0.1f);
+            yield return shortDelay;
             print(slider.value);
         }
 

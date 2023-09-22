@@ -9,7 +9,7 @@ public class OnLoadGame : MonoBehaviour
     public GameObject[] ActivationWindowsOnLoadGame;
     public GameObject FadeTransition;
 
-    private WaitForSeconds shortDelay = new WaitForSeconds(0.05f);
+    private WaitForSeconds shortDelay = new WaitForSeconds(0.02f);
 
     private IEnumerator Start()
     {
@@ -22,8 +22,9 @@ public class OnLoadGame : MonoBehaviour
         foreach (var window in ActivationWindowsOnLoadGame)
         {
             window.SetActive(false);
-            yield return shortDelay;
         }
+
+        yield return new WaitForSeconds(1.9f);
 
         FadeTransition.SetActive(false);
     }

@@ -55,7 +55,7 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             SpawnPos.x = Random.Range(-1, 1);
-            SpawnPos.y += Random.Range(40f, 800f);
+            SpawnPos.y += Random.Range(40f, 400f);
 
             GameObject coin = Instantiate(SuperCoin, SpawnPos, Quaternion.identity);
 
