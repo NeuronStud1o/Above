@@ -6,8 +6,8 @@ public class SelectBgInGame : MonoBehaviour
 {
     private int i;
 
-    public GameObject[] AllBg;
-    public GameObject[] AllRailings;
+    [SerializeField] private GameObject[] AllBg;
+    [SerializeField] private GameObject[] AllRailings;
 
     void Start()
     {

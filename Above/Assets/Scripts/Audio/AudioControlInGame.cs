@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AudioControlInGame : MonoBehaviour
 {
-    public AudioSource Music;
-    public AudioSource[] SFX;
+    [SerializeField] private AudioSource Music;
+    [SerializeField] private AudioSource[] SFX;
 
     IEnumerator AudioVolume()
     {

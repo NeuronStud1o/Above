@@ -6,15 +6,15 @@ public class SelectBoost : MonoBehaviour
 {
     private int i;
 
-    public GameObject[] AllBoosts;
-    public GameObject[] Heroes;
+    [SerializeField] private GameObject[] AllBoosts;
+    [SerializeField] private GameObject[] Heroes;
 
-    public GameObject[] EquipButtons;
-    public GameObject[] EquipedButtons;
-    public GameObject[] BuyButtons;
+    [SerializeField] private GameObject[] EquipButtons;
+    [SerializeField] private GameObject[] EquipedButtons;
+    [SerializeField] private GameObject[] BuyButtons;
 
-    public Color shieldColor;
-    public Color standartColor;
+    [SerializeField] private Color shieldColor;
+    [SerializeField] private Color standartColor;
 
     void Start()
     {

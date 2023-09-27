@@ -10,7 +10,7 @@ public class Buttons : MonoBehaviour
     public GameObject PlayTransition;
     public GameObject FadeTransition;
 
-    public static GameObject Hero;
+    public GameObject Hero;
 
     public GameObject settingsSounds;
     public GameObject settingsLanguages;

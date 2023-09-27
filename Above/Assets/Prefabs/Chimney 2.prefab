@@ -90,6 +90,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7113289756008557368}
     m_Modifications:
+    - target: {fileID: 2931381296585550809, guid: 56c93a587a1576344adcbf9e2a9f6778, type: 3}
+      propertyPath: destroyPoint
+      value: 
+      objectReference: {fileID: 8039447006220103882, guid: b45167e7e53f72449aa28c2742c11033, type: 3}
     - target: {fileID: 7788048758523223477, guid: 56c93a587a1576344adcbf9e2a9f6778, type: 3}
       propertyPath: m_Name
       value: Chimney

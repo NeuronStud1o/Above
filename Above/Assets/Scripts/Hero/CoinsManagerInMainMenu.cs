@@ -7,10 +7,13 @@ using TMPro;
 public class CoinsManagerInMainMenu : MonoBehaviour
 {
     public static int coinsF;
-    public TextMeshProUGUI moneyText;
 
     public static int coinsS;
-    public TextMeshProUGUI moneyText2;
+
+    [SerializeField] private TextMeshProUGUI SuperCoinsText;
+    [SerializeField] private TextMeshProUGUI FlyCoinsText;
+    [SerializeField] private TextMeshProUGUI SuperCoinsInShopText;
+    [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
 
     void Start()
     {
@@ -28,16 +31,21 @@ public class CoinsManagerInMainMenu : MonoBehaviour
         {
             coinsS = PlayerPrefs.GetInt("coinsS");
         }
-    }
-    void FixedUpdate()
-    {
-        coinsF = PlayerPrefs.GetInt("coinsF");
-        PlayerPrefs.SetInt("coinsF", coinsF);
-        moneyText.text = "" + coinsF;
 
+        SuperCoinsText.text = coinsS + "";
+        FlyCoinsText.text = coinsF + "";
+        SuperCoinsInShopText.text = coinsS + "";
+        FlyCoinsInShopText.text = coinsF + "";
+    }
+
+    public void UpdateUI()
+    {
+        coinsF = PlayerPrefs.GetInt("coinsF", coinsF);
         coinsS = PlayerPrefs.GetInt("coinsS");
-        PlayerPrefs.SetInt("coinsS", coinsS);
-        moneyText2.text = "" + coinsS;
+
+        SuperCoinsText.text = coinsS + "";
+        FlyCoinsText.text = coinsF + "";
+        SuperCoinsInShopText.text = coinsS + "";
+        FlyCoinsInShopText.text = coinsF + "";
     }
 }
-// sws

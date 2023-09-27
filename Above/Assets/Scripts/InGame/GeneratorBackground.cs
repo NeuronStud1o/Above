@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class GeneratorBackground : MonoBehaviour
 {
-    public GameObject background;
-    public Transform generatorPoint;
-    public float distanceBetween;
+    [SerializeField] private GameObject background;
+    [SerializeField] private Transform generatorPoint;
+    [SerializeField] private float distanceBetween;
 
     float platformWidth;
 
-    public GameObject Camera;
-    public AudioClip audioClip;
+    [SerializeField] private GameObject Camera;
+    [SerializeField] private AudioClip audioClip;
 
     void Start()
     {
@@ -28,6 +28,4 @@ public class GeneratorBackground : MonoBehaviour
             Instantiate(background, transform.position, transform.rotation);
         }
     }
-
-   
 }

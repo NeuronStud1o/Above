@@ -6,7 +6,7 @@ public class SelectCharacterInGame : MonoBehaviour
 {
     private int i;
 
-    public GameObject[] AllCharacters;
+    [SerializeField] private GameObject[] AllCharacters;
 
     void Start()
     {

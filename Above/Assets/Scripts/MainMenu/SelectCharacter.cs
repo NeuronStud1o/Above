@@ -7,11 +7,11 @@ public class SelectCharacter : MonoBehaviour
 {
     private int i;
 
-    public GameObject[] AllCharacters;
+    [SerializeField] private GameObject[] AllCharacters;
 
-    public GameObject[] EquipButtons;
-    public GameObject[] EquipedButtons;
-    public GameObject[] BuyButtons;
+    [SerializeField] private GameObject[] EquipButtons;
+    [SerializeField] private GameObject[] EquipedButtons;
+    [SerializeField] private GameObject[] BuyButtons;
 
     void Start()
     {

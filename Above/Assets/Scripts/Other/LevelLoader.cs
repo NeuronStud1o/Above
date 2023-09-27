@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
-    public GameObject loadingScreen;
-    public Slider slider;
+    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private Slider slider;
 
-    public int loadSceneIndex = 0;
+    [SerializeField] private int loadSceneIndex = 0;
 
     System.Random random = new System.Random();
 

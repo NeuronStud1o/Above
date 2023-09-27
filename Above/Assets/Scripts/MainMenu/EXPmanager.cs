@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class EXPmanager : MonoBehaviour
 {
-    public Slider expSlider;
-    public Text countToNextLevel;
-    public Text level;
+    [SerializeField] private Slider expSlider;
+    [SerializeField] private Text countToNextLevel;
+    [SerializeField] private Text level;
 
     public static int countEXP;
     public static int levelEXP;
 
-    public Text hightScore;
+    [SerializeField] private Text hightScore;
 
     void Start()
     {
@@ -27,10 +27,6 @@ public class EXPmanager : MonoBehaviour
         }
 
         hightScore.text = PlayerPrefs.GetInt("recordScore") + "";
-    }
-
-    void Update()
-    {
         countToNextLevel.text = countEXP + " / 100";
         expSlider.value = countEXP;
 
@@ -42,10 +38,10 @@ public class EXPmanager : MonoBehaviour
         {
             level.text = levelEXP + "";
         }
+    }
 
-        PlayerPrefs.SetInt("EXP", countEXP);
-        PlayerPrefs.SetInt("LevelEXP", levelEXP);
-
+    void Update()
+    {
         if (countEXP >= 100)
         {
             countEXP -= 100;

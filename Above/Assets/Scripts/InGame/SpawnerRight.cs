@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SpawnerRight : MonoBehaviour
 {
-    public GameObject[] Enemy;
+    [SerializeField] private GameObject[] Enemy;
 
-    public float Distance = 20;
+    [SerializeField] private float Distance = 20;
+    [SerializeField] private float AddNewDistance = 25;
 
     Vector2 SpawnPos = new Vector2();
     private void Start()
     {
-
         for (int i = 0; i < 5; i++)
         {
             GameObject Empty = Enemy[Random.Range(0, Enemy.Length)];
@@ -27,7 +27,6 @@ public class SpawnerRight : MonoBehaviour
     {
         if (transform.position.y > Distance)
         {
-
             for (int i = 0; i < 5; i++)
             {
                 GameObject Empty = Enemy[Random.Range(0, Enemy.Length)];
@@ -38,7 +37,7 @@ public class SpawnerRight : MonoBehaviour
                 Instantiate(Empty, SpawnPos, Quaternion.identity);
             }
 
-            Distance += 25f;
+            Distance += AddNewDistance;
         }
     }
 }

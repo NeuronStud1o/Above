@@ -6,11 +6,11 @@ public class SelectBg : MonoBehaviour
 {
     private int i;
 
-    public GameObject[] AllBg;
-    public GameObject[] AllRailings;
+    [SerializeField] private GameObject[] AllBg;
+    [SerializeField] private GameObject[] AllRailings;
 
-    public GameObject[] EquipButtons;
-    public GameObject[] EquipedButtons;
+    [SerializeField] private GameObject[] EquipButtons;
+    [SerializeField] private GameObject[] EquipedButtons;
 
     void Start()
     {

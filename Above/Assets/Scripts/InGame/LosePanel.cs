@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class LosePanel : MonoBehaviour
 {
-    public Text scoreText;
-    public Camera thisCamera;
-    public GameObject panel;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Camera thisCamera;
+    [SerializeField] private GameObject panel;
 
     private void Start()
     {
-        Handheld.Vibrate();
         int random;
 
         random = Random.Range(1, 4);
@@ -68,7 +67,6 @@ public class LosePanel : MonoBehaviour
         {
             scoreText.text = recordScore.ToString();
         }
-
     }
 
     public void ToMenu()

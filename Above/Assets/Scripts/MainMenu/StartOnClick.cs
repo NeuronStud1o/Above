@@ -6,24 +6,25 @@ using TMPro;
 
 public class StartOnClick : MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    public GameObject button;
-    public Button pauseButton;
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private GameObject button;
+    [SerializeField] private Button pauseButton;
 
-    public static Player player;
+    public Player player;
 
-    void Start()
+    [SerializeField] private GameObject destroyPoint;
+
+    void Awake()
     {
-        player.enabled = false;
+        DestroyPoint.destroyPoint = destroyPoint;
     }
 
-   public void StartGame()
-   {
+    public void StartGame()
+    {
         player.enabled = true;
         pauseButton.interactable = true;
 
         text.enabled = false;
         button.SetActive(false);
-   }
-
+    }
 }

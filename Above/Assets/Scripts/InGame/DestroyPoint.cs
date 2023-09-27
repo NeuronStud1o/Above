@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class DestroyPoint : MonoBehaviour
 {
-    public GameObject destroyPoint;
-
-    void Start()
-    {
-        destroyPoint = GameObject.Find("DestroyPoint");
-    }
+    public static GameObject destroyPoint;
 
     void Update()
     {

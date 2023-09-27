@@ -18,6 +18,8 @@ public class Reward : MonoBehaviour
     public GameObject Coin;
     public GameObject coinWindow;
 
+    [SerializeField] private CoinsManagerInMainMenu coinsManagerInMainMenu;
+
     void Start()
     {
         RewardButton = GetComponent<Button>();
@@ -43,6 +45,7 @@ public class Reward : MonoBehaviour
         int allCoins = PlayerPrefs.GetInt("coinsF");
         allCoins += 10;
         PlayerPrefs.SetInt("coinsF", allCoins);
+        coinsManagerInMainMenu.UpdateUI();
     }
   
     void Update()
@@ -99,6 +102,7 @@ public class Reward : MonoBehaviour
             
         coinWindow.SetActive(true);
         StartCoroutine("AnimationSeconds");
+        
     }
 
     public bool isReady()

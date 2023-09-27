@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    public GameObject FlyCoin;
-    public GameObject SuperCoin;
+    [SerializeField] private GameObject FlyCoin;
+    [SerializeField] private GameObject SuperCoin;
 
-    public GameObject LineSpawnFlyCoin;
-    public GameObject LineSpawnSuperCoin;
-    public static GameObject Hero;
+    [SerializeField] private GameObject LineSpawnFlyCoin;
+    [SerializeField] private GameObject LineSpawnSuperCoin;
+    public GameObject Hero;
 
     private void Update()
     {
@@ -55,7 +55,7 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             SpawnPos.x = Random.Range(-1, 1);
-            SpawnPos.y += Random.Range(40f, 400f);
+            SpawnPos.y += Random.Range(50f, 500f);
 
             GameObject coin = Instantiate(SuperCoin, SpawnPos, Quaternion.identity);
 

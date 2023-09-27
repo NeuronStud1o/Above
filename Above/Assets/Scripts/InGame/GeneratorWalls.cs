@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GeneratorWalls : MonoBehaviour
 {
-    public GameObject walls;
-    public Transform generatorPoint;
-    public float distanceBetween;
+    [SerializeField] private GameObject walls;
+    [SerializeField] private Transform generatorPoint;
+    [SerializeField] private float distanceBetween;
 
     float platformWidth;
 

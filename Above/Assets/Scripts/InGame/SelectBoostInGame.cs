@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SelectBoostInGame : MonoBehaviour
 {
-    public Color shieldColor;
-    public Color standartColor;
+    [SerializeField] private Color shieldColor;
+    [SerializeField] private Color standartColor;
 
-    public GameObject[] Heroes;
+    [SerializeField] private GameObject[] Heroes;
 
     private void Start()
     {
