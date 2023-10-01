@@ -28,6 +28,8 @@ public class BuyButtons : MonoBehaviour
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
                 PlayerPrefs.SetInt("BoughtItems", items);
+
+                CoinsManagerInMainMenu.instance.UpdateUI();
             }
         }
         if (coin == Coin.SuperCoins)
@@ -42,6 +44,8 @@ public class BuyButtons : MonoBehaviour
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
                 PlayerPrefs.SetInt("BoughtItems", items);
+
+                CoinsManagerInMainMenu.instance.UpdateUI();
             }
         }
     }
@@ -60,6 +64,8 @@ public class BuyButtons : MonoBehaviour
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
                 PlayerPrefs.SetInt("BoughtItems", items);
+
+                CoinsManagerInMainMenu.instance.UpdateUI();
             }
         }
         if (coin == Coin.SuperCoins)
@@ -74,6 +80,8 @@ public class BuyButtons : MonoBehaviour
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
                 PlayerPrefs.SetInt("BoughtItems", items);
+
+                CoinsManagerInMainMenu.instance.UpdateUI();
             }
         }
     }
@@ -92,6 +100,8 @@ public class BuyButtons : MonoBehaviour
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
                 PlayerPrefs.SetInt("BoughtItems", items);
+
+                CoinsManagerInMainMenu.instance.UpdateUI();
             }
         }
         if (coin == Coin.SuperCoins)
@@ -106,6 +116,8 @@ public class BuyButtons : MonoBehaviour
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
                 PlayerPrefs.SetInt("BoughtItems", items);
+
+                CoinsManagerInMainMenu.instance.UpdateUI();
             }
         }
     }

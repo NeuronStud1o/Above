@@ -92,11 +92,11 @@ public class Player : MonoBehaviour
 
                     if (direction == Direction.Right)
                     {
-                        TakeDirection(Direction.Left);
+                        TakeDirection(Direction.Right);
                     }
                     else if (direction == Direction.Left)
                     {
-                        TakeDirection(Direction.Right);;
+                        TakeDirection(Direction.Left);;
                     }
                 }
             
@@ -117,10 +117,12 @@ public class Player : MonoBehaviour
             case Direction.Left:
                 transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
                 speedDirection = 1;
+                direction = Direction.Right;
                 break;
             case Direction.Right:
                 transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
                 speedDirection = -1;
+                direction = Direction.Left;
                 break;
         }
     }

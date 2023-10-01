@@ -574,7 +574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 3135390771340274543, guid: 95478ceab489468488c3700730aa233e, type: 3}
   generatorPoint: {fileID: 1562461212}
-  distanceBetween: -5.5
+  distanceBetween: -5.422
   Camera: {fileID: 519420028}
   audioClip: {fileID: 8300000, guid: 14640d78e994bbf46afc309c5a5fd84b, type: 3}
 --- !u!1 &148409061
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 6678682730197327874, guid: 0a8d3334cf5ab9840af79cea1d27d085, type: 3}
   generatorPoint: {fileID: 1011322793}
-  distanceBetween: 9
+  distanceBetween: 9.122
 --- !u!1 &219013125
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,7 +3145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 2368267592465341513, guid: 9f5f3d26ab4454b4388ea598850e0288, type: 3}
   generatorPoint: {fileID: 1562461212}
-  distanceBetween: -5.431
+  distanceBetween: -5.422
   Camera: {fileID: 519420028}
   audioClip: {fileID: 8300000, guid: 29d1eb1cf1004e24980d6460ff008200, type: 3}
 --- !u!1 &567161813
@@ -5879,7 +5879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 6577527483756243263, guid: 3975a14f77dc1314296058fcbcf0dfcf, type: 3}
   generatorPoint: {fileID: 1011322793}
-  distanceBetween: 9
+  distanceBetween: 9.122
 --- !u!1 &983957625
 GameObject:
   m_ObjectHideFlags: 0
@@ -9059,7 +9059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 2472172673066414278, guid: c0c9615e238498b49b14d1e88e96c594, type: 3}
   generatorPoint: {fileID: 1011322793}
-  distanceBetween: 9
+  distanceBetween: 9.122
 --- !u!1 &1405952457
 GameObject:
   m_ObjectHideFlags: 0
@@ -9105,7 +9105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 42660371866496278, guid: da31beac605f55144994ba944cc1751f, type: 3}
   generatorPoint: {fileID: 1011322793}
-  distanceBetween: 9.212
+  distanceBetween: 9.122
 --- !u!1 &1416955382
 GameObject:
   m_ObjectHideFlags: 0
@@ -9151,7 +9151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 6464450900146987456, guid: 11dfa3027f8dcac47a8b239866743acb, type: 3}
   generatorPoint: {fileID: 1011322793}
-  distanceBetween: 9
+  distanceBetween: 9.122
 --- !u!1 &1456636992
 GameObject:
   m_ObjectHideFlags: 0
@@ -9450,7 +9450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1153212238717153654, guid: 23bbbfc4bf7941b43a2d09abc97f4518, type: 3}
   generatorPoint: {fileID: 1562461212}
-  distanceBetween: -5.5
+  distanceBetween: -5.422
   Camera: {fileID: 519420028}
   audioClip: {fileID: 8300000, guid: d20805bc782336f4b850ef5b735c8e4e, type: 3}
 --- !u!1 &1535566037
@@ -12427,7 +12427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 5191257208676830286, guid: 964fe6624077f8b43912a1eb488c3fbd, type: 3}
   generatorPoint: {fileID: 1562461212}
-  distanceBetween: -5.5
+  distanceBetween: -5.422
   Camera: {fileID: 519420028}
   audioClip: {fileID: 8300000, guid: 12c770b5ed2970f449b13e1cdc77a3dd, type: 3}
 --- !u!4 &2072264655

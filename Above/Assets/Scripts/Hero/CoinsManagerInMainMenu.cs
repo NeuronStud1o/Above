@@ -8,6 +8,8 @@ public class CoinsManagerInMainMenu : MonoBehaviour
 {
     public static int coinsF;
 
+    public static CoinsManagerInMainMenu instance;
+
     public static int coinsS;
 
     [SerializeField] private TextMeshProUGUI SuperCoinsText;
@@ -17,6 +19,8 @@ public class CoinsManagerInMainMenu : MonoBehaviour
 
     void Start()
     {
+        instance = this;
+
         if (PlayerPrefs.GetInt("coinsS") >= 10)
         {
             PlayerPrefs.SetInt("coinsSForTasks", 1);
