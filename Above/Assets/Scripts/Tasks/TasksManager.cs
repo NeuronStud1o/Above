@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static IsActiveButton;
 
 public class TasksManager : MonoBehaviour
 {
     public int tasksCount;
 
-    public static bool[] tasks = new bool[10];
+    public bool[] tasks = new bool[10];
     public GameObject[] panels;
 
     void Start()
@@ -31,16 +30,13 @@ public class TasksManager : MonoBehaviour
         }
     }
 
-    public static void SaveGame()
+    public void SaveGame()
     {
-        //string rootPath = Application.dataPath;
         string filePath = Path.Combine(Application.persistentDataPath, "tasks.txt");
 
-        // Відкриваємо файл для запису
         using (StreamWriter writer = new StreamWriter(filePath))
         {
             bool a = true;
-            // Записуємо кожен елемент масиву в окремий рядок
             foreach (bool element in tasks)
             {
                 if (a)
@@ -59,14 +55,11 @@ public class TasksManager : MonoBehaviour
 
     void ReadFile()
     {
-        //string rootPath = Application.dataPath;
         string filePath = Path.Combine(Application.persistentDataPath, "tasks.txt");
 
-        // Відкриваємо файл для читання
         StreamReader reader = new StreamReader(filePath);
         string line;
 
-        // Зчитуємо рядки з файлу по одному
         while ((line = reader.ReadLine()) != null)
         {
             string[] stringValues = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);

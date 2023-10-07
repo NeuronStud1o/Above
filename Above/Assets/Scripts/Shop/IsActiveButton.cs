@@ -14,12 +14,13 @@ public class IsActiveButton : MonoBehaviour
     }
 
     public Element element;
+    [SerializeField] private BuySystem buySystem;
 
     void Update()
     {
         if (element == Element.Skin)
         {
-            if (BuySystem.elements[index] == true)
+            if (buySystem.elements[index] == true)
             {
                 gameObject.SetActive(false);
             }
@@ -27,7 +28,7 @@ public class IsActiveButton : MonoBehaviour
 
         if (element == Element.Bg)
         {
-            if (BuySystem.elements2[index] == true)
+            if (buySystem.elements2[index] == true)
             {
                 gameObject.SetActive(false);
             }
@@ -35,7 +36,7 @@ public class IsActiveButton : MonoBehaviour
 
         if (element == Element.Boost)
         {
-            if (BuySystem.elements3[index] == true)
+            if (buySystem.elements3[index] == true)
             {
                 gameObject.SetActive(false);
             }

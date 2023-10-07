@@ -10,9 +10,10 @@ public class BuyButtons : MonoBehaviour
         SuperCoins
     }
 
-    public Coin coin;
+    [SerializeField] private Coin coin;
 
-    public int price;
+    [SerializeField] private int price;
+    [SerializeField] private BuySystem buySystem;
 
     public void BuySkins(int indexItem)
     {
@@ -20,10 +21,10 @@ public class BuyButtons : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("coinsF") >= price)
             {
-                BuySystem.elements[indexItem] = true;
+                buySystem.elements[indexItem] = true;
 
                 PlayerPrefs.SetInt("coinsF", PlayerPrefs.GetInt("coinsF") - price);
-                BuySystem.SaveGame();
+                buySystem.SaveGame();
 
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
@@ -36,10 +37,10 @@ public class BuyButtons : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("coinsS") >= price)
             {
-                BuySystem.elements[indexItem] = true;
+                buySystem.elements[indexItem] = true;
 
                 PlayerPrefs.SetInt("coinsS", PlayerPrefs.GetInt("coinsS") - price);
-                BuySystem.SaveGame();
+                buySystem.SaveGame();
 
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
@@ -56,10 +57,10 @@ public class BuyButtons : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("coinsF") >= price)
             {
-                BuySystem.elements2[indexItem] = true;
+                buySystem.elements2[indexItem] = true;
 
                 PlayerPrefs.SetInt("coinsF", PlayerPrefs.GetInt("coinsF") - price);
-                BuySystem.SaveGame();
+                buySystem.SaveGame();
 
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
@@ -72,10 +73,10 @@ public class BuyButtons : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("coinsS") >= price)
             {
-                BuySystem.elements2[indexItem] = true;
+                buySystem.elements2[indexItem] = true;
 
                 PlayerPrefs.SetInt("coinsS", PlayerPrefs.GetInt("coinsS") - price);
-                BuySystem.SaveGame();
+                buySystem.SaveGame();
 
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
@@ -92,10 +93,10 @@ public class BuyButtons : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("coinsF") >= price)
             {
-                BuySystem.elements3[indexItem] = true;
+                buySystem.elements3[indexItem] = true;
 
                 PlayerPrefs.SetInt("coinsF", PlayerPrefs.GetInt("coinsF") - price);
-                BuySystem.SaveGame();
+                buySystem.SaveGame();
 
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;
@@ -108,10 +109,10 @@ public class BuyButtons : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("coinsS") >= price)
             {
-                BuySystem.elements3[indexItem] = true;
+                buySystem.elements3[indexItem] = true;
 
                 PlayerPrefs.SetInt("coinsS", PlayerPrefs.GetInt("coinsS") - price);
-                BuySystem.SaveGame();
+                buySystem.SaveGame();
 
                 int items = PlayerPrefs.GetInt("BoughtItems");
                 items++;

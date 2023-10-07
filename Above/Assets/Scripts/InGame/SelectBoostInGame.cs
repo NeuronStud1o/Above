@@ -8,6 +8,8 @@ public class SelectBoostInGame : MonoBehaviour
     [SerializeField] private Color standartColor;
 
     [SerializeField] private GameObject[] Heroes;
+    [SerializeField] private GameObject[] AllBoosts;
+    private int i;
 
     private void Start()
     {
@@ -32,5 +34,8 @@ public class SelectBoostInGame : MonoBehaviour
                 Heroes[i].GetComponent<SpriteRenderer>().color = standartColor;
             }
         }
+
+        i = PlayerPrefs.GetInt("CurrentBoost");
+        AllBoosts[i].SetActive(true);
     }
 }

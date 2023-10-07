@@ -43,6 +43,7 @@ public class SelectBoost : MonoBehaviour
         if (PlayerPrefs.GetInt("CurrentBoost") == 1)
         {
             PlayerPrefs.SetInt("CoinsFAdd", 2);
+            PlayerPrefs.SetInt("HeroHP", 0);
             PlayerPrefs.SetInt("IsBoostEquiped", 1);
         }
         else
@@ -53,6 +54,7 @@ public class SelectBoost : MonoBehaviour
         if (PlayerPrefs.GetInt("CurrentBoost") == 2)
         {
             PlayerPrefs.SetFloat("Speed", 1.5f);
+            PlayerPrefs.SetInt("HeroHP", 0);
             PlayerPrefs.SetInt("IsBoostEquiped", 1);
         }
         else

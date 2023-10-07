@@ -5,10 +5,10 @@ using System.Collections;
 
 public class Reward : MonoBehaviour
 {
-    public float msToWait = 5000.0f;
+    [SerializeField] private float msToWait = 86400000f;
+    private int notifIndex = 0;
 
     private Text Timer;
-    private Button RewardButton;
 
     private ulong lastOpen;
 
@@ -19,16 +19,18 @@ public class Reward : MonoBehaviour
     public GameObject coinWindow;
 
     [SerializeField] private CoinsManagerInMainMenu coinsManagerInMainMenu;
+    [SerializeField] private NotificationsManager notifications;
+
+    [SerializeField] private Button RewardButton;
 
     void Start()
     {
-        RewardButton = GetComponent<Button>();
         if (!PlayerPrefs.HasKey("lastOpen"))
         {
             PlayerPrefs.SetString("lastOpen", "0");
         }
         lastOpen = ulong.Parse(PlayerPrefs.GetString("lastOpen"));
-        Timer = GetComponentInChildren<Text>();
+        Timer = RewardButton.GetComponentInChildren<Text>();
 
         if (!isReady())
         {
@@ -101,7 +103,10 @@ public class Reward : MonoBehaviour
         PlayerPrefs.SetInt("RewardsCount", count);
             
         coinWindow.SetActive(true);
-        StartCoroutine("AnimationSeconds");
+        StartCoroutine(AnimationSeconds());
+
+        notifications.iconsIndex[notifIndex] = 0;
+        notifications.SaveGame();
         
     }
 
@@ -114,9 +119,19 @@ public class Reward : MonoBehaviour
         if (seconleft < 0)
         {
             Timer.text = "10   ";
+            foreach (int i in notifications.iconsIndex)
+            {
+                if (i == 0)
+                {
+                    notifIndex = i;
+                    notifications.iconsIndex[i] = 1;
+                    notifications.SaveGame();
+                    break;
+                }
+            }
             return true;
-
         }
+
         return false;
     }
 }
