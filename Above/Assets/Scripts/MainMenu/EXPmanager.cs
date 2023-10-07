@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EXPmanager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class EXPmanager : MonoBehaviour
     public static int countEXP;
     public static int levelEXP;
 
-    [SerializeField] private Text hightScore;
+    [SerializeField] private TextMeshProUGUI hightScore;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class EXPmanager : MonoBehaviour
             PlayerPrefs.SetInt("LevelEXP", 1);
         }
 
-        hightScore.text = PlayerPrefs.GetInt("recordScore") + "";
+        hightScore.text = "" + PlayerPrefs.GetInt("recordScore");
         countToNextLevel.text = countEXP + " / 100";
         expSlider.value = countEXP;
 
