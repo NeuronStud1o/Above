@@ -133,25 +133,26 @@ public class Player : MonoBehaviour
         if (isCanMove)
         {
             transform.position += Vector3.left * PlayerPrefs.GetFloat("Speed") * Time.deltaTime * speedDirection;
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                rb.velocity = new Vector2(0, jumpForce);
-                jumpSound.Play();
-                anim.SetTrigger("Jump");
-
-                int taskJump = PlayerPrefs.GetInt("Jumps");
-                taskJump++;
-                PlayerPrefs.SetInt("Jumps", taskJump);
-
-                if (ProgressEveryDayTasks.jumps != 0)
-                {
-                    int jumps = PlayerPrefs.GetInt("TasksJumps");
-                    jumps++;
-                    PlayerPrefs.SetInt("TasksJumps", jumps);
-                }
-            }
         } 
+    }
+
+    public void Jump()
+    {
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.velocity = new Vector2(0, jumpForce);
+        jumpSound.Play();
+        anim.SetTrigger("Jump");
+
+        int taskJump = PlayerPrefs.GetInt("Jumps");
+        taskJump++;
+        PlayerPrefs.SetInt("Jumps", taskJump);
+
+        if (ProgressEveryDayTasks.jumps != 0)
+        {
+            int jumps = PlayerPrefs.GetInt("TasksJumps");
+            jumps++;
+            PlayerPrefs.SetInt("TasksJumps", jumps);
+        }
     }
     
     IEnumerator Death()

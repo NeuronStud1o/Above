@@ -10,8 +10,6 @@ public class Buttons : MonoBehaviour
     public GameObject PlayTransition;
     public GameObject FadeTransition;
 
-    public GameObject Hero;
-
     public GameObject settingsSounds;
     public GameObject settingsLanguages;
 
@@ -27,20 +25,6 @@ public class Buttons : MonoBehaviour
     private void Start()
     {
         PlayTransition.SetActive(false);
-    }
-
-    // PAUSE CONTROLLER
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-        Hero.GetComponent<Player>().enabled = false;
-    }
-
-    public void ContinueGame()
-    {
-        Time.timeScale = 1;
-        Hero.GetComponent<Player>().enabled = true;
     }
 
     // COROUTINES

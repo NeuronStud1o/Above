@@ -15,13 +15,12 @@ public class CoinsManager : MonoBehaviour
     [SerializeField] private Text moneyText2;
 
     [SerializeField] private StartOnClick startOnClick;
-    [SerializeField] private Buttons buttons;
     [SerializeField] private CoinSpawner coinSpawner;
 
     void Start()
     {
         startOnClick.player = GetComponent<Player>();
-        buttons.Hero = gameObject;
+        PauseController.instance.Hero = gameObject;
         coinSpawner.Hero = gameObject;
         
         if (PlayerPrefs.HasKey("CoinsFAdd"))
