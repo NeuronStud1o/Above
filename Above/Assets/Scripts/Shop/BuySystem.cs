@@ -10,9 +10,9 @@ public class BuySystem : MonoBehaviour
     public int bgsCount;
     public int boostsCount;
 
-    public static bool[] elements = new bool[8];
-    public static bool[] elements2 = new bool[5];
-    public static bool[] elements3 = new bool[4];
+    public bool[] elements = new bool[8];
+    public bool[] elements2 = new bool[5];
+    public bool[] elements3 = new bool[4];
 
     public static bool[][] resultElements = new bool[3][];
 
@@ -62,17 +62,14 @@ public class BuySystem : MonoBehaviour
         }
     }
 
-    public static void SaveGame()
+    public void SaveGame()
     {
-        //string rootPath = Application.dataPath;
         string fileName = "file.txt";
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
 
-        // Відкриваємо файл для запису
         using (StreamWriter writer = new StreamWriter(filePath))
         {
             bool a = true;
-            // Записуємо кожен елемент масиву в окремий рядок
             foreach (bool element in elements)
             {
                 if (a)
@@ -123,14 +120,11 @@ public class BuySystem : MonoBehaviour
 
     void ReadFile()
     {
-        //string rootPath = Application.dataPath;
         string filePath = Path.Combine(Application.persistentDataPath, "file.txt");
 
-        // Відкриваємо файл для читання
         StreamReader reader = new StreamReader(filePath);
         string line;
 
-        // Зчитуємо рядки з файлу по одному
         int indexShop = 0;
         while ((line = reader.ReadLine()) != null)
         {

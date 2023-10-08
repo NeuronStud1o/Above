@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class DoneTaskButton : MonoBehaviour
 {
+    [SerializeField] private TasksManager tasksManager;
     public void DoneTask(int indexItem)
     {
-        TasksManager.tasks[indexItem] = true;
-        TasksManager.SaveGame();
+        tasksManager.tasks[indexItem] = true;
+        tasksManager.SaveGame();
     }
 }

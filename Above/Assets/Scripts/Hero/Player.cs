@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
 
         cameraFollow.doodlePos = transform;
+
+        print (PlayerPrefs.GetInt("HeroHP"));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -107,7 +109,6 @@ public class Player : MonoBehaviour
                 StartCoroutine(Death());
             }
         }
-        
     }
 
     void TakeDirection(Direction flip)
