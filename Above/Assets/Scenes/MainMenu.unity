@@ -46077,7 +46077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myFX: {fileID: 1575659543}
-  clickFX: {fileID: 8300000, guid: f8eb48a5051d2954ba27114cca162acd, type: 3}
+  clickFX: {fileID: 8300000, guid: d86e196d06270b24f89f53d217516d24, type: 3}
 --- !u!114 &1575659542
 MonoBehaviour:
   m_ObjectHideFlags: 0
