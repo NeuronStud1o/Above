@@ -12,11 +12,13 @@ enum Direction
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip BrokenShield;
+
     private Direction direction;
     [SerializeField] private GameObject Panel;
     [SerializeField] private GameObject CanvasInGame;
     [SerializeField] private Score scoreScript;
-    [SerializeField] private int coins;
 
     public float jumpForce = 7f;
     private Rigidbody2D rb;
@@ -26,8 +28,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera MainCamera;
 
     [SerializeField] private Color standartColor;
-
-    [SerializeField] private AudioClip BrokenShield;
 
     private AudioSource cameraAudiosource;
     private CameraFollow cameraFollow;
@@ -140,7 +140,9 @@ public class Player : MonoBehaviour
     {
         rb.velocity = new Vector2(0, rb.velocity.y);
         rb.velocity = new Vector2(0, jumpForce);
-        jumpSound.Play();
+
+        jumpSound.PlayOneShot(jumpClip);
+        
         anim.SetTrigger("Jump");
 
         int taskJump = PlayerPrefs.GetInt("Jumps");

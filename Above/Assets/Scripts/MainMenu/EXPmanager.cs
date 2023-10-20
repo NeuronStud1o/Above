@@ -6,8 +6,8 @@ using TMPro;
 public class EXPmanager : MonoBehaviour
 {
     [SerializeField] private Slider expSlider;
-    [SerializeField] private Text countToNextLevel;
-    [SerializeField] private Text level;
+    [SerializeField] private TextMeshProUGUI countToNextLevel;
+    [SerializeField] private TextMeshProUGUI level;
 
     public static int countEXP;
     public static int levelEXP;

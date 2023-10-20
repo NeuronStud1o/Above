@@ -10,7 +10,7 @@ public class BuySystem : MonoBehaviour
     public int bgsCount;
     public int boostsCount;
 
-    public bool[] elements = new bool[8];
+    public bool[] elements = new bool[9];
     public bool[] elements2 = new bool[5];
     public bool[] elements3 = new bool[4];
 

@@ -19,7 +19,6 @@ public class Reward : MonoBehaviour
     public GameObject coinWindow;
 
     [SerializeField] private CoinsManagerInMainMenu coinsManagerInMainMenu;
-    [SerializeField] private NotificationsManager notifications;
 
     [SerializeField] private Button RewardButton;
 
@@ -105,8 +104,7 @@ public class Reward : MonoBehaviour
         coinWindow.SetActive(true);
         StartCoroutine(AnimationSeconds());
 
-        notifications.iconsIndex[notifIndex] = 0;
-        notifications.SaveGame();
+        NotificationsManager.instance.RemoveIconWhithList(notifIndex);
         
     }
 
@@ -118,16 +116,19 @@ public class Reward : MonoBehaviour
 
         if (seconleft < 0)
         {
+            int count = 0;
+
             Timer.text = "10   ";
-            foreach (int i in notifications.iconsIndex)
+            foreach (int i in NotificationsManager.instance.iconsIndex)
             {
                 if (i == 0)
                 {
-                    notifIndex = i;
-                    notifications.iconsIndex[i] = 1;
-                    notifications.SaveGame();
+                    notifIndex = NotificationsManager.instance.iconsIndex[count];
+                    NotificationsManager.instance.iconsIndex[count] = 1;
+                    NotificationsManager.instance.SaveGame();
                     break;
                 }
+                count++;
             }
             return true;
         }

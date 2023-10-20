@@ -3,16 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NotificationsManager : MonoBehaviour
 {
+    public static NotificationsManager instance;
     [SerializeField] private GameObject[] icons;
-    [SerializeField] private List<GameObject> panelIcons;
+    [SerializeField] private GameObject[] panelIcons;
+    [SerializeField] private GameObject layout;
     public int[] iconsIndex = new int[3];
+
+    Vector3 vector = new Vector3(1, 1, 1);
 
     void Start()
     {
+        //for (int i = 0; i < iconsIndex.Length; i++)
+        //{
+            //iconsIndex[i] = 0;
+        //}
+        //SaveGame();
+
+        instance = this;
+
         if (PlayerPrefs.GetInt("FirstTimeInGameForNotifications") == 0)
         {
             SaveGame();
@@ -20,12 +31,23 @@ public class NotificationsManager : MonoBehaviour
         }
 
         ReadFile();
+        
+    }
 
-        for (int i = 0; i < panelIcons.Count; i++)
+    public void RemoveIconWhithList(int index)
+    {
+        iconsIndex[index] = 0;
+        for (int i = 0; i < iconsIndex.Length; i++)
         {
-            panelIcons[i].GetComponent<Image>().sprite = icons[iconsIndex[i]].GetComponent<SpriteRenderer>().sprite;
-            print(panelIcons[i]);
+            if (iconsIndex[i] == index && panelIcons[i] != null)
+            {
+                Destroy(panelIcons[index]);
+                panelIcons[i] = null;
+                iconsIndex[i] = 0; // Зануліть індекс, щоб позначити, що об'єкт був знищений
+            }
         }
+
+        SaveGame();
     }
 
     public void SaveGame()
@@ -50,11 +72,7 @@ public class NotificationsManager : MonoBehaviour
             writer.WriteLine();
         }
 
-        for (int i = 0; i < panelIcons.Count; i++)
-        {
-            panelIcons[i].GetComponent<Image>().sprite = icons[iconsIndex[i]].GetComponent<SpriteRenderer>().sprite;
-            print(panelIcons[i]);
-        }
+        SetValue();
     }
 
     void ReadFile()
@@ -71,6 +89,24 @@ public class NotificationsManager : MonoBehaviour
             for (int i = 0; i < stringValues.Length; i++)
             {
                 iconsIndex[i] = Convert.ToInt32(stringValues[i]);
+                print (iconsIndex[i]);
+            }
+        }
+
+        SetValue();
+    }
+
+    void SetValue()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            print (iconsIndex[i]);
+            if (iconsIndex[i] != 0)
+            {
+                GameObject icon = Instantiate(icons[iconsIndex[i]]);
+                icon.transform.SetParent(layout.transform);
+                icon.transform.localScale = vector;
+                panelIcons[i] = icon;
             }
         }
     }
