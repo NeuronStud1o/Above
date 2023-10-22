@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5814833881766268354}
   - component: {fileID: 5814833881766268355}
   - component: {fileID: 5814833881766268356}
-  - component: {fileID: 3072118371055599987}
+  - component: {fileID: 7916227643815357518}
   m_Layer: 0
   m_Name: Kiwi
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5814833881766268359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.99, y: 0.65, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &3072118371055599987
+--- !u!95 &7916227643815357518
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ Animator:
   m_GameObject: {fileID: 5814833881766268359}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 178aa8a8b50770c4b888b2a7246d7b24, type: 2}
+  m_Controller: {fileID: 9100000, guid: 290a1216da4e12c46b7dcb1a68a2a2c7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

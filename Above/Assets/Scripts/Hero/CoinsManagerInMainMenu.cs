@@ -28,7 +28,7 @@ public class CoinsManagerInMainMenu : MonoBehaviour
 
         if (PlayerPrefs.HasKey("coinsF"))
         {
-            coinsF = PlayerPrefs.GetInt("coinsF", coinsF);
+            coinsF = PlayerPrefs.GetInt("coinsF");
         }
 
         if (PlayerPrefs.HasKey("coinsS"))

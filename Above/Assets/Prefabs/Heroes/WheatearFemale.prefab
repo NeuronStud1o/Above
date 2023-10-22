@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2776561495356766366}
   - component: {fileID: 2776561495356766367}
   - component: {fileID: 2776561495356766360}
-  - component: {fileID: 8044724712258556154}
+  - component: {fileID: 2406281022043194908}
   m_Layer: 0
   m_Name: WheatearFemale
   m_TagString: Untagged
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &8044724712258556154
+--- !u!95 &2406281022043194908
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ Animator:
   m_GameObject: {fileID: 2776561495356766363}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bd18e694f91375647b8a7528992fe5c0, type: 2}
+  m_Controller: {fileID: 9100000, guid: cc2646f962144e143b9f9bf438be91f6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

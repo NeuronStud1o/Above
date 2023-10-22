@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3719550444694893643}
   - component: {fileID: 3719550444694893642}
   - component: {fileID: 3719550444694893645}
-  - component: {fileID: 3719550444694893647}
+  - component: {fileID: -3531633228006613679}
   m_Layer: 0
   m_Name: BlackThrush
   m_TagString: Untagged
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &3719550444694893647
+--- !u!95 &-3531633228006613679
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

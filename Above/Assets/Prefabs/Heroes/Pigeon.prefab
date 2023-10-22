@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7817086385529051024}
   - component: {fileID: 7817086385529051025}
   - component: {fileID: 7817086385529051030}
-  - component: {fileID: 5114021996243916707}
+  - component: {fileID: -7603411953808016742}
   m_Layer: 0
   m_Name: Pigeon
   m_TagString: Untagged
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &5114021996243916707
+--- !u!95 &-7603411953808016742
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

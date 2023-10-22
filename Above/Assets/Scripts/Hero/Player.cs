@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip BrokenShield;
+    [SerializeField] private AudioClip death;
 
     private Direction direction;
     [SerializeField] private GameObject Panel;
@@ -159,6 +160,7 @@ public class Player : MonoBehaviour
     
     IEnumerator Death()
     {
+        jumpSound.PlayOneShot(death);
         CanvasInGame.SetActive(false);
         Handheld.Vibrate();
         cameraFollow.enabled = false;
