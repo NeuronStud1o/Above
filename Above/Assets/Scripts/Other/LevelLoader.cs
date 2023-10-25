@@ -8,7 +8,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider slider;
 
-    [SerializeField] private int loadSceneIndex = 0;
+    private int loadSceneIndex = 0;
 
     System.Random random = new System.Random();
 
@@ -16,6 +16,17 @@ public class LevelLoader : MonoBehaviour
 
     public void StartGame()
     {
+        if (PlayerPrefs.GetInt("StartFirstTime") == 0)
+        {
+            loadSceneIndex = 2;
+        }
+        else
+        {
+            loadSceneIndex = 1;
+        }
+
+        print (PlayerPrefs.GetInt("FirstTimeInGame") + " !!!!");
+
         StartCoroutine(LoadAsynchronously(loadSceneIndex));
     }
 
