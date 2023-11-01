@@ -11,7 +11,7 @@ public class BuySystem : MonoBehaviour
     public int boostsCount;
 
     public bool[] elements = new bool[9];
-    public bool[] elements2 = new bool[5];
+    public bool[] elements2 = new bool[6];
     public bool[] elements3 = new bool[4];
 
     public static bool[][] resultElements = new bool[3][];
@@ -136,6 +136,7 @@ public class BuySystem : MonoBehaviour
                 resultElements[indexShop][i] = Convert.ToBoolean(stringValues[i]);
             }
             indexShop++;
+
         }
 
         for (int i = 0; i < elements.Length; i++)

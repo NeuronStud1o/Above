@@ -18,7 +18,7 @@ public class LevelLoader : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("StartFirstTime") == 0)
         {
-            loadSceneIndex = 2;
+            loadSceneIndex = 3;
         }
         else
         {
