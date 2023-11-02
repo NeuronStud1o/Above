@@ -22,6 +22,8 @@ public class Buttons : MonoBehaviour
 
     public Camera mainCamera;
 
+    [SerializeField] private EXPmanager expManager;
+
     private void Start()
     {
         PlayTransition.SetActive(false);
@@ -108,7 +110,8 @@ public class Buttons : MonoBehaviour
 
     public void AddEXP10EVERYDAYTASK()
     {
-        EXPmanager.countEXP += 10;
+        PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") + 10);
+        expManager.CheckNextLevel();
     }
 
     // TASKS
@@ -116,19 +119,22 @@ public class Buttons : MonoBehaviour
     public void AddEXP10(int index)
     {
         CloseGameObject[index].SetActive(true);
-        EXPmanager.countEXP += 10;
+        PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") + 10);
+        expManager.CheckNextLevel();
     }
 
     public void AddEXP15(int index)
     {
         CloseGameObject[index].SetActive(true);
-        EXPmanager.countEXP += 15;
+        PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") + 15);
+        expManager.CheckNextLevel();
     }
 
     public void AddEXP20(int index)
     {
         CloseGameObject[index].SetActive(true);
-        EXPmanager.countEXP += 20;
+        PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") + 20);
+        expManager.CheckNextLevel();
     }
 
     public void Add1SuperCoins(int index)

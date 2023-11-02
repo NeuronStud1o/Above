@@ -16,12 +16,6 @@ public class NotificationsManager : MonoBehaviour
 
     void Start()
     {
-        //for (int i = 0; i < iconsIndex.Length; i++)
-        //{
-            //iconsIndex[i] = 0;
-        //}
-        //SaveGame();
-
         instance = this;
 
         if (PlayerPrefs.GetInt("FirstTimeInGameForNotifications") == 0)

@@ -2,54 +2,86 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.Collections.Generic;
+
+[Serializable]
+public struct LevelValue
+{
+    public int Level;
+    public int CountToNextLevel;
+    public string Title;
+}
 
 public class EXPmanager : MonoBehaviour
 {
     [SerializeField] private Slider expSlider;
     [SerializeField] private TextMeshProUGUI countToNextLevel;
     [SerializeField] private TextMeshProUGUI level;
-
-    public static int countEXP;
-    public static int levelEXP;
+    [SerializeField] private TextMeshProUGUI title;
 
     [SerializeField] private TextMeshProUGUI hightScore;
+    [SerializeField] private List<LevelValue> keyFrame = new List<LevelValue>();
+
+    private int CountToNextLevel = 0;
+
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("LevelEXP") && PlayerPrefs.HasKey("EXP"))
-        {
-            levelEXP = PlayerPrefs.GetInt("LevelEXP");
-            countEXP = PlayerPrefs.GetInt("EXP");
-        }
-        else
+        hightScore.text = "" + PlayerPrefs.GetInt("recordScore");
+
+        if (!PlayerPrefs.HasKey("LevelEXP") && !PlayerPrefs.HasKey("EXP"))
         {
             PlayerPrefs.SetInt("EXP", 0);
             PlayerPrefs.SetInt("LevelEXP", 1);
         }
 
-        hightScore.text = "" + PlayerPrefs.GetInt("recordScore");
-        countToNextLevel.text = countEXP + " / 100";
-        expSlider.value = countEXP;
+        SetValues();
+        CheckNextLevel();
 
-        if (levelEXP >= 120)
+        if (PlayerPrefs.GetInt("LevelEXP") >= 120)
         {
             level.text = "MAX";
         }
-        else
+    }
+
+    private void SetValues()
+    {
+        foreach (LevelValue valueLevel in keyFrame)
         {
-            level.text = levelEXP + "";
+            if (valueLevel.Level > PlayerPrefs.GetInt("LevelEXP"))
+            {
+                countToNextLevel.text = PlayerPrefs.GetInt("EXP") + " / " +  valueLevel.CountToNextLevel;
+                level.text = PlayerPrefs.GetInt("LevelEXP") + "";
+
+                expSlider.maxValue = valueLevel.CountToNextLevel;
+                expSlider.value = PlayerPrefs.GetInt("EXP");
+
+                title.text = valueLevel.Title;
+
+                CountToNextLevel = (int)expSlider.maxValue;
+
+                return;
+            }
         }
     }
 
-    void Update()
+    public void CheckNextLevel()
     {
-        if (countEXP >= 100)
+        while (PlayerPrefs.GetInt("EXP") > CountToNextLevel)
         {
-            countEXP -= 100;
-            levelEXP++;
+            PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") - CountToNextLevel);
+            PlayerPrefs.SetInt("LevelEXP", PlayerPrefs.GetInt("LevelEXP") + 1);
 
-            PlayerPrefs.SetInt("EXP", countEXP);
-            PlayerPrefs.SetInt("LevelEXP", levelEXP);
+            SetValues();
         }
+
+        SetValues();
+    }
+
+    public void AddEXP()
+    {
+        PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") + 10);
+        CheckNextLevel();
     }
 }

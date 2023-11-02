@@ -40,15 +40,6 @@ public class LosePanel : MonoBehaviour
         int doneExp = PlayerPrefs.GetInt("EXP") + gainedExp;
         PlayerPrefs.SetInt("EXP", doneExp);
 
-        if (EXPmanager.countEXP >= 100)
-        {
-            EXPmanager.countEXP -= 100;
-            EXPmanager.levelEXP++;
-
-            PlayerPrefs.SetInt("EXP", EXPmanager.countEXP);
-            PlayerPrefs.SetInt("LevelEXP", EXPmanager.levelEXP);
-        }
-
         if (ProgressEveryDayTasks.points != 0)
         {
             if (lastRunScore > tasksRecordScore)
