@@ -55,9 +55,9 @@ public class PlayerTutorial : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("TutorialIfNotJump"))
+        if (other.gameObject.tag == "TutorialEnemyTrigger")
         {
-            tutorial.IfNotJump();
+            tutorial.OnEnemyTrigger();
         }
     }
 
@@ -110,7 +110,7 @@ public class PlayerTutorial : MonoBehaviour
         }
         else
         {
-            tutorial.EndIfNotJump();
+            tutorial.EndJumpsPart();
         }
     }
 }

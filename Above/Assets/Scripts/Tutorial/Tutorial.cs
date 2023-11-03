@@ -6,6 +6,8 @@ public class Tutorial : MonoBehaviour
 {
     [Header("#### FIRST PART")]
     [SerializeField] private GameObject FirstPart;
+    [Space(10f)]
+    [SerializeField] private Animator tutorialHeroAnimFirstPart;
     [Header("# UI")]
     [SerializeField] private GameObject touchScreenArrow;
     [SerializeField] private GameObject heroFirstPart;
@@ -15,31 +17,36 @@ public class Tutorial : MonoBehaviour
 
     [Header("#### SECOND PART")]
     [SerializeField] private GameObject SecondPart;
+    [Space(10f)]
+    [SerializeField] private Animator tutorialHeroAnimSecondPart;
     [Header("# UI")]
     [SerializeField] private GameObject touchScreenArrowSecondPart;
     [SerializeField] private GameObject jumpButtonSecondPart;
     [SerializeField] private GameObject jumpNoobButtonSecondPart;
+    [SerializeField] private GameObject dialog2;
+    [SerializeField] private GameObject timerGO;
     [Header("# DIALOG TEXTS")]
     [SerializeField] private GameObject fourthTextGO;
-    [SerializeField] private GameObject fivethTextGO;
+
+    [Header("#### THIRD PART")]
+    [SerializeField] private GameObject ThirdPart;
+    [Space(10f)]
 
     [Header("#### ALL PARTS")]
     [SerializeField] private GameObject cameraGo;
     [SerializeField] private GameObject hero;
     private Rigidbody2D rb;
 
+
     private Animator camAnim;
-    private Animator tutorialHeroAnimFirstPart;
 
     private int jumpCount = 0;
-
     private PlayerTutorial playerTutorial;
 
     void Start()
     {
         rb = hero.GetComponent<Rigidbody2D>();
         camAnim = cameraGo.GetComponent<Animator>();
-        tutorialHeroAnimFirstPart = heroFirstPart.GetComponent<Animator>();
         playerTutorial = hero.GetComponent<PlayerTutorial>();
 
         StartCoroutine(FirstSequence());
@@ -96,16 +103,27 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(5);
 
+        tutorialHeroAnimSecondPart.SetTrigger("End");
+        dialog2.GetComponent<Animator>().SetTrigger("End");
+        fourthTextGO.GetComponent<Animator>().SetTrigger("End");
+
+        yield return new WaitForSeconds(2f);
+
+        timerGO.SetActive(true);
+
         playerTutorial.enabled = true;
         jumpButtonSecondPart.SetActive(true);
         camAnim.enabled = false;
+
+        playerTutorial.Jump();
+
+        JumpsPart();
     }
 
-    public void IfNotJump()
+    public void JumpsPart()
     {
-        fourthTextGO.SetActive(false);
-        fivethTextGO.SetActive(true);
         SlowestSpeed();
+
         touchScreenArrowSecondPart.SetActive(true);
         jumpButtonSecondPart.SetActive(false);
         jumpNoobButtonSecondPart.SetActive(true);
@@ -128,11 +146,14 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    public void EndIfNotJump()
+    public void EndJumpsPart()
     {
         jumpButtonSecondPart.SetActive(true);
         jumpNoobButtonSecondPart.SetActive(false);
         touchScreenArrowSecondPart.SetActive(false);
+
+        timerGO.GetComponent<Animator>().SetTrigger("End");
+
         FasterSpeed();
     }
 
@@ -151,5 +172,29 @@ public class Tutorial : MonoBehaviour
             Time.timeScale += 0.1f;
             Invoke("FasterSpeed", 0.1f);
         }
+    }
+
+    public void OnEnemyTrigger()
+    {
+        camAnim.SetBool("Enemy", true);
+        camAnim.enabled = true;
+        SecondPart.SetActive(false);
+        ThirdPart.SetActive(true);
+        rb.bodyType = RigidbodyType2D.Static;
+        playerTutorial.enabled = false;
+
+        StartCoroutine(FamiliarizationWhithObstacle());
+
+    }
+
+    IEnumerator FamiliarizationWhithObstacle()
+    {
+        yield return new WaitForSeconds(3);
+
+        camAnim.SetBool("Enemy", false);
+
+        yield return new WaitForSeconds(1f);
+
+        camAnim.enabled = false;
     }
 }
