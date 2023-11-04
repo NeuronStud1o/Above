@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
@@ -30,11 +31,14 @@ public class Tutorial : MonoBehaviour
 
     [Header("#### THIRD PART")]
     [SerializeField] private GameObject ThirdPart;
+    [SerializeField] private GameObject heroThirdPart;
+    [SerializeField] private GameObject dialog3;
     [Space(10f)]
 
     [Header("#### ALL PARTS")]
     [SerializeField] private GameObject cameraGo;
     [SerializeField] private GameObject hero;
+    [SerializeField] private GameObject finishPanel;
     private Rigidbody2D rb;
 
 
@@ -100,12 +104,12 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         SecondPart.SetActive(true);
+        fourthTextGO.GetComponent<Animator>().SetTrigger("End");
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(6.5f);
 
         tutorialHeroAnimSecondPart.SetTrigger("End");
         dialog2.GetComponent<Animator>().SetTrigger("End");
-        fourthTextGO.GetComponent<Animator>().SetTrigger("End");
 
         yield return new WaitForSeconds(2f);
 
@@ -182,19 +186,41 @@ public class Tutorial : MonoBehaviour
         ThirdPart.SetActive(true);
         rb.bodyType = RigidbodyType2D.Static;
         playerTutorial.enabled = false;
+    }
 
+    public void FamilizObstDone()
+    {
         StartCoroutine(FamiliarizationWhithObstacle());
-
     }
 
     IEnumerator FamiliarizationWhithObstacle()
     {
-        yield return new WaitForSeconds(3);
-
         camAnim.SetBool("Enemy", false);
 
         yield return new WaitForSeconds(1f);
 
         camAnim.enabled = false;
+
+        yield return new WaitForSeconds(2);
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        playerTutorial.enabled = true;
+
+        yield return new WaitForSeconds(1);
+        
+        heroThirdPart.SetActive(false);
+        dialog3.SetActive(false);
+    }
+
+    public void FinishTutorial()
+    {
+        hero.SetActive(false);
+        finishPanel.SetActive(true);
+    }
+
+    public void ReturnToLobby()
+    {
+        SceneManager.LoadScene(1);
+        PlayerPrefs.SetInt("StartFirstTime", 1);
     }
 }

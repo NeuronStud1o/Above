@@ -58,6 +58,12 @@ public class PlayerTutorial : MonoBehaviour
         if (other.gameObject.tag == "TutorialEnemyTrigger")
         {
             tutorial.OnEnemyTrigger();
+            other.gameObject.SetActive(false);
+        }
+        if (other.gameObject.tag == "FinishTutorial")
+        {
+            tutorial.FinishTutorial();
+            other.gameObject.SetActive(false);
         }
     }
 
@@ -98,7 +104,7 @@ public class PlayerTutorial : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
 
-        if (jumpCount < 6)
+        if (jumpCount < 4)
         {
             jumpCount++;
             rb.velocity = new Vector2(0, rb.velocity.y);
