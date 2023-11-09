@@ -26,6 +26,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject jumpNoobButtonSecondPart;
     [SerializeField] private GameObject dialog2;
     [SerializeField] private GameObject timerGO;
+    [SerializeField] private Animator upArrow;
     [Header("# DIALOG TEXTS")]
     [SerializeField] private GameObject fourthTextGO;
 
@@ -40,7 +41,6 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject hero;
     [SerializeField] private GameObject finishPanel;
     private Rigidbody2D rb;
-
 
     private Animator camAnim;
 
@@ -142,8 +142,6 @@ public class Tutorial : MonoBehaviour
     {
         if (playerTutorial.speed > 0.8f)
         {
-            print(Time.timeScale);
-            print(playerTutorial.speed);
             playerTutorial.speed -= 0.2f;
             Time.timeScale -= 0.1f;
             Invoke("SlowestSpeed", 0.1f);
@@ -157,6 +155,7 @@ public class Tutorial : MonoBehaviour
         touchScreenArrowSecondPart.SetActive(false);
 
         timerGO.GetComponent<Animator>().SetTrigger("End");
+        upArrow.SetTrigger("End");
 
         FasterSpeed();
     }
@@ -170,8 +169,6 @@ public class Tutorial : MonoBehaviour
     {
         if (playerTutorial.speed < 2.2f)
         {
-            print(Time.timeScale);
-            print(playerTutorial.speed);
             playerTutorial.speed += 0.2f;
             Time.timeScale += 0.1f;
             Invoke("FasterSpeed", 0.1f);

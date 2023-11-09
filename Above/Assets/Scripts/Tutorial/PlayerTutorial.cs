@@ -10,6 +10,9 @@ public class PlayerTutorial : MonoBehaviour
     [SerializeField] private AudioSource jumpSound;
     [SerializeField] private Animator anim;
     [SerializeField] Tutorial tutorial;
+    [SerializeField] private Transform respawnPoint;
+    [SerializeField] private GameObject afterDeathButton;
+    [SerializeField] private GameObject deathText;
 
     public float jumpForce = 5f;
     public float speed = 2.2f;
@@ -43,12 +46,12 @@ public class PlayerTutorial : MonoBehaviour
 
             if (collision.collider.CompareTag("Enemy"))
             {
-                
-            }
-
-            if (collision.collider.CompareTag("DownEnemy"))
-            {
-                
+                transform.position = respawnPoint.position;
+                MainCamera.transform.position = new Vector3(MainCamera.transform.position.x, respawnPoint.position.y, MainCamera.transform.position.z);
+                rb.bodyType = RigidbodyType2D.Static;
+                afterDeathButton.SetActive(true);
+                deathText.SetActive(true);
+                enabled = false;
             }
         }
     }
@@ -118,5 +121,11 @@ public class PlayerTutorial : MonoBehaviour
         {
             tutorial.EndJumpsPart();
         }
+    }
+
+    public void AfterDeath()
+    {
+        deathText.SetActive(false);
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }
