@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading.unity
     guid: 0987b2aa488f8bf4fb3547f5bc440d8e
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 40fa3f19678c62e46aa36a3cdcfa849e
+  - enabled: 1
+    path: Assets/Scenes/Authentication.unity
+    guid: 04f3fd9c4393fdf4283cd60545c57fde
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: cb7d044498318b244b1e5bfa64bb0dbc
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 40fa3f19678c62e46aa36a3cdcfa849e
   m_configObjects: {}
