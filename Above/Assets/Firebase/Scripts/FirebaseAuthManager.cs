@@ -12,7 +12,9 @@ public class FirebaseAuthManager : MonoBehaviour
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser user;
-    
+
+    [SerializeField]
+    private GameObject loadingPanel;
 
     // Login Variables
     [Space]
@@ -28,22 +30,31 @@ public class FirebaseAuthManager : MonoBehaviour
     public TMP_InputField passwordRegisterField;
     public TMP_InputField confirmPasswordRegisterField;
 
-    private void Awake()
+    private void Start()
     {
-        // Check that all of the necessary dependencies for firebase are present on the system
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-        {
-            dependencyStatus = task.Result;
+        StartCoroutine(CheckAndFixDependenciesAsync());
+    }
 
-            if (dependencyStatus == DependencyStatus.Available)
-            {
-                InitializeFirebase();
-            }
-            else
-            {
-                Debug.LogError("Could not resolve all firebase dependencies: " + dependencyStatus);
-            }
-        });
+    private IEnumerator CheckAndFixDependenciesAsync()
+    {
+        var dependencyTask = FirebaseApp.CheckAndFixDependenciesAsync();
+
+        yield return new WaitUntil(() => dependencyTask.IsCompleted);
+
+        dependencyStatus = dependencyTask.Result;
+
+        if (dependencyStatus == DependencyStatus.Available)
+        {
+            InitializeFirebase();
+
+            yield return new WaitForEndOfFrame();
+
+            StartCoroutine(CheckForAutoLogin());
+        }
+        else
+        {
+            Debug.LogError("Could not resolve all firebase dependencies: " + dependencyStatus);
+        }
     }
 
     void InitializeFirebase()
@@ -53,6 +64,35 @@ public class FirebaseAuthManager : MonoBehaviour
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
+    }
+
+    private IEnumerator CheckForAutoLogin()
+    {
+        if (user != null)
+        {
+            var reloadUserTask = user.ReloadAsync();
+
+            yield return new WaitUntil(() => reloadUserTask.IsCompleted);
+
+            AutoLogin();
+        }
+        else
+        {
+            UIManager.Instance.OpenLoginPanel();
+        }
+    }
+
+    private void AutoLogin()
+    {
+        if (user != null)
+        {
+            References.userName = user.DisplayName;
+            UIManager.Instance.OpenButtonsPanel();
+        }
+        else
+        {
+            UIManager.Instance.OpenLoginPanel();
+        }
     }
 
     // Track state changes of the auth object.
@@ -65,6 +105,8 @@ public class FirebaseAuthManager : MonoBehaviour
             if (!signedIn && user != null)
             {
                 Debug.Log("Signed out " + user.UserId);
+                UIManager.Instance.OpenLoginPanel();
+                ClearLoginInputFieldText();
             }
 
             user = auth.CurrentUser;
@@ -73,6 +115,21 @@ public class FirebaseAuthManager : MonoBehaviour
             {
                 Debug.Log("Signed in " + user.UserId);
             }
+        }
+    }
+
+    private void ClearLoginInputFieldText()
+    {
+        emailLoginField.text = "";
+        passwordLoginField.text = "";
+    }
+
+    public void Logout()
+    {
+        if (auth != null && user != null)
+        {
+            auth.SignOut();
+            UIManager.Instance.OpenLoginPanel();
         }
     }
 
@@ -126,8 +183,9 @@ public class FirebaseAuthManager : MonoBehaviour
 
             if (user.IsEmailVerified)
             {
+                loadingPanel.SetActive(true);
                 References.userName = user.DisplayName;
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
             }
             else
             {
@@ -292,5 +350,11 @@ public class FirebaseAuthManager : MonoBehaviour
                 UIManager.Instance.ShowVerificationResponse(true, user.Email, null);
             }
         }
+    }
+
+    public void OpenGameScene()
+    {
+        loadingPanel.SetActive(true);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
     }
 }

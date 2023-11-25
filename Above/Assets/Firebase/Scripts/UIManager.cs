@@ -8,6 +8,12 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [SerializeField]
+    private GameObject authPanel;
+
+    [SerializeField]
+    private GameObject buttonsPanel;
+
+    [SerializeField]
     private GameObject loginPanel;
 
     [SerializeField]
@@ -38,18 +44,27 @@ public class UIManager : MonoBehaviour
         loginPanel.SetActive(false);
         registrationPanel.SetActive(false);
         emailVerificationPanel.SetActive(false);
+        buttonsPanel.SetActive(false);
     }
 
     public void OpenLoginPanel()
     {
         ClearUI();
+        authPanel.SetActive(true);
         loginPanel.SetActive(true);
     }
 
     public void OpenRegistrationPanel()
     {
         ClearUI();
+        authPanel.SetActive(true);
         registrationPanel.SetActive(true);
+    }
+
+    public void OpenButtonsPanel()
+    {
+        ClearUI();
+        buttonsPanel.SetActive(true);
     }
 
 public void ShowVerificationResponse(bool isEmailSent, string emailId, string errorMessage)
