@@ -7,6 +7,7 @@ public class Reward : MonoBehaviour
 {
     [SerializeField] private float msToWait = 86400000f;
     private int notifIndex = 0;
+    private bool onIsReadyLoad = true;
 
     private Text Timer;
 
@@ -28,9 +29,11 @@ public class Reward : MonoBehaviour
         {
             PlayerPrefs.SetString("lastOpen", "0");
         }
+
         lastOpen = ulong.Parse(PlayerPrefs.GetString("lastOpen"));
         Timer = RewardButton.GetComponentInChildren<Text>();
 
+        print (isReady());
         if (!isReady())
         {
             Done.SetActive(false);
@@ -42,6 +45,7 @@ public class Reward : MonoBehaviour
     IEnumerator AnimationSeconds()
     {
         yield return new WaitForSeconds(2);
+
         coinWindow.SetActive(false);
         int allCoins = PlayerPrefs.GetInt("coinsF");
         allCoins += 10;
@@ -51,10 +55,12 @@ public class Reward : MonoBehaviour
   
     void Update()
     {
-        if(!RewardButton.IsInteractable())
+        if(RewardButton.IsInteractable())
         {
             if(isReady())
             {
+                if (!onIsReadyLoad) return;
+
                 Done.SetActive(true);
                 MainDone.SetActive(true);
                 Coin.SetActive(true);
@@ -63,7 +69,23 @@ public class Reward : MonoBehaviour
 
                 Timer.text = "10   ";
 
-                return;
+                int count = 0;
+
+                foreach (int i in notifManager.iconsIndex)
+                {
+                    if (i == 0)
+                    {
+                        notifIndex = notifManager.iconsIndex[count];
+                        notifManager.iconsIndex[count] = 1;
+
+                        onIsReadyLoad = false;
+
+                        return;
+                    }
+                    count++;
+                }
+
+                onIsReadyLoad = false;
             }
             else
             {
@@ -105,7 +127,6 @@ public class Reward : MonoBehaviour
         StartCoroutine(AnimationSeconds());
 
         notifManager.RemoveIconWhithList(notifIndex);
-        
     }
 
     public bool isReady()
@@ -116,19 +137,8 @@ public class Reward : MonoBehaviour
 
         if (seconleft < 0)
         {
-            int count = 0;
-
             Timer.text = "10   ";
-            foreach (int i in notifManager.iconsIndex)
-            {
-                if (i == 0)
-                {
-                    notifIndex = notifManager.iconsIndex[count];
-                    notifManager.iconsIndex[count] = 1;
-                    break;
-                }
-                count++;
-            }
+            
             return true;
         }
 

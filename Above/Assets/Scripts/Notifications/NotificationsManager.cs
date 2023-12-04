@@ -16,16 +16,22 @@ public class NotificationsManager : MonoBehaviour
 
     void Start()
     {
+        SaveGame();
         instance = this;
 
+        StartCoroutine(Check());
+    }
+
+    private IEnumerator Check()
+    {
         if (PlayerPrefs.GetInt("FirstTimeInGameForNotifications") == 0)
         {
             SaveGame();
             PlayerPrefs.SetInt("FirstTimeInGameForNotifications", 1);
+            yield return null;
         }
 
         ReadFile();
-        
     }
 
     public void RemoveIconWhithList(int index)
@@ -83,7 +89,6 @@ public class NotificationsManager : MonoBehaviour
             for (int i = 0; i < stringValues.Length; i++)
             {
                 iconsIndex[i] = Convert.ToInt32(stringValues[i]);
-                print (iconsIndex[i]);
             }
         }
 
@@ -97,6 +102,8 @@ public class NotificationsManager : MonoBehaviour
             print (iconsIndex[i]);
             if (iconsIndex[i] != 0)
             {
+                print(1111);
+
                 GameObject icon = Instantiate(icons[iconsIndex[i]]);
                 icon.transform.SetParent(layout.transform);
                 icon.transform.localScale = vector;
