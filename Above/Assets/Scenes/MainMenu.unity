@@ -57279,7 +57279,7 @@ MonoBehaviour:
   MainDone: {fileID: 753350583}
   Coin: {fileID: 746583766}
   coinWindow: {fileID: 1188116123}
-  coinsManagerInMainMenu: {fileID: 0}
+  coinsManagerInMainMenu: {fileID: 1495688123}
   RewardButton: {fileID: 469188590}
   notifManager: {fileID: 1701483610}
 --- !u!1 &1666230729

@@ -42,7 +42,7 @@ public class NotificationsManager : MonoBehaviour
             {
                 Destroy(panelIcons[index]);
                 panelIcons[i] = null;
-                iconsIndex[i] = 0; // Зануліть індекс, щоб позначити, що об'єкт був знищений
+                iconsIndex[i] = 0;
             }
         }
 
@@ -94,7 +94,7 @@ public class NotificationsManager : MonoBehaviour
         SetValue();
     }
 
-    void SetValue()
+    public void SetValue()
     {
         for (int i = 0; i < 3; i++)
         {
