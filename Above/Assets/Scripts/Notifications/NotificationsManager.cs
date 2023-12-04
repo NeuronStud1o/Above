@@ -16,7 +16,6 @@ public class NotificationsManager : MonoBehaviour
 
     void Start()
     {
-        SaveGame();
         instance = this;
 
         StartCoroutine(Check());
@@ -102,8 +101,6 @@ public class NotificationsManager : MonoBehaviour
             print (iconsIndex[i]);
             if (iconsIndex[i] != 0)
             {
-                print(1111);
-
                 GameObject icon = Instantiate(icons[iconsIndex[i]]);
                 icon.transform.SetParent(layout.transform);
                 icon.transform.localScale = vector;
