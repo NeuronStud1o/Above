@@ -183,9 +183,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
             if (user.IsEmailVerified)
             {
-                loadingPanel.SetActive(true);
                 References.userName = user.DisplayName;
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
+                OpenGameScene();
             }
             else
             {
