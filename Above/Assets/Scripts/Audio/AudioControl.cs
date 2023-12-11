@@ -6,41 +6,53 @@ using UnityEngine.UI;
 public class AudioControl : MonoBehaviour
 {
     [SerializeField] private Slider[] slider;
-
-    [SerializeField] private AudioSource AllAudio;
+    [SerializeField] private AudioSource musicMainMenu;
     [SerializeField] private AudioSource[] SFX;
 
-    private void Start()
+    private async void Start()
     {
-        if (PlayerPrefs.GetInt("FirstTimeInGameAudio") == 0)
+        bool isAudioSettings = await DataBase.instance.LoadDataCheck("boolean", "ftAudio");
+
+        if (!isAudioSettings)
         {
-            PlayerPrefs.SetFloat("Slider", 1f);
-            PlayerPrefs.SetFloat("Slider2", 1f);
-            PlayerPrefs.SetFloat("Slider3", 1f);
-            PlayerPrefs.SetFloat("Slider4", 1f);
-            PlayerPrefs.SetInt("FirstTimeInGameAudio", 1);
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "musicMainMenuSA");
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "sfxMainMenuSA");
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "musicGameSA");
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "sfxGameSA");
+
+            DataBase.instance.SaveData("done", "boolean", "ftAudio");
         }
 
-        slider[0].value = PlayerPrefs.GetFloat("Slider");
-        slider[1].value = PlayerPrefs.GetFloat("Slider2");
-        slider[2].value = PlayerPrefs.GetFloat("Slider3");
-        slider[3].value = PlayerPrefs.GetFloat("Slider4");
+        LoadAudioValue();
 
-        SaveAudioSettings();
+        SetAudioValue();
     }
 
-    public void SaveAudioSettings()
+    private async void LoadAudioValue()
     {
-        AllAudio.volume = slider[0].value;
+        slider[0].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicMainMenuSA");
+        slider[1].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxMainMenuSA");
+        slider[2].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicGameSA");
+        slider[3].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
+    }
+
+    private void SetAudioValue()
+    {
+        musicMainMenu.volume = slider[0].value;
 
         for (int i = 0; i < SFX.Length; i++)
         {
             SFX[i].volume = slider[1].value;
         }
+    }
 
-        PlayerPrefs.SetFloat("Slider", slider[0].value);
-        PlayerPrefs.SetFloat("Slider2", slider[1].value);
-        PlayerPrefs.SetFloat("Slider3", slider[2].value);
-        PlayerPrefs.SetFloat("Slider4", slider[3].value);
+    public void SaveAudioSettings()
+    {
+        DataBase.instance.SaveData(slider[0], "menu", "settings", "audio", "musicMainMenuSA");
+        DataBase.instance.SaveData(slider[1], "menu", "settings", "audio", "sfxMainMenuSA");
+        DataBase.instance.SaveData(slider[2], "menu", "settings", "audio", "musicGameSA");
+        DataBase.instance.SaveData(slider[3], "menu", "settings", "audio", "sfxGameSA");
+
+        SetAudioValue();
     }
 }

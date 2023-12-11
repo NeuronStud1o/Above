@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
-using UnityEngine.UI;
 
 enum Direction
 {
@@ -13,61 +13,47 @@ enum Direction
 public class Player : MonoBehaviour
 {
     [SerializeField] private AudioClip jumpClip;
-    [SerializeField] private AudioClip BrokenShield;
+    [SerializeField] private AudioClip brokenShield;
     [SerializeField] private AudioClip death;
-
-    private Direction direction;
+    [SerializeField] private AudioClip getCoin;
     [SerializeField] private GameObject Panel;
-    [SerializeField] private GameObject CanvasInGame;
+    [SerializeField] private GameObject canvasInGame;
     [SerializeField] private Score scoreScript;
-
-    public float jumpForce = 7f;
-    private Rigidbody2D rb;
-
-    private AudioSource jumpSound;
-    private Animator anim;
-    [SerializeField] private Camera MainCamera;
-
     [SerializeField] private Color standartColor;
 
-    private AudioSource cameraAudiosource;
+    public float jumpForce = 7f;
+    private Direction direction;
+    private Rigidbody2D rb;
+    private AudioSource audioSource;
+    private Animator anim;
     private CameraFollow cameraFollow;
-
     private int speedDirection = -1;
-
     private bool isCanMove = true;
 
-    private void Awake()
+    async void Start()
     {
-        jumpSound = GetComponent<AudioSource>();
-        jumpSound.volume = PlayerPrefs.GetFloat("Slider4");
-    }
+        audioSource = GetComponent<AudioSource>();
+        
+        audioSource.volume = PlayerPrefs.GetFloat("Slider4");
+        audioSource.volume = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
+        
+        cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
-    void Start()
-    {
-        cameraAudiosource = MainCamera.GetComponent<AudioSource>();
-        cameraFollow = MainCamera.GetComponent<CameraFollow>();
-
-        if (PlayerPrefs.HasKey("Speed"))
+        if (await DataBase.instance.LoadDataCheck("player", "speed") == false)
         {
-            PlayerPrefs.SetFloat("Speed", PlayerPrefs.GetFloat("Speed"));
-        }
-        else
-        {
-            PlayerPrefs.SetFloat("Speed", 2.2f);
+            DataBase.instance.SaveData(2.2f, "player", "speed");
         }
 
         direction = Direction.Right;
         rb = GetComponent<Rigidbody2D>();
         
         anim = GetComponent<Animator>();
+        PauseController.instance.Hero = gameObject;
 
         cameraFollow.doodlePos = transform;
-
-        print (PlayerPrefs.GetInt("HeroHP"));
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private async void OnCollisionEnter2D(Collision2D collision)
     {
         if (isCanMove)
         {
@@ -84,11 +70,11 @@ public class Player : MonoBehaviour
             {
                 if (PlayerPrefs.GetInt("HeroHP") == 0)
                 {
-                    StartCoroutine(Death());
+                    await Death();
                 }
                 else if (PlayerPrefs.GetInt("HeroHP") == 1)
                 {
-                    GetComponent<AudioSource>().PlayOneShot(BrokenShield);
+                    GetComponent<AudioSource>().PlayOneShot(brokenShield);
                     PlayerPrefs.SetInt("HeroHP", 0);
 
                     GetComponent<SpriteRenderer>().color = standartColor;
@@ -107,9 +93,49 @@ public class Player : MonoBehaviour
 
             if (collision.collider.CompareTag("DownEnemy"))
             {
-                StartCoroutine(Death());
+                await Death();
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "FlyCoin")
+        {
+            StartCoroutine(TouchCoin(collision.gameObject));
+            CoinsManager.instance.coinsF += PlayerPrefs.GetInt("CoinsFAdd");
+            //PlayerPrefs.SetInt("coinsF", coinsF);
+            audioSource.PlayOneShot(getCoin);
+
+            if (ProgressEveryDayTasks.flyCoinsEarned != 0)
+            {
+                int coins = PlayerPrefs.GetInt("EveryDayTasksFlyCoinsEarned");
+                coins++;
+                PlayerPrefs.SetInt("EveryDayTasksFlyCoinsEarned", coins);
+            }
+
+            CoinsManager.instance.UpdateUI();
+        }
+
+        if (collision.gameObject.tag == "SuperCoin")
+        {
+            StartCoroutine(TouchCoin(collision.gameObject));
+            CoinsManager.instance.coinsS++;
+            //PlayerPrefs.SetInt("coinsS", coinsS);
+            
+            CoinsManager.instance.UpdateUI();
+
+            audioSource.PlayOneShot(getCoin);
+        }
+    }
+
+    IEnumerator TouchCoin(GameObject coin)
+    {
+        coin.GetComponentInChildren<Animator>().SetTrigger("Touch");
+
+        yield return new WaitForSeconds(0.6f);
+
+        Destroy(coin);
     }
 
     void TakeDirection(Direction flip)
@@ -142,7 +168,7 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(0, rb.velocity.y);
         rb.velocity = new Vector2(0, jumpForce);
 
-        jumpSound.PlayOneShot(jumpClip);
+        audioSource.PlayOneShot(jumpClip);
         
         anim.SetTrigger("Jump");
 
@@ -158,65 +184,39 @@ public class Player : MonoBehaviour
         }
     }
     
-    IEnumerator Death()
+    private async Task Death()
     {
-        jumpSound.PlayOneShot(death);
-        CanvasInGame.SetActive(false);
         Handheld.Vibrate();
-        cameraFollow.enabled = false;
-        cameraAudiosource.enabled = false;
-        isCanMove = false;
-        GetComponent<Collider2D>().enabled = false;
+        audioSource.PlayOneShot(death);
+        canvasInGame.SetActive(false);
         
-        int lastRunScore = int.Parse(scoreScript.scoreText.text.ToString());
+        cameraFollow.enabled = false;
+        Camera.main.GetComponent<AudioSource>().enabled = false;
+        isCanMove = false;
+        
+        GetComponent<Collider2D>().enabled = false;
+
+        int lastRunScore = int.Parse(scoreScript.scoreText.text);
         PlayerPrefs.SetInt("lastRunScore", lastRunScore);
 
-        yield return new WaitForSeconds(0.05f);
+        await Task.Delay(TimeSpan.FromSeconds(0.05f));
 
-        MainCamera.gameObject.transform.position = new Vector3(-0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
+        for (int i = 0; i < 10; i++)
+        {
+            if (i % 2 != 0)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(0.05f));
+                Camera.main.gameObject.transform.position = new Vector3(-0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
+            }
+            else
+            {
+                await Task.Delay(TimeSpan.FromSeconds(0.05f));
+                Camera.main.gameObject.transform.position = new Vector3(0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
+            }
+        }
 
-        yield return new WaitForSeconds(0.05f);
+        await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        MainCamera.gameObject.transform.position = new Vector3(0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(-0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(-0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(-0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(-0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(-0.05f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.05f);
-
-        MainCamera.gameObject.transform.position = new Vector3(0f, MainCamera.gameObject.transform.position.y, MainCamera.gameObject.transform.position.z);
-
-        yield return new WaitForSeconds(0.45f);
-        
         Panel.SetActive(true);
     }
 }

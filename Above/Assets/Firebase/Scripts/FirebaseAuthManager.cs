@@ -1,13 +1,12 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using Firebase;
 using Firebase.Auth;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
-    // Firebase variable
     [Header("Firebase")]
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
@@ -16,13 +15,11 @@ public class FirebaseAuthManager : MonoBehaviour
     [SerializeField]
     private GameObject loadingPanel;
 
-    // Login Variables
     [Space]
     [Header("Login")]
     public TMP_InputField emailLoginField;
     public TMP_InputField passwordLoginField;
 
-    // Registration Variables
     [Space]
     [Header("Registration")]
     public TMP_InputField nameRegisterField;
@@ -59,7 +56,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
     void InitializeFirebase()
     {
-        //Set the default instance object
         auth = FirebaseAuth.DefaultInstance;
 
         auth.StateChanged += AuthStateChanged;
@@ -87,6 +83,7 @@ public class FirebaseAuthManager : MonoBehaviour
         if (user != null)
         {
             References.userName = user.DisplayName;
+            UserData.instance.SetUser(user);
             UIManager.Instance.OpenButtonsPanel();
         }
         else
@@ -95,7 +92,6 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    // Track state changes of the auth object.
     void AuthStateChanged(object sender, System.EventArgs eventArgs)
     {
         if (auth.CurrentUser != user)
@@ -184,6 +180,7 @@ public class FirebaseAuthManager : MonoBehaviour
             if (user.IsEmailVerified)
             {
                 References.userName = user.DisplayName;
+                UserData.instance.SetUser(user);
                 OpenGameScene();
             }
             else
@@ -249,7 +246,6 @@ public class FirebaseAuthManager : MonoBehaviour
             }
             else
             {
-                // Get The User After Registration Success
                 user = registerTask.Result.User;
 
                 UserProfile userProfile = new UserProfile { DisplayName = name };
@@ -260,7 +256,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
                 if (updateProfileTask.Exception != null)
                 {
-                    // Delete the user if user update failed
                     user.DeleteAsync();
 
                     Debug.LogError(updateProfileTask.Exception);
@@ -351,9 +346,23 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    public void OpenGameScene()
+    public async void OpenGameScene()
     {
         loadingPanel.SetActive(true);
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
+
+        bool dataBaseTutorial = await DataBase.instance.LoadDataCheck("boolean", "tutorial");
+
+        print (dataBaseTutorial);
+
+        if (dataBaseTutorial == false)
+        {
+            DataBase.instance.SaveData("done", "boolean", "tutorial");
+            SceneManager.LoadSceneAsync("Tutorial");
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
+
     }
 }

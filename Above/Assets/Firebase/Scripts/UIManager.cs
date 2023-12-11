@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI emailVerificationText;
-
+    
     private void Awake()
     {
         CreateInstance();

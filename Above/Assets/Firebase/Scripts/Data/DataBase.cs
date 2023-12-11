@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Database;
+using System.Threading.Tasks;
 
 public class DataBase : MonoBehaviour
 {
@@ -16,32 +17,119 @@ public class DataBase : MonoBehaviour
         dbRef = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    IEnumerator FetchData(params string[] keys)
+    public void SaveData(int i, params string[] keys)
     {
-        // Формуємо шлях до даних в базі даних використовуючи передані ключі
         string path = string.Join("/", keys);
+        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+    }
 
-        // Отримуємо дані з бази даних за вказаним шляхом
-        var fetchDataTask = dbRef.Child("user").Child(path).GetValueAsync();
-        yield return new WaitUntil(() => fetchDataTask.IsCompleted);
+    public void SaveData(float i, params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+    }
 
-        if (fetchDataTask.Exception != null)
-        {
-            Debug.LogError(fetchDataTask.Exception);
-        }
-        else if (fetchDataTask.Result.Exists)
-        {
-            // Отримали значення та записали його у змінну
-            string fetchedValue = fetchDataTask.Result.Value.ToString();
-            Debug.Log("Fetched Value: " + fetchedValue);
+    public void SaveData(string i, params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+    }
 
-            // Тут ви можете зробити, що завгодно з отриманим значенням, наприклад, записати його у змінну
-            // Наприклад, змінна вашого методу, яку ви передали
-            string yourVariable = fetchedValue;
-        }
-        else
+    public void SaveData(bool i, params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+    }
+
+    public async Task<int> LoadDataInt(params string[] keys)
+    {
+        int intValue = 0;
+
+        string path = string.Join("/", keys);
+        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+
+        if (data != null)
         {
-            Debug.LogWarning("Data not found at path: " + path);
+            DataSnapshot snapshot = data;
+
+            intValue = int.Parse(snapshot.GetValue(true).ToString());
         }
+
+        return intValue;
+    }
+
+    public async Task<float> LoadDataFloat(params string[] keys)
+    {
+        float floatValue = 0;
+
+        string path = string.Join("/", keys);
+        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+
+        if (data != null)
+        {
+            DataSnapshot snapshot = data;
+
+            floatValue = float.Parse(snapshot.ToString());
+        }
+
+        return floatValue;
+    }
+
+    public async Task<string> LoadDataString(params string[] keys)
+    {
+        string stringValue = "";
+
+        string path = string.Join("/", keys);
+        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+
+        if (data != null)
+        {
+            DataSnapshot snapshot = data;
+
+            stringValue = snapshot.Value.ToString();
+        }
+
+        return stringValue;
+    }
+
+    public async Task<bool> LoadDataBool(params string[] keys)
+    {
+        bool boolValue = false;
+
+        string path = string.Join("/", keys);
+        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+
+        if (data != null)
+        {
+            DataSnapshot snapshot = data;
+
+            boolValue = bool.Parse(snapshot.ToString());
+        }
+
+        return boolValue;
+    }
+
+    public async Task<bool> LoadDataCheck(params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+
+        if (data != null)
+        {
+            DataSnapshot snapshot = data;
+
+            if (snapshot.Value == null)
+            {
+                print ("Value is null");
+                return false;
+            }
+            else
+            {
+                print ("Value is not null");
+                return true;
+            }
+        }
+
+        return false;
     }
 }

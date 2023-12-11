@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
@@ -17,36 +16,23 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI SuperCoinsInShopText;
     [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
 
-    void Start()
+    async void Start()
     {
         instance = this;
 
-        if (PlayerPrefs.GetInt("coinsS") >= 10)
+        if (await DataBase.instance.LoadDataInt("menu", "coins", "superCoins") >= 10)
         {
-            PlayerPrefs.SetInt("coinsSForTasks", 1);
+            DataBase.instance.SaveData(1, "tasks", "taskSuperCoins");
         }
 
-        if (PlayerPrefs.HasKey("coinsF"))
-        {
-            coinsF = PlayerPrefs.GetInt("coinsF");
-        }
+        coinsF = await DataBase.instance.LoadDataInt("menu", "coins", "flyCoins");
+        coinsS = await DataBase.instance.LoadDataInt("menu", "coins", "superCoins");
 
-        if (PlayerPrefs.HasKey("coinsS"))
-        {
-            coinsS = PlayerPrefs.GetInt("coinsS");
-        }
-
-        SuperCoinsText.text = coinsS + "";
-        FlyCoinsText.text = coinsF + "";
-        SuperCoinsInShopText.text = coinsS + "";
-        FlyCoinsInShopText.text = coinsF + "";
+        UpdateUI();
     }
 
     public void UpdateUI()
     {
-        coinsF = PlayerPrefs.GetInt("coinsF", coinsF);
-        coinsS = PlayerPrefs.GetInt("coinsS");
-
         SuperCoinsText.text = coinsS + "";
         FlyCoinsText.text = coinsF + "";
         SuperCoinsInShopText.text = coinsS + "";

@@ -5,87 +5,38 @@ using UnityEngine.UI;
 
 public class CoinsManager : MonoBehaviour
 {
-    public static int coinsF;
-    [SerializeField] private Text moneyText;
+    public int coinsF;
+    public int coinsS;
 
-    [SerializeField] private AudioClip GetCoin;
-    [SerializeField] private AudioSource coin;
-
-    public static int coinsS;
-    [SerializeField] private Text moneyText2;
-
+    [SerializeField] private Text moneyTextF;
+    [SerializeField] private Text moneyTextS;
     [SerializeField] private StartOnClick startOnClick;
     [SerializeField] private CoinSpawner coinSpawner;
 
-    void Start()
+    public static CoinsManager instance;
+
+    async void Start()
     {
+        instance = this;
+
         startOnClick.player = GetComponent<Player>();
-        PauseController.instance.Hero = gameObject;
+        
         coinSpawner.Hero = gameObject;
-        
-        if (PlayerPrefs.HasKey("CoinsFAdd"))
+
+        if (await DataBase.instance.LoadDataCheck("shop", "equip", "boosts", "flyCoinsToAdd") == false)
         {
-            PlayerPrefs.SetInt("CoinsFAdd", PlayerPrefs.GetInt("CoinsFAdd"));
-        }
-        else
-        {
-            PlayerPrefs.SetInt("CoinsFAdd", 1);
+            DataBase.instance.SaveData(1, "shop", "equip", "boosts", "flyCoinsToAdd");
         }
 
-        if (PlayerPrefs.HasKey("coinsF"))
-        {
-            coinsF = PlayerPrefs.GetInt("coinsF");
-        }
+        coinsF = await DataBase.instance.LoadDataInt("menu", "coins", "flyCoins");
+        coinsS = await DataBase.instance.LoadDataInt("menu", "coins", "superCoins");
 
-        if (PlayerPrefs.HasKey("coinsS"))
-        {
-            coinsS = PlayerPrefs.GetInt("coinsS");
-        }
-        
-        coin = GetComponentInChildren<AudioSource>();
-        coin.volume = PlayerPrefs.GetFloat("Slider4");
-
-        moneyText.text = coinsF + "";
-        moneyText2.text = coinsS + "";
+        UpdateUI();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void UpdateUI()
     {
-        if (collision.gameObject.tag == "FlyCoin")
-        {
-            StartCoroutine(TouchCoin(collision.gameObject));
-            coinsF += PlayerPrefs.GetInt("CoinsFAdd");
-            PlayerPrefs.SetInt("coinsF", coinsF);
-            coin.PlayOneShot(GetCoin);
-
-            if (ProgressEveryDayTasks.flyCoinsEarned != 0)
-            {
-                int coins = PlayerPrefs.GetInt("EveryDayTasksFlyCoinsEarned");
-                coins++;
-                PlayerPrefs.SetInt("EveryDayTasksFlyCoinsEarned", coins);
-            }
-
-            moneyText.text = "" + coinsF;
-        }
-
-        if (collision.gameObject.tag == "SuperCoin")
-        {
-            StartCoroutine(TouchCoin(collision.gameObject));
-            coinsS++;
-            PlayerPrefs.SetInt("coinsS", coinsS);
-            moneyText2.text = "" + coinsS;
-            coin.PlayOneShot(GetCoin);
-        }
-    }
-
-    IEnumerator TouchCoin(GameObject coin)
-    {
-        coin.GetComponentInChildren<Animator>().SetTrigger("Touch");
-        yield return new WaitForSeconds(0.6f);
-        Destroy(coin);
+        moneyTextF.text = coinsF + "";
+        moneyTextS.text = coinsS + "";
     }
 }
-
-
-
-
