@@ -2,29 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField]
-    private GameObject authPanel;
-
-    [SerializeField]
-    private GameObject buttonsPanel;
-
-    [SerializeField]
-    private GameObject loginPanel;
-
-    [SerializeField]
-    private GameObject registrationPanel;
+    [SerializeField] private GameObject authPanel;
+    [SerializeField] private GameObject buttonsPanel;
+    [SerializeField] private GameObject loginPanel;
+    [SerializeField] private GameObject registrationPanel;
+    [SerializeField] private TextMeshProUGUI errorText;
 
     [Space]
-    [SerializeField]
-    private GameObject emailVerificationPanel;
-
-    [SerializeField]
-    private TextMeshProUGUI emailVerificationText;
+    [SerializeField] private GameObject emailVerificationPanel;
+    [SerializeField] private TextMeshProUGUI emailVerificationText;
     
     private void Awake()
     {
@@ -39,12 +31,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetErrorMessage(string error)
+    {
+        errorText.text = error;
+    }
+
     private void ClearUI()
     {
         loginPanel.SetActive(false);
         registrationPanel.SetActive(false);
         emailVerificationPanel.SetActive(false);
         buttonsPanel.SetActive(false);
+        errorText.text = "";
     }
 
     public void OpenLoginPanel()
@@ -67,18 +65,18 @@ public class UIManager : MonoBehaviour
         buttonsPanel.SetActive(true);
     }
 
-public void ShowVerificationResponse(bool isEmailSent, string emailId, string errorMessage)
-    {
-        ClearUI();
-        emailVerificationPanel.SetActive(true);
+    public void ShowVerificationResponse(bool isEmailSent, string emailId, string errorMessage)
+        {
+            ClearUI();
+            emailVerificationPanel.SetActive(true);
 
-        if(isEmailSent)
-        {
-            emailVerificationText.text = $"Please verify your email address \n Verification email has been sent to {emailId}";
-        }
-        else
-        {
-            emailVerificationText.text = $"Couldn't sent email : {errorMessage}";
+            if(isEmailSent)
+            {
+                emailVerificationText.text = $"Please verify your email address \n Verification email has been sent to {emailId}";
+            }
+            else
+            {
+                emailVerificationText.text = $"Couldn't sent email : {errorMessage}";
+            }
         }
     }
-}

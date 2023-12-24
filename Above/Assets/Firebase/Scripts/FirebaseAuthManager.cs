@@ -12,9 +12,6 @@ public class FirebaseAuthManager : MonoBehaviour
     public FirebaseAuth auth;
     public FirebaseUser user;
 
-    [SerializeField]
-    private GameObject loadingPanel;
-
     [Space]
     [Header("Login")]
     public TMP_InputField emailLoginField;
@@ -114,10 +111,18 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    private void ClearLoginInputFieldText()
+    public void ClearLoginInputFieldText()
     {
         emailLoginField.text = "";
         passwordLoginField.text = "";
+    }
+
+    public void ClearRegisterInputFieldText()
+    {
+        nameRegisterField.text = "";
+        emailRegisterField.text = "";
+        passwordRegisterField.text = "";
+        confirmPasswordRegisterField.text = "";
     }
 
     public void Logout()
@@ -147,7 +152,6 @@ public class FirebaseAuthManager : MonoBehaviour
             FirebaseException firebaseException = loginTask.Exception.GetBaseException() as FirebaseException;
             AuthError authError = (AuthError)firebaseException.ErrorCode;
 
-
             string failedMessage = "Login Failed! Because ";
 
             switch (authError)
@@ -169,7 +173,7 @@ public class FirebaseAuthManager : MonoBehaviour
                     break;
             }
 
-            Debug.Log(failedMessage);
+            UIManager.Instance.SetErrorMessage(failedMessage);
         }
         else
         {
@@ -199,15 +203,15 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         if (name == "")
         {
-            Debug.LogError("User Name is empty");
+            UIManager.Instance.SetErrorMessage("User Name is empty");
         }
         else if (email == "")
         {
-            Debug.LogError("email field is empty");
+            UIManager.Instance.SetErrorMessage("email field is empty");
         }
         else if (passwordRegisterField.text != confirmPasswordRegisterField.text)
         {
-            Debug.LogError("Password does not match");
+            UIManager.Instance.SetErrorMessage("Password does not match");
         }
         else
         {
@@ -242,7 +246,7 @@ public class FirebaseAuthManager : MonoBehaviour
                         break;
                 }
 
-                Debug.Log(failedMessage);
+                UIManager.Instance.SetErrorMessage(failedMessage);
             }
             else
             {
@@ -284,7 +288,7 @@ public class FirebaseAuthManager : MonoBehaviour
                             break;
                     }
 
-                    Debug.Log(failedMessage);
+                    UIManager.Instance.SetErrorMessage(failedMessage);
                 }
                 else
                 {
@@ -326,14 +330,14 @@ public class FirebaseAuthManager : MonoBehaviour
                 switch (error)
                 {
                     case AuthError.Cancelled:
-                    errorMessage = "Email verification was cancelled";
-                    break;
+                        errorMessage = "Email verification was cancelled";
+                        break;
                     case AuthError.TooManyRequests:
-                    errorMessage = "Too many request";
-                    break;
+                        errorMessage = "Too many request";
+                        break;
                     case AuthError.InvalidRecipientEmail:
-                    errorMessage = "The email you entered is invalid";
-                    break;
+                        errorMessage = "The email you entered is invalid";
+                        break;
                 }
 
                 UIManager.Instance.ShowVerificationResponse(false, user.Email, errorMessage);
@@ -348,21 +352,21 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public async void OpenGameScene()
     {
-        loadingPanel.SetActive(true);
+        DataBase.instance.SetActiveLoadingScreen(true);
 
         bool dataBaseTutorial = await DataBase.instance.LoadDataCheck("boolean", "tutorial");
-
-        print (dataBaseTutorial);
 
         if (dataBaseTutorial == false)
         {
             DataBase.instance.SaveData("done", "boolean", "tutorial");
+            DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
+            DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
+
             SceneManager.LoadSceneAsync("Tutorial");
         }
         else
         {
             SceneManager.LoadSceneAsync("MainMenu");
         }
-
     }
 }

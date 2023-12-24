@@ -63,14 +63,12 @@ namespace UpgradeSystem
 
                     if (!string.IsNullOrEmpty(latestGameData.Version) && !Application.version.Equals(latestGameData.Version))
                     {
-                        // new update is available
                         uiDescriptionText.text = latestGameData.Description;
                         ShowPopup();
                     }
 
                     if (!string.IsNullOrEmpty(latestGameData.TechnicalBreak) && latestGameData.TechnicalBreak == "true")
                     {
-                        // technical break is available
                         ShowTechPopup();
                     }
                 }
@@ -86,7 +84,6 @@ namespace UpgradeSystem
 
         void ShowPopup()
         {
-            // Add buttons click listeners :
             uiNotNowButton.onClick.AddListener (() => { HidePopup(); });
 
             uiUpdateButton.onClick.AddListener (() => { Application.OpenURL(latestGameData.Url); HidePopup(); });
@@ -98,7 +95,6 @@ namespace UpgradeSystem
         {
             updateCanvas.SetActive (false);
 
-            // Remove buttons click listeners :
             uiNotNowButton.onClick.RemoveAllListeners();
             uiUpdateButton.onClick.RemoveAllListeners();
         }

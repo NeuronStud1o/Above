@@ -2,27 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
+using System;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
 {
-    public static int coinsF;
-
     public static CoinsManagerInMainMenu instance;
 
-    public static int coinsS;
+    public int coinsF;
+    public int coinsS;
 
     [SerializeField] private TextMeshProUGUI SuperCoinsText;
     [SerializeField] private TextMeshProUGUI FlyCoinsText;
     [SerializeField] private TextMeshProUGUI SuperCoinsInShopText;
     [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
 
-    async void Start()
+    void Start()
     {
         instance = this;
 
-        if (await DataBase.instance.LoadDataInt("menu", "coins", "superCoins") >= 10)
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
+    }
+
+    private async Task StartActivity()
+    {
+        if (await DataBase.instance.LoadDataCheck("menu", "coins", "flyCoins") == false)
         {
-            DataBase.instance.SaveData(1, "tasks", "taskSuperCoins");
+            DataBase.instance.SaveData(0, "menu", "coins", "flyCoins");
+            coinsF = 0;
+
+            UpdateUI();
+
+            return;
+        }
+        if (await DataBase.instance.LoadDataCheck("menu", "coins", "superCoins") == false)
+        {
+            DataBase.instance.SaveData(0, "menu", "coins", "superCoins");
+            coinsS = 0;
+
+            UpdateUI();
+
+            return;
         }
 
         coinsF = await DataBase.instance.LoadDataInt("menu", "coins", "flyCoins");

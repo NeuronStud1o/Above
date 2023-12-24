@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,12 @@ public class AudioControl : MonoBehaviour
     [SerializeField] private AudioSource musicMainMenu;
     [SerializeField] private AudioSource[] SFX;
 
-    private async void Start()
+    private void Start()
+    {
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
+    }
+
+    public async Task StartActivity()
     {
         bool isAudioSettings = await DataBase.instance.LoadDataCheck("boolean", "ftAudio");
 
@@ -23,17 +29,23 @@ public class AudioControl : MonoBehaviour
             DataBase.instance.SaveData("done", "boolean", "ftAudio");
         }
 
-        LoadAudioValue();
-
-        SetAudioValue();
+        await LoadAudioValue();
     }
 
-    private async void LoadAudioValue()
+    private async Task LoadAudioValue()
     {
-        slider[0].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicMainMenuSA");
-        slider[1].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxMainMenuSA");
-        slider[2].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicGameSA");
-        slider[3].value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
+        float s1Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicMainMenuSA");
+        float s2Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxMainMenuSA");
+        float s3Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicGameSA");
+        float s4Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
+
+        slider[0].value = s1Value;
+        slider[1].value = s2Value;
+        slider[2].value = s3Value;
+        slider[3].value = s4Value;
+
+        musicMainMenu.enabled = true;
+        SetAudioValue();
     }
 
     private void SetAudioValue()
@@ -48,10 +60,10 @@ public class AudioControl : MonoBehaviour
 
     public void SaveAudioSettings()
     {
-        DataBase.instance.SaveData(slider[0], "menu", "settings", "audio", "musicMainMenuSA");
-        DataBase.instance.SaveData(slider[1], "menu", "settings", "audio", "sfxMainMenuSA");
-        DataBase.instance.SaveData(slider[2], "menu", "settings", "audio", "musicGameSA");
-        DataBase.instance.SaveData(slider[3], "menu", "settings", "audio", "sfxGameSA");
+        DataBase.instance.SaveData(slider[0].value, "menu", "settings", "audio", "musicMainMenuSA");
+        DataBase.instance.SaveData(slider[1].value, "menu", "settings", "audio", "sfxMainMenuSA");
+        DataBase.instance.SaveData(slider[2].value, "menu", "settings", "audio", "musicGameSA");
+        DataBase.instance.SaveData(slider[3].value, "menu", "settings", "audio", "sfxGameSA");
 
         SetAudioValue();
     }

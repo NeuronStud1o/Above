@@ -16,38 +16,30 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip brokenShield;
     [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip getCoin;
-    [SerializeField] private GameObject Panel;
+    [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject canvasInGame;
-    [SerializeField] private Score scoreScript;
     [SerializeField] private Color standartColor;
 
     public float jumpForce = 7f;
-    private Direction direction;
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private Animator anim;
     private CameraFollow cameraFollow;
     private int speedDirection = -1;
+    private float speed = 0;
     private bool isCanMove = true;
 
     async void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        
-        audioSource.volume = PlayerPrefs.GetFloat("Slider4");
-        audioSource.volume = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
-        
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
-        if (await DataBase.instance.LoadDataCheck("player", "speed") == false)
-        {
-            DataBase.instance.SaveData(2.2f, "player", "speed");
-        }
+        audioSource.volume = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
 
-        direction = Direction.Right;
-        rb = GetComponent<Rigidbody2D>();
-        
-        anim = GetComponent<Animator>();
+        speed = await DataBase.instance.LoadDataFloat("player", "speed");
+
         PauseController.instance.Hero = gameObject;
 
         cameraFollow.doodlePos = transform;
@@ -68,27 +60,17 @@ public class Player : MonoBehaviour
 
             if (collision.collider.CompareTag("Enemy"))
             {
-                if (PlayerPrefs.GetInt("HeroHP") == 0)
+                if (await DataBase.instance.LoadDataInt("player", "hp") == 0)
                 {
                     await Death();
                 }
-                else if (PlayerPrefs.GetInt("HeroHP") == 1)
+                else if (await DataBase.instance.LoadDataInt("player", "hp") == 1)
                 {
-                    GetComponent<AudioSource>().PlayOneShot(brokenShield);
-                    PlayerPrefs.SetInt("HeroHP", 0);
+                    audioSource.PlayOneShot(brokenShield);
+                    DataBase.instance.SaveData(0, "player", "hp");
 
                     GetComponent<SpriteRenderer>().color = standartColor;
-
-                    if (direction == Direction.Right)
-                    {
-                        TakeDirection(Direction.Right);
-                    }
-                    else if (direction == Direction.Left)
-                    {
-                        TakeDirection(Direction.Left);;
-                    }
                 }
-            
             }
 
             if (collision.collider.CompareTag("DownEnemy"))
@@ -98,21 +80,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private async void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "FlyCoin")
         {
             StartCoroutine(TouchCoin(collision.gameObject));
-            CoinsManager.instance.coinsF += PlayerPrefs.GetInt("CoinsFAdd");
-            //PlayerPrefs.SetInt("coinsF", coinsF);
-            audioSource.PlayOneShot(getCoin);
 
-            if (ProgressEveryDayTasks.flyCoinsEarned != 0)
-            {
-                int coins = PlayerPrefs.GetInt("EveryDayTasksFlyCoinsEarned");
-                coins++;
-                PlayerPrefs.SetInt("EveryDayTasksFlyCoinsEarned", coins);
-            }
+            CoinsManager.instance.coinsF += await DataBase.instance.LoadDataInt("shop", "equip", "boosts", "flyCoinsToAdd");
+            DataBase.instance.SaveData(CoinsManager.instance.coinsF, "menu", "coins", "flyCoins");
+
+            audioSource.PlayOneShot(getCoin);
 
             CoinsManager.instance.UpdateUI();
         }
@@ -120,8 +97,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "SuperCoin")
         {
             StartCoroutine(TouchCoin(collision.gameObject));
+
             CoinsManager.instance.coinsS++;
-            //PlayerPrefs.SetInt("coinsS", coinsS);
+            DataBase.instance.SaveData(CoinsManager.instance.coinsS, "menu", "coins", "superCoins");
             
             CoinsManager.instance.UpdateUI();
 
@@ -145,12 +123,10 @@ public class Player : MonoBehaviour
             case Direction.Left:
                 transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
                 speedDirection = 1;
-                direction = Direction.Right;
                 break;
             case Direction.Right:
                 transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
                 speedDirection = -1;
-                direction = Direction.Left;
                 break;
         }
     }
@@ -159,7 +135,7 @@ public class Player : MonoBehaviour
     {   
         if (isCanMove)
         {
-            transform.position += Vector3.left * PlayerPrefs.GetFloat("Speed") * Time.deltaTime * speedDirection;
+            transform.position += Vector3.left * speed * Time.deltaTime * speedDirection;
         } 
     }
 
@@ -171,17 +147,6 @@ public class Player : MonoBehaviour
         audioSource.PlayOneShot(jumpClip);
         
         anim.SetTrigger("Jump");
-
-        int taskJump = PlayerPrefs.GetInt("Jumps");
-        taskJump++;
-        PlayerPrefs.SetInt("Jumps", taskJump);
-
-        if (ProgressEveryDayTasks.jumps != 0)
-        {
-            int jumps = PlayerPrefs.GetInt("TasksJumps");
-            jumps++;
-            PlayerPrefs.SetInt("TasksJumps", jumps);
-        }
     }
     
     private async Task Death()
@@ -195,9 +160,6 @@ public class Player : MonoBehaviour
         isCanMove = false;
         
         GetComponent<Collider2D>().enabled = false;
-
-        int lastRunScore = int.Parse(scoreScript.scoreText.text);
-        PlayerPrefs.SetInt("lastRunScore", lastRunScore);
 
         await Task.Delay(TimeSpan.FromSeconds(0.05f));
 
@@ -217,6 +179,7 @@ public class Player : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        Panel.SetActive(true);
+        deathPanel.SetActive(true);
+        LosePanel.instance.lastRunScore = int.Parse(Score.instance.scoreText.text);
     }
 }

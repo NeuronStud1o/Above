@@ -6,14 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class LosePanel : MonoBehaviour
 {
+    public static LosePanel instance;
     [SerializeField] private Text scoreText;
     [SerializeField] private Camera thisCamera;
     [SerializeField] private GameObject panel;
 
-    private void Start()
-    {
-        int random;
+    public int lastRunScore = 0;
 
+    private async void Start()
+    {
+        instance = this;
+
+        int gainedExp;
+        int random;
         random = Random.Range(1, 4);
 
         if (random == 1)
@@ -23,13 +28,7 @@ public class LosePanel : MonoBehaviour
             UnityInterstitialAd.Instace.ShowAd();
         }
         
-        int gainedExp;
-
-        int lastRunScore = PlayerPrefs.GetInt("lastRunScore");
-        int recordScore = PlayerPrefs.GetInt("recordScore");
-
-        int tasksRecordScore = PlayerPrefs.GetInt("tasksRecordScore");
-
+        int recordScore = await DataBase.instance.LoadDataInt("game", "recordScore");
         gainedExp = lastRunScore / 14;
 
         if (gainedExp > 100)
@@ -37,21 +36,13 @@ public class LosePanel : MonoBehaviour
             gainedExp = 100;
         }
 
-        int doneExp = PlayerPrefs.GetInt("EXP") + gainedExp;
-        PlayerPrefs.SetInt("EXP", doneExp);
-
-        if (ProgressEveryDayTasks.points != 0)
-        {
-            if (lastRunScore > tasksRecordScore)
-            {
-                PlayerPrefs.SetInt("tasksRecordScore", lastRunScore);
-            }
-        }
+        int doneExp = await DataBase.instance.LoadDataInt("menu", "levelManager", "exp") + gainedExp;
+        DataBase.instance.SaveData(doneExp, "menu", "levelManager", "exp");
 
         if (lastRunScore > recordScore)
         {
             recordScore = lastRunScore;
-            PlayerPrefs.SetInt("recordScore", recordScore);
+            DataBase.instance.SaveData(recordScore, "game", "recordScore");
             scoreText.text = recordScore.ToString();
         }
         else

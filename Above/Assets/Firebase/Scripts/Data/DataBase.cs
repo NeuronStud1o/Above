@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 public class DataBase : MonoBehaviour
 {
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(loadingScreen);
+    }
+
     public static DataBase instance;
     private DatabaseReference dbRef;
 
     public DatabaseReference Ref { get => dbRef; private set => dbRef = value; }
+
+    [SerializeField] private GameObject loadingScreen;
 
     void Start()
     {
@@ -17,28 +25,58 @@ public class DataBase : MonoBehaviour
         dbRef = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
+    public void SetActiveLoadingScreen(bool isActive)
+    {
+        loadingScreen.SetActive(isActive);
+    }
+
     public void SaveData(int i, params string[] keys)
     {
         string path = string.Join("/", keys);
-        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+        dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
     }
 
     public void SaveData(float i, params string[] keys)
     {
         string path = string.Join("/", keys);
-        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+        dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
     }
 
     public void SaveData(string i, params string[] keys)
     {
         string path = string.Join("/", keys);
-        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+        dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
     }
 
     public void SaveData(bool i, params string[] keys)
     {
         string path = string.Join("/", keys);
-        dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).SetValueAsync(i);
+        dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
+    }
+
+    public async Task SaveDataAsync(int i, params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
+    }
+
+    public async Task SaveDataAsync(float i, params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
+    }
+
+
+    public async Task SaveDataAsync(string i, params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
+    }
+
+    public async Task SaveDataAsync(bool i, params string[] keys)
+    {
+        string path = string.Join("/", keys);
+        await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
     }
 
     public async Task<int> LoadDataInt(params string[] keys)
@@ -46,13 +84,13 @@ public class DataBase : MonoBehaviour
         int intValue = 0;
 
         string path = string.Join("/", keys);
-        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+        var data = await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).GetValueAsync();
 
         if (data != null)
         {
             DataSnapshot snapshot = data;
 
-            intValue = int.Parse(snapshot.GetValue(true).ToString());
+            intValue = int.Parse(snapshot.Value.ToString());
         }
 
         return intValue;
@@ -63,13 +101,13 @@ public class DataBase : MonoBehaviour
         float floatValue = 0;
 
         string path = string.Join("/", keys);
-        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+        var data = await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).GetValueAsync();
 
         if (data != null)
         {
             DataSnapshot snapshot = data;
 
-            floatValue = float.Parse(snapshot.ToString());
+            floatValue = float.Parse(snapshot.Value.ToString());
         }
 
         return floatValue;
@@ -80,7 +118,7 @@ public class DataBase : MonoBehaviour
         string stringValue = "";
 
         string path = string.Join("/", keys);
-        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+        var data = await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).GetValueAsync();
 
         if (data != null)
         {
@@ -97,13 +135,13 @@ public class DataBase : MonoBehaviour
         bool boolValue = false;
 
         string path = string.Join("/", keys);
-        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+        var data = await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).GetValueAsync();
 
         if (data != null)
         {
             DataSnapshot snapshot = data;
 
-            boolValue = bool.Parse(snapshot.ToString());
+            boolValue = bool.Parse(snapshot.Value.ToString());
         }
 
         return boolValue;
@@ -112,7 +150,7 @@ public class DataBase : MonoBehaviour
     public async Task<bool> LoadDataCheck(params string[] keys)
     {
         string path = string.Join("/", keys);
-        var data = await dbRef.Child("user").Child(UserData.instance.User.DisplayName).Child(path).GetValueAsync();
+        var data = await dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).GetValueAsync();
 
         if (data != null)
         {
@@ -120,12 +158,10 @@ public class DataBase : MonoBehaviour
 
             if (snapshot.Value == null)
             {
-                print ("Value is null");
                 return false;
             }
             else
             {
-                print ("Value is not null");
                 return true;
             }
         }

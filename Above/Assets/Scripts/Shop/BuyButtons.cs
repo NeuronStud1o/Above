@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class BuyButtons : MonoBehaviour
 {
-    public enum Coin
-    {
-        FlyCoins,
-        SuperCoins
-    }
-
     [SerializeField] private Coin coin;
-
     [SerializeField] private int price;
     [SerializeField] private BuySystem buySystem;
 

@@ -9,18 +9,16 @@ public class SelectBoostInGame : MonoBehaviour
 
     [SerializeField] private GameObject[] Heroes;
     [SerializeField] private GameObject[] AllBoosts;
-    private int i;
+    private int i = 0;
+    private int currentBoost;
 
-    private void Start()
+    private async void Start()
     {
-        if (PlayerPrefs.GetInt("IsBoostEquiped") == 1)
-        {
-            PlayerPrefs.SetInt("BoostIsEquiped", 1);
-        }
+        currentBoost = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
 
-        if (PlayerPrefs.GetInt("CurrentBoost") == 3)
+        if (currentBoost == 3)
         {
-            PlayerPrefs.SetInt("HeroHP", 1);
+            DataBase.instance.SaveData(1, "player", "hp");
 
             for (int i = 0; i < Heroes.Length; i++)
             {
@@ -35,7 +33,7 @@ public class SelectBoostInGame : MonoBehaviour
             }
         }
 
-        i = PlayerPrefs.GetInt("CurrentBoost");
+        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
         AllBoosts[i].SetActive(true);
     }
 }

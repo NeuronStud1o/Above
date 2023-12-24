@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 173587933401933711}
   - component: {fileID: 173587933401933708}
   - component: {fileID: 173587933401933709}
-  - component: {fileID: 173587933401933706}
   - component: {fileID: -5206333895183311908}
   m_Layer: 0
   m_Name: WhitePigeon
@@ -101,27 +100,6 @@ CircleCollider2D:
   m_Offset: {x: 0.03632767, y: -0.5328063}
   serializedVersion: 2
   m_Radius: 1.5777218
---- !u!50 &173587933401933706
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173587933401933705}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &-5206333895183311908
 Animator:
   serializedVersion: 3
@@ -134,7 +112,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 001660d33d4333e46ae706c13263a0ac, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
