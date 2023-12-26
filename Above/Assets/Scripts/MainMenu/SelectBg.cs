@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectBg : MonoBehaviour
@@ -14,17 +16,20 @@ public class SelectBg : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("CurrentBg"))
-        {
-            i = PlayerPrefs.GetInt("CurrentBg");
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
+    }
 
-            EquipedButtons[i].SetActive(true);
-            EquipButtons[i].SetActive(false);
-        }
-        else
+    private async Task StartActivity()
+    {
+        if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentBg") == false)
         {
-            PlayerPrefs.SetInt("CurrentBg", i);
+            await DataBase.instance.SaveDataAsync(0, "shop", "equip", "currentBg");
         }
+
+        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentBg");
+
+        EquipedButtons[i].SetActive(true);
+        EquipButtons[i].SetActive(false);
 
         AllBg[i].SetActive(true);
         AllRailings[i].SetActive(true);
@@ -41,7 +46,7 @@ public class SelectBg : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        PlayerPrefs.SetInt("CurrentBg", thisBg);
+        DataBase.instance.SaveData(thisBg, "shop", "equip", "currentBg");
 
         AllBg[thisBg].SetActive(true);
         AllRailings[thisBg].SetActive(true);

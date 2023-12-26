@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PauseController : MonoBehaviour
 {
+    [SerializeField] private GameObject timerGameObject;
     private GameObject hero;
+    private GameObject timerChildren;
     public GameObject Hero { get => hero; set => hero = value; }
     public static PauseController instance;
-    [SerializeField] private GameObject timerGameObject;
-    private GameObject timerChildren;
 
     void Start()
     {

@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Element
+{
+    Skin,
+    Bg,
+    Boost
+}
+
 public class IsActiveButton : MonoBehaviour
 {
-    public int index;
-
-    public enum Element
-    {
-        Skin,
-        Bg,
-        Boost
-    }
-
-    public Element element;
     [SerializeField] private BuySystem buySystem;
+
+    public int index;
+    public Element element;
 
     void Update()
     {

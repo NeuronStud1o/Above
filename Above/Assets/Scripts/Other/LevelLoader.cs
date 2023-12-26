@@ -18,11 +18,11 @@ public class LevelLoader : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("StartFirstTime") == 0)
         {
-            loadSceneIndex = 3;
+            loadSceneIndex = 1;
         }
         else
         {
-            loadSceneIndex = 1;
+            loadSceneIndex = 2;
         }
 
         print (PlayerPrefs.GetInt("FirstTimeInGame") + " !!!!");

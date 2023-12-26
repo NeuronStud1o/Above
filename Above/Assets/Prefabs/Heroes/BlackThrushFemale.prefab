@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8077638886323211452}
   - component: {fileID: 8077638886323211455}
   - component: {fileID: 8077638886323211454}
-  - component: {fileID: 8077638886323211449}
   - component: {fileID: -5843020825563308189}
   m_Layer: 0
   m_Name: BlackThrushFemale
@@ -101,27 +100,6 @@ CircleCollider2D:
   m_Offset: {x: 0.036327608, y: -0.6152168}
   serializedVersion: 2
   m_Radius: 1.660132
---- !u!50 &8077638886323211449
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8077638886323211450}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &-5843020825563308189
 Animator:
   serializedVersion: 3
@@ -134,7 +112,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 94a4cae5bdd803947917ce310e401b9e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

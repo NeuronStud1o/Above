@@ -6,10 +6,9 @@ using System.Collections;
 public class Reward : MonoBehaviour
 {
     [SerializeField] private float msToWait = 86400000f;
-    private int notifIndex = 0;
-    private bool isReadyOneCheck = true;
-    private Text Timer;
+    [SerializeField] private Button RewardButton;
 
+    private Text Timer;
     private ulong lastOpen;
 
     public GameObject Done;
@@ -18,9 +17,6 @@ public class Reward : MonoBehaviour
     public GameObject Coin;
     public GameObject coinWindow;
 
-    [SerializeField] private CoinsManagerInMainMenu coinsManagerInMainMenu;
-    [SerializeField] private Button RewardButton;
-    [SerializeField] private NotificationsManager notifManager;
 
     void Start()
     {
@@ -45,52 +41,33 @@ public class Reward : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         coinWindow.SetActive(false);
+        DataBase.instance.SaveData(CoinsManagerInMainMenu.instance.coinsF + 10, "menu", "coins", "flyCoins");
+        CoinsManagerInMainMenu.instance.coinsF += 10;
 
-        int allCoins = PlayerPrefs.GetInt("coinsF");
-        allCoins += 10;
-        PlayerPrefs.SetInt("coinsF", allCoins);
-
-        coinsManagerInMainMenu.UpdateUI();
+        CoinsManagerInMainMenu.instance.UpdateUI();
     }
   
     void Update()
     {
-        if (isReady() && isReadyOneCheck)
+        if(!RewardButton.IsInteractable())
         {
-            Done.SetActive(true);
-            MainDone.SetActive(true);
-            Coin.SetActive(true);
-            Timer.text = "10   ";
-
-            RewardButton.interactable = true;
-            int count = 0;
-
-            foreach (int i in notifManager.iconsIndex)
+            if(isReady())
             {
-                if (i == 0)
-                {
-                    notifIndex = notifManager.iconsIndex[count];
-                    notifManager.iconsIndex[count] = 1;
+                Done.SetActive(true);
+                MainDone.SetActive(true);
+                Coin.SetActive(true);
 
-                    isReadyOneCheck = false;
+                RewardButton.interactable = true;
 
-                    notifManager.SetValue();
+                Timer.text = "10   ";
 
-                    return;
-                }
-                count++;
+                return;
+            }
+            else
+            {
+                Coin.SetActive(false);
             }
 
-            notifManager.SetValue();
-            isReadyOneCheck = false;
-
-            return;
-        }
-
-        if (!RewardButton.IsInteractable())
-        {
-            Coin.SetActive(false);
-            
             ulong diff = ((ulong)DateTime.Now.Ticks - lastOpen);
             ulong m = diff / TimeSpan.TicksPerMillisecond;
             float seconleft = (float)(msToWait - m) / 1000.0f;
@@ -117,15 +94,8 @@ public class Reward : MonoBehaviour
         Coin.SetActive(false);
         RewardButton.interactable = false;
 
-        int count = PlayerPrefs.GetInt("RewardsCount");
-        count++;
-        PlayerPrefs.SetInt("RewardsCount", count);
-            
         coinWindow.SetActive(true);
         StartCoroutine(AnimationSeconds());
-
-        notifManager.RemoveIconWhithList(notifIndex);
-        isReadyOneCheck = true;
     }
 
     public bool isReady()
@@ -136,8 +106,6 @@ public class Reward : MonoBehaviour
 
         if (seconleft < 0)
         {
-            PlayerPrefs.SetString("lastOpen", "0");
-
             return true;
         }
 

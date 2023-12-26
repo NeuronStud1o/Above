@@ -1,70 +1,73 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectBoost : MonoBehaviour
 {
-    private int i;
+    private int currentBoost;
 
     [SerializeField] private GameObject[] AllBoosts;
     [SerializeField] private GameObject[] Heroes;
 
     [SerializeField] private GameObject[] EquipButtons;
     [SerializeField] private GameObject[] EquipedButtons;
-    [SerializeField] private GameObject[] BuyButtons;
 
     [SerializeField] private Color shieldColor;
     [SerializeField] private Color standartColor;
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("CurrentBoost"))
-        {
-            i = PlayerPrefs.GetInt("CurrentBoost");
-
-            EquipedButtons[i].SetActive(true);
-            EquipButtons[i].SetActive(false);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("CurrentBoost", i);
-        }
-
-        AllBoosts[i].SetActive(true);
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
     }
 
-    private void Update()
+    private async Task StartActivity()
     {
-        if (PlayerPrefs.GetInt("CurrentBoost") == 0)
+        if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentBoost") == false)
         {
-            PlayerPrefs.SetInt("IsBoostEquiped", 0);
+            await DataBase.instance.SaveDataAsync(0, "shop", "equip", "currentBoost");
         }
 
-        if (PlayerPrefs.GetInt("CurrentBoost") == 1)
+        currentBoost = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
+
+        EquipedButtons[currentBoost].SetActive(true);
+        EquipButtons[currentBoost].SetActive(false);
+
+        AllBoosts[currentBoost].SetActive(true);
+
+        Check();
+    }
+
+    private void Check()
+    {
+        if (currentBoost == 1)
         {
-            PlayerPrefs.SetInt("CoinsFAdd", 2);
-            PlayerPrefs.SetInt("HeroHP", 0);
-            PlayerPrefs.SetInt("IsBoostEquiped", 1);
+            DataBase.instance.SaveData(2, "shop", "equip", "boosts", "flyCoinsToAdd");
+            DataBase.instance.SaveData(0, "player", "hp");
+            DataBase.instance.SaveData(2.2f, "player", "speed");
         }
         else
         {
-            PlayerPrefs.SetInt("CoinsFAdd", 1);
+            DataBase.instance.SaveData(1, "shop", "equip", "boosts", "flyCoinsToAdd");
         }
 
-        if (PlayerPrefs.GetInt("CurrentBoost") == 2)
+        if (currentBoost == 2)
         {
-            PlayerPrefs.SetFloat("Speed", 1.5f);
-            PlayerPrefs.SetInt("HeroHP", 0);
-            PlayerPrefs.SetInt("IsBoostEquiped", 1);
+            DataBase.instance.SaveData(2, "shop", "equip", "boosts", "flyCoinsToAdd");
+            DataBase.instance.SaveData(0, "player", "hp");
+            DataBase.instance.SaveData(1.5f, "player", "speed");
         }
         else
         {
-            PlayerPrefs.SetFloat("Speed", 2.2f);
+            DataBase.instance.SaveData(2.2f, "player", "speed");
         }
 
-        if (PlayerPrefs.GetInt("CurrentBoost") == 3)
+        if (currentBoost == 3)
         {
-            PlayerPrefs.SetInt("IsBoostEquiped", 1);
+            DataBase.instance.SaveData(2, "shop", "equip", "boosts", "flyCoinsToAdd");
+            DataBase.instance.SaveData(1, "player", "hp");
+            DataBase.instance.SaveData(2.2f, "player", "speed");
 
             for (int i = 0; i < Heroes.Length; i++)
             {
@@ -73,6 +76,8 @@ public class SelectBoost : MonoBehaviour
         }
         else
         {
+            DataBase.instance.SaveData(0, "player", "hp");
+            
             for (int i = 0; i < Heroes.Length; i++)
             {
                 Heroes[i].GetComponent<SpriteRenderer>().color = standartColor;
@@ -89,11 +94,13 @@ public class SelectBoost : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        PlayerPrefs.SetInt("CurrentBoost", thisCharacter);
+        DataBase.instance.SaveData(thisCharacter, "shop", "equip", "currentBoost");
 
         AllBoosts[thisCharacter].SetActive(true);
 
         EquipedButtons[thisCharacter].SetActive(true);
         EquipButtons[thisCharacter].SetActive(false);
+
+        Check();
     }
 }

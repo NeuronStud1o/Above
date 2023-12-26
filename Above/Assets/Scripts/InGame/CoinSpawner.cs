@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
+    public static CoinSpawner instance;
     [SerializeField] private GameObject FlyCoin;
     [SerializeField] private GameObject SuperCoin;
 
     [SerializeField] private GameObject LineSpawnFlyCoin;
     [SerializeField] private GameObject LineSpawnSuperCoin;
-    public GameObject Hero;
+    public GameObject hero;
+
+    void Start()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
-        if (Hero != null)
+        if (hero != null)
         {
-            if (Hero.transform.position.y > LineSpawnFlyCoin.transform.position.y)
+            if (hero.transform.position.y > LineSpawnFlyCoin.transform.position.y)
             {
                 SpawnFlyCoin();
             }
 
-            if (Hero.transform.position.y > LineSpawnSuperCoin.transform.position.y)
+            if (hero.transform.position.y > LineSpawnSuperCoin.transform.position.y)
             {
                 SpawnSuperCoin();
             }

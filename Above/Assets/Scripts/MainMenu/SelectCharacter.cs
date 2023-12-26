@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
 {
@@ -11,21 +12,23 @@ public class SelectCharacter : MonoBehaviour
 
     [SerializeField] private GameObject[] EquipButtons;
     [SerializeField] private GameObject[] EquipedButtons;
-    [SerializeField] private GameObject[] BuyButtons;
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("CurrentCharacter"))
-        {
-            i = PlayerPrefs.GetInt("CurrentCharacter");
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
+    }
 
-            EquipedButtons[i].SetActive(true);
-            EquipButtons[i].SetActive(false);
-        }
-        else
+    private async Task StartActivity()
+    {
+        if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentCharacter") == false)
         {
-            PlayerPrefs.SetInt("CurrentCharacter", i);
+            await DataBase.instance.SaveDataAsync(0, "shop", "equip", "currentCharacter");
         }
+
+        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentCharacter");
+
+        EquipedButtons[i].SetActive(true);
+        EquipButtons[i].SetActive(false);
 
         AllCharacters[i].SetActive(true);
     }
@@ -39,7 +42,7 @@ public class SelectCharacter : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        PlayerPrefs.SetInt("CurrentCharacter", thisCharacter);
+        DataBase.instance.SaveData(thisCharacter, "shop", "equip", "currentCharacter");
 
         AllCharacters[thisCharacter].SetActive(true);
 

@@ -2319,9 +2319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 1
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &62630516
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,9 +4598,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 1
   element: 1
-  buySystem: {fileID: 810755876}
 --- !u!1 &142148542
 GameObject:
   m_ObjectHideFlags: 0
@@ -5529,9 +5529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 2
   element: 1
-  buySystem: {fileID: 810755876}
 --- !u!1 &167981635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,9 +6392,9 @@ RectTransform:
   m_Father: {fileID: 2066864335}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -790}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182204748
@@ -7518,9 +7518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 3
   element: 1
-  buySystem: {fileID: 810755876}
 --- !u!1 &203080456
 GameObject:
   m_ObjectHideFlags: 0
@@ -10577,9 +10577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 8
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!114 &300155230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11858,9 +11858,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 4
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &348016417
 GameObject:
   m_ObjectHideFlags: 0
@@ -17010,9 +17010,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 3
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &493605216
 GameObject:
   m_ObjectHideFlags: 0
@@ -22662,9 +22662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 6
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &648557408
 GameObject:
   m_ObjectHideFlags: 0
@@ -22947,9 +22947,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 3
   element: 2
-  buySystem: {fileID: 810755876}
 --- !u!1 &652105649
 GameObject:
   m_ObjectHideFlags: 0
@@ -26946,7 +26946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &794869190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29523,9 +29523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 2
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &850593672
 GameObject:
   m_ObjectHideFlags: 0
@@ -31094,9 +31094,9 @@ RectTransform:
   m_Father: {fileID: 2066864335}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -655}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890483271
@@ -37338,9 +37338,9 @@ RectTransform:
   m_Father: {fileID: 2066864335}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -385}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067874400
@@ -40283,9 +40283,9 @@ RectTransform:
   m_Father: {fileID: 2066864335}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -520}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158443613
@@ -43844,9 +43844,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 0
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &1251532724
 GameObject:
   m_ObjectHideFlags: 0
@@ -45404,9 +45404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 0
   element: 2
-  buySystem: {fileID: 810755876}
 --- !u!1 &1309884901
 GameObject:
   m_ObjectHideFlags: 0
@@ -47850,9 +47850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 5
   element: 1
-  buySystem: {fileID: 810755876}
 --- !u!114 &1362891140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51945,6 +51945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884a10ab56e52944aafc14218169c6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinsF: 0
+  coinsS: 0
   SuperCoinsText: {fileID: 1486839891}
   FlyCoinsText: {fileID: 706588861}
   SuperCoinsInShopText: {fileID: 357023973}
@@ -51962,9 +51964,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expSlider: {fileID: 1481524960}
-  countToNextLevel: {fileID: 1696657827}
-  level: {fileID: 1448566538}
-  title: {fileID: 13712732}
+  countToNextLevelText: {fileID: 0}
+  levelText: {fileID: 0}
+  titleText: {fileID: 0}
   hightScore: {fileID: 62630517}
   keyFrame:
   - Level: 5
@@ -54334,9 +54336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 5
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &1594515800
 GameObject:
   m_ObjectHideFlags: 0
@@ -57095,7 +57097,7 @@ MonoBehaviour:
   - {fileID: 1256945011}
   - {fileID: 228774671}
   - {fileID: 1113708851}
-  AllAudio: {fileID: 1661981276}
+  musicMainMenu: {fileID: 0}
   SFX:
   - {fileID: 1575659543}
   - {fileID: 1329600874}
@@ -57209,16 +57211,6 @@ MonoBehaviour:
   - {fileID: 1239162323}
   - {fileID: 688780805}
   - {fileID: 1454056622}
-  BuyButtons:
-  - {fileID: 1250410597}
-  - {fileID: 60678539}
-  - {fileID: 849498627}
-  - {fileID: 491584562}
-  - {fileID: 346074352}
-  - {fileID: 1590304239}
-  - {fileID: 641880179}
-  - {fileID: 1997991680}
-  - {fileID: 300155226}
 --- !u!114 &1661981281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57255,11 +57247,6 @@ MonoBehaviour:
   - {fileID: 1813362140}
   - {fileID: 142148542}
   - {fileID: 516963347}
-  BuyButtons:
-  - {fileID: 1308600771}
-  - {fileID: 1683211623}
-  - {fileID: 1884052534}
-  - {fileID: 650490879}
   shieldColor: {r: 0, g: 1, b: 1, a: 1}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1661981282
@@ -57275,13 +57262,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msToWait: 86400000
+  RewardButton: {fileID: 469188590}
   Done: {fileID: 2107236958}
   MainDone: {fileID: 753350583}
   Coin: {fileID: 746583766}
   coinWindow: {fileID: 1188116123}
-  coinsManagerInMainMenu: {fileID: 1495688123}
-  RewardButton: {fileID: 469188590}
-  notifManager: {fileID: 1701483610}
 --- !u!1 &1666230729
 GameObject:
   m_ObjectHideFlags: 0
@@ -58045,9 +58030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 1
   element: 2
-  buySystem: {fileID: 810755876}
 --- !u!1 &1683273417
 GameObject:
   m_ObjectHideFlags: 0
@@ -58579,9 +58564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 0
   element: 1
-  buySystem: {fileID: 810755876}
 --- !u!1 &1694095081
 GameObject:
   m_ObjectHideFlags: 0
@@ -59904,9 +59889,9 @@ RectTransform:
   m_Father: {fileID: 2066864335}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748240751
@@ -64655,9 +64640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 2
   element: 2
-  buySystem: {fileID: 810755876}
 --- !u!1 &1886692263
 GameObject:
   m_ObjectHideFlags: 0
@@ -68103,9 +68088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 7
   element: 0
-  buySystem: {fileID: 810755876}
 --- !u!1 &1999982873
 GameObject:
   m_ObjectHideFlags: 0
@@ -74712,9 +74697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de44c59f8e8ccd499e70e3b7a537a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buySystem: {fileID: 810755876}
   index: 4
   element: 1
-  buySystem: {fileID: 810755876}
 --- !u!114 &2079277354
 MonoBehaviour:
   m_ObjectHideFlags: 0
