@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [Serializable]
 public struct LevelValue
@@ -13,53 +14,68 @@ public struct LevelValue
     public string Title;
 }
 
-public class EXPmanager : MonoBehaviour
+public class EXPManager : MonoBehaviour
 {
     [SerializeField] private Slider expSlider;
-    [SerializeField] private TextMeshProUGUI countToNextLevel;
-    [SerializeField] private TextMeshProUGUI level;
-    [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private TextMeshProUGUI countToNextLevelText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI titleText;
 
     [SerializeField] private TextMeshProUGUI hightScore;
     [SerializeField] private List<LevelValue> keyFrame = new List<LevelValue>();
 
-    private int CountToNextLevel = 0;
+    private int countToNextLevel = 0;
 
+    private int exp;
+    private int level;
 
     void Start()
     {
-        hightScore.text = "" + PlayerPrefs.GetInt("recordScore");
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
+    }
 
-        if (!PlayerPrefs.HasKey("LevelEXP") && !PlayerPrefs.HasKey("EXP"))
+    private async Task StartActivity()
+    {
+        if (await DataBase.instance.LoadDataCheck("game", "recordScore") == false)
         {
-            PlayerPrefs.SetInt("EXP", 0);
-            PlayerPrefs.SetInt("LevelEXP", 1);
+            await DataBase.instance.SaveDataAsync(0, "game", "recordScore");
         }
+
+        hightScore.text = "" + await DataBase.instance.LoadDataInt("game", "recordScore");
+
+        if (await DataBase.instance.LoadDataCheck("menu", "levelManager", "exp") == false)
+        {
+            DataBase.instance.SaveData(0, "menu", "levelManager", "exp");
+            DataBase.instance.SaveData(1, "menu", "levelManager", "level");
+        }
+
+        await GetValues();
 
         SetValues();
         CheckNextLevel();
+    }
 
-        if (PlayerPrefs.GetInt("LevelEXP") >= 120)
-        {
-            level.text = "MAX";
-        }
+    public async Task GetValues()
+    {
+        exp = await DataBase.instance.LoadDataInt("menu", "levelManager", "exp");
+        level = await DataBase.instance.LoadDataInt("menu", "levelManager", "level");
     }
 
     private void SetValues()
     {
         foreach (LevelValue valueLevel in keyFrame)
         {
-            if (valueLevel.Level > PlayerPrefs.GetInt("LevelEXP"))
+            if (valueLevel.Level > exp)
             {
-                countToNextLevel.text = PlayerPrefs.GetInt("EXP") + " / " +  valueLevel.CountToNextLevel;
-                level.text = PlayerPrefs.GetInt("LevelEXP") + "";
+                countToNextLevelText.text = exp + " / " +  valueLevel.CountToNextLevel;
+                levelText.text = level + "";
 
                 expSlider.maxValue = valueLevel.CountToNextLevel;
-                expSlider.value = PlayerPrefs.GetInt("EXP");
+                expSlider.value = exp;
 
-                title.text = valueLevel.Title;
+                titleText.text = valueLevel.Title;
 
-                CountToNextLevel = (int)expSlider.maxValue;
+                countToNextLevel = (int)expSlider.maxValue;
 
                 return;
             }
@@ -68,20 +84,14 @@ public class EXPmanager : MonoBehaviour
 
     public void CheckNextLevel()
     {
-        while (PlayerPrefs.GetInt("EXP") > CountToNextLevel)
+        while (exp > countToNextLevel)
         {
-            PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") - CountToNextLevel);
-            PlayerPrefs.SetInt("LevelEXP", PlayerPrefs.GetInt("LevelEXP") + 1);
+            DataBase.instance.SaveData(exp - countToNextLevel, "menu", "levelManager", "exp");
+            DataBase.instance.SaveData(level + 1, "menu", "levelManager", "level");
 
             SetValues();
         }
 
         SetValues();
-    }
-
-    public void AddEXP()
-    {
-        PlayerPrefs.SetInt("EXP", PlayerPrefs.GetInt("EXP") + 10);
-        CheckNextLevel();
     }
 }

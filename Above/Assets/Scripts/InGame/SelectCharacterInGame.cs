@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class SelectCharacterInGame : MonoBehaviour
 {
-    private int i;
+    private int i = 0;
 
     [SerializeField] private GameObject[] AllCharacters;
 
-    void Start()
+    async void Start()
     {
-        if (PlayerPrefs.HasKey("CurrentCharacter"))
+        if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentCharacter") == false)
         {
-            i = PlayerPrefs.GetInt("CurrentCharacter");
+            await DataBase.instance.SaveDataAsync(0, "shop", "equip", "currentCharacter");
         }
-        else
-        {
-            PlayerPrefs.SetInt("CurrentCharacter", i);
-        }
+
+        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentCharacter");
 
         AllCharacters[i].SetActive(true);
     }

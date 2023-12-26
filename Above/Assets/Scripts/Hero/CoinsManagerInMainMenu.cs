@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System.Threading.Tasks;
+using System;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
 {
-    public static int coinsF;
-
     public static CoinsManagerInMainMenu instance;
 
-    public static int coinsS;
+    public int coinsF;
+    public int coinsS;
 
     [SerializeField] private TextMeshProUGUI SuperCoinsText;
     [SerializeField] private TextMeshProUGUI FlyCoinsText;
@@ -21,32 +21,38 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     {
         instance = this;
 
-        if (PlayerPrefs.GetInt("coinsS") >= 10)
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
+    }
+
+    private async Task StartActivity()
+    {
+        if (await DataBase.instance.LoadDataCheck("menu", "coins", "flyCoins") == false)
         {
-            PlayerPrefs.SetInt("coinsSForTasks", 1);
+            DataBase.instance.SaveData(0, "menu", "coins", "flyCoins");
+            coinsF = 0;
+
+            UpdateUI();
+
+            return;
+        }
+        if (await DataBase.instance.LoadDataCheck("menu", "coins", "superCoins") == false)
+        {
+            DataBase.instance.SaveData(0, "menu", "coins", "superCoins");
+            coinsS = 0;
+
+            UpdateUI();
+
+            return;
         }
 
-        if (PlayerPrefs.HasKey("coinsF"))
-        {
-            coinsF = PlayerPrefs.GetInt("coinsF");
-        }
+        coinsF = await DataBase.instance.LoadDataInt("menu", "coins", "flyCoins");
+        coinsS = await DataBase.instance.LoadDataInt("menu", "coins", "superCoins");
 
-        if (PlayerPrefs.HasKey("coinsS"))
-        {
-            coinsS = PlayerPrefs.GetInt("coinsS");
-        }
-
-        SuperCoinsText.text = coinsS + "";
-        FlyCoinsText.text = coinsF + "";
-        SuperCoinsInShopText.text = coinsS + "";
-        FlyCoinsInShopText.text = coinsF + "";
+        UpdateUI();
     }
 
     public void UpdateUI()
     {
-        coinsF = PlayerPrefs.GetInt("coinsF", coinsF);
-        coinsS = PlayerPrefs.GetInt("coinsS");
-
         SuperCoinsText.text = coinsS + "";
         FlyCoinsText.text = coinsF + "";
         SuperCoinsInShopText.text = coinsS + "";

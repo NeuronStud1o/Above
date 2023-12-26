@@ -217,7 +217,6 @@ public class Tutorial : MonoBehaviour
 
     public void ReturnToLobby()
     {
-        SceneManager.LoadScene(1);
-        PlayerPrefs.SetInt("StartFirstTime", 1);
+        SceneManager.LoadScene(2);
     }
 }

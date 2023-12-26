@@ -1,46 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioControl : MonoBehaviour
 {
     [SerializeField] private Slider[] slider;
-
-    [SerializeField] private AudioSource AllAudio;
+    [SerializeField] private AudioSource musicMainMenu;
     [SerializeField] private AudioSource[] SFX;
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("FirstTimeInGameAudio") == 0)
-        {
-            PlayerPrefs.SetFloat("Slider", 1f);
-            PlayerPrefs.SetFloat("Slider2", 1f);
-            PlayerPrefs.SetFloat("Slider3", 1f);
-            PlayerPrefs.SetFloat("Slider4", 1f);
-            PlayerPrefs.SetInt("FirstTimeInGameAudio", 1);
-        }
-
-        slider[0].value = PlayerPrefs.GetFloat("Slider");
-        slider[1].value = PlayerPrefs.GetFloat("Slider2");
-        slider[2].value = PlayerPrefs.GetFloat("Slider3");
-        slider[3].value = PlayerPrefs.GetFloat("Slider4");
-
-        SaveAudioSettings();
+        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
     }
 
-    public void SaveAudioSettings()
+    public async Task StartActivity()
     {
-        AllAudio.volume = slider[0].value;
+        bool isAudioSettings = await DataBase.instance.LoadDataCheck("boolean", "ftAudio");
+
+        if (!isAudioSettings)
+        {
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "musicMainMenuSA");
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "sfxMainMenuSA");
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "musicGameSA");
+            DataBase.instance.SaveData(1, "menu", "settings", "audio", "sfxGameSA");
+
+            DataBase.instance.SaveData("done", "boolean", "ftAudio");
+        }
+
+        await LoadAudioValue();
+    }
+
+    private async Task LoadAudioValue()
+    {
+        float s1Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicMainMenuSA");
+        float s2Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxMainMenuSA");
+        float s3Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicGameSA");
+        float s4Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
+
+        slider[0].value = s1Value;
+        slider[1].value = s2Value;
+        slider[2].value = s3Value;
+        slider[3].value = s4Value;
+
+        musicMainMenu.enabled = true;
+        SetAudioValue();
+    }
+
+    private void SetAudioValue()
+    {
+        musicMainMenu.volume = slider[0].value;
 
         for (int i = 0; i < SFX.Length; i++)
         {
             SFX[i].volume = slider[1].value;
         }
+    }
 
-        PlayerPrefs.SetFloat("Slider", slider[0].value);
-        PlayerPrefs.SetFloat("Slider2", slider[1].value);
-        PlayerPrefs.SetFloat("Slider3", slider[2].value);
-        PlayerPrefs.SetFloat("Slider4", slider[3].value);
+    public void SaveAudioSettings()
+    {
+        DataBase.instance.SaveData(slider[0].value, "menu", "settings", "audio", "musicMainMenuSA");
+        DataBase.instance.SaveData(slider[1].value, "menu", "settings", "audio", "sfxMainMenuSA");
+        DataBase.instance.SaveData(slider[2].value, "menu", "settings", "audio", "musicGameSA");
+        DataBase.instance.SaveData(slider[3].value, "menu", "settings", "audio", "sfxGameSA");
+
+        SetAudioValue();
     }
 }
