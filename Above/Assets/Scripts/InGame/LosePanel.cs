@@ -2,29 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class LosePanel : MonoBehaviour
 {
     public static LosePanel instance;
     [SerializeField] private Text scoreText;
-    [SerializeField] private Camera thisCamera;
-    [SerializeField] private GameObject panel;
 
-    public int lastRunScore = 0;
-
-    private async void Start()
+    private void Start()
     {
         instance = this;
+    }
 
+    public async void Death(int lastRunScore)
+    {
         int gainedExp;
         int random;
         random = Random.Range(1, 4);
 
         if (random == 1)
         {
-            thisCamera.rect = new Rect(0f, 0f, 1f, 1f);
-            panel.SetActive(true);
             UnityInterstitialAd.Instace.ShowAd();
         }
         
@@ -49,10 +45,5 @@ public class LosePanel : MonoBehaviour
         {
             scoreText.text = recordScore.ToString();
         }
-    }
-
-    public void ToMenu()
-    {
-        SceneManager.LoadScene(1);
     }
 }

@@ -10,19 +10,13 @@ public class CoinsManager : MonoBehaviour
 
     [SerializeField] private Text moneyTextF;
     [SerializeField] private Text moneyTextS;
-    [SerializeField] private StartOnClick startOnClick;
-    [SerializeField] private CoinSpawner coinSpawner;
 
     public static CoinsManager instance;
 
     async void Start()
     {
         instance = this;
-
-        startOnClick.player = GetComponent<Player>();
         
-        coinSpawner.Hero = gameObject;
-
         if (await DataBase.instance.LoadDataCheck("shop", "equip", "boosts", "flyCoinsToAdd") == false)
         {
             DataBase.instance.SaveData(1, "shop", "equip", "boosts", "flyCoinsToAdd");

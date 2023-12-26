@@ -1690,7 +1690,7 @@ RectTransform:
   m_GameObject: {fileID: 272357420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.041067, y: 1.041067, z: 1.041067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434869319}
   m_Father: {fileID: 783217492}
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myFX: {fileID: 703769600}
-  clickFX: {fileID: 8300000, guid: ac5ffa49e676ddd428375d6cd6b54edd, type: 3}
+  clickFX: {fileID: 8300000, guid: 3c81522a1b622364b88a9ff463d3a8d8, type: 3}
 --- !u!114 &272357423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9790,7 +9790,7 @@ RectTransform:
   m_GameObject: {fileID: 1756679317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.041067, y: 1.041067, z: 1.041067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 684527197}
   m_Father: {fileID: 783217492}

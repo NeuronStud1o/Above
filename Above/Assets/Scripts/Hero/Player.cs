@@ -27,10 +27,14 @@ public class Player : MonoBehaviour
     private CameraFollow cameraFollow;
     private int speedDirection = -1;
     private float speed = 0;
-    private bool isCanMove = true;
+
+    public bool isCanMove = false;
 
     async void Start()
     {
+        StartOnClick.instance.player = this;
+        CoinSpawner.instance.hero = gameObject;
+
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -180,6 +184,6 @@ public class Player : MonoBehaviour
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
         deathPanel.SetActive(true);
-        LosePanel.instance.lastRunScore = int.Parse(Score.instance.scoreText.text);
+        LosePanel.instance.Death(int.Parse(Score.instance.scoreText.text));
     }
 }

@@ -1861,7 +1861,6 @@ GameObject:
   - component: {fileID: 340858921}
   - component: {fileID: 340858929}
   - component: {fileID: 340858928}
-  - component: {fileID: 340858927}
   - component: {fileID: 340858926}
   - component: {fileID: 340858925}
   - component: {fileID: 340858924}
@@ -2137,7 +2136,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.68}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &340858927
+--- !u!114 &340858928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2146,35 +2145,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 340858920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &340858928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340858920}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &340858929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3001,6 +2983,8 @@ GameObject:
   - component: {fileID: 519420036}
   - component: {fileID: 519420037}
   - component: {fileID: 519420038}
+  - component: {fileID: 519420039}
+  - component: {fileID: 519420040}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3108,7 +3092,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -3285,7 +3269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f389b7f884d84b74f9036a30b4f60280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 0}
   SFX:
   - {fileID: 618725375}
   - {fileID: 904065980}
@@ -3302,6 +3285,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerGameObject: {fileID: 276966916}
+--- !u!114 &519420039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsF: 0
+  coinsS: 0
+  moneyTextF: {fileID: 1481135744795253717}
+  moneyTextS: {fileID: 1233508953}
+--- !u!114 &519420040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a55b09166cd3a4c9a89651859c7c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 495560990}
+  thisCamera: {fileID: 519420031}
 --- !u!1 &529116309
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,7 +4206,7 @@ MonoBehaviour:
   SuperCoin: {fileID: 9051278508936243295, guid: 9dd59902741ef3340ae7709326d8aaf1, type: 3}
   LineSpawnFlyCoin: {fileID: 893738308}
   LineSpawnSuperCoin: {fileID: 365866872}
-  Hero: {fileID: 0}
+  hero: {fileID: 0}
 --- !u!1 &687071540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4462,7 +4475,6 @@ GameObject:
   - component: {fileID: 767015164}
   - component: {fileID: 767015172}
   - component: {fileID: 767015171}
-  - component: {fileID: 767015170}
   - component: {fileID: 767015169}
   - component: {fileID: 767015168}
   - component: {fileID: 767015167}
@@ -4738,7 +4750,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.47}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &767015170
+--- !u!114 &767015171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4747,35 +4759,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 767015163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &767015171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767015163}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &767015172
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5014,7 +5009,6 @@ GameObject:
   - component: {fileID: 821722117}
   - component: {fileID: 821722125}
   - component: {fileID: 821722124}
-  - component: {fileID: 821722123}
   - component: {fileID: 821722122}
   - component: {fileID: 821722121}
   - component: {fileID: 821722120}
@@ -5290,7 +5284,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.37}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &821722123
+--- !u!114 &821722124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5299,35 +5293,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 821722116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &821722124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821722116}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &821722125
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6048,7 +6025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &909937249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6143,7 +6120,6 @@ GameObject:
   - component: {fileID: 920682196}
   - component: {fileID: 920682204}
   - component: {fileID: 920682203}
-  - component: {fileID: 920682202}
   - component: {fileID: 920682201}
   - component: {fileID: 920682200}
   - component: {fileID: 920682199}
@@ -6419,7 +6395,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &920682202
+--- !u!114 &920682203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6428,35 +6404,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 920682195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &920682203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920682195}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &920682204
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7307,7 +7266,6 @@ GameObject:
   - component: {fileID: 1039948080}
   - component: {fileID: 1039948088}
   - component: {fileID: 1039948087}
-  - component: {fileID: 1039948086}
   - component: {fileID: 1039948085}
   - component: {fileID: 1039948084}
   - component: {fileID: 1039948083}
@@ -7583,7 +7541,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.22}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &1039948086
+--- !u!114 &1039948087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7592,35 +7550,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1039948079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &1039948087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039948079}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &1039948088
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7758,7 +7699,6 @@ GameObject:
   - component: {fileID: 1055376971}
   - component: {fileID: 1055376979}
   - component: {fileID: 1055376978}
-  - component: {fileID: 1055376977}
   - component: {fileID: 1055376976}
   - component: {fileID: 1055376975}
   - component: {fileID: 1055376974}
@@ -8034,7 +7974,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.37}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &1055376977
+--- !u!114 &1055376978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8043,35 +7983,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1055376970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &1055376978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055376970}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &1055376979
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8900,6 +8823,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21812f6ef1afe2b48b11e82343c916ac, type: 3}
+--- !u!114 &1233508953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1481135743664877130, guid: 21812f6ef1afe2b48b11e82343c916ac, type: 3}
+  m_PrefabInstance: {fileID: 1233508952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1282955938
 GameObject:
   m_ObjectHideFlags: 0
@@ -8911,7 +8845,6 @@ GameObject:
   - component: {fileID: 1282955939}
   - component: {fileID: 1282955947}
   - component: {fileID: 1282955946}
-  - component: {fileID: 1282955945}
   - component: {fileID: 1282955944}
   - component: {fileID: 1282955943}
   - component: {fileID: 1282955942}
@@ -9187,7 +9120,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.41}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &1282955945
+--- !u!114 &1282955946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9196,35 +9129,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1282955938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &1282955946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282955938}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &1282955947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11045,7 +10961,6 @@ GameObject:
   - component: {fileID: 1653532796}
   - component: {fileID: 1653532804}
   - component: {fileID: 1653532803}
-  - component: {fileID: 1653532802}
   - component: {fileID: 1653532801}
   - component: {fileID: 1653532800}
   - component: {fileID: 1653532799}
@@ -11321,7 +11236,7 @@ CircleCollider2D:
   m_Offset: {x: -1.2, y: -1.36}
   serializedVersion: 2
   m_Radius: 1.3960917
---- !u!114 &1653532802
+--- !u!114 &1653532803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11330,35 +11245,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1653532795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &1653532803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653532795}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &1653532804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12109,7 +12007,6 @@ GameObject:
   - component: {fileID: 1801404982}
   - component: {fileID: 1801404981}
   - component: {fileID: 1801404980}
-  - component: {fileID: 1801404979}
   - component: {fileID: 1801404978}
   - component: {fileID: 1801404977}
   - component: {fileID: 1801404976}
@@ -12274,7 +12171,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 1.6029785
---- !u!114 &1801404979
+--- !u!114 &1801404980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12283,35 +12180,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1801404974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2068605c0d9654a9b008a4abcdd927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinsF: 0
-  coinsS: 0
-  moneyTextF: {fileID: 0}
-  moneyTextS: {fileID: 0}
-  startOnClick: {fileID: 1942106997}
-  coinSpawner: {fileID: 672559910}
---- !u!114 &1801404980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801404974}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c421bd43beefd9f44a0bb537232fa138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpClip: {fileID: 8300000, guid: 2a237e4aaabd53d439cb9f2a3c5e7998, type: 3}
-  brokenShield: {fileID: 0}
+  brokenShield: {fileID: 8300000, guid: 040bf6ccc84aebd45bf0f8c15dfd5dc5, type: 3}
   death: {fileID: 8300000, guid: 9d68c255262d20544890f1695e3d95c6, type: 3}
-  getCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
-  canvasInGame: {fileID: 0}
+  getCoin: {fileID: 8300000, guid: 8ec862f9c05d6fa41a6e33bcf15966c3, type: 3}
+  deathPanel: {fileID: 618725369}
+  canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  isCanMove: 0
 --- !u!212 &1801404981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14508,7 +14388,6 @@ GameObject:
   - component: {fileID: 2130088825}
   - component: {fileID: 2130088827}
   - component: {fileID: 2130088826}
-  - component: {fileID: 2130088828}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -14579,22 +14458,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130088824}
   m_CullTransparentMesh: 1
---- !u!114 &2130088828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130088824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a55b09166cd3a4c9a89651859c7c2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 495560990}
-  thisCamera: {fileID: 519420031}
-  panel: {fileID: 0}
-  lastRunScore: 0
 --- !u!1 &2144849621
 GameObject:
   m_ObjectHideFlags: 0
@@ -14999,6 +14862,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21812f6ef1afe2b48b11e82343c916ac, type: 3}
+--- !u!114 &1481135744795253717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1481135743664877130, guid: 21812f6ef1afe2b48b11e82343c916ac, type: 3}
+  m_PrefabInstance: {fileID: 1481135744795253716}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1627419544913170039
 PrefabInstance:
   m_ObjectHideFlags: 0
