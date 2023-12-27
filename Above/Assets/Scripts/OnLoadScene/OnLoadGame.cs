@@ -10,10 +10,13 @@ public class OnLoadGame : MonoBehaviour
     public List<Task> scriptsList = new List<Task>();
     [SerializeField] private SelectCharacterInGame selectCharacter;
 
-    private async void Start()
+    void Awake()
     {
         instance = this;
+    }
 
+    private async void Start()
+    {
         await Task.Delay(1000);
 
         await StartFunc();
