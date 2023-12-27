@@ -59,13 +59,16 @@ public class EXPManager : MonoBehaviour
     {
         exp = await DataBase.instance.LoadDataInt("menu", "levelManager", "exp");
         level = await DataBase.instance.LoadDataInt("menu", "levelManager", "level");
+
+        print (exp + " is exp");
+        print (level + " is level");
     }
 
     private void SetValues()
     {
         foreach (LevelValue valueLevel in keyFrame)
         {
-            if (valueLevel.Level > exp)
+            if (valueLevel.Level > level)
             {
                 countToNextLevelText.text = exp + " / " +  valueLevel.CountToNextLevel;
                 levelText.text = level + "";

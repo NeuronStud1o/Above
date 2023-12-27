@@ -90,6 +90,7 @@ public class DataBuySystem : MonoBehaviour
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsF -= price;
+                CoinsManagerInMainMenu.instance.UpdateUI();
                 DataBase.instance.SaveData(CoinsManagerInMainMenu.instance.coinsF, "menu", "coins", "flyCoins");
             }
         }
@@ -113,6 +114,7 @@ public class DataBuySystem : MonoBehaviour
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsS -= price;
+                CoinsManagerInMainMenu.instance.UpdateUI();
                 DataBase.instance.SaveData(CoinsManagerInMainMenu.instance.coinsS, "menu", "coins", "superCoins");
             }
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectCharacterInGame : MonoBehaviour
@@ -8,7 +9,7 @@ public class SelectCharacterInGame : MonoBehaviour
 
     [SerializeField] private GameObject[] AllCharacters;
 
-    async void Start()
+    public async Task StartActivity()
     {
         if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentCharacter") == false)
         {

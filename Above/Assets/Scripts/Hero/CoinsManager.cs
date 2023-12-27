@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,12 @@ public class CoinsManager : MonoBehaviour
 
     public static CoinsManager instance;
 
-    async void Start()
+    void Start()
+    {
+        OnLoadGame.instance.scriptsList.Add(StartActivity());
+    }
+
+    public async Task StartActivity()
     {
         instance = this;
         

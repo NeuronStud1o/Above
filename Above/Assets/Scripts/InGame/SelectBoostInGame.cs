@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectBoostInGame : MonoBehaviour
@@ -12,7 +13,12 @@ public class SelectBoostInGame : MonoBehaviour
     private int i = 0;
     private int currentBoost;
 
-    private async void Start()
+    void Start()
+    {
+        OnLoadGame.instance.scriptsList.Add(StartActivity());
+    }
+
+    public async Task StartActivity()
     {
         currentBoost = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
 
