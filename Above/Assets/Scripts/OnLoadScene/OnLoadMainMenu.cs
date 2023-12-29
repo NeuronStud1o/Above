@@ -9,10 +9,13 @@ public class OnLoadMainMenu : MonoBehaviour
 
     public List<Task> scriptsList = new List<Task>();
 
-    private async void Start()
+    void Awake()
     {
         instance = this;
+    }
 
+    private async void Start()
+    {
         await Task.Delay(1000);
 
         await StartFunc();
