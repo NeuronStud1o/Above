@@ -11,6 +11,7 @@ public class FirebaseAuthManager : MonoBehaviour
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser user;
+    public GameObject storage;
 
     [Space]
     [Header("Login")]
@@ -350,23 +351,25 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    public async void OpenGameScene()
+    public /*async*/ void OpenGameScene()
     {
         DataBase.instance.SetActiveLoadingScreen(true);
 
-        bool dataBaseTutorial = await DataBase.instance.LoadDataCheck("boolean", "tutorial");
+        //bool dataBaseTutorial = await DataBase.instance.LoadDataCheck("boolean", "tutorial");
 
-        if (dataBaseTutorial == false)
-        {
-            DataBase.instance.SaveData("done", "boolean", "tutorial");
-            DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
-            DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
+        storage.SetActive(true);
 
-            SceneManager.LoadSceneAsync("Tutorial");
-        }
-        else
-        {
-            SceneManager.LoadSceneAsync("MainMenu");
-        }
+        //f (dataBaseTutorial == false)
+        //{
+            //DataBase.instance.SaveData("done", "boolean", "tutorial");
+            //DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
+            //DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
+
+            //SceneManager.LoadSceneAsync("Tutorial");
+        //}
+        //else
+        //{
+            //SceneManager.LoadSceneAsync("MainMenu");
+        //}
     }
 }

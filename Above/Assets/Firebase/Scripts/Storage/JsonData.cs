@@ -1,0 +1,72 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class JsonData
+{
+    public JsonData()
+    {
+        boolean = new Boolean();
+        userData = new UserData();
+        shop = new Shop();
+        currentShop = new CurrentShop();
+        audioSettings = new AudioSettings();
+        otherSettings = new OtherSettings();
+    }
+
+    public Boolean boolean;
+    public UserData userData;
+    public Shop shop;
+    public CurrentShop currentShop;
+    public AudioSettings audioSettings;
+    public OtherSettings otherSettings;
+
+    [System.Serializable]
+    public struct Boolean
+    {
+        public bool isTutorial;
+    }
+
+    [System.Serializable]
+    public struct UserData
+    {
+        public string userName;
+        public string userEmail;
+        public int userIcon;
+    }
+
+    public struct Shop
+    {
+        public List<bool> skins;
+        public List<bool> bgs;
+        public List<bool> boosts;
+    }
+
+    [System.Serializable]
+    public struct CurrentShop
+    {
+        public int currentBg;
+        public int currentSkin;
+        public int currentBoost;
+    }
+
+    [System.Serializable]
+    public struct AudioSettings
+    {
+        public float musicMainMenu;
+        public float sfxMainMenu;
+        public float musicGame;
+        public float sfxGame;
+    }
+
+    [System.Serializable]
+    public struct OtherSettings
+    {
+        public bool showLevelRanks;
+        public bool autoSave;
+        public bool particles;
+        public bool showSelectedBoostInGame;
+        public bool cameraShake;
+        public bool vibration;
+    }
+}
