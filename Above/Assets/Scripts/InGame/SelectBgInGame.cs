@@ -9,13 +9,8 @@ public class SelectBgInGame : MonoBehaviour
 
     [SerializeField] private GameObject[] AllBg;
     [SerializeField] private GameObject[] AllRailings;
-
-    void Start()
-    {
-        OnLoadGame.instance.scriptsList.Add(StartActivity());
-    }
-
-    public async Task StartActivity()
+    
+    public async Task Start()
     {
         i = await DataBase.instance.LoadDataInt("shop", "equip", "currentBg");
 

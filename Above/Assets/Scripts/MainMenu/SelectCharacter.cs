@@ -13,12 +13,7 @@ public class SelectCharacter : MonoBehaviour
     [SerializeField] private GameObject[] EquipButtons;
     [SerializeField] private GameObject[] EquipedButtons;
 
-    void Start()
-    {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    private async Task StartActivity()
+    private async Task Start()
     {
         if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentCharacter") == false)
         {

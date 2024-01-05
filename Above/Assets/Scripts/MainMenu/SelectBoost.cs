@@ -17,12 +17,7 @@ public class SelectBoost : MonoBehaviour
     [SerializeField] private Color shieldColor;
     [SerializeField] private Color standartColor;
 
-    void Start()
-    {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    private async Task StartActivity()
+    private async Task Start()
     {
         if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentBoost") == false)
         {

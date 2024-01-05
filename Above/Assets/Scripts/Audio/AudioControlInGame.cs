@@ -8,13 +8,8 @@ public class AudioControlInGame : MonoBehaviour
     [SerializeField] private AudioSource[] SFX;
 
     private AudioSource audioSource;
-
-    void Start()
-    {
-        OnLoadGame.instance.scriptsList.Add(StartActivity());
-    }
-
-    public async Task StartActivity()
+    
+    public async Task Start()
     {
         audioSource = GetComponent<AudioSource>();
         

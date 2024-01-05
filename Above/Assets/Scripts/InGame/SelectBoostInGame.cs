@@ -13,12 +13,7 @@ public class SelectBoostInGame : MonoBehaviour
     private int i = 0;
     private int currentBoost;
 
-    void Start()
-    {
-        OnLoadGame.instance.scriptsList.Add(StartActivity());
-    }
-
-    public async Task StartActivity()
+    public async Task Start()
     {
         currentBoost = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
 

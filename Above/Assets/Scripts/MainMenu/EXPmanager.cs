@@ -28,13 +28,8 @@ public class EXPManager : MonoBehaviour
 
     private int exp;
     private int level;
-
-    void Start()
-    {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    private async Task StartActivity()
+    
+    private async Task Start()
     {
         if (await DataBase.instance.LoadDataCheck("game", "recordScore") == false)
         {

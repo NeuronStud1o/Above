@@ -21,13 +21,8 @@ public class AccountManagerMainMenu : MonoBehaviour
     [SerializeField] private Image profileImage;
 
     [SerializeField] private List<Icons> icons = new List<Icons>();
-
-    void Start()
-    {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    private async Task StartActivity()
+    
+    private async Task Start()
     {
         userName.text = UserData.instance.User.DisplayName;
 

@@ -10,12 +10,7 @@ public class AudioControl : MonoBehaviour
     [SerializeField] private AudioSource musicMainMenu;
     [SerializeField] private AudioSource[] SFX;
 
-    private void Start()
-    {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    public async Task StartActivity()
+    public async Task Start()
     {
         bool isAudioSettings = await DataBase.instance.LoadDataCheck("boolean", "ftAudio");
 

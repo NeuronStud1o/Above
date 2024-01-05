@@ -17,15 +17,10 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI SuperCoinsInShopText;
     [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
 
-    void Start()
+    private async Task Start()
     {
         instance = this;
 
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    private async Task StartActivity()
-    {
         if (await DataBase.instance.LoadDataCheck("menu", "coins", "flyCoins") == false)
         {
             DataBase.instance.SaveData(0, "menu", "coins", "flyCoins");

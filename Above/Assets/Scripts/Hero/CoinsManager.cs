@@ -14,12 +14,7 @@ public class CoinsManager : MonoBehaviour
 
     public static CoinsManager instance;
 
-    void Start()
-    {
-        OnLoadGame.instance.scriptsList.Add(StartActivity());
-    }
-
-    public async Task StartActivity()
+    public async Task Start()
     {
         instance = this;
         
