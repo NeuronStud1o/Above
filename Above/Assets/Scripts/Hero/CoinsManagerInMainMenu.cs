@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Threading.Tasks;
 using System;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
@@ -17,31 +16,12 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI SuperCoinsInShopText;
     [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
 
-    private async Task Start()
+    private void Start()
     {
         instance = this;
 
-        if (await DataBase.instance.LoadDataCheck("menu", "coins", "flyCoins") == false)
-        {
-            DataBase.instance.SaveData(0, "menu", "coins", "flyCoins");
-            coinsF = 0;
-
-            UpdateUI();
-
-            return;
-        }
-        if (await DataBase.instance.LoadDataCheck("menu", "coins", "superCoins") == false)
-        {
-            DataBase.instance.SaveData(0, "menu", "coins", "superCoins");
-            coinsS = 0;
-
-            UpdateUI();
-
-            return;
-        }
-
-        coinsF = await DataBase.instance.LoadDataInt("menu", "coins", "flyCoins");
-        coinsS = await DataBase.instance.LoadDataInt("menu", "coins", "superCoins");
+        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
+        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
 
         UpdateUI();
     }

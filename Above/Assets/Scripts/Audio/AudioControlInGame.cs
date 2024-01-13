@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class AudioControlInGame : MonoBehaviour
@@ -9,13 +8,13 @@ public class AudioControlInGame : MonoBehaviour
 
     private AudioSource audioSource;
     
-    public async Task Start()
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
         
-        audioSource.volume = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicGameSA");
+        audioSource.volume = JsonStorage.instance.jsonData.audioSettings.musicGame;
 
-        float sfxVolume = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
+        float sfxVolume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
 
         for (int i = 0; i < SFX.Length; i++)
         {
@@ -28,6 +27,7 @@ public class AudioControlInGame : MonoBehaviour
     private IEnumerator GameMusicOn()
     {
         yield return new WaitForSeconds(0.5f);
+
         audioSource.enabled = true;
     }
 }

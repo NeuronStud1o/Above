@@ -25,6 +25,7 @@ public class JsonData
     public struct Boolean
     {
         public bool isTutorial;
+        public bool isFirstTimeAudio;
     }
 
     [System.Serializable]
@@ -32,14 +33,21 @@ public class JsonData
     {
         public string userName;
         public string userEmail;
-        public int userIcon;
+        public string userIcon;
+
+        public int exp;
+        public int level;
+        public int record;
+        public int coinsF;
+        public int coinsS;
     }
 
+    [System.Serializable]
     public struct Shop
     {
-        public List<bool> skins;
-        public List<bool> bgs;
-        public List<bool> boosts;
+        public List<KeyForm> skins;
+        public List<KeyForm> bgs;
+        public List<KeyForm> boosts;
     }
 
     [System.Serializable]

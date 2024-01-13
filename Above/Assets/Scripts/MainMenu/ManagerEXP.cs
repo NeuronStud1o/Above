@@ -1,10 +1,9 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 [Serializable]
 public struct LevelValue
@@ -14,7 +13,7 @@ public struct LevelValue
     public string Title;
 }
 
-public class EXPManager : MonoBehaviour
+public class ManagerEXP : MonoBehaviour
 {
     [SerializeField] private Slider expSlider;
     [SerializeField] private TextMeshProUGUI countToNextLevelText;
@@ -29,31 +28,20 @@ public class EXPManager : MonoBehaviour
     private int exp;
     private int level;
     
-    private async Task Start()
+    void Start()
     {
-        if (await DataBase.instance.LoadDataCheck("game", "recordScore") == false)
-        {
-            await DataBase.instance.SaveDataAsync(0, "game", "recordScore");
-        }
+        hightScore.text = "" + JsonStorage.instance.jsonData.userData.record;
 
-        hightScore.text = "" + await DataBase.instance.LoadDataInt("game", "recordScore");
-
-        if (await DataBase.instance.LoadDataCheck("menu", "levelManager", "exp") == false)
-        {
-            DataBase.instance.SaveData(0, "menu", "levelManager", "exp");
-            DataBase.instance.SaveData(1, "menu", "levelManager", "level");
-        }
-
-        await GetValues();
+        GetValues();
 
         SetValues();
         CheckNextLevel();
     }
 
-    public async Task GetValues()
+    public void GetValues()
     {
-        exp = await DataBase.instance.LoadDataInt("menu", "levelManager", "exp");
-        level = await DataBase.instance.LoadDataInt("menu", "levelManager", "level");
+        exp = JsonStorage.instance.jsonData.userData.exp;
+        level = JsonStorage.instance.jsonData.userData.level;
 
         print (exp + " is exp");
         print (level + " is level");
@@ -84,8 +72,8 @@ public class EXPManager : MonoBehaviour
     {
         while (exp > countToNextLevel)
         {
-            DataBase.instance.SaveData(exp - countToNextLevel, "menu", "levelManager", "exp");
-            DataBase.instance.SaveData(level + 1, "menu", "levelManager", "level");
+            JsonStorage.instance.jsonData.userData.exp -= countToNextLevel;
+            JsonStorage.instance.jsonData.userData.level += level;
 
             SetValues();
         }

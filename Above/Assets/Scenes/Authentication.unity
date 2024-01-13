@@ -6850,9 +6850,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e094669238d07848ac4fe1a58bbcd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinsList: 0100000000000000
-  bgsList: 010000000000
-  boostsList: 01000000
+  jsonData:
+    boolean:
+      isTutorial: 0
+      isFirstTimeAudio: 0
+    userData:
+      userName: 
+      userEmail: 
+      userIcon: 
+      exp: 0
+      level: 0
+      record: 0
+      coinsF: 0
+      coinsS: 0
+    shop:
+      skins: []
+      bgs: []
+      boosts: []
+    currentShop:
+      currentBg: 0
+      currentSkin: 0
+      currentBoost: 0
+    audioSettings:
+      musicMainMenu: 0
+      sfxMainMenu: 0
+      musicGame: 0
+      sfxGame: 0
+    otherSettings:
+      showLevelRanks: 0
+      autoSave: 0
+      particles: 0
+      showSelectedBoostInGame: 0
+      cameraShake: 0
+      vibration: 0
+  startSkinsList:
+  - name: blackThrush
+    isPurchased: 1
+  - name: blackThrushFemale
+    isPurchased: 0
+  - name: pigeon
+    isPurchased: 0
+  - name: swallow
+    isPurchased: 0
+  - name: wheatearFemale
+    isPurchased: 0
+  - name: nightingaleFemale
+    isPurchased: 0
+  - name: whitePigeon
+    isPurchased: 0
+  - name: redCardinal
+    isPurchased: 0
+  - name: kiwi
+    isPurchased: 0
+  startBgsList:
+  - name: street
+    isPurchased: 1
+  - name: forest
+    isPurchased: 0
+  - name: cage
+    isPurchased: 0
+  - name: japan
+    isPurchased: 0
+  - name: desert
+    isPurchased: 0
+  - name: seaShip
+    isPurchased: 0
+  startBoostsList:
+  - name: none
+    isPurchased: 1
+  - name: doubleCoins
+    isPurchased: 0
+  - name: slowness
+    isPurchased: 0
+  - name: shield
+    isPurchased: 0
 --- !u!4 &1104713352
 Transform:
   m_ObjectHideFlags: 0

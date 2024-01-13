@@ -351,25 +351,38 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    public /*async*/ void OpenGameScene()
+    public void OpenGameScene()
+    {
+        StartCoroutine(StartGame());
+    }
+
+    IEnumerator StartGame()
     {
         DataBase.instance.SetActiveLoadingScreen(true);
 
-        //bool dataBaseTutorial = await DataBase.instance.LoadDataCheck("boolean", "tutorial");
-
         storage.SetActive(true);
 
-        //f (dataBaseTutorial == false)
-        //{
-            //DataBase.instance.SaveData("done", "boolean", "tutorial");
-            //DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
-            //DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
+        yield return new WaitForSeconds(1f);
 
-            //SceneManager.LoadSceneAsync("Tutorial");
-        //}
-        //else
-        //{
-            //SceneManager.LoadSceneAsync("MainMenu");
-        //}
+        bool tutorial = JsonStorage.instance.jsonData.boolean.isTutorial;
+
+        if (tutorial == false)
+        {
+            JsonStorage.instance.jsonData.boolean.isTutorial = true;
+            JsonStorage.instance.SaveData();
+
+            DataBase.instance.SetActiveLoadingScreen(false);
+
+            yield return new WaitForSeconds(0.5f);
+
+            SceneManager.LoadSceneAsync("Tutorial");
+
+        }
+        else
+        {
+            DataBase.instance.SetActiveLoadingScreen(false);
+            
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
     }
 }

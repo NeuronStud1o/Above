@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Threading.Tasks;
 using UnityEngine.UI;
 using System;
 
@@ -22,16 +21,11 @@ public class AccountManagerMainMenu : MonoBehaviour
 
     [SerializeField] private List<Icons> icons = new List<Icons>();
     
-    private async Task Start()
+    void Start()
     {
         userName.text = UserData.instance.User.DisplayName;
 
-        if (await DataBase.instance.LoadDataCheck("userSettings", "icon") == false)
-        {
-            await DataBase.instance.SaveDataAsync("standart", "userSettings", "icon");
-        }
-
-        equipedIcon = await DataBase.instance.LoadDataString("userSettings", "icon");
+        equipedIcon = JsonStorage.instance.jsonData.userData.userIcon;
 
         print(equipedIcon);
 

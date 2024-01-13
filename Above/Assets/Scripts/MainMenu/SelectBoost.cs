@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectBoost : MonoBehaviour
@@ -17,70 +16,17 @@ public class SelectBoost : MonoBehaviour
     [SerializeField] private Color shieldColor;
     [SerializeField] private Color standartColor;
 
-    private async Task Start()
+    void Start()
     {
-        if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentBoost") == false)
-        {
-            await DataBase.instance.SaveDataAsync(0, "shop", "equip", "currentBoost");
-        }
-
-        currentBoost = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
+        currentBoost = JsonStorage.instance.jsonData.currentShop.currentBoost;
 
         EquipedButtons[currentBoost].SetActive(true);
         EquipButtons[currentBoost].SetActive(false);
 
         AllBoosts[currentBoost].SetActive(true);
-
-        Check();
     }
 
-    private void Check()
-    {
-        if (currentBoost == 1)
-        {
-            DataBase.instance.SaveData(2, "shop", "equip", "boosts", "flyCoinsToAdd");
-            DataBase.instance.SaveData(0, "player", "hp");
-            DataBase.instance.SaveData(2.2f, "player", "speed");
-        }
-        else
-        {
-            DataBase.instance.SaveData(1, "shop", "equip", "boosts", "flyCoinsToAdd");
-        }
-
-        if (currentBoost == 2)
-        {
-            DataBase.instance.SaveData(2, "shop", "equip", "boosts", "flyCoinsToAdd");
-            DataBase.instance.SaveData(0, "player", "hp");
-            DataBase.instance.SaveData(1.5f, "player", "speed");
-        }
-        else
-        {
-            DataBase.instance.SaveData(2.2f, "player", "speed");
-        }
-
-        if (currentBoost == 3)
-        {
-            DataBase.instance.SaveData(2, "shop", "equip", "boosts", "flyCoinsToAdd");
-            DataBase.instance.SaveData(1, "player", "hp");
-            DataBase.instance.SaveData(2.2f, "player", "speed");
-
-            for (int i = 0; i < Heroes.Length; i++)
-            {
-                Heroes[i].GetComponent<SpriteRenderer>().color = shieldColor;
-            }
-        }
-        else
-        {
-            DataBase.instance.SaveData(0, "player", "hp");
-            
-            for (int i = 0; i < Heroes.Length; i++)
-            {
-                Heroes[i].GetComponent<SpriteRenderer>().color = standartColor;
-            }
-        }
-    }
-
-    public void Change(int thisCharacter)
+    public void Change(int thisBoost)
     {
         for (int i = 0; i < AllBoosts.Length; i++)
         {
@@ -89,13 +35,11 @@ public class SelectBoost : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        DataBase.instance.SaveData(thisCharacter, "shop", "equip", "currentBoost");
+        JsonStorage.instance.jsonData.currentShop.currentBoost = thisBoost;
 
-        AllBoosts[thisCharacter].SetActive(true);
+        AllBoosts[thisBoost].SetActive(true);
 
-        EquipedButtons[thisCharacter].SetActive(true);
-        EquipButtons[thisCharacter].SetActive(false);
-
-        Check();
+        EquipedButtons[thisBoost].SetActive(true);
+        EquipButtons[thisBoost].SetActive(false);
     }
 }

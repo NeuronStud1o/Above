@@ -4,17 +4,24 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+[Serializable]
+public struct KeyForm
+{
+    public string name;
+    public bool isPurchased;
+}
+
 public class JsonStorage : MonoBehaviour
 {
     public static JsonStorage instance;
 
     [Header ("## Json file :")]
-    private JsonData jsonData;
+    public JsonData jsonData;
 
     [Header ("## Initial store settings :")]
-    [SerializeField] private List<bool> skinsList = new List<bool>();
-    [SerializeField] private List<bool> bgsList = new List<bool>();
-    [SerializeField] private List<bool> boostsList = new List<bool>();
+    [SerializeField] private List<KeyForm> startSkinsList = new List<KeyForm>();
+    [SerializeField] private List<KeyForm> startBgsList = new List<KeyForm>();
+    [SerializeField] private List<KeyForm> startBoostsList = new List<KeyForm>();
 
     void Awake()
     {
@@ -22,7 +29,7 @@ public class JsonStorage : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    async void Start()
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
@@ -30,54 +37,73 @@ public class JsonStorage : MonoBehaviour
 
         if (!File.Exists(filePath))
         {
-            jsonData = new JsonData
+            if (await StorageData.instance.CheckIfJsonDataExists() == false)
             {
-                boolean = new JsonData.Boolean
+                jsonData = new JsonData
                 {
-                    isTutorial = false
-                },
+                    boolean = new JsonData.Boolean
+                    {
+                        isTutorial = false
+                    },
 
-                userData = new JsonData.UserData
-                {
-                    userName = UserData.instance.User.DisplayName,
-                    userEmail = UserData.instance.User.Email,
-                    userIcon = 0
-                },
+                    userData = new JsonData.UserData
+                    {
+                        userName = UserData.instance.User.DisplayName,
+                        userEmail = UserData.instance.User.Email,
+                        userIcon = "blackThrush",
 
-                shop = new JsonData.Shop
-                {
-                    skins = skinsList,
-                    bgs = bgsList,
-                    boosts = boostsList
-                },
+                        exp = 0,
+                        level = 1,
+                        coinsS = 0,
+                        coinsF = 0
+                    },
 
-                currentShop = new JsonData.CurrentShop
-                {
-                    currentSkin = 0,
-                    currentBg = 0,
-                    currentBoost = 0
-                },
+                    shop = new JsonData.Shop
+                    {
+                        skins = startSkinsList,
+                        bgs = startBgsList,
+                        boosts = startBoostsList
+                    },
 
-                audioSettings = new JsonData.AudioSettings
-                {
-                    musicMainMenu = 1,
-                    musicGame = 1,
-                    sfxMainMenu = 1,
-                    sfxGame = 1
-                },
+                    currentShop = new JsonData.CurrentShop
+                    {
+                        currentSkin = 0,
+                        currentBg = 0,
+                        currentBoost = 0
+                    },
 
-                otherSettings = new JsonData.OtherSettings
-                {
-                    showLevelRanks = true,
-                    autoSave = false,
-                    particles = true,
-                    showSelectedBoostInGame = true,
-                    cameraShake = true,
-                    vibration = true
-                }
-            };
+                    audioSettings = new JsonData.AudioSettings
+                    {
+                        musicMainMenu = 1,
+                        musicGame = 1,
+                        sfxMainMenu = 1,
+                        sfxGame = 1
+                    },
 
-            SaveData();
+                    otherSettings = new JsonData.OtherSettings
+                    {
+                        showLevelRanks = true,
+                        autoSave = false,
+                        particles = true,
+                        showSelectedBoostInGame = true,
+                        cameraShake = true,
+                        vibration = true
+                    }
+                };
+
+                Debug.Log("File is created in storage");
+
+                SaveData();
+
+                StorageData.instance.SaveJsonData();
+            }
+            else
+            {
+                await StorageData.instance.LoadJsonData();
+                Debug.Log("File is received from storage");
+
+                SaveData();
+            }
         }
         else
         {

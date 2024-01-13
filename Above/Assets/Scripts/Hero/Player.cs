@@ -26,11 +26,14 @@ public class Player : MonoBehaviour
     private Animator anim;
     private CameraFollow cameraFollow;
     private int speedDirection = -1;
+    
     private float speed = 0;
+    private int hp = 0;
+    private int coinsToAdd = 1;
 
     public bool isCanMove = false;
 
-    async void Start()
+    void Start()
     {
         StartOnClick.instance.player = this;
         CoinSpawner.instance.hero = gameObject;
@@ -40,9 +43,11 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
-        audioSource.volume = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
-
-        speed = await DataBase.instance.LoadDataFloat("player", "speed");
+        audioSource.volume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
+        
+        hp = JsonStorage.instance.jsonData.currentShop.currentBoost == 3 ? 2 : 1;
+        speed = JsonStorage.instance.jsonData.currentShop.currentBoost == 2 ? 1.5f : 2.2f;
+        coinsToAdd = JsonStorage.instance.jsonData.currentShop.currentBoost == 1 ? 2 : 1;
 
         PauseController.instance.Hero = gameObject;
 
@@ -64,14 +69,14 @@ public class Player : MonoBehaviour
 
             if (collision.collider.CompareTag("Enemy"))
             {
-                if (await DataBase.instance.LoadDataInt("player", "hp") == 0)
+                if (hp == 0)
                 {
                     await Death();
                 }
-                else if (await DataBase.instance.LoadDataInt("player", "hp") == 1)
+                else if (hp == 1)
                 {
                     audioSource.PlayOneShot(brokenShield);
-                    DataBase.instance.SaveData(0, "player", "hp");
+                    hp = 0;
 
                     GetComponent<SpriteRenderer>().color = standartColor;
                 }
@@ -84,14 +89,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    private async void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "FlyCoin")
         {
             StartCoroutine(TouchCoin(collision.gameObject));
 
-            CoinsManager.instance.coinsF += await DataBase.instance.LoadDataInt("shop", "equip", "boosts", "flyCoinsToAdd");
-            DataBase.instance.SaveData(CoinsManager.instance.coinsF, "menu", "coins", "flyCoins");
+            CoinsManager.instance.coinsF += coinsToAdd;
+            JsonStorage.instance.jsonData.userData.coinsF = CoinsManager.instance.coinsF;
+            JsonStorage.instance.SaveData();
 
             audioSource.PlayOneShot(getCoin);
 
@@ -103,7 +109,8 @@ public class Player : MonoBehaviour
             StartCoroutine(TouchCoin(collision.gameObject));
 
             CoinsManager.instance.coinsS++;
-            DataBase.instance.SaveData(CoinsManager.instance.coinsS, "menu", "coins", "superCoins");
+            JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
+            JsonStorage.instance.SaveData();
             
             CoinsManager.instance.UpdateUI();
 

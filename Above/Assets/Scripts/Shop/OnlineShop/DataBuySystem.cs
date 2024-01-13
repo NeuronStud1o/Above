@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 enum Coin
@@ -22,48 +23,33 @@ public class DataBuySystem : MonoBehaviour
     [SerializeField] private int price;
     [SerializeField] private string purchaseName;
 
-    async void Start()
+    void Start()
     {
         if (purchaseType == Think.Skin)
         {
-            if (await DataBase.instance.LoadDataCheck("shop", "toBuy", "skins", purchaseName) == true)
+            bool i = JsonStorage.instance.jsonData.shop.skins.Exists(item => item.name == purchaseName);
+
+            if (i == true)
             {
-                if (await DataBase.instance.LoadDataBool("shop", "toBuy", "skins", purchaseName) == true)
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                DataBase.instance.SaveData(false, "shop", "toBuy", "skins", purchaseName);
+                gameObject.SetActive(false);
             }
         }
         if (purchaseType == Think.Bg)
         {
-            if (await DataBase.instance.LoadDataCheck("shop", "toBuy", "bgs", purchaseName) == true)
+            bool i = JsonStorage.instance.jsonData.shop.skins.Exists(item => item.name == purchaseName);
+
+            if (i == true)
             {
-                if (await DataBase.instance.LoadDataBool("shop", "toBuy", "bgs", purchaseName) == true)
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                DataBase.instance.SaveData(false, "shop", "toBuy", "bgs", purchaseName);
+                gameObject.SetActive(false);
             }
         }
         if (purchaseType == Think.Boost)
         {
-            if (await DataBase.instance.LoadDataCheck("shop", "toBuy", "boosts", purchaseName) == true)
+            bool i = JsonStorage.instance.jsonData.shop.skins.Exists(item => item.name == purchaseName);
+
+            if (i == true)
             {
-                if (await DataBase.instance.LoadDataBool("shop", "toBuy", "boosts", purchaseName) == true)
-                {
-                    gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                DataBase.instance.SaveData(false, "shop", "toBuy", "boosts", purchaseName);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -76,22 +62,38 @@ public class DataBuySystem : MonoBehaviour
             {
                 if (purchaseType == Think.Skin)
                 {
-                    DataBase.instance.SaveData(true, "shop", "toBuy", "skins", purchaseName);
+                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.skins.FirstOrDefault(item => item.name == purchaseName);
+
+                    if (purchaseItem.name != null)
+                    {
+                        purchaseItem.isPurchased = true;
+                    }
                 }
                 else if (purchaseType == Think.Bg)
                 {
-                    DataBase.instance.SaveData(true, "shop", "toBuy", "bgs", purchaseName);
+                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.bgs.FirstOrDefault(item => item.name == purchaseName);
+
+                    if (purchaseItem.name != null)
+                    {
+                        purchaseItem.isPurchased = true;
+                    }
                 }
                 else if (purchaseType == Think.Boost)
                 {
-                    DataBase.instance.SaveData(true, "shop", "toBuy", "boosts", purchaseName);
+                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.boosts.FirstOrDefault(item => item.name == purchaseName);
+
+                    if (purchaseItem.name != null)
+                    {
+                        purchaseItem.isPurchased = true;
+                    }
                 }
 
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsF -= price;
                 CoinsManagerInMainMenu.instance.UpdateUI();
-                DataBase.instance.SaveData(CoinsManagerInMainMenu.instance.coinsF, "menu", "coins", "flyCoins");
+                
+                JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
             }
         }
         else if (coinType == Coin.SuperCoins)
@@ -100,22 +102,38 @@ public class DataBuySystem : MonoBehaviour
             {
                 if (purchaseType == Think.Skin)
                 {
-                    DataBase.instance.SaveData(true, "shop", "toBuy", "skins", purchaseName);
+                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.skins.FirstOrDefault(item => item.name == purchaseName);
+
+                    if (purchaseItem.name != null)
+                    {
+                        purchaseItem.isPurchased = true;
+                    }
                 }
                 else if (purchaseType == Think.Bg)
                 {
-                    DataBase.instance.SaveData(true, "shop", "toBuy", "bgs", purchaseName);
+                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.bgs.FirstOrDefault(item => item.name == purchaseName);
+
+                    if (purchaseItem.name != null)
+                    {
+                        purchaseItem.isPurchased = true;
+                    }
                 }
                 else if (purchaseType == Think.Boost)
                 {
-                    DataBase.instance.SaveData(true, "shop", "toBuy", "boosts", purchaseName);
+                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.boosts.FirstOrDefault(item => item.name == purchaseName);
+
+                    if (purchaseItem.name != null)
+                    {
+                        purchaseItem.isPurchased = true;
+                    }
                 }
 
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsS -= price;
                 CoinsManagerInMainMenu.instance.UpdateUI();
-                DataBase.instance.SaveData(CoinsManagerInMainMenu.instance.coinsS, "menu", "coins", "superCoins");
+                
+                JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
             }
         }
     }
