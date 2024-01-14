@@ -2,13 +2,14 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class Reward : MonoBehaviour
 {
     [SerializeField] private float msToWait = 86400000f;
     [SerializeField] private Button RewardButton;
 
-    private Text Timer;
+    private TextMeshProUGUI Timer;
     private ulong lastOpen;
 
     public GameObject Done;
@@ -26,7 +27,7 @@ public class Reward : MonoBehaviour
         }
 
         lastOpen = ulong.Parse(PlayerPrefs.GetString("lastOpen"));
-        Timer = RewardButton.GetComponentInChildren<Text>();
+        Timer = RewardButton.GetComponentInChildren<TextMeshProUGUI>();
 
         if (!isReady())
         {
@@ -41,10 +42,13 @@ public class Reward : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         coinWindow.SetActive(false);
-        DataBase.instance.SaveData(CoinsManagerInMainMenu.instance.coinsF + 10, "menu", "coins", "flyCoins");
-        CoinsManagerInMainMenu.instance.coinsF += 10;
 
+        CoinsManagerInMainMenu.instance.coinsF += 10;
         CoinsManagerInMainMenu.instance.UpdateUI();
+
+        JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+
+        JsonStorage.instance.SaveData();
     }
   
     void Update()
@@ -59,7 +63,7 @@ public class Reward : MonoBehaviour
 
                 RewardButton.interactable = true;
 
-                Timer.text = "10   ";
+                Timer.text = "10  .";
 
                 return;
             }

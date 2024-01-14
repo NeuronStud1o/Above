@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class AudioControl : MonoBehaviour
 {
     [SerializeField] private Slider[] slider;
-    [SerializeField] private AudioSource musicMainMenu;
+    private AudioSource musicMainMenu;
     [SerializeField] private AudioSource[] SFX;
 
     void Start()
     {
+        musicMainMenu = DataBase.instance.gameObject.GetComponent<AudioSource>();
+        
         bool isAudioSettings = JsonStorage.instance.jsonData.boolean.isFirstTimeAudio;
 
         if (!isAudioSettings)

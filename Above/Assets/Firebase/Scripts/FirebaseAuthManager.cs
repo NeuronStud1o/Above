@@ -380,8 +380,6 @@ public class FirebaseAuthManager : MonoBehaviour
         }
         else
         {
-            DataBase.instance.SetActiveLoadingScreen(false);
-            
             SceneManager.LoadSceneAsync("MainMenu");
         }
     }

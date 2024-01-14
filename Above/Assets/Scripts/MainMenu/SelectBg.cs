@@ -22,6 +22,15 @@ public class SelectBg : MonoBehaviour
 
         AllBg[i].SetActive(true);
         AllRailings[i].SetActive(true);
+
+        StartCoroutine(StartGame());
+    }
+
+    private IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(1);
+
+        DataBase.instance.SetActiveLoadingScreen(false);
     }
 
     public void Change(int thisBg)
