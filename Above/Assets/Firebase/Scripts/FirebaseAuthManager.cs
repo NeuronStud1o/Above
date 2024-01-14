@@ -4,6 +4,7 @@ using Firebase;
 using Firebase.Auth;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -132,6 +133,7 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             auth.SignOut();
             UIManager.Instance.OpenLoginPanel();
+            StorageData.instance.DeleteJson();
         }
     }
 
@@ -351,18 +353,20 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    public void OpenGameScene()
+    public async void OpenGameScene()
     {
-        StartCoroutine(StartGame());
+        await StartGame();
     }
 
-    IEnumerator StartGame()
+    async Task StartGame()
     {
         DataBase.instance.SetActiveLoadingScreen(true);
 
         storage.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
+        await JsonStorage.instance.StartAction();
+
+        await Task.Delay(1000);
 
         bool tutorial = JsonStorage.instance.jsonData.boolean.isTutorial;
 
@@ -373,7 +377,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
             DataBase.instance.SetActiveLoadingScreen(false);
 
-            yield return new WaitForSeconds(0.5f);
+            await Task.Delay(500);
 
             SceneManager.LoadSceneAsync("Tutorial");
 

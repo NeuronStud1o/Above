@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Storage;
 using System.IO;
-using Firebase.Extensions;
 using System.Threading.Tasks;
+using System;
 
 public class StorageData : MonoBehaviour
 {
@@ -32,6 +32,28 @@ public class StorageData : MonoBehaviour
                 Debug.Log("File is saved");
             }
         });
+    }
+
+    public void DeleteJson()
+    {
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+        if (File.Exists(filePath))
+        {
+            try
+            {
+                File.Delete(filePath);
+                Console.WriteLine("File is deleted: " + filePath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Delete file exeption: " + e.Message);
+            }
+        }
+        else
+        {
+            Console.WriteLine("File is null: " + filePath);
+        }
     }
 
     public async Task LoadJsonData()

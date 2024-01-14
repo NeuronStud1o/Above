@@ -25,11 +25,6 @@ public class Localization : MonoBehaviour
         string language = "Fra";
         PlayerPrefs.SetString("Language", language);
     }
-    public void Cn()
-    {
-        string language = "Cn";
-        PlayerPrefs.SetString("Language", language);
-    }
     public void Es()
     {
         string language = "Es";

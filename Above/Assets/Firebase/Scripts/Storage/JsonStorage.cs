@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
@@ -29,7 +30,7 @@ public class JsonStorage : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    async void Start()
+    public async Task StartAction()
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
