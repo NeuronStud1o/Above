@@ -300,6 +300,9 @@ public class FirebaseAuthManager : MonoBehaviour
                     if (user.IsEmailVerified)
                     {
                         UIManager.Instance.OpenLoginPanel();
+                        DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
+                        DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
+                        DataBase.instance.SaveData("blackThrush", "userSettings", "icon");
                     }
                     else
                     {

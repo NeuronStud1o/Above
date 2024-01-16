@@ -11,9 +11,18 @@ public class SelectBgInGame : MonoBehaviour
     
     void Start()
     {
+        StartCoroutine(StartActivity());
+    }
+
+    IEnumerator StartActivity()
+    {
         i = JsonStorage.instance.jsonData.currentShop.currentBg;
 
         AllBg[i].SetActive(true);
         AllRailings[i].SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        DataBase.instance.SetActiveLoadingScreen(false);
     }
 }

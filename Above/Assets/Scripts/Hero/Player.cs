@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
         audioSource.volume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
         
-        hp = JsonStorage.instance.jsonData.currentShop.currentBoost == 3 ? 2 : 1;
+        hp = JsonStorage.instance.jsonData.currentShop.currentBoost == 3 ? 1 : 0;
         speed = JsonStorage.instance.jsonData.currentShop.currentBoost == 2 ? 1.5f : 2.2f;
         coinsToAdd = JsonStorage.instance.jsonData.currentShop.currentBoost == 1 ? 2 : 1;
 
@@ -97,6 +97,9 @@ public class Player : MonoBehaviour
 
             CoinsManager.instance.coinsF += coinsToAdd;
             JsonStorage.instance.jsonData.userData.coinsF = CoinsManager.instance.coinsF;
+
+            JsonStorage.instance.jsonData.userData.coinsFAllTime += coinsToAdd;
+
             JsonStorage.instance.SaveData();
 
             audioSource.PlayOneShot(getCoin);
@@ -110,11 +113,14 @@ public class Player : MonoBehaviour
 
             CoinsManager.instance.coinsS++;
             JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
+
+            JsonStorage.instance.jsonData.userData.coinsSAllTime++;
+
             JsonStorage.instance.SaveData();
             
-            CoinsManager.instance.UpdateUI();
-
             audioSource.PlayOneShot(getCoin);
+
+            CoinsManager.instance.UpdateUI();
         }
     }
 

@@ -15,13 +15,14 @@ public class LosePanel : MonoBehaviour
 
     public void Death(int lastRunScore)
     {
+        print (lastRunScore + "   12344");
         int gainedExp;
         int random;
         random = Random.Range(1, 4);
 
         if (random == 1)
         {
-            UnityInterstitialAd.Instace.ShowAd();
+            //UnityInterstitialAd.Instace.ShowAd();
         }
         
         int recordScore = JsonStorage.instance.jsonData.userData.record;
@@ -42,12 +43,8 @@ public class LosePanel : MonoBehaviour
             recordScore = lastRunScore;
             JsonStorage.instance.jsonData.userData.record = recordScore;
             JsonStorage.instance.SaveData();
-            
-            scoreText.text = recordScore.ToString();
         }
-        else
-        {
-            scoreText.text = recordScore.ToString();
-        }
+
+        scoreText.text = recordScore.ToString();
     }
 }

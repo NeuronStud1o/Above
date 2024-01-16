@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class JsonData
@@ -40,6 +39,9 @@ public class JsonData
         public int record;
         public int coinsF;
         public int coinsS;
+
+        public int coinsFAllTime;
+        public int coinsSAllTime;
     }
 
     [System.Serializable]

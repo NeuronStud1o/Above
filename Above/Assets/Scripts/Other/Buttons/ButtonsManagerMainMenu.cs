@@ -26,7 +26,7 @@ public class ButtonsManagerMainMenu : MonoBehaviour
     public void PlayGame()
     {
         playTransition.SetActive(true);
-        Camera.main.GetComponent<AudioSource>().enabled = false;
+        DataBase.instance.gameObject.GetComponent<AudioSource>().enabled = false;
         DataBase.instance.SetActiveLoadingScreen(true);
 
         StartCoroutine(LoadGameSceneAsync());

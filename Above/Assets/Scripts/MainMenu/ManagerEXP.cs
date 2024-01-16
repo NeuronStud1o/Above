@@ -73,7 +73,9 @@ public class ManagerEXP : MonoBehaviour
         while (exp > countToNextLevel)
         {
             JsonStorage.instance.jsonData.userData.exp -= countToNextLevel;
-            JsonStorage.instance.jsonData.userData.level += level;
+            JsonStorage.instance.jsonData.userData.level++;
+
+            JsonStorage.instance.SaveData();
 
             SetValues();
         }
