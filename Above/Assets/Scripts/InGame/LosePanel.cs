@@ -13,18 +13,19 @@ public class LosePanel : MonoBehaviour
         instance = this;
     }
 
-    public async void Death(int lastRunScore)
+    public void Death(int lastRunScore)
     {
+        print (lastRunScore + "   12344");
         int gainedExp;
         int random;
         random = Random.Range(1, 4);
 
         if (random == 1)
         {
-            UnityInterstitialAd.Instace.ShowAd();
+            //UnityInterstitialAd.Instace.ShowAd();
         }
         
-        int recordScore = await DataBase.instance.LoadDataInt("game", "recordScore");
+        int recordScore = JsonStorage.instance.jsonData.userData.record;
         gainedExp = lastRunScore / 14;
 
         if (gainedExp > 100)
@@ -32,18 +33,18 @@ public class LosePanel : MonoBehaviour
             gainedExp = 100;
         }
 
-        int doneExp = await DataBase.instance.LoadDataInt("menu", "levelManager", "exp") + gainedExp;
-        DataBase.instance.SaveData(doneExp, "menu", "levelManager", "exp");
+        int doneExp = JsonStorage.instance.jsonData.userData.exp + gainedExp;
+
+        JsonStorage.instance.jsonData.userData.exp = doneExp;
+        JsonStorage.instance.SaveData();
 
         if (lastRunScore > recordScore)
         {
             recordScore = lastRunScore;
-            DataBase.instance.SaveData(recordScore, "game", "recordScore");
-            scoreText.text = recordScore.ToString();
+            JsonStorage.instance.jsonData.userData.record = recordScore;
+            JsonStorage.instance.SaveData();
         }
-        else
-        {
-            scoreText.text = recordScore.ToString();
-        }
+
+        scoreText.text = recordScore.ToString();
     }
 }

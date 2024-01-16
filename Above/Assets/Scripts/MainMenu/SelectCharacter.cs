@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectCharacter : MonoBehaviour
@@ -15,17 +14,7 @@ public class SelectCharacter : MonoBehaviour
 
     void Start()
     {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    private async Task StartActivity()
-    {
-        if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentCharacter") == false)
-        {
-            await DataBase.instance.SaveDataAsync(0, "shop", "equip", "currentCharacter");
-        }
-
-        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentCharacter");
+        i = JsonStorage.instance.jsonData.currentShop.currentSkin;
 
         EquipedButtons[i].SetActive(true);
         EquipButtons[i].SetActive(false);
@@ -42,7 +31,7 @@ public class SelectCharacter : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        DataBase.instance.SaveData(thisCharacter, "shop", "equip", "currentCharacter");
+        JsonStorage.instance.jsonData.currentShop.currentSkin = thisCharacter;
 
         AllCharacters[thisCharacter].SetActive(true);
 

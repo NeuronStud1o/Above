@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectBoostInGame : MonoBehaviour
@@ -10,22 +9,15 @@ public class SelectBoostInGame : MonoBehaviour
 
     [SerializeField] private GameObject[] Heroes;
     [SerializeField] private GameObject[] AllBoosts;
-    private int i = 0;
-    private int currentBoost;
+
+    private int i;
 
     void Start()
     {
-        OnLoadGame.instance.scriptsList.Add(StartActivity());
-    }
+        i = JsonStorage.instance.jsonData.currentShop.currentBg;
 
-    public async Task StartActivity()
-    {
-        currentBoost = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
-
-        if (currentBoost == 3)
+        if (i == 3)
         {
-            DataBase.instance.SaveData(1, "player", "hp");
-
             for (int i = 0; i < Heroes.Length; i++)
             {
                 Heroes[i].GetComponent<SpriteRenderer>().color = shieldColor;
@@ -39,7 +31,6 @@ public class SelectBoostInGame : MonoBehaviour
             }
         }
 
-        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentBoost");
         AllBoosts[i].SetActive(true);
     }
 }

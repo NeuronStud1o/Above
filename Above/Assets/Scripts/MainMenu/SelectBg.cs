@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectBg : MonoBehaviour
@@ -16,23 +15,22 @@ public class SelectBg : MonoBehaviour
 
     void Start()
     {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    private async Task StartActivity()
-    {
-        if (await DataBase.instance.LoadDataCheck("shop", "equip", "currentBg") == false)
-        {
-            await DataBase.instance.SaveDataAsync(0, "shop", "equip", "currentBg");
-        }
-
-        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentBg");
+        i = JsonStorage.instance.jsonData.currentShop.currentBg;
 
         EquipedButtons[i].SetActive(true);
         EquipButtons[i].SetActive(false);
 
         AllBg[i].SetActive(true);
         AllRailings[i].SetActive(true);
+
+        StartCoroutine(StartGame());
+    }
+
+    private IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(1);
+
+        DataBase.instance.SetActiveLoadingScreen(false);
     }
 
     public void Change(int thisBg)
@@ -46,7 +44,7 @@ public class SelectBg : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        DataBase.instance.SaveData(thisBg, "shop", "equip", "currentBg");
+        JsonStorage.instance.jsonData.currentShop.currentBg = thisBg;
 
         AllBg[thisBg].SetActive(true);
         AllRailings[thisBg].SetActive(true);

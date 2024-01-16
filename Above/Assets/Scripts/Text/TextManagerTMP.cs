@@ -13,7 +13,6 @@ public class TextManagerTMP : MonoBehaviour
     public string textEng;
     public string textDen;
     public string textFra;
-    public string textCn;
     public string textEs;
     public string textIta;
     public string textPl;
@@ -42,10 +41,6 @@ public class TextManagerTMP : MonoBehaviour
         else if (language == "Fra")
         {
             text.text = textFra;
-        }
-        else if (language == "Cn")
-        {
-            text.text = textCn;
         }
         else if (language == "Es")
         {

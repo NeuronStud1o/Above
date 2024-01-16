@@ -4,6 +4,7 @@ using Firebase;
 using Firebase.Auth;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class FirebaseAuthManager : MonoBehaviour
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser user;
+    public GameObject storage;
 
     [Space]
     [Header("Login")]
@@ -131,6 +133,7 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             auth.SignOut();
             UIManager.Instance.OpenLoginPanel();
+            StorageData.instance.DeleteJson();
         }
     }
 
@@ -297,6 +300,9 @@ public class FirebaseAuthManager : MonoBehaviour
                     if (user.IsEmailVerified)
                     {
                         UIManager.Instance.OpenLoginPanel();
+                        DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
+                        DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
+                        DataBase.instance.SaveData("blackThrush", "userSettings", "icon");
                     }
                     else
                     {
@@ -352,17 +358,32 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public async void OpenGameScene()
     {
+        await StartGame();
+    }
+
+    async Task StartGame()
+    {
         DataBase.instance.SetActiveLoadingScreen(true);
 
-        bool dataBaseTutorial = await DataBase.instance.LoadDataCheck("boolean", "tutorial");
+        storage.SetActive(true);
 
-        if (dataBaseTutorial == false)
+        await JsonStorage.instance.StartAction();
+
+        await Task.Delay(1000);
+
+        bool tutorial = JsonStorage.instance.jsonData.boolean.isTutorial;
+
+        if (tutorial == false)
         {
-            DataBase.instance.SaveData("done", "boolean", "tutorial");
-            DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
-            DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
+            JsonStorage.instance.jsonData.boolean.isTutorial = true;
+            JsonStorage.instance.SaveData();
+
+            DataBase.instance.SetActiveLoadingScreen(false);
+
+            await Task.Delay(500);
 
             SceneManager.LoadSceneAsync("Tutorial");
+
         }
         else
         {

@@ -1,48 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioControl : MonoBehaviour
 {
     [SerializeField] private Slider[] slider;
-    [SerializeField] private AudioSource musicMainMenu;
+    private AudioSource musicMainMenu;
     [SerializeField] private AudioSource[] SFX;
 
-    private void Start()
+    void Start()
     {
-        OnLoadMainMenu.instance.scriptsList.Add(StartActivity());
-    }
-
-    public async Task StartActivity()
-    {
-        bool isAudioSettings = await DataBase.instance.LoadDataCheck("boolean", "ftAudio");
+        musicMainMenu = DataBase.instance.gameObject.GetComponent<AudioSource>();
+        
+        bool isAudioSettings = JsonStorage.instance.jsonData.boolean.isFirstTimeAudio;
 
         if (!isAudioSettings)
         {
-            DataBase.instance.SaveData(1, "menu", "settings", "audio", "musicMainMenuSA");
-            DataBase.instance.SaveData(1, "menu", "settings", "audio", "sfxMainMenuSA");
-            DataBase.instance.SaveData(1, "menu", "settings", "audio", "musicGameSA");
-            DataBase.instance.SaveData(1, "menu", "settings", "audio", "sfxGameSA");
+            JsonStorage.instance.jsonData.audioSettings.musicGame = 1;
+            JsonStorage.instance.jsonData.audioSettings.musicMainMenu = 1;
+            JsonStorage.instance.jsonData.audioSettings.sfxGame = 1;
+            JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = 1;
 
-            DataBase.instance.SaveData("done", "boolean", "ftAudio");
+            JsonStorage.instance.jsonData.boolean.isFirstTimeAudio = true;
+
+            JsonStorage.instance.SaveData();
         }
 
-        await LoadAudioValue();
+        LoadAudioValue();
     }
 
-    private async Task LoadAudioValue()
+    private void LoadAudioValue()
     {
-        float s1Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicMainMenuSA");
-        float s2Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxMainMenuSA");
-        float s3Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "musicGameSA");
-        float s4Value = await DataBase.instance.LoadDataFloat("menu", "settings", "audio", "sfxGameSA");
+        float musicMainMenuValue = JsonStorage.instance.jsonData.audioSettings.musicMainMenu;
+        float sfxMainMenuValue = JsonStorage.instance.jsonData.audioSettings.sfxMainMenu;
+        float musicGameValue = JsonStorage.instance.jsonData.audioSettings.musicGame;
+        float sfxGameValue = JsonStorage.instance.jsonData.audioSettings.sfxGame;
 
-        slider[0].value = s1Value;
-        slider[1].value = s2Value;
-        slider[2].value = s3Value;
-        slider[3].value = s4Value;
+        slider[0].value = musicMainMenuValue;
+        slider[1].value = sfxMainMenuValue;
+        slider[2].value = musicGameValue;
+        slider[3].value = sfxGameValue;
 
         musicMainMenu.enabled = true;
         SetAudioValue();
@@ -60,10 +58,12 @@ public class AudioControl : MonoBehaviour
 
     public void SaveAudioSettings()
     {
-        DataBase.instance.SaveData(slider[0].value, "menu", "settings", "audio", "musicMainMenuSA");
-        DataBase.instance.SaveData(slider[1].value, "menu", "settings", "audio", "sfxMainMenuSA");
-        DataBase.instance.SaveData(slider[2].value, "menu", "settings", "audio", "musicGameSA");
-        DataBase.instance.SaveData(slider[3].value, "menu", "settings", "audio", "sfxGameSA");
+        JsonStorage.instance.jsonData.audioSettings.musicMainMenu = slider[0].value;
+        JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = slider[1].value;
+        JsonStorage.instance.jsonData.audioSettings.musicGame = slider[2].value;
+        JsonStorage.instance.jsonData.audioSettings.sfxGame = slider[3].value;
+
+        JsonStorage.instance.SaveData();
 
         SetAudioValue();
     }

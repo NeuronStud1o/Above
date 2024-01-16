@@ -303,8 +303,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: V 1.0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
+  m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -334,11 +334,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -10
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1273,6 +1273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dependencyStatus: 0
+  storage: {fileID: 1104713348}
   emailLoginField: {fileID: 1587234842}
   passwordLoginField: {fileID: 1601434622}
   nameRegisterField: {fileID: 1576007853}
@@ -1702,7 +1703,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 350, y: 90}
+  m_SizeDelta: {x: 350, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272357422
 MonoBehaviour:
@@ -2506,7 +2507,6 @@ MonoBehaviour:
   textEng: Start the game
   textDen: Starte das Spiel
   textFra: Commencer le jeu
-  textCn: "\u5F00\u59CB\u6E38\u620F"
   textEs: Comenzar el juego
   textIta: Inizia il gioco
   textPl: "Zacz\u0105\u0107 gre"
@@ -2557,12 +2557,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.8
+  m_fontSize: 35
   m_fontSizeBase: 42.78
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 40.8
+  m_fontSizeMin: 0
+  m_fontSizeMax: 35
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -3933,14 +3933,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  textUa: Logout
+  textUa: "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0430\u043A\u0430\u0443\u043D\u0442"
   textEng: Logout
-  textDen: Logout
-  textFra: Logout
-  textCn: Logout
-  textEs: Logout
-  textIta: Logout
-  textPl: Logout
+  textDen: "Konto \xE4ndern"
+  textFra: Modifier le compte
+  textEs: Cambiar cuenta
+  textIta: Cambia il tuo account
+  textPl: Wylogowanie z konta
 --- !u!114 &684527199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3988,12 +3987,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
+  m_fontSize: 20
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 25
+  m_fontSizeMin: 0
+  m_fontSizeMax: 20
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -6807,6 +6806,136 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 225}
   m_SizeDelta: {x: 700, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1104713348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1104713352}
+  - component: {fileID: 1104713351}
+  - component: {fileID: 1104713350}
+  m_Layer: 0
+  m_Name: StorageController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1104713350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104713348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb35704b2309bb142a0254513e1916cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1104713351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104713348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e094669238d07848ac4fe1a58bbcd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonData:
+    boolean:
+      isTutorial: 0
+      isFirstTimeAudio: 0
+    userData:
+      userName: 
+      userEmail: 
+      userIcon: 
+      exp: 0
+      level: 0
+      record: 0
+      coinsF: 0
+      coinsS: 0
+    shop:
+      skins: []
+      bgs: []
+      boosts: []
+    currentShop:
+      currentBg: 0
+      currentSkin: 0
+      currentBoost: 0
+    audioSettings:
+      musicMainMenu: 0
+      sfxMainMenu: 0
+      musicGame: 0
+      sfxGame: 0
+    otherSettings:
+      showLevelRanks: 0
+      autoSave: 0
+      particles: 0
+      showSelectedBoostInGame: 0
+      cameraShake: 0
+      vibration: 0
+  startSkinsList:
+  - name: blackThrush
+    isPurchased: 1
+  - name: blackThrushFemale
+    isPurchased: 0
+  - name: pigeon
+    isPurchased: 0
+  - name: swallow
+    isPurchased: 0
+  - name: wheatearFemale
+    isPurchased: 0
+  - name: nightingaleFemale
+    isPurchased: 0
+  - name: whitePigeon
+    isPurchased: 0
+  - name: redCardinal
+    isPurchased: 0
+  - name: kiwi
+    isPurchased: 0
+  startBgsList:
+  - name: street
+    isPurchased: 1
+  - name: forest
+    isPurchased: 0
+  - name: cage
+    isPurchased: 0
+  - name: japan
+    isPurchased: 0
+  - name: desert
+    isPurchased: 0
+  - name: seaShip
+    isPurchased: 0
+  startBoostsList:
+  - name: none
+    isPurchased: 1
+  - name: doubleCoins
+    isPurchased: 0
+  - name: slowness
+    isPurchased: 0
+  - name: shield
+    isPurchased: 0
+--- !u!4 &1104713352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104713348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3356342, y: -0.09386392, z: 15.405326}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1136152361
 GameObject:
   m_ObjectHideFlags: 0
@@ -8999,6 +9128,7 @@ GameObject:
   - component: {fileID: 1620340952}
   - component: {fileID: 1620340951}
   - component: {fileID: 1620340953}
+  - component: {fileID: 1620340954}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -9045,6 +9175,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfbb7dd2a728614cb7eb73c04a08b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1620340954
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620340950}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 20886e196352e254db5b602c3ff92bfd, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1659557037
 GameObject:
   m_ObjectHideFlags: 0
@@ -10009,8 +10235,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -120, y: 50}
-  m_SizeDelta: {x: 200, y: 35}
+  m_AnchoredPosition: {x: -140.26, y: 62.16}
+  m_SizeDelta: {x: 240, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756679319
 MonoBehaviour:
@@ -11088,7 +11314,7 @@ RectTransform:
   m_Children:
   - {fileID: 1076216193}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

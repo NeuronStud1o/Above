@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class SelectBgInGame : MonoBehaviour
@@ -9,19 +8,21 @@ public class SelectBgInGame : MonoBehaviour
 
     [SerializeField] private GameObject[] AllBg;
     [SerializeField] private GameObject[] AllRailings;
-
+    
     void Start()
     {
-        OnLoadGame.instance.scriptsList.Add(StartActivity());
+        StartCoroutine(StartActivity());
     }
 
-    public async Task StartActivity()
+    IEnumerator StartActivity()
     {
-        i = await DataBase.instance.LoadDataInt("shop", "equip", "currentBg");
+        i = JsonStorage.instance.jsonData.currentShop.currentBg;
 
         AllBg[i].SetActive(true);
         AllRailings[i].SetActive(true);
 
-        print (i + " is equiped bg");
+        yield return new WaitForSeconds(1f);
+
+        DataBase.instance.SetActiveLoadingScreen(false);
     }
 }
