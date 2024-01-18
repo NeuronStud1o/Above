@@ -33,6 +33,7 @@ public class WIFIChecking : MonoBehaviour
         if (request.error != null)
         {
             errorPanel.SetActive(true);
+            JsonStorage.instance.ActivateTimer(false);
 
             if (currentScene.name == "Game")
             {
@@ -46,6 +47,11 @@ public class WIFIChecking : MonoBehaviour
         {
             errorPanel.SetActive(false);
 
+            if (JsonStorage.instance.isFrozenTimer)
+            {
+                JsonStorage.instance.ActivateTimer(true);
+            }
+            
             if (currentScene.name == "Game")
             {
                 if (PauseController.instance.isPause == false)

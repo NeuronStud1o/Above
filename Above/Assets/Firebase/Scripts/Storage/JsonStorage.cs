@@ -16,6 +16,7 @@ public class JsonStorage : MonoBehaviour
 {
     private int seconds = 0;
     private bool isCanCheck = true;
+    public bool isFrozenTimer = false;
     public static JsonStorage instance;
 
     [Header ("## Json file :")]
@@ -130,8 +131,6 @@ public class JsonStorage : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
-        Debug.Log(filePath);
-
         if (!File.Exists(filePath))
         {
             if (await StorageData.instance.CheckIfJsonDataExists() == false)
@@ -243,5 +242,24 @@ public class JsonStorage : MonoBehaviour
     private void StartTimer()
     {
         InvokeRepeating("AddSeconds", 1, 1);
+    }
+
+    public void ActivateTimer(bool isActive)
+    {
+        if (!isActive)
+        {
+            CancelInvoke("AddSeconds");
+            isFrozenTimer = true;
+
+            Debug.Log("The game is frozen");
+        }
+        else
+        {
+            isCanCheck = true;
+            isFrozenTimer = false;
+            StartTimer();
+
+            Debug.Log("The game is continiue");
+        }
     }
 }
