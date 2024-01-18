@@ -47,6 +47,7 @@ public class Reward : MonoBehaviour
         CoinsManagerInMainMenu.instance.UpdateUI();
 
         JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+        JsonStorage.instance.jsonData.userData.coinsFAllTime += 10;
 
         JsonStorage.instance.SaveData();
     }

@@ -15,6 +15,7 @@ public struct KeyForm
 public class JsonStorage : MonoBehaviour
 {
     private int seconds = 0;
+    private bool isCanCheck = true;
     public static JsonStorage instance;
 
     [Header ("## Json file :")]
@@ -32,60 +33,95 @@ public class JsonStorage : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnApplicationQuit()
+    {
+        Debug.Log("Exit");
+
+        if (pastData.HightScore != jsonData.userData.record)
+        {
+            Debug.Log("Record is saved");
+            DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
+        }
+
+        if (pastData.FlyCoins != jsonData.userData.coinsF)
+        {
+            Debug.Log("Fly coins is saved");
+            DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
+        }
+
+        if (pastData.SuperCoins != jsonData.userData.coinsS)
+        {
+            Debug.Log("Super coins is saved");
+            DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
+        }
+
+        if (pastData.Level != jsonData.userData.level)
+        {
+            Debug.Log("Level is saved");
+            DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
+        }
+    }
+
     private void FixedUpdate()
     {
-        if (seconds == 45)
+        if (seconds == 20 && isCanCheck)
         {
-            if (pastData.FlyCoins != jsonData.userData.coinsF)
-            {
-                Debug.Log(pastData.FlyCoins + " - is past data flyCoins");
-                Debug.Log(jsonData.userData.coinsF + " - is json flyCoins");
+            Debug.Log(20 + " seconds");
 
-                pastData.FlyCoins = jsonData.userData.coinsF;
-
-                DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
-                Debug.Log("All time flyCoins is saved");
-            }
-        }
-        if (seconds == 90)
-        {
-            if (pastData.SuperCoins != jsonData.userData.coinsS)
-            {
-                Debug.Log(pastData.FlyCoins + " - is past data superCoins");
-                Debug.Log(jsonData.userData.coinsF + " - is json superCoins");
-
-                pastData.SuperCoins = jsonData.userData.coinsS;
-
-                DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
-                Debug.Log("All time superCoins is saved");
-            }
-        }
-        if (seconds == 135)
-        {
             if (pastData.HightScore != jsonData.userData.record)
             {
-                Debug.Log(pastData.FlyCoins + " - is past data record");
-                Debug.Log(jsonData.userData.coinsF + " - is json record");
-
                 pastData.HightScore = jsonData.userData.record;
 
                 DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
                 Debug.Log("Record is saved");
             }
+
+            isCanCheck = false;
         }
-        if (seconds == 180)
+
+        if (seconds == 40 && isCanCheck)
         {
+            Debug.Log(40 + " seconds");
+
+            if (pastData.FlyCoins != jsonData.userData.coinsF)
+            {
+                pastData.FlyCoins = jsonData.userData.coinsF;
+
+                DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
+                Debug.Log("All time flyCoins is saved");
+            }
+
+            isCanCheck = false;
+        }
+
+        if (seconds == 60 && isCanCheck)
+        {
+            Debug.Log(60 + " seconds");
+
+            if (pastData.SuperCoins != jsonData.userData.coinsS)
+            {
+                pastData.SuperCoins = jsonData.userData.coinsS;
+
+                DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
+                Debug.Log("All time superCoins is saved");
+            }
+
+            isCanCheck = false;
+        }
+
+        if (seconds == 80 && isCanCheck)
+        {
+            Debug.Log(80 + " seconds");
+
             if (pastData.Level != jsonData.userData.level)
             {
-                Debug.Log(pastData.FlyCoins + " - is past data level");
-                Debug.Log(jsonData.userData.coinsF + " - is json level");
-
                 pastData.Level = jsonData.userData.level;
 
-                DataBase.instance.SaveData(jsonData.userData.record, "menu", "levelManager", "level");
+                DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
                 Debug.Log("Level is saved");
             }
 
+            isCanCheck = false;
             seconds = 0;
         }
     }
@@ -200,6 +236,7 @@ public class JsonStorage : MonoBehaviour
 
     private void AddSeconds()
     {
+        isCanCheck = true;
         seconds++;
     }
 

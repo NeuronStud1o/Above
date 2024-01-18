@@ -10,6 +10,8 @@ public class PauseController : MonoBehaviour
     public GameObject Hero { get => hero; set => hero = value; }
     public static PauseController instance;
 
+    public bool isPause = false;
+
     void Start()
     {
         instance = this;
@@ -23,6 +25,7 @@ public class PauseController : MonoBehaviour
         {
             hero.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             hero.GetComponent<Player>().enabled = false;
+            isPause = true;
         }
     }
 
@@ -53,5 +56,7 @@ public class PauseController : MonoBehaviour
                 playerComponent.enabled = true;
             }
         }
+
+        isPause = false;
     }
 }

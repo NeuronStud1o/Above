@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LosePanel : MonoBehaviour
 {
     public static LosePanel instance;
-    [SerializeField] private Text scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Start()
     {
@@ -15,7 +15,6 @@ public class LosePanel : MonoBehaviour
 
     public void Death(int lastRunScore)
     {
-        print (lastRunScore + "   12344");
         int gainedExp;
         int random;
         random = Random.Range(1, 4);

@@ -42,9 +42,6 @@ public class ManagerEXP : MonoBehaviour
     {
         exp = JsonStorage.instance.jsonData.userData.exp;
         level = JsonStorage.instance.jsonData.userData.level;
-
-        print (exp + " is exp");
-        print (level + " is level");
     }
 
     private void SetValues()

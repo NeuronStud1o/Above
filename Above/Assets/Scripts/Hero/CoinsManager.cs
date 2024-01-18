@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,8 @@ public class CoinsManager : MonoBehaviour
     public int coinsF;
     public int coinsS;
 
-    [SerializeField] private Text moneyTextF;
-    [SerializeField] private Text moneyTextS;
+    [SerializeField] private TextMeshProUGUI moneyTextF;
+    [SerializeField] private TextMeshProUGUI moneyTextS;
 
     void Start()
     {
