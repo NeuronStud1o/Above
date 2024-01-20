@@ -1,8 +1,27 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class JsonData
 {
+    public bool ContentEquals(JsonData other)
+    {
+        string thisJson = JsonUtility.ToJson(this);
+        string otherJson = JsonUtility.ToJson(other);
+
+        return thisJson == otherJson;
+    }
+
+    public void CopyFrom(JsonData other)
+    {
+        boolean = other.boolean;
+        userData = other.userData;
+        shop = other.shop;
+        currentShop = other.currentShop;
+        audioSettings = other.audioSettings;
+        otherSettings = other.otherSettings;
+    }
+    
     public JsonData()
     {
         boolean = new Boolean();

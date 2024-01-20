@@ -21,7 +21,7 @@ public class JsonStorage : MonoBehaviour
 
     [Header ("## Json file :")]
     public JsonData jsonData;
-    public PastData pastData;
+    public JsonData pastData;
 
     [Header ("## Initial store settings :")]
     [SerializeField] private List<KeyForm> startSkinsList = new List<KeyForm>();
@@ -38,28 +38,33 @@ public class JsonStorage : MonoBehaviour
     {
         Debug.Log("Exit");
 
-        if (pastData.HightScore != jsonData.userData.record)
+        if (pastData.userData.record != jsonData.userData.record)
         {
             Debug.Log("Record is saved");
             DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
         }
 
-        if (pastData.FlyCoins != jsonData.userData.coinsF)
+        if (pastData.userData.coinsF != jsonData.userData.coinsF)
         {
             Debug.Log("Fly coins is saved");
             DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
         }
 
-        if (pastData.SuperCoins != jsonData.userData.coinsS)
+        if (pastData.userData.coinsS != jsonData.userData.coinsS)
         {
             Debug.Log("Super coins is saved");
             DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
         }
 
-        if (pastData.Level != jsonData.userData.level)
+        if (pastData.userData.level != jsonData.userData.level)
         {
             Debug.Log("Level is saved");
             DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
+        }
+
+        if (!pastData.ContentEquals(jsonData))
+        {
+            StorageData.instance.SaveJsonData();
         }
     }
 
@@ -69,9 +74,9 @@ public class JsonStorage : MonoBehaviour
         {
             Debug.Log(20 + " seconds");
 
-            if (pastData.HightScore != jsonData.userData.record)
+            if (pastData.userData.record != jsonData.userData.record)
             {
-                pastData.HightScore = jsonData.userData.record;
+                pastData.userData.record = jsonData.userData.record;
 
                 DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
                 Debug.Log("Record is saved");
@@ -84,9 +89,10 @@ public class JsonStorage : MonoBehaviour
         {
             Debug.Log(40 + " seconds");
 
-            if (pastData.FlyCoins != jsonData.userData.coinsF)
+            if (pastData.userData.coinsF != jsonData.userData.coinsF)
             {
-                pastData.FlyCoins = jsonData.userData.coinsF;
+                pastData.userData.coinsF = jsonData.userData.coinsF;
+                pastData.userData.coinsFAllTime = jsonData.userData.coinsFAllTime;
 
                 DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
                 Debug.Log("All time flyCoins is saved");
@@ -99,9 +105,10 @@ public class JsonStorage : MonoBehaviour
         {
             Debug.Log(60 + " seconds");
 
-            if (pastData.SuperCoins != jsonData.userData.coinsS)
+            if (pastData.userData.coinsS != jsonData.userData.coinsS)
             {
-                pastData.SuperCoins = jsonData.userData.coinsS;
+                pastData.userData.coinsS = jsonData.userData.coinsS;
+                pastData.userData.coinsSAllTime = jsonData.userData.coinsSAllTime;
 
                 DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
                 Debug.Log("All time superCoins is saved");
@@ -114,16 +121,31 @@ public class JsonStorage : MonoBehaviour
         {
             Debug.Log(80 + " seconds");
 
-            if (pastData.Level != jsonData.userData.level)
+            if (pastData.userData.level != jsonData.userData.level)
             {
-                pastData.Level = jsonData.userData.level;
+                pastData.userData.level = jsonData.userData.level;
 
                 DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
                 Debug.Log("Level is saved");
             }
 
             isCanCheck = false;
+        }
+
+        if (seconds == 100 && isCanCheck)
+        {
+            Debug.Log(100 + " seconds");
+
+            if (!pastData.ContentEquals(jsonData))
+            {
+                StorageData.instance.SaveJsonData();
+
+                pastData.CopyFrom(jsonData);
+                Debug.Log("Json file is saved to www");
+            }
+
             seconds = 0;
+            isCanCheck = false;
         }
     }
 
@@ -211,14 +233,9 @@ public class JsonStorage : MonoBehaviour
             jsonData = JsonUtility.FromJson<JsonData>(json);
         }
 
-        pastData = new PastData
-        {
-            FlyCoins = jsonData.userData.coinsF,
-            SuperCoins = jsonData.userData.coinsS,
-                    
-            Level = jsonData.userData.level,
-            HightScore = jsonData.userData.record
-        };
+        string past = File.ReadAllText(filePath);
+
+        pastData = JsonUtility.FromJson<JsonData>(past);
 
         StartTimer();
     }
