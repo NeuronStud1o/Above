@@ -27,27 +27,27 @@ public class DataBuySystem : MonoBehaviour
     {
         if (purchaseType == Think.Skin)
         {
-            bool i = JsonStorage.instance.jsonData.shop.skins.Exists(item => item.name == purchaseName);
+            KeyForm key = JsonStorage.instance.jsonData.shop.skins.FirstOrDefault(item => item.name == purchaseName);
 
-            if (i == true)
+            if (key.isPurchased == true)
             {
                 gameObject.SetActive(false);
             }
         }
         if (purchaseType == Think.Bg)
         {
-            bool i = JsonStorage.instance.jsonData.shop.skins.Exists(item => item.name == purchaseName);
+            KeyForm key = JsonStorage.instance.jsonData.shop.bgs.FirstOrDefault(item => item.name == purchaseName);
 
-            if (i == true)
+            if (key.isPurchased == true)
             {
                 gameObject.SetActive(false);
             }
         }
         if (purchaseType == Think.Boost)
         {
-            bool i = JsonStorage.instance.jsonData.shop.skins.Exists(item => item.name == purchaseName);
+            KeyForm key = JsonStorage.instance.jsonData.shop.boosts.FirstOrDefault(item => item.name == purchaseName);
 
-            if (i == true)
+            if (key.isPurchased == true)
             {
                 gameObject.SetActive(false);
             }

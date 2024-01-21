@@ -183,7 +183,7 @@ public class JsonStorage : MonoBehaviour
                     {
                         skins = startSkinsList,
                         bgs = startBgsList,
-                        boosts = startBoostsList
+                        boosts = startBoostsList,
                     },
 
                     currentShop = new JsonData.CurrentShop

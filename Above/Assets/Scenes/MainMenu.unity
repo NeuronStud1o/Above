@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 57078670}
   - component: {fileID: 57078669}
   m_Layer: 0
-  m_Name: Square (5)
+  m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1096,7 +1096,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 7dc7fba44f9a3fb449f6f065fcbe2369, type: 3}
   m_Color: {r: 0.44705883, g: 0.16862746, b: 0.11372549, a: 1}
   m_FlipX: 0
@@ -1120,7 +1120,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 2.1564236}
   m_Children: []
   m_Father: {fileID: 1932939603}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &58950884
 GameObject:
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 0
   price: 50
-  purchaseName: Black thrush female
+  purchaseName: blackThrushFemale
 --- !u!1 &61152483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2496,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 1
   price: 135
-  purchaseName: Forest
+  purchaseName: forest
 --- !u!1 &142148542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,6 +2627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 146632489}
   - component: {fileID: 146632490}
+  - component: {fileID: 146632491}
   m_Layer: 0
   m_Name: Bg 1 (4)
   m_TagString: Untagged
@@ -2699,6 +2700,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &146632491
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146632488}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d69a0fed04f3b8f44b61e312229b13e9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &147367165
 GameObject:
   m_ObjectHideFlags: 0
@@ -3463,7 +3560,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 1
   price: 190
-  purchaseName: Cage
+  purchaseName: cage
 --- !u!1 &169846497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,7 +4706,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 1
   price: 230
-  purchaseName: Japan
+  purchaseName: japan
 --- !u!1 &203080456
 GameObject:
   m_ObjectHideFlags: 0
@@ -5991,6 +6088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 267498920}
   - component: {fileID: 267498921}
+  - component: {fileID: 267498922}
   m_Layer: 0
   m_Name: Bg 1 (2)
   m_TagString: Untagged
@@ -6063,6 +6161,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &267498922
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267498919}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4599e8e68a5623b4ca81224b0e4d6d56, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &288125573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6642,7 +6836,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 0
   price: 240
-  purchaseName: White pigeon
+  purchaseName: whitePigeon
 --- !u!114 &300155230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7502,7 +7696,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 0
   price: 160
-  purchaseName: Wheatear female
+  purchaseName: wheatearFemale
 --- !u!1 &346166460
 GameObject:
   m_ObjectHideFlags: 0
@@ -11128,7 +11322,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 0
   price: 110
-  purchaseName: Swallow
+  purchaseName: swallow
 --- !u!1 &494981931
 GameObject:
   m_ObjectHideFlags: 0
@@ -11578,6 +11772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 501850847}
   - component: {fileID: 501850848}
+  - component: {fileID: 501850849}
   m_Layer: 0
   m_Name: Bg 1 (1)
   m_TagString: Untagged
@@ -11650,6 +11845,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &501850849
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501850846}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 899d24d0dd396ae4783ea551798b9f95, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &501908680
 GameObject:
   m_ObjectHideFlags: 0
@@ -12124,7 +12415,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14911,7 +15202,7 @@ MonoBehaviour:
   coinType: 1
   purchaseType: 0
   price: 12
-  purchaseName: Red cardinal
+  purchaseName: redCardinal
 --- !u!1 &648557408
 GameObject:
   m_ObjectHideFlags: 0
@@ -15181,7 +15472,7 @@ MonoBehaviour:
   coinType: 1
   purchaseType: 2
   price: 12
-  purchaseName: Shield
+  purchaseName: shield
 --- !u!1 &653988968
 GameObject:
   m_ObjectHideFlags: 0
@@ -17199,7 +17490,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: ad562a62831d8cf49bc00e3246fe2c44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20228,7 +20519,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 0
   price: 95
-  purchaseName: Pigeon
+  purchaseName: pigeon
 --- !u!1 &850593672
 GameObject:
   m_ObjectHideFlags: 0
@@ -21946,7 +22237,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 1852929e74733e847ba1bcbc0122d53f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -27019,7 +27310,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 7a0e00783ffbebf4c983779d5eec42fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -27121,7 +27412,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -32683,7 +32974,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 1
   price: 275
-  purchaseName: Desert
+  purchaseName: desert
 --- !u!114 &1362891141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34584,7 +34875,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: be9c86323eb90d04d9c648d95f34b424, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -37810,7 +38101,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 0
   price: 215
-  purchaseName: Nightingale female
+  purchaseName: nightingaleFemale
 --- !u!1 &1596533138
 GameObject:
   m_ObjectHideFlags: 0
@@ -40054,22 +40345,22 @@ MonoBehaviour:
   - {fileID: 915591179}
   - {fileID: 749571479}
   - {fileID: 1152806454}
-  - {fileID: 1684355123}
   - {fileID: 57078668}
+  - {fileID: 1684355123}
   EquipButtons:
   - {fileID: 702913909}
   - {fileID: 456809930}
   - {fileID: 2108703687}
   - {fileID: 2057139446}
-  - {fileID: 512501608}
   - {fileID: 1153586774}
+  - {fileID: 512501608}
   EquipedButtons:
   - {fileID: 1335282284}
   - {fileID: 504086945}
   - {fileID: 1672847951}
   - {fileID: 1783277120}
-  - {fileID: 552152195}
   - {fileID: 953234176}
+  - {fileID: 552152195}
 --- !u!114 &1661981280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40438,7 +40729,7 @@ MonoBehaviour:
   coinType: 1
   purchaseType: 2
   price: 5
-  purchaseName: Double coins
+  purchaseName: doubleCoins
 --- !u!1 &1683273417
 GameObject:
   m_ObjectHideFlags: 0
@@ -40530,7 +40821,7 @@ GameObject:
   - component: {fileID: 1684355125}
   - component: {fileID: 1684355124}
   m_Layer: 0
-  m_Name: Square (4)
+  m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40601,7 +40892,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 0137d10839593b140a3ed7d3a7d6be85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -40625,7 +40916,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 2.1564236}
   m_Children: []
   m_Father: {fileID: 1932939603}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690053955
 GameObject:
@@ -41984,6 +42275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1742823559}
   - component: {fileID: 1742823560}
+  - component: {fileID: 1742823561}
   m_Layer: 0
   m_Name: Bg 1 (3)
   m_TagString: Untagged
@@ -42057,6 +42349,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1742823561
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742823558}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9a4ba643391403548b171a05bd72c9a2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1744026497
 GameObject:
   m_ObjectHideFlags: 0
@@ -45637,7 +46025,7 @@ MonoBehaviour:
   coinType: 1
   purchaseType: 2
   price: 7
-  purchaseName: Slowness
+  purchaseName: slowness
 --- !u!1 &1885881840
 GameObject:
   m_ObjectHideFlags: 0
@@ -46387,8 +46775,8 @@ Transform:
   - {fileID: 915591180}
   - {fileID: 749571482}
   - {fileID: 1152806455}
-  - {fileID: 1684355126}
   - {fileID: 57078671}
+  - {fileID: 1684355126}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46535,6 +46923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1943529495}
   - component: {fileID: 1943529496}
+  - component: {fileID: 1943529497}
   m_Layer: 0
   m_Name: Bg 1 (5)
   m_TagString: Untagged
@@ -46607,6 +46996,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1943529497
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943529494}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 525ee4ff60f295c49815f37cda8b5aac, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1955680098
 GameObject:
   m_ObjectHideFlags: 0
@@ -47578,7 +48063,7 @@ MonoBehaviour:
   coinType: 1
   purchaseType: 0
   price: 30
-  purchaseName: Kiwi
+  purchaseName: kiwi
 --- !u!1 &1999982873
 GameObject:
   m_ObjectHideFlags: 0
@@ -53595,7 +54080,7 @@ MonoBehaviour:
   coinType: 0
   purchaseType: 1
   price: 300
-  purchaseName: Sea ship
+  purchaseName: seaShip
 --- !u!1 &2079728666
 GameObject:
   m_ObjectHideFlags: 0
