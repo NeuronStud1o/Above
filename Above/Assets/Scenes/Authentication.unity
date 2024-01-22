@@ -6884,6 +6884,8 @@ MonoBehaviour:
       showSelectedBoostInGame: 0
       cameraShake: 0
       vibration: 0
+    accountIcons:
+      icons: []
   pastData:
     boolean:
       isTutorial: 0
@@ -6919,6 +6921,8 @@ MonoBehaviour:
       showSelectedBoostInGame: 0
       cameraShake: 0
       vibration: 0
+    accountIcons:
+      icons: []
   startSkinsList:
   - name: blackThrush
     isPurchased: 1
@@ -6959,6 +6963,39 @@ MonoBehaviour:
   - name: slowness
     isPurchased: 0
   - name: shield
+    isPurchased: 0
+  startIcons:
+  - name: blackThrush
+    isPurchased: 1
+  - name: blackThrushFemale
+    isPurchased: 0
+  - name: pigeon
+    isPurchased: 0
+  - name: swallow
+    isPurchased: 0
+  - name: wheatearFemale
+    isPurchased: 0
+  - name: nightingaleFemale
+    isPurchased: 0
+  - name: whitePigeon
+    isPurchased: 0
+  - name: redCardinal
+    isPurchased: 0
+  - name: kiwi
+    isPurchased: 0
+  - name: bamboo
+    isPurchased: 0
+  - name: exp
+    isPurchased: 0
+  - name: flycoin
+    isPurchased: 0
+  - name: supercoin
+    isPurchased: 0
+  - name: cat'sPaw
+    isPurchased: 0
+  - name: panda
+    isPurchased: 0
+  - name: parrot
     isPurchased: 0
 --- !u!4 &1104713352
 Transform:

@@ -9,13 +9,10 @@ using System;
 public struct Icons
 {
     public Sprite profileIcon;
-    public string iconName;
 }
 
 public class AccountManagerMainMenu : MonoBehaviour
 {
-    private string equipedIcon;
-
     [SerializeField] private TextMeshProUGUI userName;
     [SerializeField] private Image profileImage;
 
@@ -25,13 +22,24 @@ public class AccountManagerMainMenu : MonoBehaviour
     {
         userName.text = UserData.instance.User.DisplayName;
 
-        equipedIcon = JsonStorage.instance.jsonData.userData.userIcon;
-
-        print(equipedIcon);
+        string equipedIcon = JsonStorage.instance.jsonData.userData.userIcon;
 
         foreach (Icons i in icons)
         {
-            if (i.iconName == equipedIcon)
+            if (i.profileIcon.name == equipedIcon)
+            {
+                profileImage.sprite = i.profileIcon;
+
+                return;
+            }
+        }
+    }
+
+    public void ChangeIcon(string iconName)
+    {
+        foreach (Icons i in icons)
+        {
+            if (i.profileIcon.name == iconName)
             {
                 profileImage.sprite = i.profileIcon;
 

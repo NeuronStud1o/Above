@@ -28,9 +28,13 @@ public class JsonStorage : MonoBehaviour
     [SerializeField] private List<KeyForm> startBgsList = new List<KeyForm>();
     [SerializeField] private List<KeyForm> startBoostsList = new List<KeyForm>();
 
+    [Header ("## Initial account icons settings :")]
+    [SerializeField] private List<KeyForm> startIcons = new List<KeyForm>();
+
     void Awake()
     {
         instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -209,6 +213,11 @@ public class JsonStorage : MonoBehaviour
                         showSelectedBoostInGame = true,
                         cameraShake = true,
                         vibration = true
+                    },
+
+                    accountIcons = new JsonData.AccountIcons
+                    {
+                        icons = startIcons
                     }
                 };
 

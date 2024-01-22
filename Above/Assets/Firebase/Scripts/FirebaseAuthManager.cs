@@ -382,8 +382,9 @@ public class FirebaseAuthManager : MonoBehaviour
 
             await Task.Delay(500);
 
-            SceneManager.LoadSceneAsync("Tutorial");
+            DataBase.instance.gameObject.GetComponent<AudioSource>().enabled = false;
 
+            SceneManager.LoadSceneAsync("Tutorial");
         }
         else
         {

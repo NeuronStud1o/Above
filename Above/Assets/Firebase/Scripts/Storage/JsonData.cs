@@ -20,6 +20,7 @@ public class JsonData
         currentShop = other.currentShop;
         audioSettings = other.audioSettings;
         otherSettings = other.otherSettings;
+        accountIcons = other.accountIcons;
     }
     
     public JsonData()
@@ -30,6 +31,7 @@ public class JsonData
         currentShop = new CurrentShop();
         audioSettings = new AudioSettings();
         otherSettings = new OtherSettings();
+        accountIcons = new AccountIcons();
     }
 
     public Boolean boolean;
@@ -38,6 +40,7 @@ public class JsonData
     public CurrentShop currentShop;
     public AudioSettings audioSettings;
     public OtherSettings otherSettings;
+    public AccountIcons accountIcons;
 
     [System.Serializable]
     public struct Boolean
@@ -97,5 +100,11 @@ public class JsonData
         public bool showSelectedBoostInGame;
         public bool cameraShake;
         public bool vibration;
+    }
+
+    [System.Serializable]
+    public struct AccountIcons
+    {
+        public List<KeyForm> icons;
     }
 }
