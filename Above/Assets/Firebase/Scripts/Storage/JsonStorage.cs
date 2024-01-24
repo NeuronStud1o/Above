@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
-public struct KeyForm
+public class KeyForm
 {
     public string name;
     public bool isPurchased;
@@ -68,6 +68,7 @@ public class JsonStorage : MonoBehaviour
 
         if (!pastData.ContentEquals(jsonData))
         {
+            Debug.Log("Json file is saved to www");
             StorageData.instance.SaveJsonData();
         }
     }

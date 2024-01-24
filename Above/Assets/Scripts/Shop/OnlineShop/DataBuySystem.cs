@@ -88,12 +88,18 @@ public class DataBuySystem : MonoBehaviour
                     }
                 }
 
+                if (GetComponent<AccIconsUnlockManager>())
+                {
+                    GetComponent<AccIconsUnlockManager>().Unlock(true);
+                }
+
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsF -= price;
                 CoinsManagerInMainMenu.instance.UpdateUI();
                 
                 JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+                JsonStorage.instance.SaveData();
             }
         }
         else if (coinType == Coin.SuperCoins)
@@ -128,12 +134,18 @@ public class DataBuySystem : MonoBehaviour
                     }
                 }
 
+                if (GetComponent<AccIconsUnlockManager>())
+                {
+                    GetComponent<AccIconsUnlockManager>().Unlock(true);
+                }
+
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsS -= price;
                 CoinsManagerInMainMenu.instance.UpdateUI();
                 
                 JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
+                JsonStorage.instance.SaveData();
             }
         }
     }

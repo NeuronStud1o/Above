@@ -14,16 +14,21 @@ public class SelectAccIcon : MonoBehaviour
     {
         iconName = GetComponent<Image>().sprite.name;
 
+        CheckLock();
+
+        if (iconName == JsonStorage.instance.jsonData.userData.userIcon)
+        {
+            Change();
+        }
+    }
+
+    public void CheckLock()
+    {
         KeyForm key = JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == iconName);
         
         if (key.isPurchased)
         {
             blockedPanel.SetActive(false);
-        }
-
-        if (iconName == JsonStorage.instance.jsonData.userData.userIcon)
-        {
-            Change();
         }
     }
 

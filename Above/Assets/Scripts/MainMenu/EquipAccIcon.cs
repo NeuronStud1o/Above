@@ -16,6 +16,14 @@ public class EquipAccIcon : MonoBehaviour
         instance = this;
     }
 
+    public void CheckLock()
+    {
+        foreach (SelectAccIcon select in equipButtonsList)
+        {
+            select.CheckLock();
+        }
+    }
+
     public void Change(string name, Image button)
     {
         JsonStorage.instance.jsonData.userData.userIcon = name;
