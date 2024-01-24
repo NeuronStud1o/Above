@@ -32,6 +32,7 @@ public class SelectCharacter : MonoBehaviour
         }
 
         JsonStorage.instance.jsonData.currentShop.currentSkin = thisCharacter;
+        JsonStorage.instance.SaveData();
 
         AllCharacters[thisCharacter].SetActive(true);
 

@@ -18,6 +18,21 @@ public class SelectBoost : MonoBehaviour
 
     void Start()
     {
+        if (JsonStorage.instance.jsonData.currentShop.currentBoost == 3)
+        {
+            foreach (GameObject hero in Heroes)
+            {
+                hero.GetComponent<SpriteRenderer>().color = shieldColor;
+            }
+        }
+        else
+        {
+            foreach (GameObject hero in Heroes)
+            {
+                hero.GetComponent<SpriteRenderer>().color = standartColor;
+            }
+        }
+
         currentBoost = JsonStorage.instance.jsonData.currentShop.currentBoost;
 
         EquipedButtons[currentBoost].SetActive(true);
@@ -35,7 +50,23 @@ public class SelectBoost : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
+        if (thisBoost == 3)
+        {
+            foreach (GameObject hero in Heroes)
+            {
+                hero.GetComponent<SpriteRenderer>().color = shieldColor;
+            }
+        }
+        else
+        {
+            foreach (GameObject hero in Heroes)
+            {
+                hero.GetComponent<SpriteRenderer>().color = standartColor;
+            }
+        }
+
         JsonStorage.instance.jsonData.currentShop.currentBoost = thisBoost;
+        JsonStorage.instance.SaveData();
 
         AllBoosts[thisBoost].SetActive(true);
 
