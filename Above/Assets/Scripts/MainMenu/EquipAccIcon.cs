@@ -11,7 +11,7 @@ public class EquipAccIcon : MonoBehaviour
     [SerializeField] private List<SelectAccIcon> equipButtonsList;
     [SerializeField] private AccountManagerMainMenu accountManagerMainMenu;
 
-    void Awake()
+    void Start()
     {
         instance = this;
     }
