@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +31,18 @@ public class ManagerEXP : MonoBehaviour
     
     void Start()
     {
+        if (JsonStorage.instance.jsonData.userData.level >= 20)
+        {
+            KeyForm icon =  JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == "exp");
+
+            if (icon.isPurchased == false)
+            {
+                icon.isPurchased = true;
+                EquipAccIcon.instance.CheckLock();
+                JsonStorage.instance.SaveData();
+            }
+        }
+
         hightScore.text = "" + JsonStorage.instance.jsonData.userData.record;
 
         GetValues();
@@ -71,6 +84,18 @@ public class ManagerEXP : MonoBehaviour
         {
             JsonStorage.instance.jsonData.userData.exp -= countToNextLevel;
             JsonStorage.instance.jsonData.userData.level++;
+
+            if (JsonStorage.instance.jsonData.userData.level >= 20)
+            {
+                KeyForm icon =  JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == "exp");
+
+                if (icon.isPurchased == false)
+                {
+                    icon.isPurchased = true;
+                    EquipAccIcon.instance.CheckLock();
+                    JsonStorage.instance.SaveData();
+                }
+            }
 
             JsonStorage.instance.SaveData();
 
