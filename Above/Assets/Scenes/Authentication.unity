@@ -861,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f7a9602b2f27349a94958daac1b842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateCanvas: {fileID: 91580972}
+  updateCanvas: {fileID: 1731983969}
   techCanvas: {fileID: 908285126}
   uiNotNowButton: {fileID: 1724988788}
   uiUpdateButton: {fileID: 62854910}
@@ -2503,6 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
+  text: {fileID: 0}
   textUa: "\u041F\u043E\u0447\u0430\u0442\u0438 \u0433\u0440\u0443"
   textEng: Start the game
   textDen: Starte das Spiel
@@ -3933,6 +3934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
+  text: {fileID: 0}
   textUa: "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0430\u043A\u0430\u0443\u043D\u0442"
   textEng: Logout
   textDen: "Konto \xE4ndern"

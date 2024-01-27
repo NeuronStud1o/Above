@@ -63,6 +63,7 @@ namespace UpgradeSystem
 
                     if (!string.IsNullOrEmpty(latestGameData.Version) && !Application.version.Equals(latestGameData.Version))
                     {
+                        Debug.Log("Latest game version: " + latestGameData.Version + " and latest game version on device: " + Application.version);
                         uiDescriptionText.text = latestGameData.Description;
                         ShowPopup();
                     }
