@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TextManagerTMP : MonoBehaviour
 {
     public string language;
-    TextMeshProUGUI text;
+    public TextMeshProUGUI text;
 
     public string textUa;
     public string textEng;
@@ -20,39 +20,39 @@ public class TextManagerTMP : MonoBehaviour
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
+        ChooseLanguage();
     }
 
-    void Update()
+    public void ChooseLanguage()
     {
         language = PlayerPrefs.GetString("Language");
 
-        if (language == "" || language == "Eng")
+        switch (language)
         {
-            text.text = textEng;
-        }
-        else if (language == "Ua")
-        {
-            text.text = textUa;
-        }
-        else if (language == "Den")
-        {
-            text.text = textDen;
-        }
-        else if (language == "Fra")
-        {
-            text.text = textFra;
-        }
-        else if (language == "Es")
-        {
-            text.text = textEs;
-        }
-        else if (language == "Ita")
-        {
-            text.text = textIta;
-        }
-        else if (language == "Pl")
-        {
-            text.text = textPl;
+            case "Eng":
+                text.text = textEng;
+                break;
+            case "Ua":
+                text.text = textUa;
+                break;
+            case "Den":
+                text.text = textDen;
+                break;
+            case "Fra":
+                text.text = textFra;
+                break;
+            case "Es":
+                text.text = textEs;
+                break;
+            case "Ita":
+                text.text = textIta;
+                break;
+            case "Pl":
+                text.text = textPl;
+                break;
+            default:
+                text.text = textEng;
+                break;
         }
     }
 }
