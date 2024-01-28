@@ -2484,6 +2484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
+  text: {fileID: 0}
   textUa: "\u041D\u0430\u0442\u0438\u0441\u043D\u0456\u0442\u044C \u043D\u0430 \u0435\u043A\u0440\u0430\u043D,
     \u0449\u043E\u0431 \u043F\u043E\u0447\u0430\u0442\u0438"
   textEng: Tap the screen to start
@@ -3024,6 +3025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
+  text: {fileID: 0}
   textUa: "\u041F\u0440\u043E\u0434\u043E\u0432\u0436\u0438\u0442\u0438 \u0433\u0440\u0443?"
   textEng: Continue the game?
   textDen: Spiel fortsetzen?
@@ -3294,15 +3296,15 @@ MonoBehaviour:
   - {fileID: 1188949332}
   - {fileID: 148409061}
   - {fileID: 1608159891}
-  - {fileID: 858801808}
   - {fileID: 1462038750}
+  - {fileID: 858801808}
   AllRailings:
   - {fileID: 901092210}
   - {fileID: 219013125}
   - {fileID: 450908718}
   - {fileID: 471785072}
-  - {fileID: 1849597405}
   - {fileID: 91905922}
+  - {fileID: 1849597405}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3326,6 +3328,7 @@ MonoBehaviour:
   - {fileID: 1055376970}
   - {fileID: 1039948079}
   - {fileID: 1653532795}
+  - {fileID: 920682195}
   AllBoosts:
   - {fileID: 326456645}
   - {fileID: 1955701453}
@@ -8821,6 +8824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
+  text: {fileID: 0}
   textUa: "\u041D\u0430\u0439\u0432\u0438\u0449\u0438\u0439 \u0431\u0430\u043B:"
   textEng: 'Highest score:'
   textDen: 'Die meisten Punkte:'
@@ -10335,10 +10339,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
-  - {fileID: 74331713961932261, guid: 79e5071d68659124b923a80a568560ec, type: 3}
-  - {fileID: 2897956538049459191, guid: a10125011b4bd354ebcff0ddebb93a3a, type: 3}
-  - {fileID: 7310655433261933811, guid: 4ad57973a7945e44f8c9b2eade726f6f, type: 3}
-  - {fileID: 7490127301535164483, guid: af8043a4dcb495b42a8c14118a690425, type: 3}
+  - {fileID: 2995765279680493590, guid: 6e42c4c474bbced4f9c6a1b52eb9606e, type: 3}
+  - {fileID: 8546801664971482825, guid: e52c566820dff8b47b2b0039734e206d, type: 3}
+  - {fileID: 8847025293357703843, guid: 4e075fe4fb067114db523b74dee76e7c, type: 3}
+  - {fileID: 1082073914568091951, guid: d2a636844ebf4b9478a120d55ec86548, type: 3}
   Distance: 20
   AddNewDistance: 25
 --- !u!1 &1405952457
@@ -14576,10 +14580,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
-  - {fileID: 3664882417580669987, guid: a7ab34b6e0c75fd4a938170312bd66d8, type: 3}
-  - {fileID: 3701007095229606261, guid: 2cf89ff26ff78d443a53d61d3636a30b, type: 3}
-  - {fileID: 6800091752417666115, guid: 02fac17006ef4874b90486f875ad1312, type: 3}
-  - {fileID: 8587525198079110080, guid: 30bfff03be251114b8c19f2fd629c117, type: 3}
+  - {fileID: 4335080262141000495, guid: 6c216c7d8496a504ab707fe7643982d7, type: 3}
+  - {fileID: 587746908385118161, guid: 74e5d19a887ce0b429aded22de6e0daf, type: 3}
+  - {fileID: 8327797648895949824, guid: 6b264544432af4044b33434272c15914, type: 3}
+  - {fileID: 2556796111684622148, guid: 17d11756be98b364d900b1eca4b982ed, type: 3}
   Distance: 20
   AddNewDistance: 25
 --- !u!1001 &149187188912607027
