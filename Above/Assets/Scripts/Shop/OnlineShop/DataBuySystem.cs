@@ -99,7 +99,6 @@ public class DataBuySystem : MonoBehaviour
                 CoinsManagerInMainMenu.instance.UpdateUI();
                 
                 JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
-                JsonStorage.instance.SaveData();
             }
         }
         else if (coinType == Coin.SuperCoins)
@@ -145,7 +144,6 @@ public class DataBuySystem : MonoBehaviour
                 CoinsManagerInMainMenu.instance.UpdateUI();
                 
                 JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
-                JsonStorage.instance.SaveData();
             }
         }
     }

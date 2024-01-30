@@ -66,7 +66,6 @@ public class SelectBoost : MonoBehaviour
         }
 
         JsonStorage.instance.jsonData.currentShop.currentBoost = thisBoost;
-        JsonStorage.instance.SaveData();
 
         AllBoosts[thisBoost].SetActive(true);
 
