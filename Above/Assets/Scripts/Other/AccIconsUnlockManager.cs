@@ -26,8 +26,6 @@ public class AccIconsUnlockManager : MonoBehaviour
         icon.isPurchased = isUlock;
 
         EquipAccIcon.instance.CheckLock();
-
-        JsonStorage.instance.SaveData();
     }
 
     public void BuyIconWithCoinsF(int price)
@@ -46,7 +44,6 @@ public class AccIconsUnlockManager : MonoBehaviour
             
             CoinsManagerInMainMenu.instance.coinsF -= price;
             JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
-            JsonStorage.instance.SaveData();
         }
     }
 
@@ -66,7 +63,6 @@ public class AccIconsUnlockManager : MonoBehaviour
 
             CoinsManagerInMainMenu.instance.coinsS -= price;
             JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
-            JsonStorage.instance.SaveData();
         }
     }
 }

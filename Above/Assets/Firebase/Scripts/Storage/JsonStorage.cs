@@ -14,6 +14,7 @@ public class KeyForm
 
 public class JsonStorage : MonoBehaviour
 {
+    private string password;
     private int seconds = 0;
     private bool isCanCheck = true;
     public bool isFrozenTimer = false;
@@ -40,6 +41,9 @@ public class JsonStorage : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        SaveEncryptDataOnExit(filePath);
+
         Debug.Log("Exit");
 
         if (pastData.userData.record != jsonData.userData.record)
@@ -64,12 +68,6 @@ public class JsonStorage : MonoBehaviour
         {
             Debug.Log("Level is saved");
             DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
-        }
-
-        if (!pastData.ContentEquals(jsonData))
-        {
-            Debug.Log("Json file is saved to www");
-            StorageData.instance.SaveJsonData();
         }
     }
 
@@ -143,8 +141,6 @@ public class JsonStorage : MonoBehaviour
 
             if (!pastData.ContentEquals(jsonData))
             {
-                StorageData.instance.SaveJsonData();
-
                 pastData.CopyFrom(jsonData);
                 Debug.Log("Json file is saved to www");
             }
@@ -158,106 +154,103 @@ public class JsonStorage : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
+        password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
+
         if (!File.Exists(filePath))
         {
             if (await StorageData.instance.CheckIfJsonDataExists() == false)
             {
-                jsonData = new JsonData
-                {
-                    boolean = new JsonData.Boolean
-                    {
-                        isTutorial = false
-                    },
+                jsonData = CreateNewJsonData();
+                pastData = CreateNewJsonData();
 
-                    userData = new JsonData.UserData
-                    {
-                        userName = UserData.instance.User.DisplayName,
-                        userEmail = UserData.instance.User.Email,
-                        userIcon = "blackThrush",
-
-                        exp = 0,
-                        level = 1,
-                        coinsS = 0,
-                        coinsF = 0,
-
-                        coinsFAllTime = 0,
-                        coinsSAllTime = 0
-                    },
-
-                    shop = new JsonData.Shop
-                    {
-                        skins = startSkinsList,
-                        bgs = startBgsList,
-                        boosts = startBoostsList,
-                    },
-
-                    currentShop = new JsonData.CurrentShop
-                    {
-                        currentSkin = 0,
-                        currentBg = 0,
-                        currentBoost = 0
-                    },
-
-                    audioSettings = new JsonData.AudioSettings
-                    {
-                        musicMainMenu = 1,
-                        musicGame = 1,
-                        sfxMainMenu = 1,
-                        sfxGame = 1
-                    },
-
-                    otherSettings = new JsonData.OtherSettings
-                    {
-                        showLevelRanks = true,
-                        autoSave = false,
-                        particles = true,
-                        showSelectedBoostInGame = true,
-                        cameraShake = true,
-                        vibration = true
-                    },
-
-                    accountIcons = new JsonData.AccountIcons
-                    {
-                        icons = startIcons
-                    }
-                };
+                StartTimer();
 
                 Debug.Log("File is created in storage");
 
-                SaveData();
-
-                StorageData.instance.SaveJsonData();
+                return;
             }
             else
             {
                 await StorageData.instance.LoadJsonData();
                 Debug.Log("File is received from storage");
-
-                SaveData();
             }
         }
-        else
-        {
-            string json = File.ReadAllText(filePath);
 
-            jsonData = JsonUtility.FromJson<JsonData>(json);
-        }
+        jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
-        string past = File.ReadAllText(filePath);
+        pastData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
-        pastData = JsonUtility.FromJson<JsonData>(past);
+        Debug.Log(7);
 
         StartTimer();
     }
 
-    public void SaveData()
+    private void SaveEncryptDataOnExit(string filePath)
     {
-        string json = JsonUtility.ToJson(jsonData, true);
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.EncryptAndSave(filePath, jsonData, password);
+    }
 
-        File.WriteAllText(filePath, json);
+    private JsonData CreateNewJsonData()
+    {
+        return new JsonData
+        {
+            boolean = new JsonData.Boolean
+            {
+                isTutorial = false
+            },
 
-        Debug.Log("JSON file saved!");
+            userData = new JsonData.UserData
+            {
+                userName = UserData.instance.User.DisplayName,
+                userEmail = UserData.instance.User.Email,
+                userIcon = "blackThrush",
+
+                exp = 0,
+                level = 1,
+                coinsS = 0,
+                coinsF = 0,
+
+                coinsFAllTime = 0,
+                coinsSAllTime = 0
+            },
+
+            shop = new JsonData.Shop
+            {
+                skins = startSkinsList,
+                bgs = startBgsList,
+                boosts = startBoostsList,
+            },
+
+            currentShop = new JsonData.CurrentShop
+            {
+                currentSkin = 0,
+                currentBg = 0,
+                currentBoost = 0
+            },
+
+            audioSettings = new JsonData.AudioSettings
+            {
+                musicMainMenu = 1,
+                musicGame = 1,
+                sfxMainMenu = 1,
+                sfxGame = 1
+            },
+
+            otherSettings = new JsonData.OtherSettings
+            {
+                showLevelRanks = true,
+                autoSave = false,
+                particles = true,
+                showSelectedBoostInGame = true,
+                cameraShake = true,
+                vibration = true
+            },
+
+            accountIcons = new JsonData.AccountIcons
+            {
+                icons = startIcons
+            }
+        };
     }
 
     private void AddSeconds()

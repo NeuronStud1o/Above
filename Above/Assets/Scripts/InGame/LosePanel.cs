@@ -35,13 +35,11 @@ public class LosePanel : MonoBehaviour
         int doneExp = JsonStorage.instance.jsonData.userData.exp + gainedExp;
 
         JsonStorage.instance.jsonData.userData.exp = doneExp;
-        JsonStorage.instance.SaveData();
 
         if (lastRunScore > recordScore)
         {
             recordScore = lastRunScore;
             JsonStorage.instance.jsonData.userData.record = recordScore;
-            JsonStorage.instance.SaveData();
         }
 
         scoreText.text = recordScore.ToString();

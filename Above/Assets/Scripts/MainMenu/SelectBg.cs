@@ -45,7 +45,6 @@ public class SelectBg : MonoBehaviour
         }
 
         JsonStorage.instance.jsonData.currentShop.currentBg = thisBg;
-        JsonStorage.instance.SaveData();
 
         AllBg[thisBg].SetActive(true);
         AllRailings[thisBg].SetActive(true);

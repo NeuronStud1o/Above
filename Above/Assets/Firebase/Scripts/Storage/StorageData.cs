@@ -21,7 +21,7 @@ public class StorageData : MonoBehaviour
 
     public void SaveJsonData()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.DisplayName).Child("gameData");
+        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
 
         string localFile = Path.Combine(Application.persistentDataPath, "gameData.json");
 
@@ -58,7 +58,7 @@ public class StorageData : MonoBehaviour
 
     public async Task LoadJsonData()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.DisplayName).Child("gameData");
+        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
 
         string localFile = Path.Combine(Application.persistentDataPath, "gameData.json");
 
@@ -73,7 +73,7 @@ public class StorageData : MonoBehaviour
 
     public async Task<bool> CheckIfJsonDataExists()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.DisplayName).Child("gameData");
+        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
 
         try
         {

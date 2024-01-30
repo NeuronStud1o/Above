@@ -39,7 +39,6 @@ public class ManagerEXP : MonoBehaviour
             {
                 icon.isPurchased = true;
                 EquipAccIcon.instance.CheckLock();
-                JsonStorage.instance.SaveData();
             }
         }
 
@@ -93,11 +92,8 @@ public class ManagerEXP : MonoBehaviour
                 {
                     icon.isPurchased = true;
                     EquipAccIcon.instance.CheckLock();
-                    JsonStorage.instance.SaveData();
                 }
             }
-
-            JsonStorage.instance.SaveData();
 
             SetValues();
         }

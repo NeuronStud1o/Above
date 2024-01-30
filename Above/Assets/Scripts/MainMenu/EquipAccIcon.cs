@@ -40,7 +40,5 @@ public class EquipAccIcon : MonoBehaviour
         button.color = color;
 
         accountManagerMainMenu.ChangeIcon(name);
-
-        JsonStorage.instance.SaveData();
     }
 }

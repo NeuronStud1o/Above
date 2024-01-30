@@ -376,7 +376,6 @@ public class FirebaseAuthManager : MonoBehaviour
         if (tutorial == false)
         {
             JsonStorage.instance.jsonData.boolean.isTutorial = true;
-            JsonStorage.instance.SaveData();
 
             DataBase.instance.SetActiveLoadingScreen(false);
 

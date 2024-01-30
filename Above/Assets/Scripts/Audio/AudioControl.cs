@@ -23,8 +23,6 @@ public class AudioControl : MonoBehaviour
             JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = 1;
 
             JsonStorage.instance.jsonData.boolean.isFirstTimeAudio = true;
-
-            JsonStorage.instance.SaveData();
         }
 
         LoadAudioValue();
@@ -62,8 +60,6 @@ public class AudioControl : MonoBehaviour
         JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = slider[1].value;
         JsonStorage.instance.jsonData.audioSettings.musicGame = slider[2].value;
         JsonStorage.instance.jsonData.audioSettings.sfxGame = slider[3].value;
-
-        JsonStorage.instance.SaveData();
 
         SetAudioValue();
     }

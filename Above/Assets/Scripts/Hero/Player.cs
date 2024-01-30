@@ -100,8 +100,6 @@ public class Player : MonoBehaviour
 
             JsonStorage.instance.jsonData.userData.coinsFAllTime += coinsToAdd;
 
-            JsonStorage.instance.SaveData();
-
             audioSource.PlayOneShot(getCoin);
 
             CoinsManager.instance.UpdateUI();
@@ -115,8 +113,6 @@ public class Player : MonoBehaviour
             JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
 
             JsonStorage.instance.jsonData.userData.coinsSAllTime++;
-
-            JsonStorage.instance.SaveData();
             
             audioSource.PlayOneShot(getCoin);
 
