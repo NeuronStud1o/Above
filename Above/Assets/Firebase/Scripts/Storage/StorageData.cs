@@ -5,6 +5,8 @@ using Firebase.Storage;
 using System.IO;
 using System.Threading.Tasks;
 using System;
+using Firebase.Extensions;
+using UnityEngine.Networking;
 
 public class StorageData : MonoBehaviour
 {
@@ -58,17 +60,47 @@ public class StorageData : MonoBehaviour
 
     public async Task LoadJsonData()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData.json");
 
-        string localFile = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        await reference.GetFileAsync(localFile).ContinueWith(task =>
+        if (!await CheckIfJsonDataExists())
         {
-            if (task.IsCompleted)
+            Debug.Log("File does not exist in storage.");
+            return;
+        }
+
+        var downloadUrlTask = reference.GetDownloadUrlAsync();
+        await downloadUrlTask.ContinueWithOnMainThread(task =>
+        {
+            if (!task.IsFaulted && !task.IsCanceled)
             {
-                Debug.Log("Sucefull download");
+                string downloadUrl = task.Result.ToString();
+                StartCoroutine(DownloadFile(downloadUrl));
+            }
+            else
+            {
+                Debug.LogError("Error getting download URL: " + task.Exception);
             }
         });
+    }
+
+    private IEnumerator DownloadFile(string downloadUrl)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(downloadUrl))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+                File.WriteAllBytes(filePath, www.downloadHandler.data);
+
+                Debug.Log("File downloaded successfully!");
+            }
+            else
+            {
+                Debug.LogError("Failed to download file: " + www.error);
+            }
+        }
     }
 
     public async Task<bool> CheckIfJsonDataExists()

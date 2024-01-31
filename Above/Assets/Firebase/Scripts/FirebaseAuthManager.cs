@@ -77,12 +77,14 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    private void AutoLogin()
+    private async void AutoLogin()
     {
         if (user != null)
         {
             References.userName = user.DisplayName;
             UserData.instance.SetUser(user);
+
+            await StorageData.instance.LoadJsonData();
             UIManager.Instance.OpenButtonsPanel();
         }
         else

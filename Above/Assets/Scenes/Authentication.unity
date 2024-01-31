@@ -6818,7 +6818,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1104713352}
   - component: {fileID: 1104713351}
-  - component: {fileID: 1104713350}
   m_Layer: 0
   m_Name: StorageController
   m_TagString: Untagged
@@ -6826,18 +6825,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1104713350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104713348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb35704b2309bb142a0254513e1916cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1104713351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9206,6 +9193,7 @@ GameObject:
   - component: {fileID: 1620340951}
   - component: {fileID: 1620340953}
   - component: {fileID: 1620340954}
+  - component: {fileID: 1620340955}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -9348,6 +9336,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1620340955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620340950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb35704b2309bb142a0254513e1916cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1659557037
 GameObject:
   m_ObjectHideFlags: 0

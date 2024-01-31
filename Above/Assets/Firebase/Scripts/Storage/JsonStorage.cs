@@ -180,8 +180,6 @@ public class JsonStorage : MonoBehaviour
 
         pastData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
-        Debug.Log(7);
-
         StartTimer();
     }
 
