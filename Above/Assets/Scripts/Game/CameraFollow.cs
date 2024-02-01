@@ -5,6 +5,15 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform doodlePos;
+    [SerializeField] private GameObject boost;
+
+    void Start()
+    {
+        if (!JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame)
+        {
+            boost.SetActive(false);
+        }
+    }
 
     void Update()
     {

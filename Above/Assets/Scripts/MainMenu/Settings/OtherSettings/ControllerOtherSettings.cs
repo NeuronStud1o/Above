@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class OtherSettings : MonoBehaviour
+public class ControllerOtherSettings : MonoBehaviour
 {
+    [Header ("## Menu settings : ")]
     [SerializeField] private GameObject levelRanks;
+    [SerializeField] private GameObject boost;
+    [SerializeField] private List<MonoBehaviour> autoSaveScripts;
     [SerializeField] private List<GameObject> particles;
 
-    public void OpenDocumentation()
+    void Start()
     {
-        Application.OpenURL("https://docs.google.com/document/d/1ANJd7XmfpLubOtsssmON4Fuc_4nhoc4LQUoeockF8RY/edit?usp=sharing");
+        ShowLevelRanks(JsonStorage.instance.jsonData.otherSettings.showLevelRanks);
+        AutoSaveSettings(JsonStorage.instance.jsonData.otherSettings.autoSave);
+        ActivateParticles(JsonStorage.instance.jsonData.otherSettings.particles);
+        ShowTheSelectedBoost(JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame);
     }
 
     public void ShowLevelRanks(bool tog)
@@ -29,17 +34,18 @@ public class OtherSettings : MonoBehaviour
     {
         if (tog == true)
         {
-            
+            foreach (MonoBehaviour script in autoSaveScripts)
+            {
+                script.enabled = true;
+            }
         }
         else
         {
-            
+            foreach (MonoBehaviour script in autoSaveScripts)
+            {
+                script.enabled = false;
+            }
         }
-    }
-
-    public void PlayTutorial()
-    {
-        SceneManager.LoadSceneAsync("Tutorial");
     }
 
     public void ActivateParticles(bool tog)
@@ -64,35 +70,11 @@ public class OtherSettings : MonoBehaviour
     {
         if (tog == true)
         {
-
+            boost.SetActive(true);
         }
         else
         {
-
-        }
-    }
-
-    public void CameraShake(bool tog)
-    {
-        if (tog == true)
-        {
-
-        }
-        else
-        {
-
-        }
-    }
-
-    public void Vibration(bool tog)
-    {
-        if (tog == true)
-        {
-
-        }
-        else
-        {
-
+            boost.SetActive(false);
         }
     }
 }

@@ -164,7 +164,12 @@ public class Player : MonoBehaviour
     
     private async Task Death()
     {
-        Handheld.Vibrate();
+        if (JsonStorage.instance.jsonData.otherSettings.vibration)
+        {
+            Handheld.Vibrate();
+            Debug.Log("Vibration");
+        }
+        
         audioSource.PlayOneShot(death);
         canvasInGame.SetActive(false);
         
@@ -176,19 +181,23 @@ public class Player : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.05f));
 
-        for (int i = 0; i < 10; i++)
+        if (JsonStorage.instance.jsonData.otherSettings.cameraShake)
         {
-            if (i % 2 != 0)
+            for (int i = 0; i < 10; i++)
             {
-                await Task.Delay(TimeSpan.FromSeconds(0.05f));
-                Camera.main.gameObject.transform.position = new Vector3(-0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
-            }
-            else
-            {
-                await Task.Delay(TimeSpan.FromSeconds(0.05f));
-                Camera.main.gameObject.transform.position = new Vector3(0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
+                if (i % 2 != 0)
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(0.05f));
+                    Camera.main.gameObject.transform.position = new Vector3(-0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
+                }
+                else
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(0.05f));
+                    Camera.main.gameObject.transform.position = new Vector3(0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
+                }
             }
         }
+
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 

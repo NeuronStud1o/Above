@@ -9192,8 +9192,8 @@ GameObject:
   - component: {fileID: 1620340952}
   - component: {fileID: 1620340951}
   - component: {fileID: 1620340953}
-  - component: {fileID: 1620340954}
   - component: {fileID: 1620340955}
+  - component: {fileID: 1620340954}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged

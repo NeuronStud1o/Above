@@ -8,6 +8,12 @@ public class DataBase : MonoBehaviour
 {
     void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(loadingScreen);
     }

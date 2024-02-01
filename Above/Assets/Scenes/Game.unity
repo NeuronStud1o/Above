@@ -3089,6 +3089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doodlePos: {fileID: 1364202548}
+  boost: {fileID: 1724581660}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
