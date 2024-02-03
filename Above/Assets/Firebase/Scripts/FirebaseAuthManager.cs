@@ -392,4 +392,9 @@ public class FirebaseAuthManager : MonoBehaviour
             SceneManager.LoadSceneAsync("MainMenu");
         }
     }
+
+    public void PlayOffline()
+    {
+        SceneManager.LoadSceneAsync("OfflineMenu");
+    }
 }

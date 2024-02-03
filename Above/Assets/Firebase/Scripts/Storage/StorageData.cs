@@ -17,6 +17,11 @@ public class StorageData : MonoBehaviour
 
     void Awake()
     {
+        if (instance != null)
+        {
+            return;
+        }
+        
         instance = this;
         storage = FirebaseStorage.DefaultInstance;
     }
