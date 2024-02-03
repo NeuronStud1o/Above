@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class GeneratorWalls : MonoBehaviour
 {
-    [SerializeField] private GameObject walls;
+    [SerializeField] private GameObject wall;
     [SerializeField] private Transform generatorPoint;
-    [SerializeField] private float distanceBetween;
+    [SerializeField] private float offset;
 
-    float platformWidth;
+    float backgroundHeight;
 
     void Start()
     {
-        platformWidth = walls.GetComponent<BoxCollider2D>().size.y;
+        backgroundHeight = wall.GetComponentInChildren<SpriteRenderer>().bounds.size.y;
     }
 
     void Update()
     {
-        if (transform.position.y < generatorPoint.position.y)
+        if (transform.position.y + offset < generatorPoint.position.y)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + platformWidth + distanceBetween, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + backgroundHeight, transform.position.z);
 
-            Instantiate(walls, transform.position, transform.rotation);
+            Instantiate(wall, transform.position, transform.rotation);
         }
     }
 }

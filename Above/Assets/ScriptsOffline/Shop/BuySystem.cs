@@ -26,8 +26,10 @@ public class BuySystem : MonoBehaviour
     public Skins skins;
     [SerializeField] private TextMeshProUGUI coinsF;
     [SerializeField] private TextMeshProUGUI coinsS;
-    [SerializeField] private TextMeshProUGUI hightScore;
+    [SerializeField] private TextMeshProUGUI level;
     [SerializeField] private GameObject shop;
+
+    public List<GameObject> equipButtons;
 
     void Start()
     {
@@ -42,7 +44,7 @@ public class BuySystem : MonoBehaviour
     {
         coinsF.text = PlayerPrefs.GetInt("coinsF") + "";
         coinsS.text = PlayerPrefs.GetInt("coinsS") + "";
-        hightScore.text = PlayerPrefs.GetInt("hightScore") + "";
+        level.text = PlayerPrefs.GetInt("Levels") + "";
     }
 
     public void SaveToJson()

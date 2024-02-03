@@ -6,24 +6,24 @@ public class GeneratorBackground : MonoBehaviour
 {
     [SerializeField] private GameObject background;
     [SerializeField] private Transform generatorPoint;
-    [SerializeField] private float distanceBetween;
+    [SerializeField] private float offset;
 
-    float platformWidth;
+    float backgroundHeight;
 
-    [SerializeField] private GameObject Camera;
     [SerializeField] private AudioClip audioClip;
 
     void Start()
     {
-        Camera.GetComponent<AudioSource>().clip = audioClip;
-        platformWidth = background.GetComponent<BoxCollider2D>().size.y;
+        Camera.main.GetComponent<AudioSource>().clip = audioClip;
+
+        backgroundHeight = background.GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
     void Update()
     {
-        if (transform.position.y < generatorPoint.position.y)
+        if (transform.position.y + offset < generatorPoint.position.y)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + platformWidth + distanceBetween, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + backgroundHeight, transform.position.z);
 
             Instantiate(background, transform.position, transform.rotation);
         }

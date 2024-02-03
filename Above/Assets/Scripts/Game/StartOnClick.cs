@@ -16,6 +16,7 @@ public class StartOnClick : MonoBehaviour
     [SerializeField] private EventTrigger triggerEvent;
 
     public Player player;
+    public PlayerOffline playerOffline;
 
     [SerializeField] private GameObject destroyPoint;
 
@@ -37,7 +38,15 @@ public class StartOnClick : MonoBehaviour
         entry.callback.AddListener((eventData) => { YourPointerDownMethod(); });
         triggerEvent.triggers.Add(entry);
 
-        player.isCanMove = true;
+        if (player != null)
+        {
+            player.isCanMove = true;
+        }
+        else
+        {
+            playerOffline.isCanMove = true;
+        }
+        
         pauseButton.interactable = true;
 
         text.enabled = false;
@@ -46,6 +55,14 @@ public class StartOnClick : MonoBehaviour
 
     private void YourPointerDownMethod()
     {
-        player.Jump();
+        if (player != null)
+        {
+            player.Jump();
+        }
+        else
+        {
+            playerOffline.Jump();
+        }
+        
     }
 }

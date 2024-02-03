@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 19799357}
   m_Layer: 5
-  m_Name: HightScore
+  m_Name: HightLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,9 +621,9 @@ RectTransform:
   m_Children:
   - {fileID: 1860584358}
   - {fileID: 1390249674}
+  - {fileID: 1178857392}
   - {fileID: 1018369154}
   - {fileID: 556094506}
-  - {fileID: 1178857392}
   - {fileID: 1033705915}
   - {fileID: 1330816416}
   m_Father: {fileID: 526557574}
@@ -1356,9 +1356,9 @@ RectTransform:
   m_Children:
   - {fileID: 677390202}
   - {fileID: 1294654034}
+  - {fileID: 243668272}
   - {fileID: 1017607041}
   - {fileID: 2011882058}
-  - {fileID: 243668272}
   - {fileID: 1204868814}
   - {fileID: 768755812}
   m_Father: {fileID: 526557574}
@@ -1961,7 +1961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &243668272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1974,7 +1974,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.79999983, z: 1}
   m_Children: []
   m_Father: {fileID: 148341618}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2707,7 +2707,7 @@ RectTransform:
   m_Children:
   - {fileID: 1890861142}
   m_Father: {fileID: 755367997}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4111,7 +4111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &360563782
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4124,7 +4124,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.79999983, z: 1}
   m_Children: []
   m_Father: {fileID: 1677391366}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4482,6 +4482,7 @@ GameObject:
   - component: {fileID: 414080021}
   - component: {fileID: 414080020}
   - component: {fileID: 414080019}
+  - component: {fileID: 414080022}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4502,7 +4503,7 @@ RectTransform:
   m_Children:
   - {fileID: 575463669}
   m_Father: {fileID: 755367997}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4553,10 +4554,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 414080022}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4603,6 +4604,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414080017}
   m_CullTransparentMesh: 1
+--- !u!114 &414080022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414080017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 3
 --- !u!1 &414264760
 GameObject:
   m_ObjectHideFlags: 0
@@ -5838,7 +5853,7 @@ RectTransform:
   m_Children:
   - {fileID: 1189888409}
   m_Father: {fileID: 52913027}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5903,7 +5918,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263024729}
+      - m_Target: {fileID: 556094507}
         m_TargetAssemblyTypeName: BuyButtons, Assembly-CSharp
         m_MethodName: BuySkins
         m_Mode: 1
@@ -6886,7 +6901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &653334458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6899,7 +6914,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.7999999, z: 1}
   m_Children: []
   m_Father: {fileID: 755367997}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7552,6 +7567,7 @@ GameObject:
   - component: {fileID: 683322137}
   - component: {fileID: 683322136}
   - component: {fileID: 683322135}
+  - component: {fileID: 683322138}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7572,7 +7588,7 @@ RectTransform:
   m_Children:
   - {fileID: 63818263}
   m_Father: {fileID: 718831602}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7623,10 +7639,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 683322138}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7673,6 +7689,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683322133}
   m_CullTransparentMesh: 1
+--- !u!114 &683322138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683322133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 0
 --- !u!1 &683766851
 GameObject:
   m_ObjectHideFlags: 0
@@ -8375,7 +8405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &704907362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8388,7 +8418,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 727740046}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8903,8 +8933,8 @@ RectTransform:
   m_Children:
   - {fileID: 879562129}
   - {fileID: 920234264}
-  - {fileID: 683322134}
   - {fileID: 1271580811}
+  - {fileID: 683322134}
   - {fileID: 1337705676}
   - {fileID: 617802826}
   m_Father: {fileID: 526557574}
@@ -8944,9 +8974,9 @@ RectTransform:
   m_Children:
   - {fileID: 2108967968}
   - {fileID: 32318135}
+  - {fileID: 704907362}
   - {fileID: 1322221714}
   - {fileID: 1825114971}
-  - {fileID: 704907362}
   - {fileID: 1298333843}
   - {fileID: 779419159}
   m_Father: {fileID: 526557574}
@@ -9420,9 +9450,9 @@ RectTransform:
   m_Children:
   - {fileID: 683766852}
   - {fileID: 1724165697}
+  - {fileID: 653334458}
   - {fileID: 414080018}
   - {fileID: 263024728}
-  - {fileID: 653334458}
   - {fileID: 19225552}
   - {fileID: 1913990713}
   m_Father: {fileID: 526557574}
@@ -11728,7 +11758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: H
+  m_text: L
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9785da0de94220458c70d034d399e01, type: 2}
   m_sharedMaterial: {fileID: 8166114929326356066, guid: b9785da0de94220458c70d034d399e01, type: 2}
@@ -12521,8 +12551,18 @@ MonoBehaviour:
     skinsList: []
   coinsF: {fileID: 1910741530}
   coinsS: {fileID: 942296666}
-  hightScore: {fileID: 470848633}
+  level: {fileID: 470848633}
   shop: {fileID: 275507887}
+  equipButtons:
+  - {fileID: 683322133}
+  - {fileID: 1322221713}
+  - {fileID: 992651117}
+  - {fileID: 414080017}
+  - {fileID: 992442854}
+  - {fileID: 1018369153}
+  - {fileID: 1798578148}
+  - {fileID: 1017607040}
+  - {fileID: 1845740948}
 --- !u!1 &992442854
 GameObject:
   m_ObjectHideFlags: 0
@@ -12535,6 +12575,7 @@ GameObject:
   - component: {fileID: 992442858}
   - component: {fileID: 992442857}
   - component: {fileID: 992442856}
+  - component: {fileID: 992442859}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -12555,7 +12596,7 @@ RectTransform:
   m_Children:
   - {fileID: 1698840569}
   m_Father: {fileID: 1677391366}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12606,10 +12647,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 992442859}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12656,6 +12697,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992442854}
   m_CullTransparentMesh: 1
+--- !u!114 &992442859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992442854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 4
 --- !u!1 &992651117
 GameObject:
   m_ObjectHideFlags: 0
@@ -12668,6 +12723,7 @@ GameObject:
   - component: {fileID: 992651121}
   - component: {fileID: 992651120}
   - component: {fileID: 992651119}
+  - component: {fileID: 992651122}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -12688,7 +12744,7 @@ RectTransform:
   m_Children:
   - {fileID: 717991576}
   m_Father: {fileID: 1135246191}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12739,10 +12795,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 992651122}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12789,6 +12845,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992651117}
   m_CullTransparentMesh: 1
+--- !u!114 &992651122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992651117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 2
 --- !u!1 &998161699
 GameObject:
   m_ObjectHideFlags: 0
@@ -12822,7 +12892,7 @@ RectTransform:
   m_Children:
   - {fileID: 360302640}
   m_Father: {fileID: 1502187718}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12887,7 +12957,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263024729}
+      - m_Target: {fileID: 998161701}
         m_TargetAssemblyTypeName: BuyButtons, Assembly-CSharp
         m_MethodName: BuySkins
         m_Mode: 1
@@ -13024,6 +13094,7 @@ GameObject:
   - component: {fileID: 1017607044}
   - component: {fileID: 1017607043}
   - component: {fileID: 1017607042}
+  - component: {fileID: 1017607045}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -13044,7 +13115,7 @@ RectTransform:
   m_Children:
   - {fileID: 140085467}
   m_Father: {fileID: 148341618}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13095,14 +13166,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 1017607045}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13145,6 +13216,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017607040}
   m_CullTransparentMesh: 1
+--- !u!114 &1017607045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017607040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 7
 --- !u!1 &1018369153
 GameObject:
   m_ObjectHideFlags: 0
@@ -13157,6 +13242,7 @@ GameObject:
   - component: {fileID: 1018369157}
   - component: {fileID: 1018369156}
   - component: {fileID: 1018369155}
+  - component: {fileID: 1018369158}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -13177,7 +13263,7 @@ RectTransform:
   m_Children:
   - {fileID: 1476520433}
   m_Father: {fileID: 52913027}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13228,10 +13314,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 1018369158}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13278,6 +13364,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018369153}
   m_CullTransparentMesh: 1
+--- !u!114 &1018369158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018369153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 5
 --- !u!1 &1026644028
 GameObject:
   m_ObjectHideFlags: 0
@@ -13973,9 +14073,9 @@ RectTransform:
   m_Children:
   - {fileID: 1178232823}
   - {fileID: 1454009933}
+  - {fileID: 1649429963}
   - {fileID: 992651118}
   - {fileID: 1353511228}
-  - {fileID: 1649429963}
   - {fileID: 537966560}
   - {fileID: 579255661}
   m_Father: {fileID: 526557574}
@@ -14631,7 +14731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1178857392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14644,7 +14744,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.7999998, z: 1}
   m_Children: []
   m_Father: {fileID: 52913027}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15980,7 +16080,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1271580811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15993,7 +16093,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 718831602}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16415,6 +16515,7 @@ GameObject:
   - component: {fileID: 1322221717}
   - component: {fileID: 1322221716}
   - component: {fileID: 1322221715}
+  - component: {fileID: 1322221718}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -16435,7 +16536,7 @@ RectTransform:
   m_Children:
   - {fileID: 775936876}
   m_Father: {fileID: 727740046}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16486,10 +16587,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 1322221718}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16536,6 +16637,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322221713}
   m_CullTransparentMesh: 1
+--- !u!114 &1322221718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322221713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 1
 --- !u!1 &1330816415
 GameObject:
   m_ObjectHideFlags: 0
@@ -16822,7 +16937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1337997175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16835,7 +16950,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.7999998, z: 1}
   m_Children: []
   m_Father: {fileID: 1926971215}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17223,7 +17338,7 @@ RectTransform:
   m_Children:
   - {fileID: 1068502245}
   m_Father: {fileID: 1135246191}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17288,7 +17403,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263024729}
+      - m_Target: {fileID: 1353511229}
         m_TargetAssemblyTypeName: BuyButtons, Assembly-CSharp
         m_MethodName: BuySkins
         m_Mode: 1
@@ -18275,9 +18390,9 @@ RectTransform:
   m_Children:
   - {fileID: 1941205961}
   - {fileID: 2045306520}
+  - {fileID: 1807011807}
   - {fileID: 1845740949}
   - {fileID: 998161700}
-  - {fileID: 1807011807}
   - {fileID: 49853050}
   - {fileID: 821782047}
   m_Father: {fileID: 526557574}
@@ -20440,7 +20555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1649429963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20453,7 +20568,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 1135246191}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20973,9 +21088,9 @@ RectTransform:
   m_Children:
   - {fileID: 1605252373}
   - {fileID: 438996678}
+  - {fileID: 360563782}
   - {fileID: 992442855}
   - {fileID: 2042292548}
-  - {fileID: 360563782}
   - {fileID: 95428850}
   - {fileID: 1345538638}
   m_Father: {fileID: 526557574}
@@ -21488,6 +21603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eqipedLevel: 1
+  equipedHero: 0
 --- !u!4 &1716718709
 Transform:
   m_ObjectHideFlags: 0
@@ -22102,6 +22218,7 @@ GameObject:
   - component: {fileID: 1798578152}
   - component: {fileID: 1798578151}
   - component: {fileID: 1798578150}
+  - component: {fileID: 1798578153}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -22122,7 +22239,7 @@ RectTransform:
   m_Children:
   - {fileID: 180045673}
   m_Father: {fileID: 1926971215}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22173,14 +22290,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 1798578153}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 8
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -22223,6 +22340,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798578148}
   m_CullTransparentMesh: 1
+--- !u!114 &1798578153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798578148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 6
 --- !u!1 &1798911861
 GameObject:
   m_ObjectHideFlags: 0
@@ -22454,7 +22585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1807011807
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22467,7 +22598,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.7999998, z: 1}
   m_Children: []
   m_Father: {fileID: 1502187718}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22664,7 +22795,7 @@ RectTransform:
   m_Children:
   - {fileID: 1798911862}
   m_Father: {fileID: 727740046}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22729,7 +22860,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263024729}
+      - m_Target: {fileID: 1825114972}
         m_TargetAssemblyTypeName: BuyButtons, Assembly-CSharp
         m_MethodName: BuySkins
         m_Mode: 1
@@ -22866,6 +22997,7 @@ GameObject:
   - component: {fileID: 1845740952}
   - component: {fileID: 1845740951}
   - component: {fileID: 1845740950}
+  - component: {fileID: 1845740953}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -22886,7 +23018,7 @@ RectTransform:
   m_Children:
   - {fileID: 472876848}
   m_Father: {fileID: 1502187718}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22937,14 +23069,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 3
+      - m_Target: {fileID: 1845740953}
+        m_TargetAssemblyTypeName: EquipButtons, Assembly-CSharp
+        m_MethodName: EquipHero
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -22987,6 +23119,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845740948}
   m_CullTransparentMesh: 1
+--- !u!114 &1845740953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845740948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b39032008547c48adfd230500459f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySystem: {fileID: 991872811}
+  index: 8
 --- !u!1 &1845832776
 GameObject:
   m_ObjectHideFlags: 0
@@ -24290,7 +24436,7 @@ RectTransform:
   m_Children:
   - {fileID: 1108000414}
   m_Father: {fileID: 1926971215}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24355,7 +24501,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263024729}
+      - m_Target: {fileID: 1920442589}
         m_TargetAssemblyTypeName: BuyButtons, Assembly-CSharp
         m_MethodName: BuySkins
         m_Mode: 1
@@ -24434,9 +24580,9 @@ RectTransform:
   m_Children:
   - {fileID: 382058936}
   - {fileID: 1525328452}
+  - {fileID: 1337997175}
   - {fileID: 1798578149}
   - {fileID: 1920442588}
-  - {fileID: 1337997175}
   - {fileID: 1945198898}
   - {fileID: 991424147}
   m_Father: {fileID: 526557574}
@@ -25117,7 +25263,7 @@ RectTransform:
   m_Children:
   - {fileID: 1775311795}
   m_Father: {fileID: 148341618}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25182,7 +25328,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263024729}
+      - m_Target: {fileID: 2011882059}
         m_TargetAssemblyTypeName: BuyButtons, Assembly-CSharp
         m_MethodName: BuySkins
         m_Mode: 1
@@ -25481,7 +25627,7 @@ RectTransform:
   m_Children:
   - {fileID: 702434004}
   m_Father: {fileID: 1677391366}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25546,7 +25692,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 263024729}
+      - m_Target: {fileID: 2042292549}
         m_TargetAssemblyTypeName: BuyButtons, Assembly-CSharp
         m_MethodName: BuySkins
         m_Mode: 1

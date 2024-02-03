@@ -8,9 +8,12 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public int eqipedLevel = 1;
+    public int equipedHero = 0;
 
     void Awake()
     {
+        //PlayerPrefs.SetInt("Levels", 1);
+
         if (instance != null)
         {
             Destroy(gameObject);
