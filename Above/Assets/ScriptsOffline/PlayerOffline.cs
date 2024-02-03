@@ -22,6 +22,7 @@ public class PlayerOffline : MonoBehaviour
     private float speed = 2.2f;
 
     public bool isCanMove = false;
+    bool isCanTouchCoin = true;
 
     void Start()
     {
@@ -59,27 +60,34 @@ public class PlayerOffline : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "FlyCoin")
+        if (collision.gameObject.tag == "FlyCoin" && isCanTouchCoin)
         {
             PlayerPrefs.SetInt("coinsF", PlayerPrefs.GetInt("coinsF") + 1);
+            Debug.Log(2);
             StartCoroutine(TouchCoin(collision.gameObject));
             audioSource.PlayOneShot(getCoin);
+
+            OfflineGameManager.instance.UpdateUI();
         }
 
-        if (collision.gameObject.tag == "SuperCoin")
+        if (collision.gameObject.tag == "SuperCoin" && isCanTouchCoin)
         {
             PlayerPrefs.SetInt("coinsS", PlayerPrefs.GetInt("coinsS") + 1);
             StartCoroutine(TouchCoin(collision.gameObject));
             audioSource.PlayOneShot(getCoin);
+
+            OfflineGameManager.instance.UpdateUI();
         }
     }
 
     IEnumerator TouchCoin(GameObject coin)
     {
+        isCanTouchCoin = false;
         coin.GetComponentInChildren<Animator>().SetTrigger("Touch");
 
         yield return new WaitForSeconds(0.6f);
 
+        isCanTouchCoin = true;
         Destroy(coin);
     }
 

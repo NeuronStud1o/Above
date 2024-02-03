@@ -14,4 +14,11 @@ public class OfflineManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Authentication");
     }
+
+    public void StartGame(int index)
+    {
+        LevelManager.instance.eqipedLevel = index;
+
+        SceneManager.LoadSceneAsync("OfflineGame");
+    }
 }

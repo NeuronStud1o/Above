@@ -7,7 +7,10 @@ public class WinPanel : MonoBehaviour
 {
     void Start()
     {
-        PlayerPrefs.SetInt("Levels", PlayerPrefs.GetInt("Levels") + 1);
+        if (PlayerPrefs.GetInt("Levels") <= LevelManager.instance.eqipedLevel)
+        {
+            PlayerPrefs.SetInt("Levels", PlayerPrefs.GetInt("Levels") + 1);
+        }
     }
 
     public void GoToMenu()
@@ -18,6 +21,11 @@ public class WinPanel : MonoBehaviour
     public void NextLevel()
     {
         LevelManager.instance.eqipedLevel++;
+        SceneManager.LoadSceneAsync("OfflineGame");
+    }
+
+    public void RetryLevel()
+    {
         SceneManager.LoadSceneAsync("OfflineGame");
     }
 }

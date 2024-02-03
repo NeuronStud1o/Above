@@ -24,11 +24,4 @@ public class LevelManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
-
-    public void StartGame(int index)
-    {
-        eqipedLevel = index;
-
-        SceneManager.LoadSceneAsync("OfflineGame");
-    }
 }
