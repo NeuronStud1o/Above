@@ -24,7 +24,16 @@ public class PauseController : MonoBehaviour
         if (hero != null)
         {
             hero.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            hero.GetComponent<Player>().enabled = false;
+
+            if (hero.GetComponent<Player>())
+            {
+                hero.GetComponent<Player>().enabled = false;
+            }
+            else
+            {
+                hero.GetComponent<PlayerOffline>().enabled = false;
+            }
+
             isPause = true;
         }
     }
@@ -48,12 +57,16 @@ public class PauseController : MonoBehaviour
 
         timerGameObject.SetActive(false);
         hero.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
         if (hero != null)
         {
-            Player playerComponent = hero.GetComponent<Player>();
-            if (playerComponent != null)
+            if (hero.GetComponent<Player>())
             {
-                playerComponent.enabled = true;
+                hero.GetComponent<Player>().enabled = true;
+            }
+            else
+            {
+                hero.GetComponent<PlayerOffline>().enabled = true;
             }
         }
 

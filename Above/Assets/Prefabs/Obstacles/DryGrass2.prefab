@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 5097960019571572816}
   - component: {fileID: 5810385986151348034}
   m_Layer: 0
-  m_Name: Square
+  m_Name: DryGrass2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

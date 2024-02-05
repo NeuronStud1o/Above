@@ -1024,6 +1024,7 @@ MonoBehaviour:
   wall: {fileID: 6678682730197327874, guid: 0a8d3334cf5ab9840af79cea1d27d085, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
+  additionalDistance: 0
 --- !u!1 &219013125
 GameObject:
   m_ObjectHideFlags: 0
@@ -5852,7 +5853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 858801809}
   m_Layer: 0
-  m_Name: Fon1 (4)
+  m_Name: Fon1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5875,7 +5876,7 @@ Transform:
   - {fileID: 1504738726}
   - {fileID: 1405952458}
   m_Father: {fileID: 1710874754}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893738308
 GameObject:
@@ -6656,6 +6657,7 @@ MonoBehaviour:
   wall: {fileID: 4954429833479287771, guid: 9d36cf8489b3c7e4cbbb5ef452723f09, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
+  additionalDistance: 0
 --- !u!1 &960183773
 GameObject:
   m_ObjectHideFlags: 0
@@ -6834,6 +6836,7 @@ MonoBehaviour:
   wall: {fileID: 6577527483756243263, guid: 3975a14f77dc1314296058fcbcf0dfcf, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: -1
+  additionalDistance: 0
 --- !u!1 &976930493
 GameObject:
   m_ObjectHideFlags: 0
@@ -10257,6 +10260,7 @@ MonoBehaviour:
   wall: {fileID: 2472172673066414278, guid: c0c9615e238498b49b14d1e88e96c594, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
+  additionalDistance: 0
 --- !u!1 &1375226526
 GameObject:
   m_ObjectHideFlags: 0
@@ -10353,6 +10357,7 @@ MonoBehaviour:
   wall: {fileID: 42660371866496278, guid: da31beac605f55144994ba944cc1751f, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
+  additionalDistance: 0
 --- !u!1 &1416955382
 GameObject:
   m_ObjectHideFlags: 0
@@ -10399,6 +10404,7 @@ MonoBehaviour:
   wall: {fileID: 6464450900146987456, guid: 11dfa3027f8dcac47a8b239866743acb, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
+  additionalDistance: 0
 --- !u!1 &1456636992
 GameObject:
   m_ObjectHideFlags: 0
@@ -10536,7 +10542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1462038751}
   m_Layer: 0
-  m_Name: Fon1 (6)
+  m_Name: Fon1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10559,7 +10565,7 @@ Transform:
   - {fileID: 576328038}
   - {fileID: 936940074}
   m_Father: {fileID: 1710874754}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473674054
 GameObject:
@@ -11798,8 +11804,8 @@ Transform:
   - {fileID: 1188949333}
   - {fileID: 148409062}
   - {fileID: 1608159892}
-  - {fileID: 858801809}
   - {fileID: 1462038751}
+  - {fileID: 858801809}
   m_Father: {fileID: 1076384025}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
