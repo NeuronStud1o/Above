@@ -44,7 +44,15 @@ public class BuySystem : MonoBehaviour
     {
         coinsF.text = PlayerPrefs.GetInt("coinsF") + "";
         coinsS.text = PlayerPrefs.GetInt("coinsS") + "";
-        level.text = PlayerPrefs.GetInt("Levels") + "";
+
+        if (PlayerPrefs.GetInt("Levels") >= 33)
+        {
+            level.text = "MAX";
+        }
+        else
+        {
+            level.text = PlayerPrefs.GetInt("Levels") + "";
+        }
     }
 
     public void SaveToJson()

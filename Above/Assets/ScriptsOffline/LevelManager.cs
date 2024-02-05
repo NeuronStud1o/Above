@@ -24,4 +24,9 @@ public class LevelManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+    void Start()
+    {
+        equipedHero = PlayerPrefs.GetInt("currentHero");
+    }
 }

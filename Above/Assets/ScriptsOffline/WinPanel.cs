@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinPanel : MonoBehaviour
 {
+    [SerializeField] private Button NextLevelButton;
+
     void Start()
     {
         if (PlayerPrefs.GetInt("Levels") <= LevelManager.instance.eqipedLevel)
         {
             PlayerPrefs.SetInt("Levels", PlayerPrefs.GetInt("Levels") + 1);
+        }
+
+        if (LevelManager.instance.eqipedLevel == 32)
+        {
+            NextLevelButton.interactable = false;
         }
     }
 

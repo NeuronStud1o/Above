@@ -17,6 +17,7 @@ public class EquipButtons : MonoBehaviour
 
     public void EquipHero()
     {
+        PlayerPrefs.SetInt("currentHero", index);
         LevelManager.instance.equipedHero = index;
 
         foreach (GameObject button in buySystem.equipButtons)
