@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
         errorText.text = error;
     }
 
-    private void ClearUI()
+    public void ClearUI()
     {
         loginPanel.SetActive(false);
         registrationPanel.SetActive(false);

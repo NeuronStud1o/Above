@@ -5,6 +5,7 @@ using Firebase.Auth;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using Firebase.Extensions;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class FirebaseAuthManager : MonoBehaviour
     public TMP_InputField emailRegisterField;
     public TMP_InputField passwordRegisterField;
     public TMP_InputField confirmPasswordRegisterField;
+
+    [Space]
+    [Header("Foget password")]
+    [SerializeField] private TMP_InputField fogetPassField;
+    [SerializeField] private GameObject sendResetPassText;
 
     private void Start()
     {
@@ -396,5 +402,50 @@ public class FirebaseAuthManager : MonoBehaviour
     public void PlayOffline()
     {
         SceneManager.LoadSceneAsync("OfflineMenu");
+    }
+
+    public void FogetPassword()
+    {
+        UIManager.Instance.ClearUI();
+        
+        if (string.IsNullOrEmpty(fogetPassField.text))
+        {
+            UIManager.Instance.SetErrorMessage("The email field cannot be empty");
+            return;
+        }
+
+        FogetPassSubmit(fogetPassField.text);
+    }
+
+    void FogetPassSubmit(string email)
+    {
+        auth.SendPasswordResetEmailAsync(email).ContinueWithOnMainThread(task => {
+            if (task.Exception != null)
+            {
+                FirebaseException firebaseException = task.Exception.GetBaseException() as FirebaseException;
+                AuthError error = (AuthError)firebaseException.ErrorCode;
+
+                string failedMessage = "";
+
+                switch (error)
+                {
+                    case AuthError.InvalidEmail:
+                        failedMessage += "Email is invalid";
+                        break;
+                    case AuthError.MissingEmail:
+                        failedMessage += "Email is missing";
+                        break;
+                    default:
+                        failedMessage = "Login Failed";
+                        break;
+                }
+
+                UIManager.Instance.SetErrorMessage("Error: " + failedMessage);
+            }
+            else
+            {
+                sendResetPassText.SetActive(true);
+            }
+        });
     }
 }

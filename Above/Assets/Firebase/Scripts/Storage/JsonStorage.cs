@@ -182,6 +182,11 @@ public class JsonStorage : MonoBehaviour
             }
         }
 
+        while (!File.Exists(filePath))
+        {
+            await Task.Delay(1000);
+        }
+
         jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
         pastData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
