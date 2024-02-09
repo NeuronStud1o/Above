@@ -217,6 +217,6 @@ public class Tutorial : MonoBehaviour
 
     public void ReturnToLobby()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 }

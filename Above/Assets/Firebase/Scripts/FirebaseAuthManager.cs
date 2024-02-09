@@ -32,7 +32,7 @@ public class FirebaseAuthManager : MonoBehaviour
     [SerializeField] private TMP_InputField fogetPassField;
     [SerializeField] private GameObject sendResetPassText;
 
-    private void Start()
+    public void StartAction()
     {
         StartCoroutine(CheckAndFixDependenciesAsync());
     }
