@@ -529,7 +529,7 @@ MonoBehaviour:
   background: {fileID: 3135390771340274543, guid: 95478ceab489468488c3700730aa233e, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
-  audioClip: {fileID: 8300000, guid: 14640d78e994bbf46afc309c5a5fd84b, type: 3}
+  audioClip: {fileID: 8300000, guid: 4dfadd58e5a15a5449c3729df73a5806, type: 3}
 --- !u!1 &103369390
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,7 +3894,7 @@ MonoBehaviour:
   background: {fileID: 7414336397114037735, guid: 70832e3869f825748840cfcff98f7154, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
-  audioClip: {fileID: 8300000, guid: d20805bc782336f4b850ef5b735c8e4e, type: 3}
+  audioClip: {fileID: 8300000, guid: 6d19c43c573253f45a72419000243d74, type: 3}
 --- !u!1 &593661006
 GameObject:
   m_ObjectHideFlags: 0
@@ -9169,8 +9169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bb6aaa49621cf4ab90f93ca9c8b82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playTransition: {fileID: 1935011984}
-  fadeTransition: {fileID: 1692628689}
 --- !u!4 &1220683254
 Transform:
   m_ObjectHideFlags: 0

@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsManagerInGame : MonoBehaviour
 {
-    [SerializeField] private GameObject playTransition;
-    [SerializeField] private GameObject fadeTransition;
-
     IEnumerator RetryGameAsync()
     {
+        DataBase.instance.SetActiveLoadingScreen(true);
+
         yield return new WaitForSeconds(3);
 
         SceneManager.LoadSceneAsync("Game");
@@ -17,7 +16,7 @@ public class ButtonsManagerInGame : MonoBehaviour
 
     IEnumerator ReturnToMainMenuAsync()
     {
-        fadeTransition.SetActive(true);
+        DataBase.instance.SetActiveLoadingScreen(true);
 
         yield return new WaitForSeconds(3);
 
@@ -26,8 +25,6 @@ public class ButtonsManagerInGame : MonoBehaviour
     
     public void RetryGame()
     {
-        playTransition.SetActive(true);
-
         StartCoroutine(RetryGameAsync());
     }
 

@@ -378,11 +378,15 @@ public class FirebaseAuthManager : MonoBehaviour
         await JsonStorage.instance.StartAction();
 
         await Task.Delay(1000);
+        
+        DataBase.instance.GetComponent<AudioSource>().volume = JsonStorage.instance.jsonData.audioSettings.musicMainMenu;
+        DataBase.instance.GetComponent<AudioSource>().enabled = true;
 
         bool tutorial = JsonStorage.instance.jsonData.boolean.isTutorial;
 
         if (tutorial == false)
         {
+            DataBase.instance.GetComponent<AudioSource>().enabled = false;
             JsonStorage.instance.jsonData.boolean.isTutorial = true;
 
             DataBase.instance.SetActiveLoadingScreen(false);
@@ -401,6 +405,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void PlayOffline()
     {
+        DataBase.instance.GetComponent<AudioSource>().enabled = true;
         SceneManager.LoadSceneAsync("OfflineMenu");
     }
 
