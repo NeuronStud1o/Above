@@ -18,6 +18,7 @@ public class OfflineManager : MonoBehaviour
     public void StartGame(int index)
     {
         LevelManager.instance.eqipedLevel = index;
+        DataBase.instance.GetComponent<AudioSource>().enabled = false;
 
         SceneManager.LoadSceneAsync("OfflineGame");
     }

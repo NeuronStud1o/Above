@@ -405,7 +405,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void PlayOffline()
     {
-        DataBase.instance.GetComponent<AudioSource>().enabled = true;
         SceneManager.LoadSceneAsync("OfflineMenu");
     }
 
