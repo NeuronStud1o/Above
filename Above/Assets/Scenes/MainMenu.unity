@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0410\u0432\u0442\u043E\u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043D\u043D\u044F"
   textEng: Auto-save
   textDen: Automatisches Speichern
@@ -1015,7 +1015,7 @@ MonoBehaviour:
       possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: Nika. Mo\u017Cna j\u0105
       kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -2811,7 +2811,7 @@ MonoBehaviour:
       Giappone. \xC8 possibile acquistarlo nel negozio"
     textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Japonia. Jest ono dost\u0119pne
       w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -3270,7 +3270,7 @@ MonoBehaviour:
     textEs: "Icono est\xE1ndar. Se emite al principio del juego"
     textIta: Icona standard. Rilasciata all'inizio del gioco
     textPl: "Ikona standardowa. Wydawana na pocz\u0105tku gry"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -5215,7 +5215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &147480645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5223,7 +5223,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147480644}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5231,13 +5231,13 @@ RectTransform:
   - {fileID: 397448133}
   - {fileID: 2004159440}
   - {fileID: 1480170624}
-  m_Father: {fileID: 195556492}
-  m_RootOrder: 3
+  m_Father: {fileID: 1531747881}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 1100}
+  m_SizeDelta: {x: 900, y: 745.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &147480646
 MonoBehaviour:
@@ -7437,7 +7437,7 @@ RectTransform:
   - {fileID: 710687500}
   - {fileID: 1487349776}
   - {fileID: 810535205}
-  - {fileID: 147480645}
+  - {fileID: 1531747881}
   m_Father: {fileID: 1349516974}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8003,7 +8003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0412\u0438 \u043E\u0442\u0440\u0438\u043C\u0430\u043B\u0438 4 Flycoins!"
   textEng: You have received 4 Flycoins!
   textDen: Sie haben 4 Flycoins erhalten!
@@ -8376,7 +8376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u042F\u043A \u0433\u0440\u0430\u0442\u0438 (\u0442\u0443\u0442\u043E\u0440\u0456\u0430\u043B)"
   textEng: How to play (tutorial)
   textDen: Wie man spielt (Anleitung)
@@ -8771,7 +8771,7 @@ MonoBehaviour:
       possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: Mike. Mo\u017Cna j\u0105
       kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -10965,7 +10965,7 @@ MonoBehaviour:
       \xC8 possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: Olivia. Mo\u017Cna j\u0105
       kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -12698,7 +12698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0422\u0440\u0435\u043C\u0442\u0456\u043D\u043D\u044F \u043A\u0430\u043C\u0435\u0440\u0438"
   textEng: Camera shake
   textDen: Verwackeln der Kamera
@@ -13331,7 +13331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041C\u043E\u0432\u0430"
   textEng: Language
   textDen: Sprache
@@ -15995,7 +15995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041F\u043E\u043B\u0456\u0442\u0438\u043A\u0430 \u043A\u043E\u043D\u0444\u0456\u0434\u0435\u0446\u0456\u0439\u043D\u043E\u0441\u0442\u0456"
   textEng: Privacy policy
   textDen: Datenschutz-Bestimmungen
@@ -17025,7 +17025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041D\u0430 \u0441\u0442\u0456\u043D\u0430\u0445 \u043C\u043E\u0436\u043D\u0430
     \u043F\u043E\u0431\u0430\u0447\u0438\u0442\u0438 \u0440\u0456\u0437\u043D\u0456
     \u043E\u0431'\u0454\u043A\u0442\u0438, \u044F\u043A\u0456 \u043D\u0435 \u0441\u0445\u043E\u0436\u0456
@@ -17239,7 +17239,7 @@ MonoBehaviour:
     textEs: Este icono puede adquirirse por 10 supercoins
     textIta: "Questa icona pu\xF2 essere acquistata per 10 supercoins"
     textPl: "Ikon\u0119 t\u0119 mo\u017Cna kupi\u0107 za 10 supermonet"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions:
@@ -17879,7 +17879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041C\u0443\u0437\u0438\u043A\u0430 \u0432 \u0433\u0440\u0456"
   textEng: Music in the game
   textDen: Musik im Spiel
@@ -18652,7 +18652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438"
   textEng: Save
   textDen: Speichern
@@ -20886,7 +20886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041C\u043E\u0436\u0443\u0442\u044C \u0431\u0443\u0442\u0438 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u0438
     \u0437 \u043E\u043F\u0442\u0438\u043C\u0456\u0437\u0430\u0446\u0456\u0454\u044E"
   textEng: There may be problems with optimization
@@ -21608,7 +21608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041F\u0456\u0434 \u0447\u0430\u0441 \u0433\u0440\u0438, \u0432\u0430\u0448
     \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436 \u0440\u0443\u0445\u0430\u0454\u0442\u044C\u0441\u044F
     \u0441\u0430\u043C, \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E,
@@ -22082,7 +22082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0421\u043F\u043E\u0432\u0456\u0449\u0435\u043D\u043D\u044F"
   textEng: Notifications
   textDen: Benachrichtigungen
@@ -24539,7 +24539,7 @@ MonoBehaviour:
       \xC8 possibile acquistarla nel negozio"
     textPl: "Ikona jest podana do zakupu takiego t\u0142a: Las. Mo\u017Cna je kupi\u0107
       w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -24890,7 +24890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u0438 \u0432\u0438\u0431\u0440\u0430\u043D\u0435
     \u043F\u0456\u0434\u0441\u0438\u043B\u0435\u043D\u043D\u044F"
   textEng: Show the selected boost
@@ -28784,7 +28784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "SFX \u0432 \u0433\u0440\u0456"
   textEng: SFX in the game
   textDen: SFX im Spiel
@@ -30690,7 +30690,7 @@ MonoBehaviour:
       possibile acquistarlo nel negozio"
     textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Cage. jest ono dost\u0119pne
       w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -32747,7 +32747,7 @@ MonoBehaviour:
     textEs: "Icono est\xE1ndar. Se emite al principio del juego"
     textIta: Icona standard. Rilasciata all'inizio del gioco
     textPl: "Ikona standardowa. Wydawana na pocz\u0105tku gry"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -34539,7 +34539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430"
   textEng: Rules
   textDen: Regeln
@@ -37906,7 +37906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "SFX \u0432 \u0433\u043E\u043B\u043E\u0432\u043D\u043E\u043C\u0443 \u043C\u0435\u043D\u044E"
   textEng: SFX in main menu
   textDen: "SFX im Hauptmen\xFC"
@@ -38879,7 +38879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0429\u043E\u0431 \u043F\u043E\u0431\u0438\u0442\u0438 \u0432\u043B\u0430\u0441\u043D\u0438\u0439
     \u0440\u0435\u043A\u043E\u0440\u0434, \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E
     \u0437\u043B\u0456\u0442\u0430\u0442\u0438 \u0432\u0441\u0435 \u0432\u0438\u0449\u0435
@@ -39051,7 +39051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041C\u043E\u0432\u0430"
   textEng: Language
   textDen: Sprache
@@ -40166,7 +40166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0430\u043A\u0430\u0443\u043D\u0442"
   textEng: Logout
   textDen: "Konto \xE4ndern"
@@ -40683,7 +40683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0412\u0456\u0431\u0440\u0430\u0446\u0456\u0457"
   textEng: Vibrations
   textDen: Vibrationen
@@ -42313,7 +42313,7 @@ MonoBehaviour:
     textEs: El icono se entrega al jugador cuando alcanza el nivel 20
     textIta: L'icona viene consegnata al giocatore quando raggiunge il livello 20.
     textPl: "Ikona jest przyznawana graczowi po osi\u0105gni\u0119ciu poziomu 20."
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -42865,7 +42865,7 @@ MonoBehaviour:
       \xC8 possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: Natali. Mo\u017Cna j\u0105
       kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -43527,7 +43527,7 @@ MonoBehaviour:
       Nave. \xC8 possibile acquistarlo nel negozio"
     textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Statek. Jest ono dost\u0119pne
       w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -45483,7 +45483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0412\u0438 \u043E\u0442\u0440\u0438\u043C\u0430\u043B\u0438 10 Flycoins!"
   textEng: You have received 10 Flycoins!
   textDen: Sie haben 10 Flycoins erhalten!
@@ -45945,7 +45945,7 @@ MonoBehaviour:
       \xC8 possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: Ricardo. Mo\u017Cna
       j\u0105 kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -47030,7 +47030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u0438 \u0437\u0432\u0430\u043D\u043D\u044F
     \u0440\u0456\u0432\u043D\u044F"
   textEng: Show level rank
@@ -49064,7 +49064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0423 \u043F\u0440\u0430\u0432\u043E\u043C\u0443 \u043D\u0438\u0436\u043D\u044C\u043E\u043C\u0443
     \u043A\u0443\u0442\u0456 \u0433\u043E\u043B\u043E\u0432\u043D\u043E\u0433\u043E
     \u043C\u0435\u043D\u044E \u0454 \u043A\u043D\u043E\u043F\u043A\u0430, \u044F\u043A\u0430
@@ -50775,6 +50775,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524615219}
   m_CullTransparentMesh: 1
+--- !u!1 &1531747880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531747881}
+  - component: {fileID: 1531747883}
+  - component: {fileID: 1531747882}
+  m_Layer: 0
+  m_Name: Info
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1531747881
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531747880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 147480645}
+  m_Father: {fileID: 195556492}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1531747882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531747880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1531747883
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531747880}
+  m_CullTransparentMesh: 1
 --- !u!1 &1534313928
 GameObject:
   m_ObjectHideFlags: 0
@@ -51121,7 +51197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0423 \u0433\u0440\u0456 \u0454 \u0434\u0432\u0430 \u0442\u0438\u043F\u0438
     \u043C\u043E\u043D\u0435\u0442: \u0444\u043B\u0430\u0439\u043A\u043E\u0456\u043D\u0438
     \u0442\u0430 \u0441\u0443\u043F\u0435\u0440\u043A\u043E\u0456\u043D\u0438. \u0407\u0445
@@ -52404,7 +52480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041C\u0443\u0437\u0438\u043A\u0430"
   textEng: Music
   textDen: Musik
@@ -53790,7 +53866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0427\u0430\u0441\u0442\u0438\u043D\u043A\u0438"
   textEng: Particles
   textDen: Partikel
@@ -54862,7 +54938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430\u0446\u0456\u044F"
   textEng: documentation
   textDen: dokumentation
@@ -54921,7 +54997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0406\u043D\u0448\u0456 \u043D\u0430\u043B\u0430\u0448\u0442\u0443\u0432\u0430\u043D\u043D\u044F"
   textEng: Other settings
   textDen: 
@@ -55385,7 +55461,7 @@ MonoBehaviour:
       Deserto. \xC8 possibile acquistarla nel negozio"
     textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Desert. Jest ono dost\u0119pne
       w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -55916,7 +55992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041F\u0435\u0440\u0435\u0439\u043C\u0435\u043D\u0443\u0432\u0430\u0442\u0438
     \u043D\u0456\u043A"
   textEng: Rename nick
@@ -57494,7 +57570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041C\u0443\u0437\u0438\u043A\u0430 \u0432 \u0433\u043E\u043B\u043E\u0432\u043D\u043E\u043C\u0443
     \u043C\u0435\u043D\u044E"
   textEng: Music in main menu
@@ -58413,7 +58489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u042F\u043A\u0449\u043E \u0432\u0430\u043C \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E
     \u043F\u0440\u0438\u0437\u0443\u043F\u0438\u043D\u0438\u0442\u0438 \u0433\u0440\u0443,
     \u0432\u0438 \u043C\u043E\u0436\u0435\u0442\u0435 \u043D\u0430\u0442\u0438\u0441\u043D\u0443\u0442\u0438
@@ -59005,6 +59081,30 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 147480644}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 544344289}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1613932146}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -61690,7 +61790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0410\u0432\u0442\u043E\u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043D\u043D\u044F"
   textEng: Auto-save
   textDen: Automatisches Speichern
@@ -65117,7 +65217,7 @@ MonoBehaviour:
       possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: Mia. Mo\u017Cna j\u0105
       kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -65902,7 +66002,7 @@ MonoBehaviour:
       possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: Eric. Mo\u017Cna j\u0105
       kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -66610,8 +66710,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 700, y: 530}
+  m_AnchoredPosition: {x: 0, y: -160}
+  m_SizeDelta: {x: 700, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004159441
 MonoBehaviour:
@@ -66723,7 +66823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 2004159441}
+  tmp: {fileID: 0}
   textUa: 
   textEng: 
   textDen: 
@@ -72985,7 +73085,7 @@ MonoBehaviour:
       \xC8 possibile acquistarla nel negozio"
     textPl: "Ikona jest przyznawana za zakup takiej postaci: German. Mo\u017Cna j\u0105
       kupi\u0107 w sklepie"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions: []
@@ -74167,7 +74267,7 @@ MonoBehaviour:
     textEs: Este icono se puede comprar por 100 flycoins
     textIta: "Questa icona pu\xF2 essere acquistata per 100 flycoin"
     textPl: "T\u0119 ikon\u0119 mo\u017Cna kupi\u0107 za 100 flycoin\xF3w"
-  infoPanel: {fileID: 147480644}
+  infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
   anotherAttributions:

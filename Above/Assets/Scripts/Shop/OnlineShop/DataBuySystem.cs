@@ -96,9 +96,10 @@ public class DataBuySystem : MonoBehaviour
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsF -= price;
+                JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+
                 CoinsManagerInMainMenu.instance.UpdateUI();
                 
-                JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
             }
         }
         else if (coinType == Coin.SuperCoins)
@@ -141,9 +142,10 @@ public class DataBuySystem : MonoBehaviour
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsS -= price;
+                JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
+                
                 CoinsManagerInMainMenu.instance.UpdateUI();
                 
-                JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
             }
         }
     }
