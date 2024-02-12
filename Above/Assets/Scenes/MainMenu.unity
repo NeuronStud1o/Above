@@ -998,13 +998,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: b8588c8ab0eedc74485f8da8801afa7b, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Nika. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: Nika. You can
+      buy it in the store'
+    textDen: "Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Nick.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Nika. Vous
+      pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: Nika. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Nika. \xC8
+      possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Nika. Mo\u017Cna j\u0105
+      kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -2784,13 +2794,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 3e057f4cfa633a342a0038138cc2c61a, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u0444\u043E\u043D\u0443: \u042F\u043F\u043E\u043D\u0456\u044F. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for purchasing such a background: Japan. You can
+      buy it in the store'
+    textDen: "Das Symbol wird nach dem Kauf eines solchen Hintergrunds bereitgestellt:
+      Japan. Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel arri\xE8re-plan : Japon.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: "El icono es un regalo por la compra de dicho lugar: Jap\xF3n. Puede
+      adquirirse en la tienda"
+    textIta: "\xC8 possibile ottenere il badge dopo aver acquistato una localit\xE0:
+      Giappone. \xC8 possibile acquistarlo nel negozio"
+    textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Japonia. Jest ono dost\u0119pne
+      w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -3241,13 +3261,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 449c9dd42ddfb774d94a869417821175, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430 \u0456\u043A\u043E\u043D\u043A\u0430.
+      \u0412\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F \u043D\u0430 \u043F\u043E\u0447\u0430\u0442\u043A\u0443
+      \u0433\u0440\u0438"
+    textEng: Standard icon. Issued at the very beginning of the game
+    textDen: Standard-Symbol. Wird gleich zu Beginn des Spiels ausgegeben
+    textFra: "Ic\xF4ne standard. D\xE9livr\xE9e au tout d\xE9but du jeu"
+    textEs: "Icono est\xE1ndar. Se emite al principio del juego"
+    textIta: Icona standard. Rilasciata all'inizio del gioco
+    textPl: "Ikona standardowa. Wydawana na pocz\u0105tku gry"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -8732,13 +8754,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: ad13bc2b7c18aab48a60661ba757935a, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Mike. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: Mike. You can
+      buy it in the store'
+    textDen: "-Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Mike.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Mike. Vous
+      pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: Mike. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Mike. \xC8
+      possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Mike. Mo\u017Cna j\u0105
+      kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -10916,13 +10948,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 8ec130938f604ed479a00e897ef6fcf5, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Olivia. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: Olivia. You
+      can buy it in the store'
+    textDen: "-Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Olivia.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Olivia.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: Olivia. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Olivia.
+      \xC8 possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Olivia. Mo\u017Cna j\u0105
+      kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -17189,13 +17231,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: b638d05aa9fc4a447b5cd0c9f69c8cb2, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0426\u044E \u0456\u043A\u043E\u043D\u043A\u0443 \u043C\u043E\u0436\u043D\u0430
+      \u043A\u0443\u043F\u0438\u0442\u0438 \u0437\u0430 10 supercoins"
+    textEng: This icon can be purchased for 10 supercoins
+    textDen: "Dieses Symbol kann f\xFCr 10 Supercoins erworben werden"
+    textFra: "Cette ic\xF4ne peut \xEAtre achet\xE9e pour 10 supercoins"
+    textEs: Este icono puede adquirirse por 10 supercoins
+    textIta: "Questa icona pu\xF2 essere acquistata per 10 supercoins"
+    textPl: "Ikon\u0119 t\u0119 mo\u017Cna kupi\u0107 za 10 supermonet"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -24479,13 +24522,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 15ebbb3b2831ea94cb32e89659d5e866, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u0444\u043E\u043D\u0443: \u041B\u0456\u0441. \u0412\u0438 \u043C\u043E\u0436\u0435\u0442\u0435
+      \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438 \u0439\u043E\u0433\u043E \u0443
+      \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for buying such a background: Forest. You can buy
+      it in the store'
+    textDen: "Das Symbol wird nach dem Kauf eines solchen Hintergrunds bereitgestellt:
+      Wald. Sie k\xF6nnen es im Shop kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel arri\xE8re-plan : For\xEAt.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: "El icono se emite para la compra de dicha ubicaci\xF3n: Bosque. Puedes
+      comprarlo en la tienda"
+    textIta: "L'icona viene emessa dopo l'acquisto di tale localit\xE0: Foresta.
+      \xC8 possibile acquistarla nel negozio"
+    textPl: "Ikona jest podana do zakupu takiego t\u0142a: Las. Mo\u017Cna je kupi\u0107
+      w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -30620,13 +30673,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 479cb53e3c1bf1d479acb7faab4222e8, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u0444\u043E\u043D\u0443: \u041A\u043B\u0456\u0442\u043A\u0430. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for purchasing such a background: Cage. You can buy
+      it in the store'
+    textDen: "Das Symbol wird nach dem Kauf eines solchen Hintergrunds bereitgestellt:
+      K\xE4fig. Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel arri\xE8re-plan : Cage.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: "El icono se da para la compra de dicha ubicaci\xF3n: Jaula. Se puede
+      comprar en la tienda"
+    textIta: "L'icona viene rilasciata dopo l'acquisto di una location: Gabbia. \xC8
+      possibile acquistarlo nel negozio"
+    textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Cage. jest ono dost\u0119pne
+      w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -32675,13 +32738,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: df26e3ae71b26c24c93248ad26bf1228, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u0430 \u0456\u043A\u043E\u043D\u043A\u0430.
+      \u0412\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F \u043D\u0430 \u043F\u043E\u0447\u0430\u0442\u043A\u0443
+      \u0433\u0440\u0438"
+    textEng: Standard icon. Issued at the very beginning of the game
+    textDen: Standard-Symbol. Wird gleich zu Beginn des Spiels ausgegeben
+    textFra: "Ic\xF4ne standard. D\xE9livr\xE9e au tout d\xE9but du jeu"
+    textEs: "Icono est\xE1ndar. Se emite al principio del juego"
+    textIta: Icona standard. Rilasciata all'inizio del gioco
+    textPl: "Ikona standardowa. Wydawana na pocz\u0105tku gry"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -42238,13 +42303,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: ba06ef29d7a032c4d97f3750e1d6f0c5, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0433\u0440\u0430\u0432\u0446\u0435\u0432\u0456, \u043A\u043E\u043B\u0438
+      \u0432\u0456\u043D \u0434\u043E\u0441\u044F\u0433\u0430\u0454 20-\u0433\u043E
+      \u0440\u0456\u0432\u043D\u044F"
+    textEng: The icon is given to players when they reach level 20
+    textDen: Das Symbol wird dem Spieler gegeben, wenn er Stufe 20 erreicht.
+    textFra: "L'ic\xF4ne est donn\xE9e au joueur lorsqu'il atteint le niveau 20"
+    textEs: El icono se entrega al jugador cuando alcanza el nivel 20
+    textIta: L'icona viene consegnata al giocatore quando raggiunge il livello 20.
+    textPl: "Ikona jest przyznawana graczowi po osi\u0105gni\u0119ciu poziomu 20."
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -42780,13 +42848,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: bd8329b9bee0f6446bcdaf143df9af63, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Natali. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: Natali. You
+      can buy it in the store'
+    textDen: "-Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Natali.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Natali.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: Natali. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Natali.
+      \xC8 possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Natali. Mo\u017Cna j\u0105
+      kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -43432,13 +43510,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: cb9cba56f0c0a434c848de323f83cd8f, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u0444\u043E\u043D\u0443: \u041A\u043E\u0440\u0430\u0431\u0435\u043B\u044C.
+      \u0412\u0438 \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for purchasing such a background: Ship. You can buy
+      it in the store'
+    textDen: "Das Symbol wird nach dem Kauf eines solchen Hintergrunds bereitgestellt:
+      Schiff. Sie k\xF6nnen es im Shop kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel arri\xE8re-plan : Navire.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: "El icono se da para la compra de dicha ubicaci\xF3n: Barco. Se puede
+      comprar en la tienda"
+    textIta: "L'icona pu\xF2 essere ottenuta dopo aver acquistato una localit\xE0:
+      Nave. \xC8 possibile acquistarlo nel negozio"
+    textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Statek. Jest ono dost\u0119pne
+      w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -45840,13 +45928,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 22007b66c9c18d647b8ce1230e621727, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Ricardo. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: Ricardo. You
+      can buy it in the store'
+    textDen: "Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Ricardo.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Ricardo.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: Ricardo. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Ricardo.
+      \xC8 possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Ricardo. Mo\u017Cna
+      j\u0105 kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -55270,13 +55368,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2717bc8e5ddf1d14280dc41917084015, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u0444\u043E\u043D\u0443: \u041F\u0443\u0441\u0442\u0435\u043B\u044F. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for purchasing such a background: Desert. You can
+      buy it in the store'
+    textDen: "Das Symbol wird nach dem Kauf eines solchen Hintergrunds bereitgestellt:
+      W\xFCste. Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel arri\xE8re-plan : D\xE9sert.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: "El icono se da por la compra de dicha ubicaci\xF3n: Desierto. Se puede
+      comprar en la tienda"
+    textIta: "L'icona pu\xF2 essere ottenuta dopo aver acquistato una localit\xE0:
+      Deserto. \xC8 possibile acquistarla nel negozio"
+    textPl: "Ikona jest wydawana po zakupie takiego t\u0142a: Desert. Jest ono dost\u0119pne
+      w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -64992,13 +65100,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: ffdb59bcf66e3ac488a3e2894c79e4e2, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Mia. \u0412\u0438 \u043C\u043E\u0436\u0435\u0442\u0435
+      \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438 \u0439\u043E\u0433\u043E \u0443
+      \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: Mia. You can
+      buy it in the store'
+    textDen: "Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Mia.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Mia. Vous
+      pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: Mia. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Mia. \xC8
+      possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Mia. Mo\u017Cna j\u0105
+      kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -65767,13 +65885,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f8cc82842e18c5f49ad8a7c559b223de, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Eric. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: Eric. You can
+      buy it in the store'
+    textDen: "-Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Eric.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Eric. Vous
+      pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: Eric. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Eric. \xC8
+      possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Eric. Mo\u017Cna j\u0105
+      kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -72840,13 +72968,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: aeeba56946339f042b6f7e9f453f55df, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: German. \u0412\u0438
+      \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
+      \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
+    textEng: 'The icon is given for the purchase of such a character: German. You
+      can buy it in the store'
+    textDen: "Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: German.
+      Sie k\xF6nnen es im Laden kaufen"
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : German.
+      Vous pouvez l'acheter dans la boutique"
+    textEs: 'El icono se da por la compra de dicho personaje: German. Puedes comprarlo
+      en la tienda'
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: German.
+      \xC8 possibile acquistarla nel negozio"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: German. Mo\u017Cna j\u0105
+      kupi\u0107 w sklepie"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -74021,13 +74159,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 8fd337b0f0ac0794f925f0f0e5eb0579, type: 3}
   description:
-    textUa: 
-    textEng: 
-    textDen: 
-    textFra: 
-    textEs: 
-    textIta: 
-    textPl: 
+    textUa: "\u0426\u044E \u0456\u043A\u043E\u043D\u043A\u0443 \u043C\u043E\u0436\u043D\u0430
+      \u043A\u0443\u043F\u0438\u0442\u0438 \u0437\u0430 100 flycoins"
+    textEng: This icon can be bought for 100 flycoins
+    textDen: "Dieses Symbol kann f\xFCr 100 Flycoins gekauft werden"
+    textFra: "Cette ic\xF4ne peut \xEAtre achet\xE9e pour 100 flycoins"
+    textEs: Este icono se puede comprar por 100 flycoins
+    textIta: "Questa icona pu\xF2 essere acquistata per 100 flycoin"
+    textPl: "T\u0119 ikon\u0119 mo\u017Cna kupi\u0107 za 100 flycoin\xF3w"
   infoPanel: {fileID: 147480644}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
