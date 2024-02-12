@@ -28,6 +28,9 @@ public class CoinsManagerInMainMenu : MonoBehaviour
 
     public void UpdateUI()
     {
+        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
+        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
+        
         SuperCoinsText.text = coinsS + "";
         FlyCoinsText.text = coinsF + "";
         SuperCoinsInShopText.text = coinsS + "";

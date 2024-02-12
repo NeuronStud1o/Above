@@ -24,6 +24,8 @@ public class PlayerOffline : MonoBehaviour
     public bool isCanMove = false;
     bool isCanTouchCoin = true;
 
+    private System.Random random = new System.Random();
+
     void Start()
     {
         StartOnClick.instance.playerOffline = this;
@@ -153,8 +155,15 @@ public class PlayerOffline : MonoBehaviour
             }
         }
 
-
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
+
+        int a = random.Next(1, 4);
+        Debug.Log(a);
+
+        if (a == 2)
+        {
+            InterstitialAds.instance.Show();
+        }
 
         deathPanel.SetActive(true);
     }

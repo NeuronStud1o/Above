@@ -2805,7 +2805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u041F\u043E\u0447\u0430\u0442\u0438 \u0433\u0440\u0443"
   textEng: Start the game
   textDen: Starte das Spiel
@@ -4422,7 +4422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0430\u043A\u0430\u0443\u043D\u0442"
   textEng: Logout
   textDen: "Konto \xE4ndern"
@@ -4659,7 +4659,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.68
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5678,7 +5678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   language: 
-  text: {fileID: 0}
+  tmp: {fileID: 0}
   textUa: "\u0413\u0440\u0430\u0442\u0438 \u043E\u0444\u043B\u0430\u0439\u043D"
   textEng: Play offline
   textDen: Offline spielen
@@ -6625,6 +6625,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 90}
   m_SizeDelta: {x: 700, y: 950}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &910838163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910838165}
+  - component: {fileID: 910838164}
+  - component: {fileID: 910838166}
+  m_Layer: 0
+  m_Name: AdsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &910838164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910838163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb96f998849e3f0409fda8483c77e492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &910838165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910838163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0440207, y: -0.26789516, z: -111.48015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &910838166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910838163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b42a294026eabf49a167acfa5198069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &920114350
 GameObject:
   m_ObjectHideFlags: 0
@@ -8178,7 +8234,6 @@ GameObject:
   - component: {fileID: 1115705319}
   - component: {fileID: 1115705318}
   - component: {fileID: 1115705317}
-  - component: {fileID: 1115705316}
   m_Layer: 5
   m_Name: StartOfflineButton
   m_TagString: Untagged
@@ -8206,20 +8261,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -550}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1115705316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115705314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 719729b20a1e8dc4dadd4f4040045d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myFX: {fileID: 703769600}
-  clickFX: {fileID: 8300000, guid: 3c81522a1b622364b88a9ff463d3a8d8, type: 3}
 --- !u!114 &1115705317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8236,19 +8277,7 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1115705316}
-          m_TargetAssemblyTypeName: BtnSFX, Assembly-CSharp
-          m_MethodName: ClickSound
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &1115705318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11027,12 +11056,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620340950}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cc29a5da162eb52499a9146aa1de739a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -12,7 +12,7 @@ public class OfflineGameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinsS;
     [SerializeField] private TextMeshProUGUI level;
 
-    void Start()
+    IEnumerator Start()
     {
         instance = this;
 
@@ -23,7 +23,11 @@ public class OfflineGameManager : MonoBehaviour
 
         coinsF.text = PlayerPrefs.GetInt("coinsF") + "";
         coinsS.text = PlayerPrefs.GetInt("coinsS") + "";
-        level.text = "Level: " + LevelManager.instance.eqipedLevel; 
+        level.text = "Level: " + LevelManager.instance.eqipedLevel;
+
+        yield return new WaitForSeconds(0.5f);
+
+        Camera.main.GetComponent<AudioSource>().enabled = true;
     }
 
     public void UpdateUI()

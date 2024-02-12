@@ -32,36 +32,36 @@ public class InfoAccIconPanel : MonoBehaviour
     public void OpenInfoPanel()
     {
         iconInfoPanel.sprite = icon;
+        infoPanel.SetActive(true);
         
         TextManagerTMP scriptText = infoText.GetComponent<TextManagerTMP>();
-        
-        string language = scriptText.language;
+        scriptText.language = PlayerPrefs.GetString("Language");
 
-        switch (language)
+        switch (scriptText.language)
         {
             case "Eng":
-                scriptText.text.text = description.textEng;
+                scriptText.tmp.text = description.textEng;
                 break;
             case "Ua":
-                scriptText.text.text = description.textUa;
+                scriptText.tmp.text = description.textUa;
                 break;
             case "Den":
-                scriptText.text.text = description.textDen;
+                scriptText.tmp.text = description.textDen;
                 break;
             case "Fra":
-                scriptText.text.text = description.textFra;
+                scriptText.tmp.text = description.textFra;
                 break;
             case "Es":
-                scriptText.text.text = description.textEs;
+                scriptText.tmp.text = description.textEs;
                 break;
             case "Ita":
-                scriptText.text.text = description.textIta;
+                scriptText.tmp.text = description.textIta;
                 break;
             case "Pl":
-                scriptText.text.text = description.textPl;
+                scriptText.tmp.text = description.textPl;
                 break;
             default:
-                scriptText.text.text = description.textEng;
+                scriptText.tmp.text = description.textEng;
                 break;
         }
         
@@ -71,6 +71,5 @@ public class InfoAccIconPanel : MonoBehaviour
             go.SetActive(true);
         }
 
-        infoPanel.SetActive(true);
     }
 }
