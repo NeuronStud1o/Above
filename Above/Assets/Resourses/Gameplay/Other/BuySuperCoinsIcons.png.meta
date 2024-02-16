@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -5168485583325388215
     second: BuySuperCoinsIcons_5
+  - first:
+      213: 4710152922821051593
+    second: BuySuperCoinsIcons_6
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -126,7 +129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1456
+        y: 2810
         width: 1270
         height: 1270
       alignment: 0
@@ -147,8 +150,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1456
-        y: 1456
-        width: 1272
+        y: 2810
+        width: 1276
         height: 1270
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -168,7 +171,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2914
-        y: 1456
+        y: 2810
         width: 1270
         height: 1270
       alignment: 0
@@ -189,9 +192,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1352
         width: 1270
-        height: 1270
+        height: 1272
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,9 +213,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1456
-        y: 0
+        y: 1352
         width: 1272
-        height: 1270
+        height: 1272
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,6 +234,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2914
+        y: 1352
+        width: 1270
+        height: 1272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942a92beeb9d548b0800000000000000
+      internalID: -5168485583325388215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuySuperCoinsIcons_6
+      rect:
+        serializedVersion: 2
+        x: 1461
         y: 0
         width: 1270
         height: 1270
@@ -241,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 942a92beeb9d548b0800000000000000
-      internalID: -5168485583325388215
+      spriteID: 9c4448ab023dd5140800000000000000
+      internalID: 4710152922821051593
       vertices: []
       indices: 
       edges: []

@@ -15,6 +15,7 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI FlyCoinsText;
     [SerializeField] private TextMeshProUGUI SuperCoinsInShopText;
     [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
+    [SerializeField] private TextMeshProUGUI AdsForSupercoinsCount;
 
     private void Start()
     {
@@ -35,5 +36,10 @@ public class CoinsManagerInMainMenu : MonoBehaviour
         FlyCoinsText.text = coinsF + "";
         SuperCoinsInShopText.text = coinsS + "";
         FlyCoinsInShopText.text = coinsF + "";
+    }
+
+    public void UpdateAdRewardUI(int ads)
+    {
+        AdsForSupercoinsCount.text = ads + " / 6"; 
     }
 }

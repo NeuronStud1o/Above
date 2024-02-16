@@ -26,7 +26,6 @@ public class TextManagerTMP : MonoBehaviour
     public void ChooseLanguage()
     {
         language = PlayerPrefs.GetString("Language");
-        print (language);
 
         switch (language)
         {

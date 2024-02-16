@@ -6,46 +6,92 @@ using System;
 
 public class RewardAds : MonoBehaviour
 {
-    private RewardedAd rewardedAd;
+    private RewardedAd rewardedAdSupercoins;
+    private RewardedAd rewardedAdFlycoins;
     private const string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    private int supercoinsCount = 0;
 
-    [SerializeField] private GameObject collectRewardPanel;
+    [SerializeField] private GameObject collectFlycoinsPanel;
+    [SerializeField] private GameObject collectSuperCoinsPanel;
 
-    private void OnEnable()
+    private void Start()
     {
-        Load();
+        Debug.Log(1);
+        LoadFlycoins();
+        LoadSupercoins();
     }
 
-    public void HandleUserEarnedReward(object sender, GoogleMobileAds.Api.Reward args)
+    public void HandleUserEarnedRewardFlycoins(object sender, GoogleMobileAds.Api.Reward args)
     {
-        JsonStorage.instance.jsonData.userData.coinsF += 4;
-        JsonStorage.instance.jsonData.userData.coinsFAllTime += 4;
+        Debug.Log(4);
+        JsonStorage.instance.jsonData.userData.coinsF += 2;
+        JsonStorage.instance.jsonData.userData.coinsFAllTime += 2;
 
-        collectRewardPanel.SetActive(true);
+        collectFlycoinsPanel.SetActive(true);
 
         StorageData.instance.SaveJsonData();
     }
 
+    public void HandleUserEarnedRewardSupercoins(object sender, GoogleMobileAds.Api.Reward args)
+    {
+        Debug.Log(5);
+        supercoinsCount++;
+
+        if (supercoinsCount >= 6)
+        {
+            JsonStorage.instance.jsonData.userData.coinsS += 1;
+            JsonStorage.instance.jsonData.userData.coinsSAllTime += 1;
+
+            collectSuperCoinsPanel.SetActive(true);
+
+            StorageData.instance.SaveJsonData();
+            supercoinsCount = 0;
+        }
+        
+        CoinsManagerInMainMenu.instance.UpdateAdRewardUI(supercoinsCount);
+    }
+
     public void UpdateCoinsData()
     {
-        collectRewardPanel.SetActive(false);
+        collectFlycoinsPanel.SetActive(false);
+        collectSuperCoinsPanel.SetActive(false);
+
         CoinsManagerInMainMenu.instance.UpdateUI();
     }
 
-    public void Show()
+    public void ShowFlycoins()
     {
-        if (rewardedAd.IsLoaded())
+        if (rewardedAdFlycoins.IsLoaded())
         {
-            rewardedAd.Show();
-            Load();
+            rewardedAdFlycoins.Show();
+            LoadFlycoins();
         }
     }
 
-    private void Load()
+    public void ShowSupercoins()
     {
-        rewardedAd = new RewardedAd(adUnitId);
+        if (rewardedAdSupercoins.IsLoaded())
+        {
+            rewardedAdSupercoins.Show();
+            LoadSupercoins();
+        }
+    }
+
+    private void LoadFlycoins()
+    {
+        Debug.Log(2);
+        rewardedAdFlycoins = new RewardedAd(adUnitId);
         AdRequest request = new AdRequest.Builder().Build();
-        rewardedAd.LoadAd(request);
-        rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        rewardedAdFlycoins.LoadAd(request);
+        rewardedAdFlycoins.OnUserEarnedReward += HandleUserEarnedRewardFlycoins;
+    }
+
+    private void LoadSupercoins()
+    {
+        Debug.Log(3);
+        rewardedAdSupercoins = new RewardedAd(adUnitId);
+        AdRequest request = new AdRequest.Builder().Build();
+        rewardedAdSupercoins.LoadAd(request);
+        rewardedAdSupercoins.OnUserEarnedReward += HandleUserEarnedRewardSupercoins;
     }
 }

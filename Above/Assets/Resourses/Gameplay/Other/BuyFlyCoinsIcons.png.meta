@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: 3278874152364229747
     second: BuyFlyCoinsIcons_5
+  - first:
+      213: 1233230604261460647
+    second: BuyFlyCoinsIcons_6
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -126,7 +129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 129
-        y: 1456
+        y: 2792
         width: 1272
         height: 1270
       alignment: 0
@@ -147,7 +150,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1587
-        y: 1456
+        y: 2792
         width: 1273
         height: 1270
       alignment: 0
@@ -168,7 +171,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3045
-        y: 1456
+        y: 2792
         width: 1273
         height: 1270
       alignment: 0
@@ -189,9 +192,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 129
-        y: 0
+        y: 1334
         width: 1272
-        height: 1270
+        height: 1271
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,9 +213,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1587
-        y: 0
+        y: 1334
         width: 1273
-        height: 1270
+        height: 1271
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,9 +234,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3045
-        y: 0
+        y: 1334
         width: 1273
-        height: 1270
+        height: 1271
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,6 +246,27 @@ TextureImporter:
       bones: []
       spriteID: 37441ea5ba6e08d20800000000000000
       internalID: 3278874152364229747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuyFlyCoinsIcons_6
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 0
+        width: 1270
+        height: 1270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa052d53b05d1110800000000000000
+      internalID: 1233230604261460647
       vertices: []
       indices: 
       edges: []
