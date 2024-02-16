@@ -12,6 +12,7 @@ public class OfflineManager : MonoBehaviour
 
     public void ToLobby()
     {
+        DataBase.instance.gameObject.GetComponent<AudioSource>().volume = 0.2f;
         SceneManager.LoadSceneAsync("Authentication");
     }
 

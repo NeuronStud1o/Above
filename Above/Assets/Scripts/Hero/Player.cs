@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private int coinsToAdd = 1;
 
     public bool isCanMove = false;
+    private System.Random random = new System.Random();
 
     void Start()
     {
@@ -164,6 +165,8 @@ public class Player : MonoBehaviour
     
     private async Task Death()
     {
+        canvasInGame.SetActive(false);
+        
         if (JsonStorage.instance.jsonData.otherSettings.vibration)
         {
             Handheld.Vibrate();
@@ -171,7 +174,6 @@ public class Player : MonoBehaviour
         }
         
         audioSource.PlayOneShot(death);
-        canvasInGame.SetActive(false);
         
         cameraFollow.enabled = false;
         Camera.main.GetComponent<AudioSource>().enabled = false;
@@ -200,6 +202,13 @@ public class Player : MonoBehaviour
 
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
+
+        int a = random.Next(1, 5);
+
+        if (a == 2)
+        {
+            InterstitialAds.instance.Show();
+        }
 
         deathPanel.SetActive(true);
         LosePanel.instance.Death(int.Parse(Score.instance.scoreText.text));

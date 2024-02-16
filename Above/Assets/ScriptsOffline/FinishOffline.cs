@@ -16,6 +16,7 @@ public class FinishOffline : MonoBehaviour
             }
 
             finishPanel.SetActive(true);
+            Camera.main.GetComponent<AudioSource>().enabled = false;
             other.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             other.gameObject.GetComponent<PlayerOffline>().isCanMove = false;
         }

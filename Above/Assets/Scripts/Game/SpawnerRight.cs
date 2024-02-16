@@ -17,7 +17,7 @@ public class SpawnerRight : MonoBehaviour
             GameObject Empty = Enemy[Random.Range(0, Enemy.Length)];
 
             SpawnPos.x = transform.position.x;
-            SpawnPos.y += Random.Range(4f, 10f);
+            SpawnPos.y += Random.Range(3f, 8f);
 
             Instantiate(Empty, SpawnPos, Quaternion.identity);
         }
@@ -32,7 +32,7 @@ public class SpawnerRight : MonoBehaviour
                 GameObject Empty = Enemy[Random.Range(0, Enemy.Length)];
 
                 SpawnPos.x = transform.position.x;
-                SpawnPos.y += Random.Range(4f, 10f);
+                SpawnPos.y += Random.Range(3f, 8f);
 
                 Instantiate(Empty, SpawnPos, Quaternion.identity);
             }
