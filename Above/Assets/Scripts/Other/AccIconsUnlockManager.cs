@@ -44,6 +44,8 @@ public class AccIconsUnlockManager : MonoBehaviour
             
             CoinsManagerInMainMenu.instance.coinsF -= price;
             JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+
+            CoinsManagerInMainMenu.instance.UpdateUI();
         }
     }
 
@@ -63,6 +65,8 @@ public class AccIconsUnlockManager : MonoBehaviour
 
             CoinsManagerInMainMenu.instance.coinsS -= price;
             JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
+
+            CoinsManagerInMainMenu.instance.UpdateUI();
         }
     }
 }

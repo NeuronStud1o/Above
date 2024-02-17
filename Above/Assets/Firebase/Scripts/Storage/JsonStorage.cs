@@ -239,8 +239,8 @@ public class JsonStorage : MonoBehaviour
 
             audioSettings = new JsonData.AudioSettings
             {
-                musicMainMenu = 1,
-                musicGame = 0.6f,
+                musicMainMenu = 0.5f,
+                musicGame = 0.5f,
                 sfxMainMenu = 1,
                 sfxGame = 1
             },

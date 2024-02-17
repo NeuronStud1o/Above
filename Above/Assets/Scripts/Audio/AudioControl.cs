@@ -17,8 +17,8 @@ public class AudioControl : MonoBehaviour
 
         if (!isAudioSettings)
         {
-            JsonStorage.instance.jsonData.audioSettings.musicGame = 1;
-            JsonStorage.instance.jsonData.audioSettings.musicMainMenu = 1;
+            JsonStorage.instance.jsonData.audioSettings.musicGame = 0.5f;
+            JsonStorage.instance.jsonData.audioSettings.musicMainMenu = 0.5f;
             JsonStorage.instance.jsonData.audioSettings.sfxGame = 1;
             JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = 1;
 

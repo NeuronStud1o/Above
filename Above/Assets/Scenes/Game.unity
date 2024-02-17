@@ -3772,7 +3772,7 @@ MonoBehaviour:
   background: {fileID: 2368267592465341513, guid: 9f5f3d26ab4454b4388ea598850e0288, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
-  audioClip: {fileID: 8300000, guid: 29d1eb1cf1004e24980d6460ff008200, type: 3}
+  audioClip: {fileID: 8300000, guid: dd557c6a12b691e4390d688d14123a8c, type: 3}
 --- !u!1 &542830605
 GameObject:
   m_ObjectHideFlags: 0
@@ -10736,7 +10736,7 @@ MonoBehaviour:
   background: {fileID: 1153212238717153654, guid: 23bbbfc4bf7941b43a2d09abc97f4518, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
-  audioClip: {fileID: 8300000, guid: d20805bc782336f4b850ef5b735c8e4e, type: 3}
+  audioClip: {fileID: 8300000, guid: 06b8432a18adcaf4e998b576a79d55df, type: 3}
 --- !u!1 &1511355238
 GameObject:
   m_ObjectHideFlags: 0
