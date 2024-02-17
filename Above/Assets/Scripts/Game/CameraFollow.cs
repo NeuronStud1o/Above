@@ -6,9 +6,12 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform doodlePos;
     [SerializeField] private GameObject boost;
+    [SerializeField] private bool isTutorial;
 
     void Start()
     {
+        if (isTutorial) return;
+
         if (!JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame)
         {
             boost.SetActive(false);

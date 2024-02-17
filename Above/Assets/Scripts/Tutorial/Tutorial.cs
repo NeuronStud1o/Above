@@ -7,19 +7,23 @@ public class Tutorial : MonoBehaviour
 {
     [Header("#### FIRST PART")]
     [SerializeField] private GameObject FirstPart;
+
     [Space(10f)]
     [SerializeField] private Animator tutorialHeroAnimFirstPart;
+
     [Header("# UI")]
     [SerializeField] private GameObject touchScreenArrow;
-    [SerializeField] private GameObject heroFirstPart;
     [SerializeField] private GameObject dialog;
+
     [Header("# DIALOG TEXTS")]
     [SerializeField] private GameObject thirdTextGO;
 
     [Header("#### SECOND PART")]
     [SerializeField] private GameObject SecondPart;
+
     [Space(10f)]
     [SerializeField] private Animator tutorialHeroAnimSecondPart;
+
     [Header("# UI")]
     [SerializeField] private GameObject touchScreenArrowSecondPart;
     [SerializeField] private GameObject jumpButtonSecondPart;
@@ -27,6 +31,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject dialog2;
     [SerializeField] private GameObject timerGO;
     [SerializeField] private Animator upArrow;
+
     [Header("# DIALOG TEXTS")]
     [SerializeField] private GameObject fourthTextGO;
 
@@ -34,7 +39,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject ThirdPart;
     [SerializeField] private GameObject heroThirdPart;
     [SerializeField] private GameObject dialog3;
-    [Space(10f)]
+    [SerializeField] private GameObject jumpButtonThirdPart;
 
     [Header("#### ALL PARTS")]
     [SerializeField] private GameObject cameraGo;
@@ -49,6 +54,11 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
+        if (DataBase.instance != null)
+        {
+            DataBase.instance.GetComponent<AudioSource>().enabled = false;
+        }
+        
         rb = hero.GetComponent<Rigidbody2D>();
         camAnim = cameraGo.GetComponent<Animator>();
         playerTutorial = hero.GetComponent<PlayerTutorial>();
@@ -177,11 +187,16 @@ public class Tutorial : MonoBehaviour
 
     public void OnEnemyTrigger()
     {
+        jumpButtonThirdPart.SetActive(false);
+        SecondPart.SetActive(false);
+
         camAnim.SetBool("Enemy", true);
         camAnim.enabled = true;
-        SecondPart.SetActive(false);
+
         ThirdPart.SetActive(true);
+
         rb.bodyType = RigidbodyType2D.Static;
+
         playerTutorial.enabled = false;
     }
 
@@ -200,6 +215,7 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        jumpButtonThirdPart.SetActive(true);
         rb.bodyType = RigidbodyType2D.Dynamic;
         playerTutorial.enabled = true;
 
@@ -207,16 +223,23 @@ public class Tutorial : MonoBehaviour
         
         heroThirdPart.SetActive(false);
         dialog3.SetActive(false);
+
     }
 
     public void FinishTutorial()
     {
+        Camera.main.GetComponent<AudioSource>().enabled = false;
         hero.SetActive(false);
         finishPanel.SetActive(true);
     }
 
     public void ReturnToLobby()
     {
+        if (DataBase.instance != null)
+        {
+            DataBase.instance.GetComponent<AudioSource>().enabled = true;
+        }
+
         SceneManager.LoadSceneAsync("MainMenu");
     }
 }
