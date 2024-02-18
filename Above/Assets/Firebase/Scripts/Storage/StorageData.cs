@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System;
 using Firebase.Extensions;
 using UnityEngine.Networking;
+using UnityEditor;
 
 public class StorageData : MonoBehaviour
 {
@@ -28,10 +29,11 @@ public class StorageData : MonoBehaviour
 
     public void SaveJsonData()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
-
         string localFile = Path.Combine(Application.persistentDataPath, "gameData.json");
 
+        if (!File.Exists(localFile) || UserData.instance.User == null) return;
+
+        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
         reference.PutFileAsync(localFile).ContinueWith(task => 
         {
             if (task.IsCompleted)
@@ -43,23 +45,32 @@ public class StorageData : MonoBehaviour
 
     public void DeleteJson()
     {
+        if (JsonStorage.instance != null)
+        {
+            JsonStorage.instance.CancelTimer();
+        }
+
+        SaveJsonData();
+
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
         if (File.Exists(filePath))
         {
             try
             {
-                File.Delete(filePath);
-                Console.WriteLine("File is deleted: " + filePath);
+                FileUtil.DeleteFileOrDirectory(filePath);
+                AssetDatabase.Refresh();
+
+                Debug.Log("File is deleted: " + filePath);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Delete file exeption: " + e.Message);
+                Debug.Log("Delete file exeption: " + e.Message);
             }
         }
         else
         {
-            Console.WriteLine("File is null: " + filePath);
+            Debug.Log("File is null: " + filePath);
         }
     }
 

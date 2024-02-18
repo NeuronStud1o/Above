@@ -9,6 +9,8 @@ using Firebase.Extensions;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
+    public static FirebaseAuthManager instance;
+
     [Header("Firebase")]
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
@@ -31,6 +33,11 @@ public class FirebaseAuthManager : MonoBehaviour
     [Header("Foget password")]
     [SerializeField] private TMP_InputField fogetPassField;
     [SerializeField] private GameObject sendResetPassText;
+
+    void Start()
+    {
+        instance = this;
+    }
 
     public void StartAction()
     {
@@ -140,8 +147,9 @@ public class FirebaseAuthManager : MonoBehaviour
         if (auth != null && user != null)
         {
             auth.SignOut();
-            UIManager.Instance.OpenLoginPanel();
-            StorageData.instance.DeleteJson();
+            Application.Quit();
+
+            Debug.Log("Exit");
         }
     }
 
@@ -220,7 +228,7 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             UIManager.Instance.SetErrorMessage("email field is empty");
         }
-        else if (passwordRegisterField.text != confirmPasswordRegisterField.text)
+        else if (password != confirmPassword)
         {
             UIManager.Instance.SetErrorMessage("Password does not match");
         }

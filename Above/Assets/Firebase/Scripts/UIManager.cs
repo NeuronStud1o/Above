@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.IO;
 
 public class UIManager : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenLoginPanel()
     {
+        StorageData.instance.DeleteJson();
+
         ClearUI();
         authPanel.SetActive(true);
         loginPanel.SetActive(true);

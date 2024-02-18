@@ -48,6 +48,11 @@ public class JsonStorage : MonoBehaviour
     private void OnApplicationQuit()
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+        if (!File.Exists(filePath) || FirebaseAuthManager.instance.user == null) return;
+
+        Debug.Log("User is not null");
+
         SaveEncryptDataOnExit(filePath);
 
         Debug.Log("Exit");
@@ -187,6 +192,8 @@ public class JsonStorage : MonoBehaviour
             await Task.Delay(1000);
         }
 
+        Debug.Log(File.Exists(filePath) + " is file exist");
+
         jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
         pastData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
@@ -271,6 +278,11 @@ public class JsonStorage : MonoBehaviour
     private void StartTimer()
     {
         InvokeRepeating("AddSeconds", 1, 1);
+    }
+
+    public void CancelTimer()
+    {
+        CancelInvoke("AddSeconds");
     }
 
     public void ActivateTimer(bool isActive)

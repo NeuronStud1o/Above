@@ -136,11 +136,11 @@ public class Tutorial : MonoBehaviour
 
     public void JumpsPart()
     {
-        SlowestSpeed();
-
         touchScreenArrowSecondPart.SetActive(true);
         jumpButtonSecondPart.SetActive(false);
         jumpNoobButtonSecondPart.SetActive(true);
+        
+        SlowestSpeed();
     }
 
     private void SlowestSpeed()
