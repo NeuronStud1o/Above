@@ -51,8 +51,13 @@ public class ButtonsManagerMainMenu : MonoBehaviour
         Application.OpenURL("https://instagram.com/neuron.studio.official?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D");
     }
 
+    public void TikTok()
+    {
+        Application.OpenURL("https://www.tiktok.com/@neuron.studio.official?_t=8jzqf9PMyfe&_r=1");
+    }
+
     public void PrivacyPolicy()
     {
-        Application.OpenURL("https://doc-hosting.flycricket.io/above-privacy-policy/78dbabd2-a6e1-4a4e-b924-9402c88f8348/privacy");
+        Application.OpenURL("https://doc-hosting.flycricket.io/above-privacy-policy/b4629e4f-e735-4eda-83c7-0c667307bf57/privacy");
     }
 }
