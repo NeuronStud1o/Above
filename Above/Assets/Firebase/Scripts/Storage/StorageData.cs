@@ -29,11 +29,13 @@ public class StorageData : MonoBehaviour
 
     public void SaveJsonData()
     {
+        Debug.Log("Try to save");
         string localFile = Path.Combine(Application.persistentDataPath, "gameData.json");
 
         if (!File.Exists(localFile) || UserData.instance.User == null) return;
 
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+        Debug.Log(UserData.instance.User.UserId);
         reference.PutFileAsync(localFile).ContinueWith(task => 
         {
             if (task.IsCompleted)
@@ -122,6 +124,7 @@ public class StorageData : MonoBehaviour
     public async Task<bool> CheckIfJsonDataExists()
     {
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+        Debug.Log(UserData.instance.User.UserId);
 
         try
         {

@@ -49,6 +49,8 @@ public class JsonStorage : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
+        Debug.Log(FirebaseAuthManager.instance.user);
+
         if (!File.Exists(filePath) || FirebaseAuthManager.instance.user == null) return;
 
         Debug.Log("User is not null");
@@ -173,6 +175,8 @@ public class JsonStorage : MonoBehaviour
             {
                 jsonData = CreateNewJsonData();
                 pastData = CreateNewJsonData();
+
+                SaveEncryptDataOnExit(filePath);
 
                 StartTimer();
 

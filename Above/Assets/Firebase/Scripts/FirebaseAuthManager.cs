@@ -379,6 +379,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
     async Task StartGame()
     {
+        Debug.Log(UserData.instance.User.UserId);
+        
         DataBase.instance.SetActiveLoadingScreen(true);
 
         storage.SetActive(true);

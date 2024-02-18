@@ -37,6 +37,7 @@ public static class CryptoHelper
 
     private static void EncryptAndSaveInternal(string filePath, string json, string password)
     {
+        Debug.Log("Encrypting");
         using (Aes aesAlg = Aes.Create())
         {
             aesAlg.KeySize = KeySize;
