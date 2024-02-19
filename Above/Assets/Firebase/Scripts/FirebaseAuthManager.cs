@@ -39,17 +39,46 @@ public class FirebaseAuthManager : MonoBehaviour
     [SerializeField] private GameObject loading;
     [SerializeField] private TextMeshProUGUI initText;
 
+    private static bool isReady = false;
+
     void Start()
     {
         instance = this;
+
+        CheckIfReady();
     }
 
-    public void StartAction()
+    public async void StartAction()
     {
-        StartCoroutine(Action());
+        while (isReady == false)
+        {
+            await Task.Delay(500);
+        }
+
+        StartCoroutine(CheckAndFixDependenciesAsync());
     }
 
-    IEnumerator Action()
+    public static void CheckIfReady()
+    {
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
+
+        DependencyStatus dependencyStatus = task.Result;
+
+            if (dependencyStatus == DependencyStatus.Available)
+            {
+                FirebaseApp app = FirebaseApp.DefaultInstance;
+                isReady = true;
+                Debug.Log("Firebase is ready for use.");
+            }
+            else
+            {
+                Debug.LogError(System.String.Format(
+                "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+            }
+        });
+    }
+
+    private IEnumerator CheckAndFixDependenciesAsync()
     {
         initText.text = "Check and fix dependencies";
 
@@ -57,34 +86,34 @@ public class FirebaseAuthManager : MonoBehaviour
 
         yield return new WaitUntil(() => dependencyTask.IsCompleted);
 
-        yield return new WaitForSeconds(0.5f);
-
         dependencyStatus = dependencyTask.Result;
 
         if (dependencyStatus == DependencyStatus.Available)
         {
-            StartCoroutine(InitializeFirebaseAsync());
+            yield return new WaitForSeconds(0.5f);
+
+            InitializeFirebase();
+            
+            yield return new WaitForSeconds(0.3f);
+
+            yield return new WaitForEndOfFrame();
+
+            StartCoroutine(CheckForAutoLogin());
         }
         else
         {
-            Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
+            Debug.LogError("Could not resolve all firebase dependencies: " + dependencyStatus);
         }
     }
 
-    private IEnumerator InitializeFirebaseAsync()
+    void InitializeFirebase()
     {
-        initText.text = "Initialize database";
+        initText.text = "Initialize data base";
 
         auth = FirebaseAuth.DefaultInstance;
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
-
-        yield return new WaitForSeconds(0.5f);
-
-        yield return new WaitForEndOfFrame();
-
-        StartCoroutine(CheckForAutoLogin());
     }
 
     private IEnumerator CheckForAutoLogin()
@@ -110,9 +139,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private async void AutoLogin()
     {
-        initText.gameObject.SetActive(false);
-        loading.SetActive(false);
-
         if (user != null)
         {
             References.userName = user.DisplayName;
@@ -125,6 +151,9 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             UIManager.Instance.OpenLoginPanel();
         }
+
+        initText.gameObject.SetActive(false);
+        loading.SetActive(false);
     }
 
     void AuthStateChanged(object sender, System.EventArgs eventArgs)
