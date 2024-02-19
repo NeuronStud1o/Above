@@ -60,8 +60,7 @@ public class StorageData : MonoBehaviour
         {
             try
             {
-                FileUtil.DeleteFileOrDirectory(filePath);
-                AssetDatabase.Refresh();
+                File.Delete(filePath);
 
                 Debug.Log("File is deleted: " + filePath);
             }
