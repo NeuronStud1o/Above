@@ -34,6 +34,11 @@ public class FirebaseAuthManager : MonoBehaviour
     [SerializeField] private TMP_InputField fogetPassField;
     [SerializeField] private GameObject sendResetPassText;
 
+    [Space]
+    [Header("Other")]
+    [SerializeField] private GameObject loading;
+    [SerializeField] private TextMeshProUGUI initText;
+
     void Start()
     {
         instance = this;
@@ -46,6 +51,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private IEnumerator CheckAndFixDependenciesAsync()
     {
+        initText.text = "Check and fix dependencies";
+
         var dependencyTask = FirebaseApp.CheckAndFixDependenciesAsync();
 
         yield return new WaitUntil(() => dependencyTask.IsCompleted);
@@ -54,7 +61,11 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (dependencyStatus == DependencyStatus.Available)
         {
+            yield return new WaitForSeconds(0.5f);
+
             InitializeFirebase();
+            
+            yield return new WaitForSeconds(0.3f);
 
             yield return new WaitForEndOfFrame();
 
@@ -68,6 +79,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
     void InitializeFirebase()
     {
+        initText.text = "Initialize data base";
+
         auth = FirebaseAuth.DefaultInstance;
 
         auth.StateChanged += AuthStateChanged;
@@ -76,6 +89,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private IEnumerator CheckForAutoLogin()
     {
+        initText.text = "Checking the automatic login";
+
         if (user != null)
         {
             var reloadUserTask = user.ReloadAsync();
@@ -104,6 +119,9 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             UIManager.Instance.OpenLoginPanel();
         }
+
+        initText.gameObject.SetActive(false);
+        loading.SetActive(false);
     }
 
     void AuthStateChanged(object sender, System.EventArgs eventArgs)
