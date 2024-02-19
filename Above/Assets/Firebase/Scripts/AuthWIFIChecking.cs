@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -10,18 +11,20 @@ public class AuthWIFIChecking : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(CheckInternetConection());
+        StartCoroutine(CheckInternetConnection());
     }
 
-    IEnumerator CheckInternetConection()
+    private IEnumerator CheckInternetConnection()
     {
         errorPanel.SetActive(false);
 
         UnityWebRequest request = new UnityWebRequest("https://www.google.com/");
 
-        yield return request.SendWebRequest();
+        var asyncOperation = request.SendWebRequest();
 
-        if (request.error != null)
+        yield return asyncOperation;
+
+        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
         {
             errorPanel.SetActive(true);
         }
@@ -30,10 +33,10 @@ public class AuthWIFIChecking : MonoBehaviour
             firebaseAuthManager.StartAction();
         }
     }
-
+    
     public void TryAgain()
     {
-        StartCoroutine(CheckInternetConection());
+        StartCoroutine(CheckInternetConnection());
         Debug.Log("Try again");
     }
 }

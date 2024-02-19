@@ -46,10 +46,10 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void StartAction()
     {
-        StartCoroutine(CheckAndFixDependenciesAsync());
+        StartCoroutine(Action());
     }
 
-    private IEnumerator CheckAndFixDependenciesAsync()
+    IEnumerator Action()
     {
         initText.text = "Check and fix dependencies";
 
@@ -57,34 +57,34 @@ public class FirebaseAuthManager : MonoBehaviour
 
         yield return new WaitUntil(() => dependencyTask.IsCompleted);
 
+        yield return new WaitForSeconds(0.5f);
+
         dependencyStatus = dependencyTask.Result;
 
         if (dependencyStatus == DependencyStatus.Available)
         {
-            yield return new WaitForSeconds(0.5f);
-
-            InitializeFirebase();
-            
-            yield return new WaitForSeconds(0.3f);
-
-            yield return new WaitForEndOfFrame();
-
-            StartCoroutine(CheckForAutoLogin());
+            StartCoroutine(InitializeFirebaseAsync());
         }
         else
         {
-            Debug.LogError("Could not resolve all firebase dependencies: " + dependencyStatus);
+            Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
         }
     }
 
-    void InitializeFirebase()
+    private IEnumerator InitializeFirebaseAsync()
     {
-        initText.text = "Initialize data base";
+        initText.text = "Initialize database";
 
         auth = FirebaseAuth.DefaultInstance;
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
+
+        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForEndOfFrame();
+
+        StartCoroutine(CheckForAutoLogin());
     }
 
     private IEnumerator CheckForAutoLogin()
@@ -101,12 +101,18 @@ public class FirebaseAuthManager : MonoBehaviour
         }
         else
         {
+            initText.gameObject.SetActive(false);
+            loading.SetActive(false);
+
             UIManager.Instance.OpenLoginPanel();
         }
     }
 
     private async void AutoLogin()
     {
+        initText.gameObject.SetActive(false);
+        loading.SetActive(false);
+
         if (user != null)
         {
             References.userName = user.DisplayName;
@@ -119,9 +125,6 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             UIManager.Instance.OpenLoginPanel();
         }
-
-        initText.gameObject.SetActive(false);
-        loading.SetActive(false);
     }
 
     void AuthStateChanged(object sender, System.EventArgs eventArgs)
