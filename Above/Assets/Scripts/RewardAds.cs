@@ -8,7 +8,7 @@ public class RewardAds : MonoBehaviour
 {
     private RewardedAd rewardedAdSupercoins;
     private RewardedAd rewardedAdFlycoins;
-    private const string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    private const string adUnitId = "ca-app-pub-9185697735170935/3240749118";
     private int supercoinsCount = 0;
 
     [SerializeField] private GameObject collectFlycoinsPanel;

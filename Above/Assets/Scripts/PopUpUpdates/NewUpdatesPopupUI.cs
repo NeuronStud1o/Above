@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
-using System;
 
 namespace UpgradeSystem
 {
@@ -51,13 +50,13 @@ namespace UpgradeSystem
             request.disposeDownloadHandlerOnDispose = true;
             request.timeout = 60;
 
-            yield return request.Send();
+            yield return request.SendWebRequest();
 
             if (request.isDone)
             {
                 isAlreadyCheckedForUpdates = true;
 
-                if (!request.isError)
+                if (!request.isNetworkError && !request.isHttpError)
                 {
                     latestGameData = JsonUtility.FromJson<GameData>(request.downloadHandler.text);
 
