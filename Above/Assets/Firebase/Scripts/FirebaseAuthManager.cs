@@ -12,7 +12,6 @@ public class FirebaseAuthManager : MonoBehaviour
     public static FirebaseAuthManager instance;
 
     [Header("Firebase")]
-    public static DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser user;
     public GameObject storage;
@@ -65,40 +64,40 @@ public class FirebaseAuthManager : MonoBehaviour
 
         while (isReady == false)
         {
+            initText.text = "";
             initText.text += " " + attemps;
 
             await Task.Delay(1000);
-            Debug.Log(isReady + "    is ready");
 
             CheckIfReady();
 
             attemps++;
         }
 
-        Debug.Log(isReady + "    is ready");
-
-        StartCoroutine(CheckAndFixDependencies());
+        InitializeFirebase();
+        StartCoroutine(CheckForAutoLogin());
     }
 
-    public static void CheckIfReady()
+    public void CheckIfReady()
     {
         try
         {
-            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
-
-            dependencyStatus = task.Result;
-
-            if (dependencyStatus == DependencyStatus.Available)
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
             {
-                FirebaseApp app = FirebaseApp.DefaultInstance;
-                isReady = true;
-                Debug.Log("Firebase is ready for use.");
-            }
-            else
-            {
-                Debug.LogError(System.String.Format(
-                "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-            }
+                initText.text = "Checking the readiness of dependencies";
+
+                var dependencyStatus = task.Result;
+
+                if (dependencyStatus == DependencyStatus.Available)
+                {
+                    FirebaseApp app = FirebaseApp.DefaultInstance;
+                    isReady = true;
+                }
+                else
+                {
+                    Debug.LogError(System.String.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                }
             });
         }
         catch (System.Exception ex)
@@ -106,26 +105,6 @@ public class FirebaseAuthManager : MonoBehaviour
             exeption = ex.Message.ToString();
         }
         
-    }
-
-    private IEnumerator CheckAndFixDependencies()
-    {
-        if (dependencyStatus == DependencyStatus.Available)
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            InitializeFirebase();
-            
-            yield return new WaitForSeconds(0.3f);
-
-            yield return new WaitForEndOfFrame();
-
-            StartCoroutine(CheckForAutoLogin());
-        }
-        else
-        {
-            Debug.LogError("Could not resolve all firebase dependencies: " + dependencyStatus);
-        }
     }
 
     void InitializeFirebase()
