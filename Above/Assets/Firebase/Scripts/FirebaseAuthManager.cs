@@ -12,7 +12,7 @@ public class FirebaseAuthManager : MonoBehaviour
     public static FirebaseAuthManager instance;
 
     [Header("Firebase")]
-    public DependencyStatus dependencyStatus;
+    public static DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser user;
     public GameObject storage;
@@ -40,29 +40,53 @@ public class FirebaseAuthManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI initText;
 
     private static bool isReady = false;
+    public static string exeption = "";
+
+    void Awake()
+    {
+        CheckIfReady();
+    }
 
     void Start()
     {
         instance = this;
-
-        CheckIfReady();
     }
 
     public async void StartAction()
     {
-        while (isReady == false)
+        initText.text = "Check and fix dependencies";
+
+        if (exeption != "")
         {
-            await Task.Delay(500);
+            initText.text = exeption;
         }
 
-        StartCoroutine(CheckAndFixDependenciesAsync());
+        int attemps = 1;
+
+        while (isReady == false)
+        {
+            initText.text += " " + attemps;
+
+            await Task.Delay(1000);
+            Debug.Log(isReady + "    is ready");
+
+            CheckIfReady();
+
+            attemps++;
+        }
+
+        Debug.Log(isReady + "    is ready");
+
+        StartCoroutine(CheckAndFixDependencies());
     }
 
     public static void CheckIfReady()
     {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
+        try
+        {
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
 
-        DependencyStatus dependencyStatus = task.Result;
+            dependencyStatus = task.Result;
 
             if (dependencyStatus == DependencyStatus.Available)
             {
@@ -75,19 +99,17 @@ public class FirebaseAuthManager : MonoBehaviour
                 Debug.LogError(System.String.Format(
                 "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
             }
-        });
+            });
+        }
+        catch (System.Exception ex)
+        {
+            exeption = ex.Message.ToString();
+        }
+        
     }
 
-    private IEnumerator CheckAndFixDependenciesAsync()
+    private IEnumerator CheckAndFixDependencies()
     {
-        initText.text = "Check and fix dependencies";
-
-        var dependencyTask = FirebaseApp.CheckAndFixDependenciesAsync();
-
-        yield return new WaitUntil(() => dependencyTask.IsCompleted);
-
-        dependencyStatus = dependencyTask.Result;
-
         if (dependencyStatus == DependencyStatus.Available)
         {
             yield return new WaitForSeconds(0.5f);
