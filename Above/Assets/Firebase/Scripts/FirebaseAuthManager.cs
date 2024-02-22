@@ -65,7 +65,7 @@ public class FirebaseAuthManager : MonoBehaviour
         while (isReady == false)
         {
             initText.text = "";
-            initText.text += " " + attemps;
+            initText.text += exeption + attemps;
 
             await Task.Delay(1000);
 
