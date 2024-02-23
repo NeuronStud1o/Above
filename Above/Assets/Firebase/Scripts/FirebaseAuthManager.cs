@@ -41,9 +41,9 @@ public class FirebaseAuthManager : MonoBehaviour
     private static bool isReady = false;
     public static string exeption = "";
 
-    void Awake()
+    async void Awake()
     {
-        CheckIfReady();
+        await CheckIfReady();
     }
 
     void Start()
@@ -69,7 +69,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
             await Task.Delay(1000);
 
-            CheckIfReady();
+            await CheckIfReady();
 
             attemps++;
         }
@@ -78,11 +78,11 @@ public class FirebaseAuthManager : MonoBehaviour
         StartCoroutine(CheckForAutoLogin());
     }
 
-    public void CheckIfReady()
+    public async Task CheckIfReady()
     {
         try
         {
-            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+            await FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
             {
                 initText.text = "Checking the readiness of dependencies";
 
