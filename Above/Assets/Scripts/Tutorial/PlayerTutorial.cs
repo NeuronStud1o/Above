@@ -28,7 +28,7 @@ public class PlayerTutorial : MonoBehaviour
     {
         cameraFollow = MainCamera.GetComponent<CameraFollow>();
 
-        cameraFollow.doodlePos = transform;
+        //cameraFollow.doodlePos = transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

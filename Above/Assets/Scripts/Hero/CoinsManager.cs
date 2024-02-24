@@ -18,8 +18,8 @@ public class CoinsManager : MonoBehaviour
     {
         instance = this;
 
-        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
-        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
+        //coinsF = JsonStorage.instance.jsonData.userData.coinsF;
+        //coinsS = JsonStorage.instance.jsonData.userData.coinsS;
 
         UpdateUI();
     }

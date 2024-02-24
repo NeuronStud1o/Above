@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class OtherSettings : MonoBehaviour
 {
-    [SerializeField] private ControllerOtherSettings controller;
+    /*[SerializeField] private ControllerOtherSettings controller;
 
     public void ShowLevelRanks(bool tog)
     {
@@ -105,5 +105,5 @@ public class OtherSettings : MonoBehaviour
         {
             JsonStorage.instance.jsonData.otherSettings.vibration = false;
         }
-    }
+    }*/
 }

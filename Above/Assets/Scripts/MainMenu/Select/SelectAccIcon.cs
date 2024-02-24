@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SelectAccIcon : MonoBehaviour
 {
-    [SerializeField] private GameObject blockedPanel;
+    /*[SerializeField] private GameObject blockedPanel;
     public string iconName;
     public Image button;
 
@@ -35,5 +35,5 @@ public class SelectAccIcon : MonoBehaviour
     public void Change()
     {
         EquipAccIcon.instance.Change(iconName, button);
-    }
+    }*/
 }

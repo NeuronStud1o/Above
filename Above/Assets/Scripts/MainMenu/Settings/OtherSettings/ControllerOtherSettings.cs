@@ -12,10 +12,10 @@ public class ControllerOtherSettings : MonoBehaviour
 
     void Start()
     {
-        ShowLevelRanks(JsonStorage.instance.jsonData.otherSettings.showLevelRanks);
-        AutoSaveSettings(JsonStorage.instance.jsonData.otherSettings.autoSave);
-        ActivateParticles(JsonStorage.instance.jsonData.otherSettings.particles);
-        ShowTheSelectedBoost(JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame);
+        //ShowLevelRanks(JsonStorage.instance.jsonData.otherSettings.showLevelRanks);
+        //AutoSaveSettings(JsonStorage.instance.jsonData.otherSettings.autoSave);
+        //ActivateParticles(JsonStorage.instance.jsonData.otherSettings.particles);
+        //ShowTheSelectedBoost(JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame);
     }
 
     public void ShowLevelRanks(bool tog)

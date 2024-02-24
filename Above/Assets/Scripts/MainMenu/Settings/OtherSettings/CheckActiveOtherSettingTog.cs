@@ -21,7 +21,7 @@ public class CheckActiveOtherSettingTog : MonoBehaviour
 
     void Awake()
     {
-        switch (setting)
+        /*switch (setting)
         {
             case OtherSetting.ShowLevelRank:
                 tog.isOn = JsonStorage.instance.jsonData.otherSettings.showLevelRanks;
@@ -41,6 +41,6 @@ public class CheckActiveOtherSettingTog : MonoBehaviour
             case OtherSetting.Vibration:
                 tog.isOn = JsonStorage.instance.jsonData.otherSettings.vibration;
                 break;
-        }
+        }*/
     }
 }

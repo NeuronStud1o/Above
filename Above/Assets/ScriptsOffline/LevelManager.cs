@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        DataBase.instance.GetComponent<AudioSource>().enabled = true;
+        //DataBase.instance.GetComponent<AudioSource>().enabled = true;
         equipedHero = PlayerPrefs.GetInt("currentHero");
     }
 }

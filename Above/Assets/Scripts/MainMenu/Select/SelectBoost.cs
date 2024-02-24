@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SelectBoost : MonoBehaviour
 {
-    private int currentBoost;
+    /*private int currentBoost;
 
     [SerializeField] private GameObject[] AllBoosts;
     [SerializeField] private GameObject[] Heroes;
@@ -71,5 +71,5 @@ public class SelectBoost : MonoBehaviour
 
         EquipedButtons[thisBoost].SetActive(true);
         EquipButtons[thisBoost].SetActive(false);
-    }
+    }*/
 }

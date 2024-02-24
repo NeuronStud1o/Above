@@ -18,7 +18,7 @@ enum Think
 
 public class DataBuySystem : MonoBehaviour
 {
-    [SerializeField] private Coin coinType;
+    /*[SerializeField] private Coin coinType;
     [SerializeField] private Think purchaseType;
     [SerializeField] private int price;
     [SerializeField] private string purchaseName;
@@ -148,5 +148,5 @@ public class DataBuySystem : MonoBehaviour
                 
             }
         }
-    }
+    }*/
 }

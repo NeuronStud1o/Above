@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LosePanel : MonoBehaviour
 {
-    public static LosePanel instance;
+    /*public static LosePanel instance;
     [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Start()
@@ -43,5 +43,5 @@ public class LosePanel : MonoBehaviour
         }
 
         scoreText.text = recordScore.ToString();
-    }
+    }*/
 }

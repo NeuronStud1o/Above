@@ -10,7 +10,7 @@ public class SelectCharacterInGame : MonoBehaviour
 
     void Start()
     {
-        i = JsonStorage.instance.jsonData.currentShop.currentSkin;
+        //i = JsonStorage.instance.jsonData.currentShop.currentSkin;
 
         AllCharacters[i].SetActive(true);
     }

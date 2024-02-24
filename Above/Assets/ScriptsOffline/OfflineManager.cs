@@ -7,7 +7,7 @@ public class OfflineManager : MonoBehaviour
 {
     void Start()
     {
-        DataBase.instance.SetActiveLoadingScreen(false);
+        //DataBase.instance.SetActiveLoadingScreen(false);
     }
 
     public void EquipHero(int index)
@@ -17,7 +17,7 @@ public class OfflineManager : MonoBehaviour
 
     public void ToLobby()
     {
-        DataBase.instance.gameObject.GetComponent<AudioSource>().volume = 0.2f;
+        //DataBase.instance.gameObject.GetComponent<AudioSource>().volume = 0.2f;
         SceneManager.LoadSceneAsync("Authentication");
     }
 
@@ -28,12 +28,12 @@ public class OfflineManager : MonoBehaviour
 
     private IEnumerator GameIsStarted(int index)
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        //DataBase.instance.SetActiveLoadingScreen(true);
 
         yield return new WaitForSeconds(0.5f);
 
         LevelManager.instance.eqipedLevel = index;
-        DataBase.instance.GetComponent<AudioSource>().enabled = false;
+        //DataBase.instance.GetComponent<AudioSource>().enabled = false;
 
         SceneManager.LoadSceneAsync("OfflineGame");
     }

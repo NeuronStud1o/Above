@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform doodlePos;
+    /*public Transform doodlePos;
     [SerializeField] private GameObject boost;
     [SerializeField] private bool isTutorial;
 
@@ -25,5 +25,5 @@ public class CameraFollow : MonoBehaviour
             transform.position = new Vector3(transform.position.x,
                 doodlePos.position.y, transform.position.z);
         }
-    }
+    }*/
 }

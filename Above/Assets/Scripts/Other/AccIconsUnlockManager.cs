@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AccIconsUnlockManager : MonoBehaviour
 {
-    [SerializeField] private string iconName;
+    /*[SerializeField] private string iconName;
     [SerializeField] private bool isNeedToBuy;
 
     void Start()
@@ -68,5 +68,5 @@ public class AccIconsUnlockManager : MonoBehaviour
 
             CoinsManagerInMainMenu.instance.UpdateUI();
         }
-    }
+    }*/
 }

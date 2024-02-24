@@ -9,6 +9,6 @@ public class AutoSave : MonoBehaviour
 
     void Update()
     {
-        control.SaveAudioSettings();
+        //control.SaveAudioSettings();
     }
 }

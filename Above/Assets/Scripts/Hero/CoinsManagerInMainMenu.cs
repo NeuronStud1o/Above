@@ -6,7 +6,7 @@ using System;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
 {
-    public static CoinsManagerInMainMenu instance;
+    /*public static CoinsManagerInMainMenu instance;
 
     public int coinsF;
     public int coinsS;
@@ -41,5 +41,5 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     public void UpdateAdRewardUI(int ads)
     {
         AdsForSupercoinsCount.text = ads + " / 6"; 
-    }
+    }*/
 }

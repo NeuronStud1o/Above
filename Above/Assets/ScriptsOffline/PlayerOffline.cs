@@ -28,7 +28,7 @@ public class PlayerOffline : MonoBehaviour
 
     void Start()
     {
-        DataBase.instance.SetActiveLoadingScreen(false);
+        //DataBase.instance.SetActiveLoadingScreen(false);
         
         StartOnClick.instance.playerOffline = this;
 
@@ -164,7 +164,7 @@ public class PlayerOffline : MonoBehaviour
 
         if (a == 2)
         {
-            InterstitialAds.instance.Show();
+            //InterstitialAds.instance.Show();
         }
 
         deathPanel.SetActive(true);

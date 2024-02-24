@@ -14,7 +14,7 @@ public class SelectCharacter : MonoBehaviour
 
     void Start()
     {
-        i = JsonStorage.instance.jsonData.currentShop.currentSkin;
+        //i = JsonStorage.instance.jsonData.currentShop.currentSkin;
 
         EquipedButtons[i].SetActive(true);
         EquipButtons[i].SetActive(false);
@@ -31,7 +31,7 @@ public class SelectCharacter : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        JsonStorage.instance.jsonData.currentShop.currentSkin = thisCharacter;
+        //JsonStorage.instance.jsonData.currentShop.currentSkin = thisCharacter;
 
         AllCharacters[thisCharacter].SetActive(true);
 

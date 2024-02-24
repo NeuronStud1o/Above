@@ -14,7 +14,7 @@ public class SelectBoostInGame : MonoBehaviour
 
     void Start()
     {
-        i = JsonStorage.instance.jsonData.currentShop.currentBoost;
+        //i = JsonStorage.instance.jsonData.currentShop.currentBoost;
 
         if (i == 3)
         {

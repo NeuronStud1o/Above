@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioControlInGame : MonoBehaviour
 {
-    [SerializeField] private AudioSource[] SFX;
+    /*[SerializeField] private AudioSource[] SFX;
 
     private AudioSource audioSource;
     
@@ -29,5 +29,5 @@ public class AudioControlInGame : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         audioSource.enabled = true;
-    }
+    }*/
 }

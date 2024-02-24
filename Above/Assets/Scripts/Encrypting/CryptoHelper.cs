@@ -69,7 +69,7 @@ public static class CryptoHelper
             }
         }
 
-        StorageData.instance.SaveJsonData();
+        //StorageData.instance.SaveJsonData();
     }
 
     private static string LoadAndDecryptInternal(string filePath, string password)
