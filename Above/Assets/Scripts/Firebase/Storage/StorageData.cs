@@ -27,22 +27,35 @@ public class StorageData : MonoBehaviour
         instance = this;
     }
 
+    public void SetStorage(FirebaseStorage stor)
+    {
+        storage = stor;
+    }
+
     public void SaveJsonData()
     {
-        Debug.Log("Try to save");
         string localFile = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        if (!File.Exists(localFile) || UserData.instance.User == null) return;
 
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
 
-        reference.PutFileAsync(localFile).ContinueWith(task => 
+        if (File.Exists(localFile) && UserData.instance.User != null)
         {
-            if (task.IsCompleted)
+            reference.PutFileAsync(localFile).ContinueWith(task => 
             {
-                Debug.Log("File is saved");
-            }
-        });
+                if (task.IsCompleted)
+                {
+                    Debug.Log("File is saved");
+                }
+                else if (task.IsFaulted)
+                {
+                    Debug.LogError("File upload failed: " + task.Exception);
+                }
+            });
+        }
+        else
+        {
+            Debug.LogWarning("File does not exist or user is null");
+        }
     }
 
     public void DeleteJson()
@@ -51,8 +64,6 @@ public class StorageData : MonoBehaviour
         {
             JsonStorage.instance.CancelTimer();
         }
-
-        SaveJsonData();
 
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
@@ -77,8 +88,6 @@ public class StorageData : MonoBehaviour
 
     public async Task LoadJsonData()
     {
-        storage = FirebaseAuthManager.storageInstance;
-
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData.json");
 
         if (!await CheckIfJsonDataExists())
@@ -124,12 +133,6 @@ public class StorageData : MonoBehaviour
 
     public async Task<bool> CheckIfJsonDataExists()
     {
-        storage = FirebaseAuthManager.storageInstance;
-        
-        DataBase.instance.SetUserMessage("Storage: " + storage);
-        DataBase.instance.SetUserMessage("Storage 2: " + storage.Url());
-        DataBase.instance.SetUserMessage("Storage 3: " + storage.RootReference);
-
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
 
         try

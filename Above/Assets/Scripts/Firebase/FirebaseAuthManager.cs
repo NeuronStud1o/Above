@@ -12,14 +12,14 @@ using Firebase.Storage;
 public class FirebaseAuthManager : MonoBehaviour
 {
     public static FirebaseAuthManager instance;
-    public static FirebaseStorage storageInstance;
+    private FirebaseStorage storageInstance;
 
     [Header("Firebase")]
     public FirebaseAuth auth;
     public FirebaseUser user;
     public FirebaseApp app;
     public GameObject storage;
-
+    
     [Space]
     [Header("Login")]
     public TMP_InputField emailLoginField;
@@ -50,7 +50,6 @@ public class FirebaseAuthManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -67,7 +66,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
         if (exeption != "")
         {
-            initText.text = exeption;
+            initText.text = "Exception: " + exeption;
         }
 
         int attemps = 1;
@@ -112,6 +111,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
                         app = FirebaseApp.Create(options);
                     }
+                    
 
                     storageInstance = FirebaseStorage.GetInstance(app, "gs://above-acb46.appspot.com");
 
@@ -135,8 +135,6 @@ public class FirebaseAuthManager : MonoBehaviour
         initText.text = "Initialize data base";
 
         auth = FirebaseAuth.DefaultInstance;
-
-        DataBase.instance.SetUserMessage("Authefication: " + auth);
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
@@ -167,6 +165,13 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         if (user != null)
         {
+            if (storage != null)
+            {
+                storage.SetActive(true);
+            }
+
+            StorageData.instance.SetStorage(storageInstance);
+
             References.userName = user.DisplayName;
             UserData.instance.SetUser(user);
 
@@ -222,6 +227,7 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         if (auth != null && user != null)
         {
+            StorageData.instance.SaveJsonData();
             auth.SignOut();
             Application.Quit();
 
@@ -276,8 +282,6 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             user = loginTask.Result.User;
 
-            DataBase.instance.SetUserMessage("User: " + user);
-
             if (user.IsEmailVerified)
             {
                 DataBase.instance.SetMessage("User login");
@@ -286,9 +290,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
                 References.userName = user.DisplayName;
                 UserData.instance.SetUser(user);
-
-                DataBase.instance.SetUserMessage("Data user: " + UserData.instance.User);
-                DataBase.instance.SetUserMessage("User name: " + UserData.instance.User.DisplayName);
 
                 DataBase.instance.SetMessage("Opening game scene");
 
@@ -472,7 +473,12 @@ public class FirebaseAuthManager : MonoBehaviour
         
         DataBase.instance.SetActiveLoadingScreen(true);
 
-        storage.SetActive(true);
+        if (storage != null)
+        {
+            storage.SetActive(true);
+        }
+
+        StorageData.instance.SetStorage(storageInstance);
 
         await JsonStorage.instance.StartAction();
 

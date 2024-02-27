@@ -23,10 +23,10 @@ public static class CryptoHelper
         }
     }
 
-    public static void EncryptAndSave(string filePath, object jsonData, string password)
+    public static void EncryptAndSave(string filePath, object jsonData, string password, bool saveToServer)
     {
         string jsonString = JsonUtility.ToJson(jsonData, true);
-        EncryptAndSaveInternal(filePath, jsonString, password);
+        EncryptAndSaveInternal(filePath, jsonString, password, saveToServer);
     }
 
     public static T LoadAndDecrypt<T>(string filePath, string password)
@@ -35,7 +35,7 @@ public static class CryptoHelper
         return JsonUtility.FromJson<T>(decryptedJson);
     }
 
-    private static void EncryptAndSaveInternal(string filePath, string json, string password)
+    private static void EncryptAndSaveInternal(string filePath, string json, string password, bool saveToServer)
     {
         Debug.Log("Encrypting");
         using (Aes aesAlg = Aes.Create())
@@ -69,7 +69,10 @@ public static class CryptoHelper
             }
         }
 
-        //StorageData.instance.SaveJsonData();
+        if (saveToServer)
+        {
+            StorageData.instance.SaveJsonData();
+        }
     }
 
     private static string LoadAndDecryptInternal(string filePath, string password)
@@ -106,8 +109,13 @@ public static class CryptoHelper
 
     private static byte[] GenerateSalt(string pass)
     {
+        if (pass == null)
+        {
+            throw new ArgumentNullException(nameof(pass));
+        }
+
         byte[] salt = Encoding.UTF8.GetBytes(pass);
-        
+
         using (HMACSHA256 hmac = new HMACSHA256(salt))
         {
             byte[] key = new byte[hmac.HashSize / 8];

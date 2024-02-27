@@ -26,18 +26,12 @@ public class DataBase : MonoBehaviour
 
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private TextMeshProUGUI info;
-    [SerializeField] private TextMeshProUGUI userInfo;
 
     public void SetMessage(string text)
     {
         info.text = text;
     }
-
-    public void SetUserMessage(string text)
-    {
-        userInfo.text +=  "\n" + text;
-    }
-
+    
     void Start()
     {
         instance = this;

@@ -125,21 +125,24 @@ public class Tutorial : MonoBehaviour
 
         timerGO.SetActive(true);
 
-        playerTutorial.enabled = true;
-        jumpButtonSecondPart.SetActive(true);
         camAnim.enabled = false;
 
-        playerTutorial.Jump();
+        yield return new WaitForSeconds(0.5f);
 
         JumpsPart();
+
+        yield return new WaitForSeconds(1);
+
+        playerTutorial.enabled = true;
+        playerTutorial.Jump();
+        
+        jumpButtonSecondPart.SetActive(true);
+        touchScreenArrowSecondPart.SetActive(true);
+        jumpNoobButtonSecondPart.SetActive(true);
     }
 
     public void JumpsPart()
     {
-        touchScreenArrowSecondPart.SetActive(true);
-        jumpButtonSecondPart.SetActive(false);
-        jumpNoobButtonSecondPart.SetActive(true);
-        
         SlowestSpeed();
     }
 

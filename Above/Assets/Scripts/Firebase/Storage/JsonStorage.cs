@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class JsonStorage : MonoBehaviour
     private int seconds = 0;
     private bool isCanCheck = true;
     public bool isFrozenTimer = false;
+    public bool isDataException = false;
     public static JsonStorage instance;
 
     [Header ("## Json file :")]
@@ -49,111 +51,127 @@ public class JsonStorage : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
-        if (!File.Exists(filePath) || FirebaseAuthManager.instance.user == null) return;
+        if (!File.Exists(filePath) || FirebaseAuthManager.instance.user.UserId == null ||
+            FirebaseAuthManager.instance.user == null || isDataException)
+        {
+            Handheld.Vibrate();
+            UnityEngine.Debug.Log("Vibration");
+            return;
+        }
 
-        Debug.Log("User is not null");
+        UnityEngine.Debug.Log("User is not null");
 
         SaveEncryptDataOnExit(filePath);
 
-        Debug.Log("Exit");
+        UnityEngine.Debug.Log("Exit");
 
         if (pastData.userData.record != jsonData.userData.record)
         {
-            Debug.Log("Record is saved");
+            UnityEngine.Debug.Log("Record is saved");
             DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
         }
 
         if (pastData.userData.coinsF != jsonData.userData.coinsF)
         {
-            Debug.Log("Fly coins is saved");
+            UnityEngine.Debug.Log("Fly coins is saved");
             DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
         }
 
         if (pastData.userData.coinsS != jsonData.userData.coinsS)
         {
-            Debug.Log("Super coins is saved");
+            UnityEngine.Debug.Log("Super coins is saved");
             DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
         }
 
         if (pastData.userData.level != jsonData.userData.level)
         {
-            Debug.Log("Level is saved");
+            UnityEngine.Debug.Log("Level is saved");
             DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
         }
     }
 
     private void FixedUpdate()
     {
-        if (seconds == 20 && isCanCheck)
+        if (isDataException)
         {
-            Debug.Log(20 + " seconds");
+            DataBase.instance.SetActiveLoadingScreen(true);
+            DataBase.instance.SetMessage("Data loading error.\nPlease re-enter the game");
+            return;
+        }
 
+        if (seconds % 5 == 0 && isCanCheck && !isDataException && password != null)
+        {
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+            CryptoHelper.EncryptAndSave(filePath, jsonData, password, false);
+            isCanCheck = false;
+        }
+
+        if (seconds == 10 && isCanCheck && !isDataException)
+        {
             if (pastData.userData.record != jsonData.userData.record)
             {
                 pastData.userData.record = jsonData.userData.record;
 
                 DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
-                Debug.Log("Record is saved");
+                UnityEngine.Debug.Log("Record is saved");
             }
 
             isCanCheck = false;
         }
 
-        if (seconds == 40 && isCanCheck)
+        if (seconds == 20 && isCanCheck && !isDataException)
         {
-            Debug.Log(40 + " seconds");
-
             if (pastData.userData.coinsF != jsonData.userData.coinsF)
             {
                 pastData.userData.coinsF = jsonData.userData.coinsF;
                 pastData.userData.coinsFAllTime = jsonData.userData.coinsFAllTime;
 
                 DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
-                Debug.Log("All time flyCoins is saved");
+                UnityEngine.Debug.Log("All time flyCoins is saved");
             }
 
             isCanCheck = false;
         }
 
-        if (seconds == 60 && isCanCheck)
+        if (seconds == 30 && isCanCheck && !isDataException)
         {
-            Debug.Log(60 + " seconds");
-
             if (pastData.userData.coinsS != jsonData.userData.coinsS)
             {
                 pastData.userData.coinsS = jsonData.userData.coinsS;
                 pastData.userData.coinsSAllTime = jsonData.userData.coinsSAllTime;
 
                 DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
-                Debug.Log("All time superCoins is saved");
+                UnityEngine.Debug.Log("All time superCoins is saved");
             }
 
             isCanCheck = false;
         }
 
-        if (seconds == 80 && isCanCheck)
+        if (seconds == 40 && isCanCheck && !isDataException)
         {
-            Debug.Log(80 + " seconds");
-
             if (pastData.userData.level != jsonData.userData.level)
             {
                 pastData.userData.level = jsonData.userData.level;
 
                 DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
-                Debug.Log("Level is saved");
+                UnityEngine.Debug.Log("Level is saved");
             }
 
             isCanCheck = false;
         }
 
-        if (seconds == 100 && isCanCheck)
+        if (seconds == 50 && isCanCheck && !isDataException)
         {
-            Debug.Log(100 + " seconds");
-
             if (!pastData.ContentEquals(jsonData))
             {
                 pastData.CopyFrom(jsonData);
-                Debug.Log("Json file is saved to www");
+
+                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+                CryptoHelper.EncryptAndSave(filePath, jsonData, password, true);
+
+                UnityEngine.Debug.Log("Json file is saved to www");
             }
 
             seconds = 0;
@@ -188,7 +206,7 @@ public class JsonStorage : MonoBehaviour
 
                         StartTimer();
 
-                        Debug.Log("File is created in storage");
+                        UnityEngine.Debug.Log("File is created in storage");
 
                         return;
                     }
@@ -197,7 +215,7 @@ public class JsonStorage : MonoBehaviour
                         DataBase.instance.SetMessage("Loading json data");
 
                         await StorageData.instance.LoadJsonData();
-                        Debug.Log("File is received from storage");
+                        UnityEngine.Debug.Log("File is received from storage");
                     }
                 }
                 else
@@ -218,7 +236,7 @@ public class JsonStorage : MonoBehaviour
             await Task.Delay(1000);
         }
 
-        Debug.Log(File.Exists(filePath) + " is file exist");
+        UnityEngine.Debug.Log(File.Exists(filePath) + " is file exist");
 
         jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
@@ -226,12 +244,28 @@ public class JsonStorage : MonoBehaviour
 
         DataBase.instance.SetMessage("Enabling add-ons");
 
+        if (jsonData.userData.level == 0)
+        {
+            isDataException = true;
+            DataBase.instance.SetActiveLoadingScreen(true);
+            DataBase.instance.SetMessage("Data loading error.\nPlease re-enter the game");
+            return;
+        }
+
         StartTimer();
     }
 
     private void SaveEncryptDataOnExit(string filePath)
     {
-        CryptoHelper.EncryptAndSave(filePath, jsonData, password);
+        if (UserData.instance.User != null)
+        {
+            string password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
+            CryptoHelper.EncryptAndSave(filePath, jsonData, password, true);
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("User is null, cannot save encrypted data.");
+        }
     }
 
     private JsonData CreateNewJsonData()
@@ -320,7 +354,7 @@ public class JsonStorage : MonoBehaviour
             CancelInvoke("AddSeconds");
             isFrozenTimer = true;
 
-            Debug.Log("The game is frozen");
+            UnityEngine.Debug.Log("The game is frozen");
         }
         else
         {
@@ -328,7 +362,7 @@ public class JsonStorage : MonoBehaviour
             isFrozenTimer = false;
             StartTimer();
 
-            Debug.Log("The game is continiue");
+            UnityEngine.Debug.Log("The game is continiue");
         }
     }
 }

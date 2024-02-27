@@ -48,6 +48,13 @@ public class ManagerEXP : MonoBehaviour
 
         SetValues();
         CheckNextLevel();
+
+        if (level == 0)
+        {
+            JsonStorage.instance.isDataException = true;
+            DataBase.instance.SetActiveLoadingScreen(true);
+            DataBase.instance.SetMessage("Data loading error. Please re-enter the game");
+        }
     }
 
     public void GetValues()
