@@ -16,7 +16,7 @@ public struct LevelValue
 
 public class ManagerEXP : MonoBehaviour
 {
-    /*[SerializeField] private Slider expSlider;
+    [SerializeField] private Slider expSlider;
     [SerializeField] private TextMeshProUGUI countToNextLevelText;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI titleText;
@@ -99,5 +99,5 @@ public class ManagerEXP : MonoBehaviour
         }
 
         SetValues();
-    }*/
+    }
 }

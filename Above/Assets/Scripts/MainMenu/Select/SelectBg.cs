@@ -15,7 +15,7 @@ public class SelectBg : MonoBehaviour
 
     void Start()
     {
-        //i = JsonStorage.instance.jsonData.currentShop.currentBg;
+        i = JsonStorage.instance.jsonData.currentShop.currentBg;
 
         EquipedButtons[i].SetActive(true);
         EquipButtons[i].SetActive(false);
@@ -30,7 +30,7 @@ public class SelectBg : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        //DataBase.instance.SetActiveLoadingScreen(false);
+        DataBase.instance.SetActiveLoadingScreen(false);
     }
 
     public void Change(int thisBg)
@@ -44,7 +44,7 @@ public class SelectBg : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        //JsonStorage.instance.jsonData.currentShop.currentBg = thisBg;
+        JsonStorage.instance.jsonData.currentShop.currentBg = thisBg;
 
         AllBg[thisBg].SetActive(true);
         AllRailings[thisBg].SetActive(true);

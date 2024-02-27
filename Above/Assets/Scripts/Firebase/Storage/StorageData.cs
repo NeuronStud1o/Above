@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Firebase.Storage;
+using Firebase.Storage;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-//using Firebase.Extensions;
+using Firebase.Extensions;
 using UnityEngine.Networking;
 using UnityEditor;
+using Firebase;
 
 public class StorageData : MonoBehaviour
 {
-    /*public static StorageData instance;
+    public static StorageData instance;
     StorageReference reference;
 
     FirebaseStorage storage;
 
-    void Awake()
+    void Start()
     {
         if (instance != null)
         {
@@ -24,7 +25,6 @@ public class StorageData : MonoBehaviour
         }
         
         instance = this;
-        storage = FirebaseStorage.DefaultInstance;
     }
 
     public void SaveJsonData()
@@ -35,7 +35,7 @@ public class StorageData : MonoBehaviour
         if (!File.Exists(localFile) || UserData.instance.User == null) return;
 
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
-        Debug.Log(UserData.instance.User.UserId);
+
         reference.PutFileAsync(localFile).ContinueWith(task => 
         {
             if (task.IsCompleted)
@@ -77,6 +77,8 @@ public class StorageData : MonoBehaviour
 
     public async Task LoadJsonData()
     {
+        storage = FirebaseAuthManager.storageInstance;
+
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData.json");
 
         if (!await CheckIfJsonDataExists())
@@ -122,8 +124,13 @@ public class StorageData : MonoBehaviour
 
     public async Task<bool> CheckIfJsonDataExists()
     {
+        storage = FirebaseAuthManager.storageInstance;
+        
+        DataBase.instance.SetUserMessage("Storage: " + storage);
+        DataBase.instance.SetUserMessage("Storage 2: " + storage.Url());
+        DataBase.instance.SetUserMessage("Storage 3: " + storage.RootReference);
+
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
-        Debug.Log(UserData.instance.User.UserId);
 
         try
         {
@@ -143,5 +150,4 @@ public class StorageData : MonoBehaviour
             }
         }
     }
-    */
 }

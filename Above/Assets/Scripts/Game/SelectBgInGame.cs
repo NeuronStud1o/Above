@@ -16,13 +16,13 @@ public class SelectBgInGame : MonoBehaviour
 
     IEnumerator StartActivity()
     {
-        //i = JsonStorage.instance.jsonData.currentShop.currentBg;
+        i = JsonStorage.instance.jsonData.currentShop.currentBg;
 
         AllBg[i].SetActive(true);
         AllRailings[i].SetActive(true);
 
         yield return new WaitForSeconds(1f);
 
-        //DataBase.instance.SetActiveLoadingScreen(false);
+        DataBase.instance.SetActiveLoadingScreen(false);
     }
 }

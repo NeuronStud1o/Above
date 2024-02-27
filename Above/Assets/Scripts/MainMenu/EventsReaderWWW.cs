@@ -68,7 +68,6 @@ public class EventsReaderWWW : MonoBehaviour
 
             StartCoroutine(GetImage(www.imageUrl, go.Icon));
 
-            // Attach the URL to the button
             if (www.url == "")
             {
                 go.Url.gameObject.SetActive(false);

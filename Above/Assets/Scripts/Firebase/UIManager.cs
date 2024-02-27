@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenLoginPanel()
     {
-        //StorageData.instance.DeleteJson();
+        StorageData.instance.DeleteJson();
 
         ClearUI();
         authPanel.SetActive(true);

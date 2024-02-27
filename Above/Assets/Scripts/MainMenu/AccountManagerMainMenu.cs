@@ -13,7 +13,7 @@ public struct Icons
 
 public class AccountManagerMainMenu : MonoBehaviour
 {
-    /*[SerializeField] private TextMeshProUGUI userName;
+    [SerializeField] private TextMeshProUGUI userName;
     [SerializeField] private Image profileImage;
 
     [SerializeField] private List<Icons> icons = new List<Icons>();
@@ -46,5 +46,5 @@ public class AccountManagerMainMenu : MonoBehaviour
                 return;
             }
         }
-    }*/
+    }
 }

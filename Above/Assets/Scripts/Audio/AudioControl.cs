@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AudioControl : MonoBehaviour
 {
-    /*[SerializeField] private Slider[] slider;
+    [SerializeField] private Slider[] slider;
     private AudioSource musicMainMenu;
     [SerializeField] private AudioSource[] SFX;
 
@@ -62,5 +62,5 @@ public class AudioControl : MonoBehaviour
         JsonStorage.instance.jsonData.audioSettings.sfxGame = slider[3].value;
 
         SetAudioValue();
-    }*/
+    }
 }

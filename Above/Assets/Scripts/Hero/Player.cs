@@ -12,7 +12,7 @@ enum Direction
 
 public class Player : MonoBehaviour
 {
-    /*[SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip brokenShield;
     [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip getCoin;
@@ -207,10 +207,10 @@ public class Player : MonoBehaviour
 
         if (a == 2)
         {
-            InterstitialAds.instance.Show();
+            AdsManager.instance.ShowInterstitialAd();
         }
 
         deathPanel.SetActive(true);
         LosePanel.instance.Death(int.Parse(Score.instance.scoreText.text));
-    }*/
+    }
 }

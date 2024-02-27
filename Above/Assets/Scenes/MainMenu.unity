@@ -21957,8 +21957,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1661981278}
-        m_TargetAssemblyTypeName: RewardAds, Assembly-CSharp
-        m_MethodName: ShowFlycoins
+        m_TargetAssemblyTypeName: RewardedAds, Assembly-CSharp
+        m_MethodName: ShowAdForCoinsF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31894,7 +31894,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1661981278}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RewardAds, Assembly-CSharp
         m_MethodName: UpdateCoinsData
         m_Mode: 1
@@ -47504,7 +47504,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1661981278}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: RewardAds, Assembly-CSharp
         m_MethodName: UpdateCoinsData
         m_Mode: 1
@@ -55512,11 +55512,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1661981272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5e271f7875c8e4bab5b1dbec5c68a5, type: 3}
+  m_Script: {fileID: 11500000, guid: c414ff57d1bb9ae45b377efa30dbf78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectFlycoinsPanel: {fileID: 1882820587}
-  collectSuperCoinsPanel: {fileID: 1535106538}
 --- !u!114 &1661981279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57825,8 +57823,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1661981278}
-        m_TargetAssemblyTypeName: RewardAds, Assembly-CSharp
-        m_MethodName: ShowSupercoins
+        m_TargetAssemblyTypeName: RewardedAds, Assembly-CSharp
+        m_MethodName: ShowAdForCoinsS
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

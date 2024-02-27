@@ -40,7 +40,7 @@ public class StartOnClick : MonoBehaviour
 
         if (player != null)
         {
-            //player.isCanMove = true;
+            player.isCanMove = true;
         }
         else
         {
@@ -57,7 +57,7 @@ public class StartOnClick : MonoBehaviour
     {
         if (player != null)
         {
-            //player.Jump();
+            player.Jump();
         }
         else
         {

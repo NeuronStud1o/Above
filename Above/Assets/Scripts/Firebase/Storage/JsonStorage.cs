@@ -14,7 +14,7 @@ public class KeyForm
 
 public class JsonStorage : MonoBehaviour
 {
-    /*private string password;
+    private string password;
     private int seconds = 0;
     private bool isCanCheck = true;
     public bool isFrozenTimer = false;
@@ -48,8 +48,6 @@ public class JsonStorage : MonoBehaviour
     private void OnApplicationQuit()
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        Debug.Log(FirebaseAuthManager.instance.user);
 
         if (!File.Exists(filePath) || FirebaseAuthManager.instance.user == null) return;
 
@@ -167,28 +165,52 @@ public class JsonStorage : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
+        DataBase.instance.SetMessage("Json encryption");
+
         password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
+
+        DataBase.instance.SetMessage("Checking the availability of a file");
 
         if (!File.Exists(filePath))
         {
-            if (await StorageData.instance.CheckIfJsonDataExists() == false)
+            try
             {
-                jsonData = CreateNewJsonData();
-                pastData = CreateNewJsonData();
+                if (UserData.instance.User != null)
+                {
+                    if (await StorageData.instance.CheckIfJsonDataExists() == false)
+                    {
+                        DataBase.instance.SetMessage("Creating new json data");
 
-                SaveEncryptDataOnExit(filePath);
+                        jsonData = CreateNewJsonData();
+                        pastData = CreateNewJsonData();
 
-                StartTimer();
+                        SaveEncryptDataOnExit(filePath);
 
-                Debug.Log("File is created in storage");
+                        StartTimer();
 
-                return;
+                        Debug.Log("File is created in storage");
+
+                        return;
+                    }
+                    else
+                    {
+                        DataBase.instance.SetMessage("Loading json data");
+
+                        await StorageData.instance.LoadJsonData();
+                        Debug.Log("File is received from storage");
+                    }
+                }
+                else
+                {
+                    DataBase.instance.SetMessage("User exception");
+                }
+                
             }
-            else
+            catch (System.Exception e)
             {
-                await StorageData.instance.LoadJsonData();
-                Debug.Log("File is received from storage");
+                DataBase.instance.SetMessage(e.ToString());
             }
+            
         }
 
         while (!File.Exists(filePath))
@@ -201,6 +223,8 @@ public class JsonStorage : MonoBehaviour
         jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
         pastData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
+
+        DataBase.instance.SetMessage("Enabling add-ons");
 
         StartTimer();
     }
@@ -306,5 +330,5 @@ public class JsonStorage : MonoBehaviour
 
             Debug.Log("The game is continiue");
         }
-    }*/
+    }
 }

@@ -25,7 +25,7 @@ public class AccStatistic : MonoBehaviour
 
     public void OpenStatistic()
     {
-        /*userIcon.sprite = icon.sprite;
+        userIcon.sprite = icon.sprite;
 
         flyCoinsAllTime.text = JsonStorage.instance.jsonData.userData.coinsFAllTime + "";
         superCoinsAllTime.text = JsonStorage.instance.jsonData.userData.coinsSAllTime + "";
@@ -43,6 +43,6 @@ public class AccStatistic : MonoBehaviour
         userName.text = UserData.instance.User.DisplayName;
         userEmail.text = UserData.instance.User.Email;
 
-        panel.SetActive(true);*/
+        panel.SetActive(true);
     }
 }

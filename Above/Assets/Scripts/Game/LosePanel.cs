@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LosePanel : MonoBehaviour
 {
-    /*public static LosePanel instance;
+    public static LosePanel instance;
     [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Start()
@@ -21,7 +21,7 @@ public class LosePanel : MonoBehaviour
 
         if (random == 1)
         {
-            //UnityInterstitialAd.Instace.ShowAd();
+            AdsManager.instance.ShowInterstitialAd();
         }
         
         int recordScore = JsonStorage.instance.jsonData.userData.record;
@@ -43,5 +43,5 @@ public class LosePanel : MonoBehaviour
         }
 
         scoreText.text = recordScore.ToString();
-    }*/
+    }
 }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class WIFIChecking : MonoBehaviour
 {
-    /*public static WIFIChecking instance;
+    public static WIFIChecking instance;
 
     [SerializeField] private GameObject errorPanel;
 
@@ -84,5 +84,5 @@ public class WIFIChecking : MonoBehaviour
     void RepeatCheck()
     {
         InvokeRepeating("CheckInternet", 3, 3);
-    }*/
+    }
 }

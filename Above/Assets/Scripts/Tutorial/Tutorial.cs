@@ -54,10 +54,10 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        /*if (DataBase.instance != null)
+        if (DataBase.instance != null)
         {
             DataBase.instance.GetComponent<AudioSource>().enabled = false;
-        }*/
+        }
         
         rb = hero.GetComponent<Rigidbody2D>();
         camAnim = cameraGo.GetComponent<Animator>();
@@ -235,10 +235,10 @@ public class Tutorial : MonoBehaviour
 
     public void ReturnToLobby()
     {
-        /*if (DataBase.instance != null)
+        if (DataBase.instance != null)
         {
             DataBase.instance.GetComponent<AudioSource>().enabled = true;
-        }*/
+        }
 
         SceneManager.LoadSceneAsync("MainMenu");
     }

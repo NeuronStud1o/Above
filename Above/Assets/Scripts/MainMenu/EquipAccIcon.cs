@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EquipAccIcon : MonoBehaviour
 {
-    /*public static EquipAccIcon instance;
+    public static EquipAccIcon instance;
 
     [SerializeField] private List<SelectAccIcon> equipButtonsList;
     [SerializeField] private AccountManagerMainMenu accountManagerMainMenu;
@@ -40,5 +40,5 @@ public class EquipAccIcon : MonoBehaviour
         button.color = color;
 
         accountManagerMainMenu.ChangeIcon(name);
-    }*/
+    }
 }

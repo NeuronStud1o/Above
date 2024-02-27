@@ -1,19 +1,23 @@
 using System.Collections;
 using UnityEngine;
-//using Firebase;
-//using Firebase.Auth;
+using Firebase;
+using Firebase.Auth;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
-//using Firebase.Extensions;
+using Firebase.Extensions;
+using System;
+using Firebase.Storage;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
-    /*public static FirebaseAuthManager instance;
+    public static FirebaseAuthManager instance;
+    public static FirebaseStorage storageInstance;
 
     [Header("Firebase")]
     public FirebaseAuth auth;
     public FirebaseUser user;
+    public FirebaseApp app;
     public GameObject storage;
 
     [Space]
@@ -41,14 +45,20 @@ public class FirebaseAuthManager : MonoBehaviour
     private static bool isReady = false;
     public static string exeption = "";
 
-    async void Awake()
+    async Task Awake()
     {
-        await CheckIfReady();
-    }
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-    void Start()
-    {
-        instance = this;
+        await CheckIfReady();
     }
 
     public async void StartAction()
@@ -78,7 +88,7 @@ public class FirebaseAuthManager : MonoBehaviour
         StartCoroutine(CheckForAutoLogin());
     }
 
-    public async Task CheckIfReady()
+    async Task CheckIfReady()
     {
         try
         {
@@ -90,13 +100,27 @@ public class FirebaseAuthManager : MonoBehaviour
 
                 if (dependencyStatus == DependencyStatus.Available)
                 {
-                    FirebaseApp app = FirebaseApp.DefaultInstance;
+                    if (FirebaseApp.DefaultInstance == null)
+                    {
+                        Firebase.AppOptions options = new Firebase.AppOptions();
+
+                        options.ApiKey = "AIzaSyBBKdqnwmjChKTZrcJf9yluEj_vIuIOJLo";
+                        options.AppId = "1:222329630877:android:91e403f4a340caea3f2474";
+                        options.ProjectId = "above-acb46";
+                        options.StorageBucket = "above-acb46.appspot.com";
+                        options.DatabaseUrl = new System.Uri("https://above-acb46-default-rtdb.europe-west1.firebasedatabase.app/");
+
+                        app = FirebaseApp.Create(options);
+                    }
+
+                    storageInstance = FirebaseStorage.GetInstance(app, "gs://above-acb46.appspot.com");
+
                     isReady = true;
                 }
                 else
                 {
                     Debug.LogError(System.String.Format(
-                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                        "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
                 }
             });
         }
@@ -104,7 +128,6 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             exeption = ex.Message.ToString();
         }
-        
     }
 
     void InitializeFirebase()
@@ -112,6 +135,8 @@ public class FirebaseAuthManager : MonoBehaviour
         initText.text = "Initialize data base";
 
         auth = FirebaseAuth.DefaultInstance;
+
+        DataBase.instance.SetUserMessage("Authefication: " + auth);
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
@@ -211,14 +236,16 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private IEnumerator LoginAsync(string email, string password)
     {
+        DataBase.instance.SetMessage("Asynchronous login via email and password");
+
         var loginTask = auth.SignInWithEmailAndPasswordAsync(email, password);
 
         yield return new WaitUntil(() => loginTask.IsCompleted);
 
+        DataBase.instance.SetMessage("Error handling");
+
         if (loginTask.Exception != null)
         {
-            Debug.LogError(loginTask.Exception);
-
             FirebaseException firebaseException = loginTask.Exception.GetBaseException() as FirebaseException;
             AuthError authError = (AuthError)firebaseException.ErrorCode;
 
@@ -249,12 +276,22 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             user = loginTask.Result.User;
 
-            Debug.LogFormat("{0} You Are Successfully Logged In", user.DisplayName);
+            DataBase.instance.SetUserMessage("User: " + user);
 
             if (user.IsEmailVerified)
             {
+                DataBase.instance.SetMessage("User login");
+
+                yield return new WaitForSeconds(2);
+
                 References.userName = user.DisplayName;
                 UserData.instance.SetUser(user);
+
+                DataBase.instance.SetUserMessage("Data user: " + UserData.instance.User);
+                DataBase.instance.SetUserMessage("User name: " + UserData.instance.User.DisplayName);
+
+                DataBase.instance.SetMessage("Opening game scene");
+
                 OpenGameScene();
             }
             else
@@ -279,9 +316,10 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             UIManager.Instance.SetErrorMessage("email field is empty");
         }
-        else if (password != confirmPassword)
+        else if (!string.Equals(password, confirmPassword, StringComparison.Ordinal))
         {
             UIManager.Instance.SetErrorMessage("Password does not match");
+            yield break;
         }
         else
         {
@@ -430,7 +468,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     async Task StartGame()
     {
-        Debug.Log(UserData.instance.User.UserId);
+        DataBase.instance.SetMessage("Start game");
         
         DataBase.instance.SetActiveLoadingScreen(true);
 
@@ -438,11 +476,15 @@ public class FirebaseAuthManager : MonoBehaviour
 
         await JsonStorage.instance.StartAction();
 
+        DataBase.instance.SetMessage("Start action");
+
         await Task.Delay(1000);
         
         DataBase.instance.GetComponent<AudioSource>().volume = JsonStorage.instance.jsonData.audioSettings.musicMainMenu;
 
         bool tutorial = JsonStorage.instance.jsonData.boolean.isTutorial;
+
+        DataBase.instance.SetMessage("");
 
         if (tutorial == false)
         {
@@ -511,5 +553,4 @@ public class FirebaseAuthManager : MonoBehaviour
             }
         });
     }
-    */
 }

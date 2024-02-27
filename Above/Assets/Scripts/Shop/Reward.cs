@@ -43,12 +43,12 @@ public class Reward : MonoBehaviour
 
         coinWindow.SetActive(false);
 
-        //CoinsManagerInMainMenu.instance.coinsF += 10;
+        CoinsManagerInMainMenu.instance.coinsF += 10;
 
-        //JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
-        //JsonStorage.instance.jsonData.userData.coinsFAllTime += 10;
+        JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+        JsonStorage.instance.jsonData.userData.coinsFAllTime += 10;
         
-        //CoinsManagerInMainMenu.instance.UpdateUI();
+        CoinsManagerInMainMenu.instance.UpdateUI();
     }
   
     void Update()

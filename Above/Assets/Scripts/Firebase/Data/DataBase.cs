@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Firebase.Database;
+using Firebase.Database;
 using System.Threading.Tasks;
+using TMPro;
 
 public class DataBase : MonoBehaviour
 {
-    /*void Awake()
+    void Awake()
     {
         if (instance != null)
         {
@@ -24,6 +25,18 @@ public class DataBase : MonoBehaviour
     public DatabaseReference Ref { get => dbRef; private set => dbRef = value; }
 
     [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private TextMeshProUGUI info;
+    [SerializeField] private TextMeshProUGUI userInfo;
+
+    public void SetMessage(string text)
+    {
+        info.text = text;
+    }
+
+    public void SetUserMessage(string text)
+    {
+        userInfo.text +=  "\n" + text;
+    }
 
     void Start()
     {
@@ -173,5 +186,5 @@ public class DataBase : MonoBehaviour
         }
 
         return false;
-    }*/
+    }
 }
