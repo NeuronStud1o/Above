@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using System.IO;
 
 public class Reward : MonoBehaviour
 {
@@ -47,6 +48,9 @@ public class Reward : MonoBehaviour
 
         JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
         JsonStorage.instance.jsonData.userData.coinsFAllTime += 10;
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
         
         CoinsManagerInMainMenu.instance.UpdateUI();
     }

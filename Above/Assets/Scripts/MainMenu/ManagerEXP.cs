@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -101,6 +102,9 @@ public class ManagerEXP : MonoBehaviour
                     EquipAccIcon.instance.CheckLock();
                 }
             }
+
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
 
             SetValues();
         }

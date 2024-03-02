@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SelectBg : MonoBehaviour
@@ -45,6 +46,9 @@ public class SelectBg : MonoBehaviour
         }
 
         JsonStorage.instance.jsonData.currentShop.currentBg = thisBg;
+        
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
 
         AllBg[thisBg].SetActive(true);
         AllRailings[thisBg].SetActive(true);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SelectCharacter : MonoBehaviour
@@ -32,6 +33,9 @@ public class SelectCharacter : MonoBehaviour
         }
 
         JsonStorage.instance.jsonData.currentShop.currentSkin = thisCharacter;
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
 
         AllCharacters[thisCharacter].SetActive(true);
 

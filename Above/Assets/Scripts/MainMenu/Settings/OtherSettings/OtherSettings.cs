@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,9 @@ public class OtherSettings : MonoBehaviour
         }
 
         controller.ShowLevelRanks(tog);
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
     }
 
     public void AutoSaveSettings(bool tog)
@@ -33,6 +37,9 @@ public class OtherSettings : MonoBehaviour
         }
 
         controller.AutoSaveSettings(tog);
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
     }
 
     public void OpenDocumentation()
@@ -67,6 +74,9 @@ public class OtherSettings : MonoBehaviour
         }
 
         controller.ActivateParticles(tog);
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
     }
 
     public void ShowTheSelectedBoost(bool tog)
@@ -81,6 +91,9 @@ public class OtherSettings : MonoBehaviour
         }
 
         controller.ShowTheSelectedBoost(tog);
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
     }
 
     public void CameraShake(bool tog)
@@ -93,6 +106,9 @@ public class OtherSettings : MonoBehaviour
         {
             JsonStorage.instance.jsonData.otherSettings.cameraShake = false;
         }
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
     }
 
     public void Vibration(bool tog)
@@ -105,5 +121,8 @@ public class OtherSettings : MonoBehaviour
         {
             JsonStorage.instance.jsonData.otherSettings.vibration = false;
         }
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using GoogleMobileAds.Api;
 using UnityEngine;
 
@@ -216,6 +217,10 @@ public class AdsManager : MonoBehaviour
         JsonStorage.instance.jsonData.userData.coinsF += 2;
         JsonStorage.instance.jsonData.userData.coinsFAllTime += 2;
 
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+
         StorageData.instance.SaveJsonData();
         collectFlycoinsPanel.SetActive(true);
     }
@@ -228,6 +233,10 @@ public class AdsManager : MonoBehaviour
         {
             JsonStorage.instance.jsonData.userData.coinsS += 1;
             JsonStorage.instance.jsonData.userData.coinsSAllTime += 1;
+
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
 
             StorageData.instance.SaveJsonData();
             collectSuperCoinsPanel.SetActive(true);

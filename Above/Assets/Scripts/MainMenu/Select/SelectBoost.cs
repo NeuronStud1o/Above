@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SelectBoost : MonoBehaviour
@@ -66,6 +67,9 @@ public class SelectBoost : MonoBehaviour
         }
 
         JsonStorage.instance.jsonData.currentShop.currentBoost = thisBoost;
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
 
         AllBoosts[thisBoost].SetActive(true);
 

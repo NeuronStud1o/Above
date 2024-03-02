@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,5 +41,8 @@ public class EquipAccIcon : MonoBehaviour
         button.color = color;
 
         accountManagerMainMenu.ChangeIcon(name);
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
     }
 }

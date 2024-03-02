@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -98,8 +99,10 @@ public class DataBuySystem : MonoBehaviour
                 CoinsManagerInMainMenu.instance.coinsF -= price;
                 JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
 
+                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+                CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+
                 CoinsManagerInMainMenu.instance.UpdateUI();
-                
             }
         }
         else if (coinType == Coin.SuperCoins)
@@ -143,9 +146,11 @@ public class DataBuySystem : MonoBehaviour
 
                 CoinsManagerInMainMenu.instance.coinsS -= price;
                 JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
+
+                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+                CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
                 
                 CoinsManagerInMainMenu.instance.UpdateUI();
-                
             }
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -101,6 +102,9 @@ public class Player : MonoBehaviour
 
             JsonStorage.instance.jsonData.userData.coinsFAllTime += coinsToAdd;
 
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+
             audioSource.PlayOneShot(getCoin);
 
             CoinsManager.instance.UpdateUI();
@@ -114,6 +118,9 @@ public class Player : MonoBehaviour
             JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
 
             JsonStorage.instance.jsonData.userData.coinsSAllTime++;
+
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
             
             audioSource.PlayOneShot(getCoin);
 
@@ -200,6 +207,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        Camera.main.gameObject.transform.position = new Vector3(0, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 

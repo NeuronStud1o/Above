@@ -4,6 +4,7 @@ using UnityEngine;
 using Firebase.Database;
 using System.Threading.Tasks;
 using TMPro;
+using Firebase;
 
 public class DataBase : MonoBehaviour
 {

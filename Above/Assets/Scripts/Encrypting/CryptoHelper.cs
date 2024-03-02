@@ -23,10 +23,10 @@ public static class CryptoHelper
         }
     }
 
-    public static void EncryptAndSave(string filePath, object jsonData, string password, bool saveToServer)
+    public static void Encrypt(string filePath, object jsonData, string password)
     {
         string jsonString = JsonUtility.ToJson(jsonData, true);
-        EncryptAndSaveInternal(filePath, jsonString, password, saveToServer);
+        EncryptInternal(filePath, jsonString, password);
     }
 
     public static T LoadAndDecrypt<T>(string filePath, string password)
@@ -35,7 +35,7 @@ public static class CryptoHelper
         return JsonUtility.FromJson<T>(decryptedJson);
     }
 
-    private static void EncryptAndSaveInternal(string filePath, string json, string password, bool saveToServer)
+    private static void EncryptInternal(string filePath, string json, string password)
     {
         Debug.Log("Encrypting");
         using (Aes aesAlg = Aes.Create())
@@ -67,11 +67,6 @@ public static class CryptoHelper
                     fileStream.Write(encryptedData, 0, encryptedData.Length);
                 }
             }
-        }
-
-        if (saveToServer)
-        {
-            StorageData.instance.SaveJsonData();
         }
     }
 

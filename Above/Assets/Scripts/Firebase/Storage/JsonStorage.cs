@@ -15,7 +15,7 @@ public class KeyForm
 
 public class JsonStorage : MonoBehaviour
 {
-    private string password;
+    public string password;
     private int seconds = 0;
     private bool isCanCheck = true;
     public bool isFrozenTimer = false;
@@ -52,7 +52,7 @@ public class JsonStorage : MonoBehaviour
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
         if (!File.Exists(filePath) || FirebaseAuthManager.instance.user.UserId == null ||
-            FirebaseAuthManager.instance.user == null || isDataException)
+            FirebaseAuthManager.instance.user == null || isDataException || jsonData.userData.level == 0)
         {
             Handheld.Vibrate();
             UnityEngine.Debug.Log("Vibration");
@@ -99,11 +99,12 @@ public class JsonStorage : MonoBehaviour
             return;
         }
 
-        if (seconds % 5 == 0 && isCanCheck && !isDataException && password != null)
+        if (seconds % 5 == 0 && isCanCheck && !isDataException && password != null && jsonData.userData.level != 0)
         {
             string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
-            CryptoHelper.EncryptAndSave(filePath, jsonData, password, false);
+            CryptoHelper.Encrypt(filePath, jsonData, password);
+            StorageData.instance.SaveJsonData();
             isCanCheck = false;
         }
 
@@ -169,8 +170,8 @@ public class JsonStorage : MonoBehaviour
 
                 string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
-                CryptoHelper.EncryptAndSave(filePath, jsonData, password, true);
-
+                CryptoHelper.Encrypt(filePath, jsonData, password);
+                StorageData.instance.SaveJsonData();
                 UnityEngine.Debug.Log("Json file is saved to www");
             }
 
@@ -183,11 +184,11 @@ public class JsonStorage : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
-        DataBase.instance.SetMessage("Json encryption");
-
         password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
 
         DataBase.instance.SetMessage("Checking the availability of a file");
+
+        UnityEngine.Debug.Log(File.Exists(filePath) + " is file exist");
 
         if (!File.Exists(filePath))
         {
@@ -212,10 +213,21 @@ public class JsonStorage : MonoBehaviour
                     }
                     else
                     {
+                        UnityEngine.Debug.Log("File is received from storage");
                         DataBase.instance.SetMessage("Loading json data");
 
-                        await StorageData.instance.LoadJsonData();
-                        UnityEngine.Debug.Log("File is received from storage");
+                        jsonData = await StorageData.instance.LoadJsonData<JsonData>();
+
+                        while (!File.Exists(filePath))
+                        {
+                            await Task.Delay(100);
+                        }
+
+                        await Task.Delay(1000);
+
+                        CryptoHelper.Encrypt(filePath, jsonData, password);
+
+                        return;
                     }
                 }
                 else
@@ -226,6 +238,7 @@ public class JsonStorage : MonoBehaviour
             }
             catch (System.Exception e)
             {
+                UnityEngine.Debug.LogError(e);
                 DataBase.instance.SetMessage(e.ToString());
             }
             
@@ -236,10 +249,7 @@ public class JsonStorage : MonoBehaviour
             await Task.Delay(1000);
         }
 
-        UnityEngine.Debug.Log(File.Exists(filePath) + " is file exist");
-
         jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
-
         pastData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
 
         DataBase.instance.SetMessage("Enabling add-ons");
@@ -259,8 +269,12 @@ public class JsonStorage : MonoBehaviour
     {
         if (UserData.instance.User != null)
         {
+            StorageData.instance.SetReference();
+
             string password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
-            CryptoHelper.EncryptAndSave(filePath, jsonData, password, true);
+            
+            StorageData.instance.SaveJsonData();
+            CryptoHelper.Encrypt(filePath, jsonData, password);
         }
         else
         {

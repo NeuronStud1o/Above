@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,6 +61,10 @@ public class AudioControl : MonoBehaviour
         JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = slider[1].value;
         JsonStorage.instance.jsonData.audioSettings.musicGame = slider[2].value;
         JsonStorage.instance.jsonData.audioSettings.sfxGame = slider[3].value;
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
 
         SetAudioValue();
     }

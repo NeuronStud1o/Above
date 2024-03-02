@@ -161,7 +161,7 @@ public class FirebaseAuthManager : MonoBehaviour
         }
     }
 
-    private async void AutoLogin()
+    private void AutoLogin()
     {
         if (user != null)
         {
@@ -170,12 +170,9 @@ public class FirebaseAuthManager : MonoBehaviour
                 storage.SetActive(true);
             }
 
-            StorageData.instance.SetStorage(storageInstance);
-
             References.userName = user.DisplayName;
             UserData.instance.SetUser(user);
 
-            await StorageData.instance.LoadJsonData();
             UIManager.Instance.OpenButtonsPanel();
         }
         else
@@ -242,13 +239,9 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private IEnumerator LoginAsync(string email, string password)
     {
-        DataBase.instance.SetMessage("Asynchronous login via email and password");
-
         var loginTask = auth.SignInWithEmailAndPasswordAsync(email, password);
 
         yield return new WaitUntil(() => loginTask.IsCompleted);
-
-        DataBase.instance.SetMessage("Error handling");
 
         if (loginTask.Exception != null)
         {
@@ -284,6 +277,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
             if (user.IsEmailVerified)
             {
+                DataBase.instance.SetActiveLoadingScreen(true);
+
                 DataBase.instance.SetMessage("User login");
 
                 yield return new WaitForSeconds(2);
@@ -469,9 +464,9 @@ public class FirebaseAuthManager : MonoBehaviour
 
     async Task StartGame()
     {
-        DataBase.instance.SetMessage("Start game");
-        
         DataBase.instance.SetActiveLoadingScreen(true);
+        
+        DataBase.instance.SetMessage("Start game");
 
         if (storage != null)
         {
@@ -479,7 +474,8 @@ public class FirebaseAuthManager : MonoBehaviour
         }
 
         StorageData.instance.SetStorage(storageInstance);
-
+        StorageData.instance.SetReference();
+        
         await JsonStorage.instance.StartAction();
 
         DataBase.instance.SetMessage("Start action");

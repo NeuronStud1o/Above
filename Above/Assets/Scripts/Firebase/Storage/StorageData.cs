@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System;
 using Firebase.Extensions;
 using UnityEngine.Networking;
-using UnityEditor;
-using Firebase;
+using TMPro;
 
 public class StorageData : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class StorageData : MonoBehaviour
     StorageReference reference;
 
     FirebaseStorage storage;
+
+    private TaskCompletionSource<bool> downloadTaskCompletionSource;
 
     void Start()
     {
@@ -32,29 +33,35 @@ public class StorageData : MonoBehaviour
         storage = stor;
     }
 
+    public void SetReference()
+    {
+        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+    }
+
     public void SaveJsonData()
     {
-        string localFile = Path.Combine(Application.persistentDataPath, "gameData.json");
+        string path = Path.Combine(Application.temporaryCachePath, "gameDataTemp.json");
 
-        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+        string jsonDataTemp = JsonUtility.ToJson(JsonStorage.instance.jsonData, true);
+        File.WriteAllText(path, jsonDataTemp);
 
-        if (File.Exists(localFile) && UserData.instance.User != null)
+        if (File.Exists(path) && UserData.instance.User != null)
         {
-            reference.PutFileAsync(localFile).ContinueWith(task => 
+            reference.PutFileAsync(path).ContinueWith(task => 
             {
                 if (task.IsCompleted)
                 {
-                    Debug.Log("File is saved");
+                    Debug.Log("SAVE");
                 }
                 else if (task.IsFaulted)
                 {
-                    Debug.LogError("File upload failed: " + task.Exception);
+                    Debug.Log("FAIL");
                 }
             });
         }
         else
         {
-            Debug.LogWarning("File does not exist or user is null");
+            Debug.Log("NULL");
         }
     }
 
@@ -86,15 +93,17 @@ public class StorageData : MonoBehaviour
         }
     }
 
-    public async Task LoadJsonData()
+    public async Task<T> LoadJsonData<T>()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData.json");
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
         if (!await CheckIfJsonDataExists())
         {
             Debug.Log("File does not exist in storage.");
-            return;
+            return default;
         }
+
+        downloadTaskCompletionSource = new TaskCompletionSource<bool>();
 
         var downloadUrlTask = reference.GetDownloadUrlAsync();
         await downloadUrlTask.ContinueWithOnMainThread(task =>
@@ -109,6 +118,14 @@ public class StorageData : MonoBehaviour
                 Debug.LogError("Error getting download URL: " + task.Exception);
             }
         });
+
+        await downloadTaskCompletionSource.Task;
+
+        string jsonData = File.ReadAllText(filePath);
+
+        T loadedData = JsonUtility.FromJson<T>(jsonData);
+
+        return loadedData;
     }
 
     private IEnumerator DownloadFile(string downloadUrl)
@@ -122,7 +139,7 @@ public class StorageData : MonoBehaviour
                 string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
                 File.WriteAllBytes(filePath, www.downloadHandler.data);
 
-                Debug.Log("File downloaded successfully!");
+                downloadTaskCompletionSource.TrySetResult(true);
             }
             else
             {
@@ -133,8 +150,6 @@ public class StorageData : MonoBehaviour
 
     public async Task<bool> CheckIfJsonDataExists()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
-
         try
         {
             StorageMetadata metadata = await reference.GetMetadataAsync();

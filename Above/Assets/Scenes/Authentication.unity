@@ -9930,6 +9930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e094669238d07848ac4fe1a58bbcd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  password: 
   isFrozenTimer: 0
   isDataException: 0
   jsonData:
