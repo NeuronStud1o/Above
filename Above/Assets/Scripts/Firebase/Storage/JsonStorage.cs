@@ -99,7 +99,7 @@ public class JsonStorage : MonoBehaviour
             return;
         }
 
-        if (seconds % 5 == 0 && isCanCheck && !isDataException && password != null && jsonData.userData.level != 0)
+        if (seconds % 10 == 0 && isCanCheck && !isDataException && password != null && jsonData.userData.level != 0)
         {
             string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
@@ -157,22 +157,6 @@ public class JsonStorage : MonoBehaviour
 
                 DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
                 UnityEngine.Debug.Log("Level is saved");
-            }
-
-            isCanCheck = false;
-        }
-
-        if (seconds == 50 && isCanCheck && !isDataException)
-        {
-            if (!pastData.ContentEquals(jsonData))
-            {
-                pastData.CopyFrom(jsonData);
-
-                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-                CryptoHelper.Encrypt(filePath, jsonData, password);
-                StorageData.instance.SaveJsonData();
-                UnityEngine.Debug.Log("Json file is saved to www");
             }
 
             seconds = 0;

@@ -4,6 +4,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unity3d.player"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Дозвіл на доступ до Інтернету -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Дозвіл на читання зовнішнього сховища -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Дозвіл на запис у зовнішнє сховище -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
     <application>
         <activity android:name="com.unity3d.player.UnityPlayerActivity"
                   android:theme="@style/UnityThemeSelector">

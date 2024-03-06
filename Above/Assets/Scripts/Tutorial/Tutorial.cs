@@ -241,6 +241,7 @@ public class Tutorial : MonoBehaviour
         if (DataBase.instance != null)
         {
             DataBase.instance.GetComponent<AudioSource>().enabled = true;
+            DataBase.instance.SetActiveLoadingScreen(true);
         }
 
         SceneManager.LoadSceneAsync("MainMenu");

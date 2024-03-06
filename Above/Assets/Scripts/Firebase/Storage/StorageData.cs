@@ -40,24 +40,53 @@ public class StorageData : MonoBehaviour
 
     public void SaveJsonData()
     {
-        string path = Path.Combine(Application.temporaryCachePath, "gameDataTemp.json");
+        string local_file = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
+        string local_file_uri = string.Format("{0}://{1}", Uri.UriSchemeFile, local_file);
 
         string jsonDataTemp = JsonUtility.ToJson(JsonStorage.instance.jsonData, true);
-        File.WriteAllText(path, jsonDataTemp);
+        File.WriteAllText(local_file, jsonDataTemp);
 
-        if (File.Exists(path) && UserData.instance.User != null)
+        if (File.Exists(local_file) && UserData.instance.User != null)
         {
-            reference.PutFileAsync(path).ContinueWith(task => 
+            try
             {
-                if (task.IsCompleted)
+                reference.PutFileAsync(local_file_uri).ContinueWith(task => 
                 {
-                    Debug.Log("SAVE");
-                }
-                else if (task.IsFaulted)
-                {
-                    Debug.Log("FAIL");
-                }
-            });
+                    if (task.IsCompleted)
+                    {
+                        Debug.Log("SAVE");
+                    }
+                    else if (task.IsFaulted)
+                    {
+                        Debug.Log("FAIL");
+                    }
+
+                    StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+
+                    Debug.Log("Md5Hash - " + md5Hash);
+                });
+            }
+            catch (StorageException e)
+            {
+                Debug.Log(e.HttpResultCode);
+
+                Debug.Log(e);
+
+                DataBase.instance.SetActiveLoadingScreen(true);
+                DataBase.instance.SetMessage(e.HttpResultCode.ToString());
+
+                //ErrorUnknown	Сталася невідома помилка.
+                //ErrorObjectNotFound	Жодного об'єкта не існує в потрібному посиланні.
+                //ErrorBucketNotFound	Жодне відро не налаштовано для Cloud Storage.
+                //ErrorProjectNotFound	Жоден проект не налаштовано для Cloud Storage.
+                //ErrorQuotaExceeded	Перевищено квоту вашого сегмента Cloud Storage. Якщо ви використовуєте безкоштовний план, перейдіть на платний план. Якщо у вас платний план, зверніться до служби підтримки Firebase.
+                //ErrorNotAuthenticated	Користувач не автентифікований. Пройдіть автентифікацію та повторіть спробу.
+                //ErrorNotAuthorized	Користувач не авторизований для виконання бажаної дії. Перевірте свої правила, щоб переконатися, що вони правильні.
+                //ErrorRetryLimitExceeded	Перевищено максимальний ліміт часу для операції (завантаження, завантаження, видалення тощо). Спробуйте завантажити знову.
+                //ErrorInvalidChecksum	Файл на клієнті не відповідає контрольній сумі файлу, отриманого сервером. Спробуйте завантажити знову.
+                //ErrorCanceled	Користувач скасував операцію.
+            }
         }
         else
         {
