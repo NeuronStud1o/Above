@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
     public bool isCanMove = false;
     private System.Random random = new System.Random();
 
+    bool canTouchFlycoin = true;
+    bool canTouchSupercoin = true;
+
     void Start()
     {
         StartOnClick.instance.player = this;
@@ -93,9 +96,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "FlyCoin")
+        if (collision.gameObject.tag == "FlyCoin" && canTouchFlycoin)
         {
-            StartCoroutine(TouchCoin(collision.gameObject));
+            StartCoroutine(TouchCoin(collision.gameObject, true));
 
             CoinsManager.instance.coinsF += coinsToAdd;
             JsonStorage.instance.jsonData.userData.coinsF = CoinsManager.instance.coinsF;
@@ -110,9 +113,9 @@ public class Player : MonoBehaviour
             CoinsManager.instance.UpdateUI();
         }
 
-        if (collision.gameObject.tag == "SuperCoin")
+        if (collision.gameObject.tag == "SuperCoin" && canTouchSupercoin)
         {
-            StartCoroutine(TouchCoin(collision.gameObject));
+            StartCoroutine(TouchCoin(collision.gameObject, false));
 
             CoinsManager.instance.coinsS++;
             JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
@@ -128,13 +131,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator TouchCoin(GameObject coin)
+    IEnumerator TouchCoin(GameObject coin, bool isFlycoin)
     {
+        if (isFlycoin)
+        {
+            canTouchFlycoin = false;
+        }
+        else
+        {
+            canTouchSupercoin = false;
+        }
+
         coin.GetComponentInChildren<Animator>().SetTrigger("Touch");
 
         yield return new WaitForSeconds(0.6f);
 
         Destroy(coin);
+
+        if (isFlycoin)
+        {
+            canTouchFlycoin = true;
+        }
+        else
+        {
+            canTouchSupercoin = true;
+        }
     }
 
     void TakeDirection(Direction flip)

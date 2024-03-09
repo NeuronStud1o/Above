@@ -36,6 +36,11 @@ public class Spawner : MonoBehaviour
         {
             ChangeKoef();
 
+            if (minKoef < 3)
+            {
+                minKoef = 3;
+            }
+
             for (int i = 0; i < 5; i++)
             {
                 GameObject Empty = Enemy[UnityEngine.Random.Range(0, Enemy.Length)];

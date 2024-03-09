@@ -17,6 +17,9 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
     [SerializeField] private TextMeshProUGUI AdsForSupercoinsCount;
 
+    [SerializeField] private GameObject fAdErrorPanel;
+    [SerializeField] private GameObject sAdErrorPanel;
+
     private void Start()
     {
         instance = this;
@@ -41,5 +44,24 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     public void UpdateAdRewardUI(int ads)
     {
         AdsForSupercoinsCount.text = ads + " / 6"; 
+    }
+
+    public void ShowFErrorAd()
+    {
+        StartCoroutine(ErrorAd(fAdErrorPanel));
+    }
+
+    public void ShowSErrorAd()
+    {
+        StartCoroutine(ErrorAd(sAdErrorPanel));
+    }
+
+    IEnumerator ErrorAd(GameObject panel)
+    {
+        panel.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+
+        panel.SetActive(false);
     }
 }

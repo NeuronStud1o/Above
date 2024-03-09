@@ -151,7 +151,7 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
-            print("Rewarded ad not ready");
+            CoinsManagerInMainMenu.instance.ShowFErrorAd();
         }
 
         LoadRewardedAd();
@@ -169,7 +169,7 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
-            print("Rewarded ad not ready");
+            CoinsManagerInMainMenu.instance.ShowSErrorAd();
         }
 
         LoadRewardedAd();
