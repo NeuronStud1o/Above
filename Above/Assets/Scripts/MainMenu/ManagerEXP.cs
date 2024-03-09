@@ -87,21 +87,12 @@ public class ManagerEXP : MonoBehaviour
 
     public void CheckNextLevel()
     {
-        while (exp > countToNextLevel)
+        while (exp >= countToNextLevel)
         {
+            exp -= countToNextLevel;
+            level++;
             JsonStorage.instance.jsonData.userData.exp -= countToNextLevel;
             JsonStorage.instance.jsonData.userData.level++;
-
-            if (JsonStorage.instance.jsonData.userData.level >= 20)
-            {
-                KeyForm icon =  JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == "exp");
-
-                if (icon.isPurchased == false)
-                {
-                    icon.isPurchased = true;
-                    EquipAccIcon.instance.CheckLock();
-                }
-            }
 
             string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
             CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);

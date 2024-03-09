@@ -163,7 +163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 10575112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f1147776e874649830824c00d0096c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
@@ -173,6 +173,7 @@ MonoBehaviour:
   - {fileID: 4508863570334650682, guid: 860a52cc830fbbd429c7a71332206820, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &17072331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,6 +3542,7 @@ MonoBehaviour:
   - {fileID: 7490127301535164483, guid: af8043a4dcb495b42a8c14118a690425, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &534346044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3715,7 +3717,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 534401974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f1147776e874649830824c00d0096c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
@@ -3725,6 +3727,7 @@ MonoBehaviour:
   - {fileID: 8587525198079110080, guid: 30bfff03be251114b8c19f2fd629c117, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &536858597
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,6 +4715,7 @@ MonoBehaviour:
   - {fileID: 4450220009733186916, guid: 55c3a257f7805f041aaa802e70b2aec2, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &728170635
 GameObject:
   m_ObjectHideFlags: 0
@@ -5976,6 +5980,7 @@ MonoBehaviour:
   - {fileID: 8301896980667265982, guid: 7434a1725b7c61745abc6ea3c0d80e80, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &858801808
 GameObject:
   m_ObjectHideFlags: 0
@@ -8199,7 +8204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1061140530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f1147776e874649830824c00d0096c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
@@ -8209,6 +8214,7 @@ MonoBehaviour:
   - {fileID: 2735754356271837126, guid: 569d247ad0a40ea4ba088b491dfe1be6, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &1076384024
 GameObject:
   m_ObjectHideFlags: 0
@@ -8486,6 +8492,7 @@ MonoBehaviour:
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!4 &1106430830
 Transform:
   m_ObjectHideFlags: 0
@@ -10576,6 +10583,7 @@ MonoBehaviour:
   - {fileID: 1082073914568091951, guid: d2a636844ebf4b9478a120d55ec86548, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &1405952457
 GameObject:
   m_ObjectHideFlags: 0
@@ -10858,16 +10866,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473674054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f1147776e874649830824c00d0096c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
   - {fileID: 2775779476811573806, guid: 4a8b154d076bb7243aa22e7cb94e8f5d, type: 3}
-  - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
-  - {fileID: 5250396775020985620, guid: 715e02ecd72e1a04092ab6b14300e95b, type: 3}
   - {fileID: 4939562088805895318, guid: a4cad5ad9b288c94196e1ba2841254e2, type: 3}
+  - {fileID: 5250396775020985620, guid: 715e02ecd72e1a04092ab6b14300e95b, type: 3}
+  - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!4 &1473674056
 Transform:
   m_ObjectHideFlags: 0
@@ -11390,6 +11399,7 @@ MonoBehaviour:
   - {fileID: 275177155207104446, guid: 11e8198f2b385b14ca05b19e3335007c, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &1653532795
 GameObject:
   m_ObjectHideFlags: 0
@@ -14601,7 +14611,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2044197645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f1147776e874649830824c00d0096c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
@@ -14611,6 +14621,7 @@ MonoBehaviour:
   - {fileID: 7341912656544496277, guid: f80d196089c239944b1dd7949d619a65, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1 &2048156114
 GameObject:
   m_ObjectHideFlags: 0
@@ -15040,7 +15051,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2144849621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f1147776e874649830824c00d0096c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy:
@@ -15050,6 +15061,7 @@ MonoBehaviour:
   - {fileID: 2556796111684622148, guid: 17d11756be98b364d900b1eca4b982ed, type: 3}
   Distance: 20
   AddNewDistance: 25
+  koef: 10
 --- !u!1001 &149187188912607027
 PrefabInstance:
   m_ObjectHideFlags: 0
