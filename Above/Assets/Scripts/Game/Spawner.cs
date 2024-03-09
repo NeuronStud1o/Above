@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour
 
         float k = 9;
 
-        for (int i = 0; i < 200; i += 20)
+        for (int i = 0; i < 250; i += 50)
         {
             if (k <= 5)
             {
