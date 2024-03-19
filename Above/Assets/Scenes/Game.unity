@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10575112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 2.3599997, z: 392.80542}
+  m_LocalPosition: {x: 1.35, y: 4, z: 392.80542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219013126}
@@ -174,6 +174,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &17072331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,6 +1942,7 @@ GameObject:
   - component: {fileID: 340858924}
   - component: {fileID: 340858923}
   - component: {fileID: 340858922}
+  - component: {fileID: 340858927}
   m_Layer: 0
   m_Name: BlackThrushFemale
   m_TagString: Player
@@ -2211,6 +2213,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.68}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &340858927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340858920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &340858928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3517,7 +3531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533507293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 2.36, z: 751.2405}
+  m_LocalPosition: {x: -1.35, y: 4, z: 751.2405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1849597406}
@@ -3543,6 +3557,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &534346044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,7 +3717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534401974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 2.3599997, z: 392.80542}
+  m_LocalPosition: {x: 1.35, y: 4, z: 392.80542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1849597406}
@@ -3728,6 +3743,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &536858597
 GameObject:
   m_ObjectHideFlags: 0
@@ -4690,7 +4706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687071540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 2.36, z: 751.2405}
+  m_LocalPosition: {x: -1.35, y: 4, z: 751.2405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 219013126}
@@ -4716,6 +4732,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &728170635
 GameObject:
   m_ObjectHideFlags: 0
@@ -4939,6 +4956,7 @@ GameObject:
   - component: {fileID: 767015167}
   - component: {fileID: 767015166}
   - component: {fileID: 767015165}
+  - component: {fileID: 767015170}
   m_Layer: 0
   m_Name: Pigeon
   m_TagString: Player
@@ -5209,6 +5227,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.47}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &767015170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767015163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &767015171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5398,6 +5428,7 @@ GameObject:
   - component: {fileID: 821722120}
   - component: {fileID: 821722119}
   - component: {fileID: 821722118}
+  - component: {fileID: 821722123}
   m_Layer: 0
   m_Name: Swallow
   m_TagString: Player
@@ -5668,6 +5699,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.37}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &821722123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821722116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &821722124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5955,7 +5998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856874077}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 2.36, z: 751.2405}
+  m_LocalPosition: {x: -1.35, y: 4, z: 751.2405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 450908719}
@@ -5981,6 +6024,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &858801808
 GameObject:
   m_ObjectHideFlags: 0
@@ -6407,6 +6451,7 @@ GameObject:
   - component: {fileID: 920682199}
   - component: {fileID: 920682198}
   - component: {fileID: 920682197}
+  - component: {fileID: 920682202}
   m_Layer: 0
   m_Name: WhitePigeon
   m_TagString: Player
@@ -6677,6 +6722,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &920682202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920682195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &920682203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7389,6 +7446,7 @@ GameObject:
   - component: {fileID: 1039948083}
   - component: {fileID: 1039948082}
   - component: {fileID: 1039948081}
+  - component: {fileID: 1039948086}
   m_Layer: 0
   m_Name: RedCardinal
   m_TagString: Player
@@ -7659,6 +7717,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.22}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &1039948086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039948079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1039948087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7822,6 +7892,7 @@ GameObject:
   - component: {fileID: 1055376974}
   - component: {fileID: 1055376973}
   - component: {fileID: 1055376972}
+  - component: {fileID: 1055376977}
   m_Layer: 0
   m_Name: NightingaleFemale
   m_TagString: Player
@@ -8092,6 +8163,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.37}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &1055376977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055376970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1055376978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8189,7 +8272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061140530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 2.3599997, z: 392.80542}
+  m_LocalPosition: {x: 1.35, y: 4, z: 392.80542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 450908719}
@@ -8215,6 +8298,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &1076384024
 GameObject:
   m_ObjectHideFlags: 0
@@ -8493,6 +8577,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!4 &1106430830
 Transform:
   m_ObjectHideFlags: 0
@@ -8501,7 +8586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106430828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 2.36, z: 751.2405}
+  m_LocalPosition: {x: -1.35, y: 4, z: 751.2405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901092211}
@@ -9473,6 +9558,7 @@ GameObject:
   - component: {fileID: 1282955942}
   - component: {fileID: 1282955941}
   - component: {fileID: 1282955940}
+  - component: {fileID: 1282955945}
   m_Layer: 0
   m_Name: WheatearFemale
   m_TagString: Player
@@ -9743,6 +9829,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.41}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &1282955945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282955938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1282955946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10558,7 +10656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375226526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 2.36, z: 751.2405}
+  m_LocalPosition: {x: -1.35, y: 4, z: 751.2405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 91905923}
@@ -10584,6 +10682,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &1405952457
 GameObject:
   m_ObjectHideFlags: 0
@@ -10630,7 +10729,7 @@ MonoBehaviour:
   wall: {fileID: 42660371866496278, guid: da31beac605f55144994ba944cc1751f, type: 3}
   generatorPoint: {fileID: 1562461212}
   offset: 0
-  additionalDistance: -0.1
+  additionalDistance: -0.0415
 --- !u!1 &1416955382
 GameObject:
   m_ObjectHideFlags: 0
@@ -10877,6 +10976,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!4 &1473674056
 Transform:
   m_ObjectHideFlags: 0
@@ -10885,7 +10985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473674054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 2.3599997, z: 392.80542}
+  m_LocalPosition: {x: 1.35, y: 4, z: 392.80542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901092211}
@@ -11374,7 +11474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631869149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 2.36, z: 751.2405}
+  m_LocalPosition: {x: -1.35, y: 4, z: 751.2405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 471785073}
@@ -11400,6 +11500,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &1653532795
 GameObject:
   m_ObjectHideFlags: 0
@@ -11416,6 +11517,7 @@ GameObject:
   - component: {fileID: 1653532799}
   - component: {fileID: 1653532798}
   - component: {fileID: 1653532797}
+  - component: {fileID: 1653532802}
   m_Layer: 0
   m_Name: Kiwi
   m_TagString: Player
@@ -11686,6 +11788,18 @@ CircleCollider2D:
   m_Offset: {x: -1.2, y: -1.36}
   serializedVersion: 2
   m_Radius: 1.3960917
+--- !u!114 &1653532802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653532795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1653532803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12533,6 +12647,7 @@ GameObject:
   - component: {fileID: 1801404976}
   - component: {fileID: 1801404983}
   - component: {fileID: 1801404975}
+  - component: {fileID: 1801404979}
   m_Layer: 0
   m_Name: BlackThrush
   m_TagString: Player
@@ -12692,6 +12807,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 1.6029785
+--- !u!114 &1801404979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801404974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56a8a3d13bf9384999dcc71a27330d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1801404980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14596,7 +14723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044197645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 2.3599997, z: 392.80542}
+  m_LocalPosition: {x: 1.35, y: 4, z: 392.80542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 471785073}
@@ -14622,6 +14749,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1 &2048156114
 GameObject:
   m_ObjectHideFlags: 0
@@ -15036,7 +15164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144849621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 2.3599997, z: 392.80542}
+  m_LocalPosition: {x: 1.35, y: 4, z: 392.80542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 91905923}
@@ -15062,6 +15190,7 @@ MonoBehaviour:
   Distance: 20
   AddNewDistance: 25
   koef: 10
+  minKoef: 0
 --- !u!1001 &149187188912607027
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -54,11 +54,11 @@ public class WIFIChecking : MonoBehaviour
             
             if (currentScene.name == "Game")
             {
-                if (PauseController.instance.isPause == false)
+                if (PauseController.instance.isPause == false && LosePanel.instance == null)
                 {
                     PauseController.instance.Hero.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-                    if (StartOnClick.instance.gameObject.activeSelf == false)
+                    if (StartOnClick.instance == null)
                     {
                         PauseController.instance.Hero.GetComponent<Player>().isCanMove = true;
                     }

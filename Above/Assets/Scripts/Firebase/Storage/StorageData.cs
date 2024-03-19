@@ -54,7 +54,7 @@ public class StorageData : MonoBehaviour
                 {
                     if (task.IsCompleted)
                     {
-                        Debug.Log("SAVE");
+                        //Debug.Log("SAVE");
                     }
                     else if (task.IsFaulted)
                     {
@@ -63,8 +63,6 @@ public class StorageData : MonoBehaviour
 
                     StorageMetadata metadata = task.Result;
                     string md5Hash = metadata.Md5Hash;
-
-                    Debug.Log("Md5Hash - " + md5Hash);
                 });
             }
             catch (StorageException e)

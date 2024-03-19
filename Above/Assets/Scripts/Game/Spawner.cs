@@ -36,9 +36,11 @@ public class Spawner : MonoBehaviour
         {
             ChangeKoef();
 
-            if (minKoef < 3)
+            Debug.Log(koef + " IS KOEF!!!");
+
+            if (minKoef < 3.2)
             {
-                minKoef = 3;
+                minKoef = 3.2f;
             }
 
             for (int i = 0; i < 5; i++)
@@ -62,8 +64,45 @@ public class Spawner : MonoBehaviour
 
         float k = 9;
 
-        for (int i = 0; i < 250; i += 50)
+        if (valueScore > 400 && valueScore < 600)
         {
+            // 300-699 = connoisseur
+            koef = 5.9f;
+            minKoef = ((Mathf.Pow(koef, 2) - Mathf.Pow(koef - 3, 2)) / 10);
+
+            AddNewDistance = 24f;
+
+            return;
+        }
+
+        if (valueScore > 700 && valueScore < 950)
+        {
+            // 700-999 = experienced
+            koef = 5.8f;
+            minKoef = ((Mathf.Pow(koef, 2) - Mathf.Pow(koef - 3, 2)) / 10);
+
+            AddNewDistance = 23.5f;
+
+            return;
+        }
+
+        if (valueScore > 1000)
+        {
+            // >=1000 = vip
+            koef = 5.7f;
+            minKoef = ((Mathf.Pow(koef, 2) - Mathf.Pow(koef - 3, 2)) / 10);
+
+            AddNewDistance = 23f;
+
+            return;
+        }
+
+        for (int i = 0; i < 350; i += 50)
+        {
+            // 0-99 = beginer
+            // 100-199 = flyer
+            // 200-299 = pro
+
             if (k <= 5)
             {
                 return;

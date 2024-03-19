@@ -51,6 +51,9 @@ public class StartOnClick : MonoBehaviour
 
         text.enabled = false;
         button.SetActive(false);
+
+        enabled = false;
+        instance = null;
     }
 
     private void YourPointerDownMethod()
