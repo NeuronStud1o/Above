@@ -54,7 +54,7 @@ public class WIFIChecking : MonoBehaviour
             
             if (currentScene.name == "Game")
             {
-                if (PauseController.instance.isPause == false && LosePanel.instance == null)
+                if (PauseController.instance.isPause == false && PauseController.instance.Hero != null)
                 {
                     PauseController.instance.Hero.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
