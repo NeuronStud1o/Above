@@ -7,54 +7,17 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Enemy;
 
-    [SerializeField] private float distance = 0;
-    [SerializeField] private float addNewDistance = 25f;
+    [SerializeField] private float Distance = 20;
+    [SerializeField] private float AddNewDistance = 25;
 
-    public bool isFirstSpawner = true;
-
-    public float lastObstacleY = 0;
-
-    public float koef = 8f;
-    public float minKoef = 4f;
-
-    public static Spawner spawner1;
-    public static Spawner spawner2;
-
+    public float koef = 9;
+    public float minKoef = 0;
 
     Vector2 SpawnPos = new Vector2();
 
-    void Awake()
-    {
-        if (isFirstSpawner == true)
-        {
-            spawner1 = this;
-        }
-        else
-        {
-            spawner2 = this;
-        }
-    }
-
     private void Start()
     {
-        SpawnObstacles();
-    }
-
-    private void Update()
-    {
-        if (transform.position.y > distance)
-        {
-            SpawnObstacles();
-        }
-    }
-
-    private void SpawnObstacles()
-    {
-        //ChangeKoef();
-
-        koef = 5f;
-        minKoef = 3.1f;
-        addNewDistance = 19.8f;
+        ChangeKoef();
 
         for (int i = 0; i < 5; i++)
         {
@@ -64,80 +27,95 @@ public class Spawner : MonoBehaviour
             SpawnPos.y += UnityEngine.Random.Range(minKoef, koef);
 
             Instantiate(Empty, SpawnPos, Quaternion.identity);
-
-            lastObstacleY = SpawnPos.y;
         }
+    }
 
-        if (spawner1.lastObstacleY - 50 > spawner2.lastObstacleY && isFirstSpawner ||
-         spawner2.lastObstacleY - 50 > spawner1.lastObstacleY && !isFirstSpawner)
+    private void Update()
+    {
+        if (transform.position.y > Distance)
         {
-            distance += Mathf.Round(addNewDistance);
-        }
+            ChangeKoef();
 
-        distance += Mathf.Round(addNewDistance);
+            Debug.Log(koef + " IS KOEF!!!");
+
+            if (minKoef < 3.2)
+            {
+                minKoef = 3.2f;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject Empty = Enemy[UnityEngine.Random.Range(0, Enemy.Length)];
+
+                SpawnPos.x = transform.position.x;
+
+                SpawnPos.y += UnityEngine.Random.Range(minKoef, koef);
+
+                Instantiate(Empty, SpawnPos, Quaternion.identity);
+            }
+
+            Distance += AddNewDistance;
+        }
     }
 
     private void ChangeKoef()
     {
         int valueScore = Convert.ToInt32(Score.instance.scoreText.text);
 
-        float k = 7.5f;
-        float newDistance = 25f;
+        float k = 9;
 
-        if (valueScore > 500 && valueScore < 700)
+        if (valueScore > 400 && valueScore < 600)
         {
-            koef = 5.3f;
-            minKoef = 3.2f;
-            addNewDistance = 19f;
+            // 300-699 = connoisseur
+            koef = 5.9f;
+            minKoef = ((Mathf.Pow(koef, 2) - Mathf.Pow(koef - 3, 2)) / 10);
 
-            Debug.Log(koef + " IS KOEF!!!");
+            AddNewDistance = 24f;
 
             return;
         }
 
-        if (valueScore > 700 && valueScore < 1000)
+        if (valueScore > 700 && valueScore < 950)
         {
-            koef = 5f;
-            minKoef = 3.3f;
-            addNewDistance = 19.8f;
+            // 700-999 = experienced
+            koef = 5.8f;
+            minKoef = ((Mathf.Pow(koef, 2) - Mathf.Pow(koef - 3, 2)) / 10);
 
-            Debug.Log(koef + " IS KOEF!!!");
+            AddNewDistance = 23.5f;
 
             return;
         }
 
         if (valueScore > 1000)
         {
-            koef = 4.8f;
-            minKoef = 3.3f;
-            addNewDistance = 19.6f;
+            // >=1000 = vip
+            koef = 5.7f;
+            minKoef = ((Mathf.Pow(koef, 2) - Mathf.Pow(koef - 3, 2)) / 10);
 
-            Debug.Log(koef + " IS KOEF!!!");
+            AddNewDistance = 23f;
 
             return;
         }
 
-        for (int i = 0; i < 400; i += 50)
+        for (int i = 0; i < 350; i += 50)
         {
-            if (valueScore > i)
+            // 0-99 = beginer
+            // 100-199 = flyer
+            // 200-299 = pro
+
+            if (k <= 5)
             {
-                k -= 0.25f;
-                newDistance -= 0.5f;
+                return;
             }
-        }
 
-        addNewDistance = newDistance;
-        koef = k;
+            if (valueScore < i)
+            {
+                koef = k;
+                minKoef = ((Mathf.Pow(koef, 2) - Mathf.Pow(koef - 3, 2)) / 10);
+                return;
+            }
 
-        if (k / 2 > 3.2f)
-        {
-            minKoef = k / 2f;
+            k -= 0.5f;
         }
-        else
-        {
-            minKoef = 3.2f;
-        }
-        
-        Debug.Log(koef + " IS KOEF!!!");
     }
 }

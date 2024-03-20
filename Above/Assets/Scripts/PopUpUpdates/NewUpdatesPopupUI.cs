@@ -20,10 +20,9 @@ namespace UpgradeSystem
         [Header ("## UI References :")]
         [SerializeField] GameObject updateCanvas;
         [SerializeField] GameObject techCanvas;
+        [SerializeField] Button uiNotNowButton;
         [SerializeField] Button uiUpdateButton;
         [SerializeField] TextMeshProUGUI uiDescriptionText;
-
-        [SerializeField] GameObject notNowButton;
 
         [Space (20f)]
         [Header ("## Settings :")]
@@ -85,7 +84,7 @@ namespace UpgradeSystem
 
         void ShowPopup()
         {
-            //uiNotNowButton.onClick.AddListener (() => { HidePopup(); });
+            uiNotNowButton.onClick.AddListener (() => { HidePopup(); });
 
             uiUpdateButton.onClick.AddListener (() => { Application.OpenURL(latestGameData.Url); HidePopup(); });
 
@@ -96,7 +95,7 @@ namespace UpgradeSystem
         {
             updateCanvas.SetActive (false);
 
-            //uiNotNowButton.onClick.RemoveAllListeners();
+            uiNotNowButton.onClick.RemoveAllListeners();
             uiUpdateButton.onClick.RemoveAllListeners();
         }
 
