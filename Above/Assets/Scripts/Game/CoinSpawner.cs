@@ -41,7 +41,7 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             SpawnPos.x = Random.Range(-1, 1);
-            SpawnPos.y += Random.Range(1f, 50f);
+            SpawnPos.y += Random.Range(10f, 50f);
 
             GameObject coin = Instantiate(FlyCoin, SpawnPos, Quaternion.identity);
 

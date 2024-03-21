@@ -173,7 +173,8 @@ MonoBehaviour:
   - {fileID: 4508863570334650682, guid: 860a52cc830fbbd429c7a71332206820, type: 3}
   distance: 0
   addNewDistance: 25
-  isFirstSpawner: 1
+  additionalNewDistance: 0
+  isFirstSpawner: 0
   lastObstacleY: 0
   koef: 10
   minKoef: 0
@@ -3558,6 +3559,7 @@ MonoBehaviour:
   - {fileID: 7490127301535164483, guid: af8043a4dcb495b42a8c14118a690425, type: 3}
   distance: 0
   addNewDistance: 25
+  additionalNewDistance: -0.7
   isFirstSpawner: 1
   lastObstacleY: 0
   koef: 10
@@ -3746,7 +3748,8 @@ MonoBehaviour:
   - {fileID: 8587525198079110080, guid: 30bfff03be251114b8c19f2fd629c117, type: 3}
   distance: 0
   addNewDistance: 25
-  isFirstSpawner: 1
+  additionalNewDistance: -0.7
+  isFirstSpawner: 0
   lastObstacleY: 0
   koef: 10
   minKoef: 0
@@ -4737,6 +4740,7 @@ MonoBehaviour:
   - {fileID: 4450220009733186916, guid: 55c3a257f7805f041aaa802e70b2aec2, type: 3}
   distance: 0
   addNewDistance: 25
+  additionalNewDistance: 0
   isFirstSpawner: 1
   lastObstacleY: 0
   koef: 10
@@ -6031,6 +6035,7 @@ MonoBehaviour:
   - {fileID: 8301896980667265982, guid: 7434a1725b7c61745abc6ea3c0d80e80, type: 3}
   distance: 0
   addNewDistance: 25
+  additionalNewDistance: 0
   isFirstSpawner: 1
   lastObstacleY: 0
   koef: 10
@@ -8307,7 +8312,8 @@ MonoBehaviour:
   - {fileID: 2735754356271837126, guid: 569d247ad0a40ea4ba088b491dfe1be6, type: 3}
   distance: 0
   addNewDistance: 25
-  isFirstSpawner: 1
+  additionalNewDistance: 0
+  isFirstSpawner: 0
   lastObstacleY: 0
   koef: 10
   minKoef: 0
@@ -8588,6 +8594,7 @@ MonoBehaviour:
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   distance: 0
   addNewDistance: 25
+  additionalNewDistance: 0
   isFirstSpawner: 1
   lastObstacleY: 0
   koef: 10
@@ -10695,6 +10702,7 @@ MonoBehaviour:
   - {fileID: 1082073914568091951, guid: d2a636844ebf4b9478a120d55ec86548, type: 3}
   distance: 0
   addNewDistance: 25
+  additionalNewDistance: 0
   isFirstSpawner: 1
   lastObstacleY: 0
   koef: 10
@@ -10991,6 +10999,7 @@ MonoBehaviour:
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   distance: 0
   addNewDistance: 25
+  additionalNewDistance: 0
   isFirstSpawner: 0
   lastObstacleY: 0
   koef: 10
@@ -11517,6 +11526,7 @@ MonoBehaviour:
   - {fileID: 275177155207104446, guid: 11e8198f2b385b14ca05b19e3335007c, type: 3}
   distance: 0
   addNewDistance: 25
+  additionalNewDistance: 0
   isFirstSpawner: 1
   lastObstacleY: 0
   koef: 10
@@ -14768,7 +14778,8 @@ MonoBehaviour:
   - {fileID: 7341912656544496277, guid: f80d196089c239944b1dd7949d619a65, type: 3}
   distance: 0
   addNewDistance: 25
-  isFirstSpawner: 1
+  additionalNewDistance: 0
+  isFirstSpawner: 0
   lastObstacleY: 0
   koef: 10
   minKoef: 0
@@ -15211,7 +15222,8 @@ MonoBehaviour:
   - {fileID: 2556796111684622148, guid: 17d11756be98b364d900b1eca4b982ed, type: 3}
   distance: 0
   addNewDistance: 25
-  isFirstSpawner: 1
+  additionalNewDistance: 0
+  isFirstSpawner: 0
   lastObstacleY: 0
   koef: 10
   minKoef: 0

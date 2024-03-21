@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private float distance = 0;
     [SerializeField] private float addNewDistance = 25f;
+    [SerializeField] private float additionalNewDistance = 0;
 
     public bool isFirstSpawner = true;
 
@@ -50,11 +51,7 @@ public class Spawner : MonoBehaviour
 
     private void SpawnObstacles()
     {
-        //ChangeKoef();
-
-        koef = 5f;
-        minKoef = 3.1f;
-        addNewDistance = 19.8f;
+        ChangeKoef();
 
         for (int i = 0; i < 5; i++)
         {
@@ -73,6 +70,10 @@ public class Spawner : MonoBehaviour
         {
             distance += Mathf.Round(addNewDistance);
         }
+        else if (lastObstacleY - 50 > PauseController.instance.Hero.transform.position.y)
+        {
+            distance += Mathf.Round(addNewDistance);
+        }
 
         distance += Mathf.Round(addNewDistance);
     }
@@ -82,13 +83,13 @@ public class Spawner : MonoBehaviour
         int valueScore = Convert.ToInt32(Score.instance.scoreText.text);
 
         float k = 7.5f;
-        float newDistance = 25f;
+        float newDistance = 26f;
 
         if (valueScore > 500 && valueScore < 700)
         {
-            koef = 5.3f;
-            minKoef = 3.2f;
-            addNewDistance = 19f;
+            koef = 5.2f;
+            minKoef = 3.1f;
+            addNewDistance = 20f + additionalNewDistance;
 
             Debug.Log(koef + " IS KOEF!!!");
 
@@ -98,8 +99,8 @@ public class Spawner : MonoBehaviour
         if (valueScore > 700 && valueScore < 1000)
         {
             koef = 5f;
-            minKoef = 3.3f;
-            addNewDistance = 19.8f;
+            minKoef = 3.1f;
+            addNewDistance = 19.8f + additionalNewDistance;
 
             Debug.Log(koef + " IS KOEF!!!");
 
@@ -109,8 +110,8 @@ public class Spawner : MonoBehaviour
         if (valueScore > 1000)
         {
             koef = 4.8f;
-            minKoef = 3.3f;
-            addNewDistance = 19.6f;
+            minKoef = 3.1f;
+            addNewDistance = 19.6f + additionalNewDistance;
 
             Debug.Log(koef + " IS KOEF!!!");
 
@@ -126,7 +127,7 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        addNewDistance = newDistance;
+        addNewDistance = newDistance + additionalNewDistance;
         koef = k;
 
         if (k / 2 > 3.2f)

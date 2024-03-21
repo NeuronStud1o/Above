@@ -23,7 +23,7 @@ public class GeneratorBackground : MonoBehaviour
     {
         if (transform.position.y + offset < generatorPoint.position.y)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + backgroundHeight, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + backgroundHeight - 0.005f, transform.position.z);
 
             Instantiate(background, transform.position, transform.rotation);
         }
