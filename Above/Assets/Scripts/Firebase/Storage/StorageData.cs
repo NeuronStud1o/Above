@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System;
 using Firebase.Extensions;
 using UnityEngine.Networking;
-using TMPro;
 
 public class StorageData : MonoBehaviour
 {
@@ -44,9 +43,9 @@ public class StorageData : MonoBehaviour
         string local_file_uri = string.Format("{0}://{1}", Uri.UriSchemeFile, local_file);
 
         string jsonDataTemp = JsonUtility.ToJson(JsonStorage.instance.jsonData, true);
-        File.WriteAllText(local_file, jsonDataTemp);
-
-        if (File.Exists(local_file) && UserData.instance.User != null)
+        System.IO.File.WriteAllText(local_file, jsonDataTemp);
+        
+        if (System.IO.File.Exists(local_file) && UserData.instance.User != null)
         {
             try
             {
@@ -54,7 +53,7 @@ public class StorageData : MonoBehaviour
                 {
                     if (task.IsCompleted)
                     {
-                        //Debug.Log("SAVE");
+                        Debug.Log("SAVE");
                     }
                     else if (task.IsFaulted)
                     {
@@ -100,12 +99,14 @@ public class StorageData : MonoBehaviour
         }
 
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        string filePath2 = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
 
-        if (File.Exists(filePath))
+        if (System.IO.File.Exists(filePath))
         {
             try
             {
-                File.Delete(filePath);
+                System.IO.File.Delete(filePath);
+                System.IO.File.Delete(filePath2);
 
                 Debug.Log("File is deleted: " + filePath);
             }
@@ -117,6 +118,24 @@ public class StorageData : MonoBehaviour
         else
         {
             Debug.Log("File is null: " + filePath);
+        }
+
+        if (System.IO.File.Exists(filePath2))
+        {
+            try
+            {
+                System.IO.File.Delete(filePath2);
+
+                Debug.Log("File is deleted: " + filePath2);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Delete file exeption: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.Log("File is null: " + filePath2);
         }
     }
 
@@ -148,7 +167,7 @@ public class StorageData : MonoBehaviour
 
         await downloadTaskCompletionSource.Task;
 
-        string jsonData = File.ReadAllText(filePath);
+        string jsonData = System.IO.File.ReadAllText(filePath);
 
         T loadedData = JsonUtility.FromJson<T>(jsonData);
 
@@ -164,7 +183,7 @@ public class StorageData : MonoBehaviour
             if (www.result == UnityWebRequest.Result.Success)
             {
                 string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-                File.WriteAllBytes(filePath, www.downloadHandler.data);
+                System.IO.File.WriteAllBytes(filePath, www.downloadHandler.data);
 
                 downloadTaskCompletionSource.TrySetResult(true);
             }

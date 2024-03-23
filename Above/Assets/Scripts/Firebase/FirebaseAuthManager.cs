@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Firebase.Extensions;
 using System;
 using Firebase.Storage;
+using System.IO;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -220,10 +221,65 @@ public class FirebaseAuthManager : MonoBehaviour
         confirmPasswordRegisterField.text = "";
     }
 
-    public void Logout()
+    public async void Logout()
+    {
+        await ExitGame();
+    }
+
+    async Task ExitGame()
     {
         if (auth != null && user != null)
         {
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+            string password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
+
+            StorageData.instance.SetStorage(storageInstance);
+            StorageData.instance.SetReference();
+
+            if (JsonStorage.instance.jsonData.userData.level == 0)
+            {
+                if (!File.Exists(filePath))
+                {
+                    try
+                    {
+                        if (UserData.instance.User != null)
+                        {
+                            if (await StorageData.instance.CheckIfJsonDataExists() == true)
+                            {
+                                UnityEngine.Debug.Log("File is received from storage");
+
+                                JsonStorage.instance.jsonData = await StorageData.instance.LoadJsonData<JsonData>();
+
+                                while (!File.Exists(filePath))
+                                {
+                                    await Task.Delay(100);
+                                }
+
+                                await Task.Delay(1000);
+
+                                CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, password);
+
+                                return;
+                            }
+                            else
+                            {
+                                auth.SignOut();
+                                Application.Quit();
+                            }
+                        }   
+                    }
+                    catch (System.Exception e)
+                    {
+                        UnityEngine.Debug.LogError(e);
+                    }
+                    
+                }
+                else
+                {
+                    JsonStorage.instance.jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
+                }
+            }
+            
             StorageData.instance.SaveJsonData();
             auth.SignOut();
             Application.Quit();
@@ -299,22 +355,27 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void Register()
     {
+        DataBase.instance.SetActiveLoadingScreen(true);
         StartCoroutine(RegisterAsync(nameRegisterField.text, emailRegisterField.text, passwordRegisterField.text, confirmPasswordRegisterField.text));
     }
 
     private IEnumerator RegisterAsync(string name, string email, string password, string confirmPassword)
     {
+        yield return new WaitForSeconds(0.5f);
         if (name == "")
         {
             UIManager.Instance.SetErrorMessage("User Name is empty");
+            DataBase.instance.SetActiveLoadingScreen(false);
         }
         else if (email == "")
         {
             UIManager.Instance.SetErrorMessage("email field is empty");
+            DataBase.instance.SetActiveLoadingScreen(false);
         }
         else if (!string.Equals(password, confirmPassword, StringComparison.Ordinal))
         {
             UIManager.Instance.SetErrorMessage("Password does not match");
+            DataBase.instance.SetActiveLoadingScreen(false);
             yield break;
         }
         else
@@ -325,6 +386,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
             if (registerTask.Exception != null)
             {
+                DataBase.instance.SetActiveLoadingScreen(false);
                 Debug.LogError(registerTask.Exception);
 
                 FirebaseException firebaseException = registerTask.Exception.GetBaseException() as FirebaseException;
@@ -393,6 +455,8 @@ public class FirebaseAuthManager : MonoBehaviour
                     }
 
                     UIManager.Instance.SetErrorMessage(failedMessage);
+
+                    DataBase.instance.SetActiveLoadingScreen(false);
                 }
                 else
                 {
@@ -404,10 +468,14 @@ public class FirebaseAuthManager : MonoBehaviour
                         DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
                         DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
                         DataBase.instance.SaveData("blackThrush", "userSettings", "icon");
+
+                        DataBase.instance.SetActiveLoadingScreen(false);
                     }
                     else
                     {
                         SendEmailForVerification();
+
+                        DataBase.instance.SetActiveLoadingScreen(false);
                     }
                 }
             }

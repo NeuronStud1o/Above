@@ -172,12 +172,10 @@ MonoBehaviour:
   - {fileID: 4995921617682559222, guid: a7720de8b517c854289eecaf3bde3bf0, type: 3}
   - {fileID: 4508863570334650682, guid: 860a52cc830fbbd429c7a71332206820, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 0
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 0
 --- !u!1 &17072331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,6 +3171,7 @@ Transform:
   - {fileID: 1849597406}
   - {fileID: 91905923}
   - {fileID: 1901624678}
+  - {fileID: 1260428316}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3558,12 +3557,10 @@ MonoBehaviour:
   - {fileID: 7310655433261933811, guid: 4ad57973a7945e44f8c9b2eade726f6f, type: 3}
   - {fileID: 7490127301535164483, guid: af8043a4dcb495b42a8c14118a690425, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: -0.7
-  isFirstSpawner: 1
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 1
 --- !u!1 &534346044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,12 +3744,10 @@ MonoBehaviour:
   - {fileID: 6800091752417666115, guid: 02fac17006ef4874b90486f875ad1312, type: 3}
   - {fileID: 8587525198079110080, guid: 30bfff03be251114b8c19f2fd629c117, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: -0.7
-  isFirstSpawner: 0
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 0
 --- !u!1 &536858597
 GameObject:
   m_ObjectHideFlags: 0
@@ -4739,12 +4734,10 @@ MonoBehaviour:
   - {fileID: 5199403076211087849, guid: a48780e0252c39c4fbc859e658ae117e, type: 3}
   - {fileID: 4450220009733186916, guid: 55c3a257f7805f041aaa802e70b2aec2, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 1
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 1
 --- !u!1 &728170635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6034,12 +6027,10 @@ MonoBehaviour:
   - {fileID: 1111777086933739004, guid: f8cf4994deaf5254e8707748f3504198, type: 3}
   - {fileID: 8301896980667265982, guid: 7434a1725b7c61745abc6ea3c0d80e80, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 1
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 1
 --- !u!1 &858801808
 GameObject:
   m_ObjectHideFlags: 0
@@ -8311,12 +8302,10 @@ MonoBehaviour:
   - {fileID: 3484716776880755040, guid: 2823ef87332261c4c98986940fada860, type: 3}
   - {fileID: 2735754356271837126, guid: 569d247ad0a40ea4ba088b491dfe1be6, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 0
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 0
 --- !u!1 &1076384024
 GameObject:
   m_ObjectHideFlags: 0
@@ -8593,12 +8582,10 @@ MonoBehaviour:
   - {fileID: 3677738387596580392, guid: aedea8e02dde69f4f9013d5889c880d9, type: 3}
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 1
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 1
 --- !u!4 &1106430830
 Transform:
   m_ObjectHideFlags: 0
@@ -9563,6 +9550,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255376535}
   m_CullTransparentMesh: 1
+--- !u!1 &1260428315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260428316}
+  m_Layer: 0
+  m_Name: LastLineForObstacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1260428316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260428315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1282955938
 GameObject:
   m_ObjectHideFlags: 0
@@ -10701,12 +10718,10 @@ MonoBehaviour:
   - {fileID: 8847025293357703843, guid: 4e075fe4fb067114db523b74dee76e7c, type: 3}
   - {fileID: 1082073914568091951, guid: d2a636844ebf4b9478a120d55ec86548, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 1
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 1
 --- !u!1 &1405952457
 GameObject:
   m_ObjectHideFlags: 0
@@ -10998,12 +11013,10 @@ MonoBehaviour:
   - {fileID: 5250396775020985620, guid: 715e02ecd72e1a04092ab6b14300e95b, type: 3}
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 0
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 0
 --- !u!4 &1473674056
 Transform:
   m_ObjectHideFlags: 0
@@ -11525,12 +11538,10 @@ MonoBehaviour:
   - {fileID: 8988635473442305623, guid: 2a1c323167146954c95500f09098fda7, type: 3}
   - {fileID: 275177155207104446, guid: 11e8198f2b385b14ca05b19e3335007c, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 1
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 1
 --- !u!1 &1653532795
 GameObject:
   m_ObjectHideFlags: 0
@@ -14777,12 +14788,10 @@ MonoBehaviour:
   - {fileID: 7013638232466221003, guid: bc42660ba80f8334ea03c52f97dfe61b, type: 3}
   - {fileID: 7341912656544496277, guid: f80d196089c239944b1dd7949d619a65, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 0
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 0
 --- !u!1 &2048156114
 GameObject:
   m_ObjectHideFlags: 0
@@ -15221,12 +15230,10 @@ MonoBehaviour:
   - {fileID: 8327797648895949824, guid: 6b264544432af4044b33434272c15914, type: 3}
   - {fileID: 2556796111684622148, guid: 17d11756be98b364d900b1eca4b982ed, type: 3}
   distance: 0
-  addNewDistance: 25
-  additionalNewDistance: 0
-  isFirstSpawner: 0
-  lastObstacleY: 0
   koef: 10
   minKoef: 0
+  deadLineForObstacles: {fileID: 1260428316}
+  isFirstSpawner: 0
 --- !u!1001 &149187188912607027
 PrefabInstance:
   m_ObjectHideFlags: 0

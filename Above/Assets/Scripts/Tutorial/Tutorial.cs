@@ -238,11 +238,18 @@ public class Tutorial : MonoBehaviour
 
     public void ReturnToLobby()
     {
+        StartCoroutine(ToLobby());
+    }
+
+    private IEnumerator ToLobby()
+    {
         if (DataBase.instance != null)
         {
             DataBase.instance.GetComponent<AudioSource>().enabled = true;
             DataBase.instance.SetActiveLoadingScreen(true);
         }
+        
+        yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadSceneAsync("MainMenu");
     }

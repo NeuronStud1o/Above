@@ -6,21 +6,16 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Enemy;
-
     [SerializeField] private float distance = 0;
-    [SerializeField] private float addNewDistance = 25f;
-    [SerializeField] private float additionalNewDistance = 0;
+    [SerializeField] private float koef = 8f;
+    [SerializeField] private float minKoef = 4f;
+
+    [SerializeField] private Transform deadLineForObstacles;
 
     public bool isFirstSpawner = true;
 
-    public float lastObstacleY = 0;
-
-    public float koef = 8f;
-    public float minKoef = 4f;
-
     public static Spawner spawner1;
     public static Spawner spawner2;
-
 
     Vector2 SpawnPos = new Vector2();
 
@@ -53,29 +48,32 @@ public class Spawner : MonoBehaviour
     {
         ChangeKoef();
 
+        int countOfIterations = 0;
+
         for (int i = 0; i < 5; i++)
         {
+            countOfIterations++;
+
             GameObject Empty = Enemy[UnityEngine.Random.Range(0, Enemy.Length)];
 
             SpawnPos.x = transform.position.x;
-            SpawnPos.y += UnityEngine.Random.Range(minKoef, koef);
+
+            float additionalDistance = UnityEngine.Random.Range(minKoef, koef);
+
+            if (additionalDistance + SpawnPos.y > deadLineForObstacles.position.y)
+            {
+                return;
+            }
+
+            SpawnPos.y += additionalDistance;
+
+            if (countOfIterations <= 4)
+            {
+                distance = SpawnPos.y - 7;
+            }
 
             Instantiate(Empty, SpawnPos, Quaternion.identity);
-
-            lastObstacleY = SpawnPos.y;
         }
-
-        if (spawner1.lastObstacleY - 50 > spawner2.lastObstacleY && isFirstSpawner ||
-         spawner2.lastObstacleY - 50 > spawner1.lastObstacleY && !isFirstSpawner)
-        {
-            distance += Mathf.Round(addNewDistance);
-        }
-        else if (lastObstacleY - 50 > PauseController.instance.Hero.transform.position.y)
-        {
-            distance += Mathf.Round(addNewDistance);
-        }
-
-        distance += Mathf.Round(addNewDistance);
     }
 
     private void ChangeKoef()
@@ -83,13 +81,11 @@ public class Spawner : MonoBehaviour
         int valueScore = Convert.ToInt32(Score.instance.scoreText.text);
 
         float k = 7.5f;
-        float newDistance = 26f;
 
         if (valueScore > 500 && valueScore < 700)
         {
             koef = 5.2f;
             minKoef = 3.1f;
-            addNewDistance = 20f + additionalNewDistance;
 
             Debug.Log(koef + " IS KOEF!!!");
 
@@ -100,7 +96,6 @@ public class Spawner : MonoBehaviour
         {
             koef = 5f;
             minKoef = 3.1f;
-            addNewDistance = 19.8f + additionalNewDistance;
 
             Debug.Log(koef + " IS KOEF!!!");
 
@@ -111,7 +106,6 @@ public class Spawner : MonoBehaviour
         {
             koef = 4.8f;
             minKoef = 3.1f;
-            addNewDistance = 19.6f + additionalNewDistance;
 
             Debug.Log(koef + " IS KOEF!!!");
 
@@ -123,11 +117,9 @@ public class Spawner : MonoBehaviour
             if (valueScore > i)
             {
                 k -= 0.25f;
-                newDistance -= 0.5f;
             }
         }
 
-        addNewDistance = newDistance + additionalNewDistance;
         koef = k;
 
         if (k / 2 > 3.2f)
