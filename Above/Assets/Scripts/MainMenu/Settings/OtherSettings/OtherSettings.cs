@@ -57,6 +57,11 @@ public class OtherSettings : MonoBehaviour
         SceneManager.LoadSceneAsync("Authentication");
     }
 
+    public void DeleteAccount()
+    {
+        StorageData.instance.DeleteUser();
+    }
+
     public void RenameNick()
     {
 

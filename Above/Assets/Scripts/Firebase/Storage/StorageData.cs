@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System;
 using Firebase.Extensions;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using Firebase.Auth;
 
 public class StorageData : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class StorageData : MonoBehaviour
     StorageReference reference;
 
     FirebaseStorage storage;
+    public FirebaseAuth auth;
 
     private TaskCompletionSource<bool> downloadTaskCompletionSource;
 
@@ -35,6 +38,59 @@ public class StorageData : MonoBehaviour
     public void SetReference()
     {
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+    }
+
+    public async void DeleteUser()
+    {
+        await UserDeleteAsync();
+    }
+
+    async Task UserDeleteAsync()
+    {
+        DataBase.instance.SetActiveLoadingScreen(true);
+
+        StorageReference storageRef = storage.GetReferenceFromUrl("gs://above-acb46.appspot.com");
+        StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId);
+
+        await folderRef.DeleteAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                Debug.Log("Folder deleted successfully.");
+            }
+            else if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to delete folder: " + task.Exception);
+            }
+        });
+
+        await Task.Delay(500);
+
+        Firebase.Auth.FirebaseUser user = auth.CurrentUser;
+        if (user != null)
+        {
+            await user.DeleteAsync().ContinueWith(task =>
+            {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("DeleteAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("DeleteAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("User deleted successfully.");
+            });
+        }
+
+        await Task.Delay(500);
+
+        DataBase.instance.SetActiveLoadingScreen(false);
+        
+        SceneManager.LoadSceneAsync("Authentication");
     }
 
     public void SaveJsonData()
@@ -84,10 +140,6 @@ public class StorageData : MonoBehaviour
                 //ErrorInvalidChecksum	Файл на клієнті не відповідає контрольній сумі файлу, отриманого сервером. Спробуйте завантажити знову.
                 //ErrorCanceled	Користувач скасував операцію.
             }
-        }
-        else
-        {
-            Debug.Log("NULL");
         }
     }
 

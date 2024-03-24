@@ -139,6 +139,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
+
+        StorageData.instance.auth = auth;
     }
 
     private IEnumerator CheckForAutoLogin()
