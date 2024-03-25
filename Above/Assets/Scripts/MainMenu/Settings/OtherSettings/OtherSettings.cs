@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -57,9 +58,19 @@ public class OtherSettings : MonoBehaviour
         SceneManager.LoadSceneAsync("Authentication");
     }
 
-    public void DeleteAccount()
+    public async void DeleteAccount()
     {
-        StorageData.instance.DeleteUser();
+        await AccountDeleting();
+    }
+
+    async Task AccountDeleting()
+    {
+        await StorageData.instance.DeleteUser();
+
+        Debug.Log("Data is deleted");
+
+        DataBase.instance.SetActiveLoadingScreen(false);
+        SceneManager.LoadSceneAsync("Authentication");
     }
 
     public void RenameNick()

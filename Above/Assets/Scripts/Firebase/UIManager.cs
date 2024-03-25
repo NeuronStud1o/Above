@@ -32,6 +32,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OpenGmail()
+    {
+        Application.OpenURL("https://mail.google.com");
+    }
+
     public void SetErrorMessage(string error)
     {
         errorText.text = error;
@@ -51,6 +56,7 @@ public class UIManager : MonoBehaviour
         StorageData.instance.DeleteJson();
 
         ClearUI();
+        
         authPanel.SetActive(true);
         loginPanel.SetActive(true);
     }

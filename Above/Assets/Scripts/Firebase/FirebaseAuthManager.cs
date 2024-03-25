@@ -166,7 +166,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private void AutoLogin()
     {
-        if (user != null)
+        if (user != null && user.IsEmailVerified)
         {
             if (storage != null)
             {
@@ -196,7 +196,12 @@ public class FirebaseAuthManager : MonoBehaviour
             if (!signedIn && user != null)
             {
                 Debug.Log("Signed out " + user.UserId);
-                UIManager.Instance.OpenLoginPanel();
+
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.OpenLoginPanel();
+                }
+                
                 ClearLoginInputFieldText();
             }
 
@@ -364,6 +369,7 @@ public class FirebaseAuthManager : MonoBehaviour
     private IEnumerator RegisterAsync(string name, string email, string password, string confirmPassword)
     {
         yield return new WaitForSeconds(0.5f);
+
         if (name == "")
         {
             UIManager.Instance.SetErrorMessage("User Name is empty");
@@ -557,6 +563,9 @@ public class FirebaseAuthManager : MonoBehaviour
         bool tutorial = JsonStorage.instance.jsonData.boolean.isTutorial;
 
         DataBase.instance.SetMessage("");
+
+        instance = null;
+        UIManager.Instance = null;
 
         if (tutorial == false)
         {

@@ -40,32 +40,35 @@ public class StorageData : MonoBehaviour
         reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
     }
 
-    public async void DeleteUser()
+    public async Task DeleteUser()
     {
-        await UserDeleteAsync();
+        await DeleteFolderAsync();
     }
 
-    async Task UserDeleteAsync()
+    async Task DeleteFolderAsync()
     {
         DataBase.instance.SetActiveLoadingScreen(true);
 
         StorageReference storageRef = storage.GetReferenceFromUrl("gs://above-acb46.appspot.com");
-        StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId);
+        StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId).Child("gameData");
 
-        await folderRef.DeleteAsync().ContinueWith(task =>
+        await folderRef.DeleteAsync().ContinueWith(async task =>
         {
             if (task.IsCompleted)
             {
                 Debug.Log("Folder deleted successfully.");
+                await DeleteUserAsync(); // Викликаємо метод видалення користувача після видалення папки
             }
             else if (task.IsFaulted)
             {
                 Debug.LogError("Failed to delete folder: " + task.Exception);
+                DataBase.instance.SetActiveLoadingScreen(false);
             }
         });
+    }
 
-        await Task.Delay(500);
-
+    async Task DeleteUserAsync()
+    {
         Firebase.Auth.FirebaseUser user = auth.CurrentUser;
         if (user != null)
         {
@@ -85,12 +88,6 @@ public class StorageData : MonoBehaviour
                 Debug.Log("User deleted successfully.");
             });
         }
-
-        await Task.Delay(500);
-
-        DataBase.instance.SetActiveLoadingScreen(false);
-        
-        SceneManager.LoadSceneAsync("Authentication");
     }
 
     public void SaveJsonData()
@@ -167,10 +164,6 @@ public class StorageData : MonoBehaviour
                 Debug.Log("Delete file exeption: " + e.Message);
             }
         }
-        else
-        {
-            Debug.Log("File is null: " + filePath);
-        }
 
         if (System.IO.File.Exists(filePath2))
         {
@@ -184,10 +177,6 @@ public class StorageData : MonoBehaviour
             {
                 Debug.Log("Delete file exeption: " + e.Message);
             }
-        }
-        else
-        {
-            Debug.Log("File is null: " + filePath2);
         }
     }
 

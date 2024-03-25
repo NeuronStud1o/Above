@@ -865,8 +865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 335, y: -1553.825}
-  m_SizeDelta: {x: 669, y: 389.41}
+  m_AnchoredPosition: {x: 335, y: -1590}
+  m_SizeDelta: {x: 669, y: 390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &28038626
 GameObject:
@@ -4512,7 +4512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -737.2232}
+  m_AnchoredPosition: {x: 0, y: -737.2227}
   m_SizeDelta: {x: 670, y: 1358.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119616910
@@ -4595,8 +4595,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1291.7653}
-  m_SizeDelta: {x: -10, y: 2610.69}
+  m_AnchoredPosition: {x: 0, y: -1385.0009}
+  m_SizeDelta: {x: -10, y: 2770}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119734941
 MonoBehaviour:
@@ -4672,8 +4672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 335, y: -2355.69}
-  m_SizeDelta: {x: 669, y: 510}
+  m_AnchoredPosition: {x: 335, y: -2472.5}
+  m_SizeDelta: {x: 669, y: 595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &126209576
 GameObject:
@@ -12591,8 +12591,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 335, y: -1924.61}
-  m_SizeDelta: {x: 669, y: 352.16}
+  m_AnchoredPosition: {x: 335, y: -1980}
+  m_SizeDelta: {x: 669, y: 390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &350098831
 GameObject:
@@ -13150,7 +13150,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Natali
+  m_text: Natalie
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17297,8 +17297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -182.47}
-  m_SizeDelta: {x: 660, y: 194.93}
+  m_AnchoredPosition: {x: 0, y: -196.7}
+  m_SizeDelta: {x: 660, y: 223.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484028306
 MonoBehaviour:
@@ -17422,13 +17422,13 @@ MonoBehaviour:
   textEng: On the walls you can see various objects that do not look like scenery.
     These are obstacles. If you touch them, you will die
   textDen: "An den W\xE4nden sind verschiedene Objekte zu sehen, die nicht wie Kulissen
-    aussehen. Dies sind Hindernisse. Wenn Sie sie ber\xFChren, werden Sie sterben."
+    aussehen. Dies sind Hindernisse. Wenn Sie sie ber\xFChren, werden Sie sterben"
   textFra: "Il y a divers objets sur les murs qui ne ressemblent pas \xE0 des arri\xE8re-plans.
     Ce sont des obstacles. Si vous les touchez, vous mourrez"
   textEs: "Hay varios objetos en las paredes que no parecen fondos. Son obst\xE1culos.
-    Si los tocas, morir\xE1s."
+    Si los tocas, morir\xE1s"
   textIta: Sulle pareti ci sono vari oggetti che non sembrano sfondi. Si tratta di
-    ostacoli. Se li toccate, morirete.
+    ostacoli. Se li toccate, morirete
   textPl: "Na \u015Bcianach znajduj\u0105 si\u0119 r\xF3\u017Cne obiekty, kt\xF3re
     nie wygl\u0105daj\u0105 jak t\u0142o. S\u0105 to przeszkody. Je\u015Bli ich dotkniesz,
     zginiesz"
@@ -19378,7 +19378,7 @@ RectTransform:
   m_GameObject: {fileID: 515111855}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 23.75, y: 19.8, z: 192}
+  m_LocalScale: {x: 20, y: 20, z: 192}
   m_Children:
   - {fileID: 1981185937}
   - {fileID: 1448566537}
@@ -19388,7 +19388,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -179.81126, y: -117.359985}
-  m_SizeDelta: {x: 7, y: 8}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515111857
 MonoBehaviour:
@@ -20500,6 +20500,7 @@ GameObject:
   - component: {fileID: 546351533}
   - component: {fileID: 546351535}
   - component: {fileID: 546351534}
+  - component: {fileID: 546351536}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -20573,12 +20574,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 20
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -20623,6 +20624,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546351532}
   m_CullTransparentMesh: 1
+--- !u!114 &546351536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546351532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u043E\u0431\u043B\u0456\u043A\u043E\u0432\u0438\u0439
+    \u0437\u0430\u043F\u0438\u0441"
+  textEng: Delete account
+  textDen: "Konto l\xF6schen"
+  textFra: Supprimer le compte
+  textEs: Eliminar cuenta
+  textIta: Cancellare l'account
+  textPl: "Usu\u0144 konto"
 --- !u!1 &549838695
 GameObject:
   m_ObjectHideFlags: 0
@@ -22183,40 +22206,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   language: 
   tmp: {fileID: 0}
-  textUa: "\u041F\u0456\u0434 \u0447\u0430\u0441 \u0433\u0440\u0438, \u0432\u0430\u0448
+  textUa: "\u041F\u0456\u0434 \u0447\u0430\u0441 \u0433\u0440\u0438 \u0432\u0430\u0448
     \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436 \u0440\u0443\u0445\u0430\u0454\u0442\u044C\u0441\u044F
-    \u0441\u0430\u043C, \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E,
-    \u0432\u0456\u0434\u0431\u0438\u0432\u0430\u044E\u0447\u0438\u0441\u044C \u0432\u0456\u0434
-    \u0441\u0442\u0456\u043D\u0438 \u0434\u043E \u0441\u0442\u0456\u043D\u0438. \u0404\u0434\u0438\u043D\u0430
-    \u0432\u0430\u0448\u0430 \u0437\u0430\u0434\u0430\u0447\u0430 - \u0446\u0435
-    \u043D\u0430\u0442\u0438\u0441\u043A\u0430\u0442\u0438 \u0443 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0438\u0439
-    \u043C\u043E\u043C\u0435\u043D\u0442 \u043D\u0430 \u0435\u043A\u0440\u0430\u043D,
-    \u0449\u043E\u0431 \u043F\u0456\u0434\u0441\u0442\u0440\u0438\u0431\u043D\u0443\u0442\u0438.
-    \u0426\u0435 \u0442\u0440\u0435\u0431\u0430 \u0434\u043B\u044F \u0442\u043E\u0433\u043E,
-    \u0449\u043E\u0431 \u043D\u0435 \u043D\u0430\u0442\u0440\u0430\u043F\u0438\u0442\u0438
-    \u043D\u0430 \u043F\u0435\u0440\u0435\u0448\u043A\u043E\u0434\u0443"
-  textEng: During the game, your character moves by itself, automatically, bouncing
-    from wall to wall. Your only task is to tap at the right moment on the screen
-    to jump. This is necessary in order not to run into an obstacle
-  textDen: "W\xE4hrend des Spiels bewegt sich Ihr Charakter automatisch und h\xFCpft
-    von Wand zu Wand. Ihre einzige Aufgabe besteht darin, im richtigen Moment auf
-    den Bildschirm zu tippen, um zu springen. Dies ist notwendig, um nicht auf ein
-    Hindernis zu sto\xDFen"
-  textFra: "Pendant le jeu, votre personnage se d\xE9place tout seul, automatiquement,
-    en rebondissant de mur en mur. Votre seule t\xE2che est d'appuyer au bon moment
-    sur l'\xE9cran pour sauter. Ceci est n\xE9cessaire pour ne pas se heurter \xE0
-    un obstacle"
-  textEs: "Durante el juego, tu personaje se mueve solo, de forma autom\xE1tica,
-    rebotando de pared en pared. Tu \xFAnica tarea es tocar en el momento adecuado
-    en la pantalla para saltar. Esto es necesario para no toparse con un obst\xE1culo."
-  textIta: "Durante il gioco, il tuo personaggio si muove da solo, automaticamente,
-    rimbalzando da un muro all'altro. Il tuo unico compito \xE8 toccare al momento
-    giusto sullo schermo per saltare. Ci\xF2 \xE8 necessario per non incappare in
-    un ostacolo"
-  textPl: "Podczas rozgrywki Twoja posta\u0107 porusza si\u0119 samodzielnie, automatycznie,
-    przeskakuj\u0105c od \u015Bciany do \u015Bciany. Twoim jedynym zadaniem jest
-    dotkni\u0119cie ekranu w odpowiednim momencie, aby skoczy\u0107. Jest to konieczne,
-    aby nie natkn\u0105\u0107 si\u0119 na przeszkod\u0119"
+    \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E, \u043F\u0435\u0440\u0435\u0441\u0442\u0440\u0438\u0431\u0443\u044E\u0447\u0438
+    \u0432\u0456\u0434 \u0441\u0442\u0456\u043D\u0438 \u0434\u043E \u0441\u0442\u0456\u043D\u0438.
+    \u0412\u0430\u0448\u0435 \u0437\u0430\u0432\u0434\u0430\u043D\u043D\u044F - \u0432\u0447\u0430\u0441\u043D\u043E
+    \u043D\u0430\u0442\u0438\u0441\u043A\u0430\u0442\u0438 \u043D\u0430 \u0435\u043A\u0440\u0430\u043D
+    \u0434\u043B\u044F \u0437\u0434\u0456\u0439\u0441\u043D\u0435\u043D\u043D\u044F
+    \u0441\u0442\u0440\u0438\u0431\u043A\u0456\u0432. \u0412\u043E\u043D\u0438, \u0432
+    \u0441\u0432\u043E\u044E \u0447\u0435\u0440\u0433\u0443, \u0434\u043E\u043F\u043E\u043C\u043E\u0436\u0443\u0442\u044C
+    \u0432\u0430\u043C \u0443\u043D\u0438\u043A\u0430\u0442\u0438 \u043F\u0435\u0440\u0435\u0448\u043A\u043E\u0434\u0438"
+  textEng: During the game, your character moves automatically, jumping from wall
+    to wall. Your task is to tap on the screen in time to make jumps. They, in turn,
+    will help you avoid obstacles
+  textDen: "W\xE4hrend des Spiels bewegt sich deine Figur automatisch und springt
+    von Wand zu Wand. Deine Aufgabe ist es, rechtzeitig auf den Bildschirm zu tippen,
+    um Spr\xFCnge zu machen. Diese wiederum helfen dir, Hindernissen auszuweichen"
+  textFra: "Pendant le jeu, votre personnage se d\xE9place automatiquement en sautant
+    de mur en mur. Votre t\xE2che consiste \xE0 taper sur l'\xE9cran \xE0 temps pour
+    effectuer des sauts. Ceux-ci, \xE0 leur tour, vous aideront \xE0 \xE9viter les
+    obstacles"
+  textEs: "Durante el juego, tu personaje se mueve autom\xE1ticamente, saltando de
+    pared en pared. Tu tarea consiste en tocar la pantalla a tiempo para realizar
+    los saltos. \xC9stos, a su vez, te ayudar\xE1n a evitar obst\xE1culos"
+  textIta: "Durante il gioco, il personaggio si muove automaticamente, saltando da
+    una parete all'altra. Il vostro compito \xE8 quello di toccare lo schermo in
+    tempo per effettuare i salti. Questi, a loro volta, vi aiuteranno a evitare gli
+    ostacoli"
+  textPl: "Podczas gry posta\u0107 porusza si\u0119 automatycznie, przeskakuj\u0105c
+    od \u015Bciany do \u015Bciany. Twoim zadaniem jest stukanie w ekran w odpowiednim
+    momencie, aby wykona\u0107 skoki. Te z kolei pomog\u0105 ci omija\u0107 przeszkody"
 --- !u!114 &613908050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22237,9 +22256,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: During the game, your character moves by itself, automatically, bouncing
-    from wall to wall. Your only task is to tap at the right moment on the screen
-    to jump. This is necessary in order not to run into an obstacle
+  m_text: During the game, your character moves automatically, jumping from wall
+    to wall. Your task is to tap on the screen in time to make jumps. They, in turn,
+    will help you avoid obstacles
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
@@ -26411,6 +26430,7 @@ GameObject:
   - component: {fileID: 741186880}
   - component: {fileID: 741186882}
   - component: {fileID: 741186881}
+  - component: {fileID: 741186883}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -26534,6 +26554,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741186879}
   m_CullTransparentMesh: 1
+--- !u!114 &741186883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741186879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0438 \u0432\u043F\u0435\u0432\u043D\u0435\u043D\u0456, \u0449\u043E
+    \u0445\u043E\u0447\u0435\u0442\u0435 \u0432\u0438\u0434\u0430\u043B\u0438\u0442\u0438
+    \u0441\u0432\u0456\u0439 \u043E\u0431\u043B\u0456\u043A\u043E\u0432\u0438\u0439
+    \u0437\u0430\u043F\u0438\u0441?"
+  textEng: Are you sure you want to delete your account?
+  textDen: "Sind Sie sicher, dass Sie Ihr Konto l\xF6schen m\xF6chten?"
+  textFra: "\xCAtes-vous s\xFBr de vouloir supprimer votre compte ?"
+  textEs: "\xBFSeguro que quieres eliminar tu cuenta?"
+  textIta: Sei sicuro di voler cancellare il tuo account?
+  textPl: "Czy na pewno chcesz usun\u0105\u0107 swoje konto?"
 --- !u!1 &743877146
 GameObject:
   m_ObjectHideFlags: 0
@@ -29216,8 +29260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 335, y: -1109.115}
-  m_SizeDelta: {x: 669, y: 500.01}
+  m_AnchoredPosition: {x: 335, y: -1127.5}
+  m_SizeDelta: {x: 669, y: 535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &834499726
 GameObject:
@@ -34700,7 +34744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.5}
+  m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 10, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987609320
@@ -40031,9 +40075,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To beat your own record, you need to fly higher and higher up the mountain.
-    This can be done by jumping. The faster you jump, the faster you climb. But be
-    careful, because you can lose
+  m_text: To break your own record, you need to fly higher and higher up the mountain.
+    You can do this by jumping. The faster you tap on the screen, the faster you
+    climb. But be careful, because you can lose
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
@@ -40128,30 +40172,35 @@ MonoBehaviour:
     \u0440\u0435\u043A\u043E\u0440\u0434, \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E
     \u0437\u043B\u0456\u0442\u0430\u0442\u0438 \u0432\u0441\u0435 \u0432\u0438\u0449\u0435
     \u0456 \u0432\u0438\u0449\u0435 \u0432 \u0433\u043E\u0440\u0443. \u0426\u0435
-    \u043C\u043E\u0436\u043D\u0430 \u0437\u0440\u043E\u0431\u0438\u0442\u0438 \u0437\u0430
+    \u043C\u043E\u0436\u043D\u0430 \u0440\u043E\u0431\u0438\u0442\u0438 \u0437\u0430
     \u0434\u043E\u043F\u043E\u043C\u043E\u0433\u043E\u044E \u0441\u0442\u0440\u0438\u0431\u043A\u0456\u0432.
-    \u0427\u0438\u043C \u0448\u0432\u0438\u0434\u0448\u0435 \u0432\u0438 \u0441\u0442\u0440\u0438\u0431\u0430\u0454\u0442\u0435,
-    \u0442\u0438\u043C \u0448\u0432\u0438\u0434\u0448\u0435 \u043F\u0456\u0434\u043D\u0456\u043C\u0430\u0454\u0442\u0435\u0441\u044F.
-    \u0410\u043B\u0435 \u0431\u0443\u0434\u044C\u0442\u0435 \u043E\u0431\u0435\u0440\u0435\u0436\u043D\u0456,
+    \u0427\u0438\u043C \u0448\u0432\u0438\u0434\u0448\u0435 \u0432\u0438 \u043D\u0430\u0442\u0438\u0441\u043A\u0430\u0454\u0442\u0435
+    \u043D\u0430 \u0435\u043A\u0440\u0430\u043D, \u0442\u0438\u043C \u0448\u0432\u0438\u0434\u0448\u0435
+    \u043F\u0456\u0434\u043D\u0456\u043C\u0430\u0454\u0442\u0435\u0441\u044F. \u0410\u043B\u0435
+    \u0431\u0443\u0434\u044C\u0442\u0435 \u043E\u0431\u0435\u0440\u0435\u0436\u043D\u0456,
     \u0431\u043E \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u043E\u0433\u0440\u0430\u0442\u0438"
-  textEng: To beat your own record, you need to fly higher and higher up the mountain.
-    This can be done by jumping. The faster you jump, the faster you climb. But be
-    careful, because you can lose
+  textEng: To break your own record, you need to fly higher and higher up the mountain.
+    You can do this by jumping. The faster you tap on the screen, the faster you
+    climb. But be careful, because you can lose
   textDen: "Um Ihren eigenen Rekord zu brechen, m\xFCssen Sie immer h\xF6her auf
-    den Berg fliegen. Das kannst du tun, indem du springst. Je schneller du springst,
-    desto schneller kletterst du. Aber seien Sie vorsichtig, denn Sie k\xF6nnen verlieren"
+    den Berg fliegen. Das kannst du tun, indem du springst. Je schneller du auf den
+    Bildschirm tippst, desto schneller kletterst du. Aber sei vorsichtig, denn du
+    kannst das Spiel verlieren"
   textFra: "Pour battre votre propre record, vous devez voler de plus en plus haut
-    sur la montagne. Vous pouvez le faire en sautant. Plus vous sautez vite, plus
-    vous grimpez vite. Mais attention, vous risquez de perdre\u043C"
+    sur la montagne. Vous pouvez le faire en sautant. Plus vous tapez vite sur l'\xE9cran,
+    plus vous grimpez vite. Mais attention, vous risquez de perdre la partie"
   textEs: "Para batir tu propio r\xE9cord, tienes que volar cada vez m\xE1s alto
-    por la monta\xF1a. Puedes hacerlo saltando. Cuanto m\xE1s r\xE1pido saltes, m\xE1s
-    r\xE1pido subir\xE1s. Pero ten cuidado, porque puedes perder"
+    por la monta\xF1a. Puedes hacerlo saltando. Cuanto m\xE1s r\xE1pido toques la
+    pantalla, m\xE1s r\xE1pido subir\xE1s. Pero ten cuidado, porque puedes perder
+    la partida"
   textIta: "Per battere il proprio record, \xE8 necessario volare sempre pi\xF9 in
-    alto sulla montagna. Per farlo, \xE8 necessario saltare. Pi\xF9 velocemente si
-    salta, pi\xF9 velocemente si sale. Ma attenzione, perch\xE9 si pu\xF2 perdere"
+    alto sulla montagna. Per farlo, bisogna saltare. Pi\xF9 velocemente si tocca
+    lo schermo, pi\xF9 velocemente si sale. Ma fate attenzione, perch\xE9 potreste
+    perdere la partita"
   textPl: "Aby pobi\u0107 sw\xF3j w\u0142asny rekord, musisz lata\u0107 coraz wy\u017Cej
-    i wy\u017Cej. Mo\u017Cesz to zrobi\u0107 skacz\u0105c. Im szybciej skaczesz,
-    tym szybciej si\u0119 wspinasz. Ale uwa\u017Caj, bo mo\u017Cesz straci\u0107"
+    i wy\u017Cej. Mo\u017Cesz to zrobi\u0107 skacz\u0105c. Im szybciej dotykasz ekranu,
+    tym szybciej si\u0119 wspinasz. Ale uwa\u017Caj, bo mo\u017Cesz przegra\u0107
+    gr\u0119"
 --- !u!1 &1151941004
 GameObject:
   m_ObjectHideFlags: 0
@@ -44158,21 +44207,21 @@ MonoBehaviour:
   description:
     textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
       \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
-      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Natali. \u0412\u0438
+      \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430: Natalie. \u0412\u0438
       \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u0440\u0438\u0434\u0431\u0430\u0442\u0438
       \u0439\u043E\u0433\u043E \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456"
-    textEng: 'The icon is given for the purchase of such a character: Natali. You
+    textEng: 'The icon is given for the purchase of such a character: Natalie. You
       can buy it in the store'
-    textDen: "-Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Natali.
+    textDen: "-Das Symbol wird f\xFCr den Kauf eines solchen Zeichens vergeben: Natalie.
       Sie k\xF6nnen es im Laden kaufen"
-    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Natali.
+    textFra: "L'ic\xF4ne est donn\xE9e pour l'achat d'un tel personnage : Natalie.
       Vous pouvez l'acheter dans la boutique"
-    textEs: 'El icono se da por la compra de dicho personaje: Natali. Puedes comprarlo
+    textEs: 'El icono se da por la compra de dicho personaje: Natalie. Puedes comprarlo
       en la tienda'
-    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Natali.
+    textIta: "L'icona viene rilasciata quando si acquista il personaggio: Natalie.
       \xC8 possibile acquistarla nel negozio"
-    textPl: "Ikona jest przyznawana za zakup takiej postaci: Natali. Mo\u017Cna j\u0105
-      kupi\u0107 w sklepie"
+    textPl: "Ikona jest przyznawana za zakup takiej postaci: Natalie. Mo\u017Cna
+      j\u0105 kupi\u0107 w sklepie"
   infoPanel: {fileID: 1531747880}
   iconInfoPanel: {fileID: 397448134}
   infoText: {fileID: 2004159441}
@@ -44247,8 +44296,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 335, y: -217.13}
-  m_SizeDelta: {x: 669, y: 434.26}
+  m_AnchoredPosition: {x: 335, y: -217.5}
+  m_SizeDelta: {x: 669, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1275388856
 GameObject:
@@ -48017,8 +48066,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 335, y: -646.685}
-  m_SizeDelta: {x: 669, y: 424.85}
+  m_AnchoredPosition: {x: 335, y: -647.5}
+  m_SizeDelta: {x: 669, y: 425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1382430267
 GameObject:
@@ -48741,9 +48790,9 @@ RectTransform:
   m_Father: {fileID: 833464015}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -276}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 224}
   m_SizeDelta: {x: 500, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431223133
@@ -49443,7 +49492,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.2}
-  m_SizeDelta: {x: 5, y: 5}
+  m_SizeDelta: {x: 6, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448566538
 MonoBehaviour:
@@ -49492,7 +49541,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4.45
+  m_fontSize: 5.35
   m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -50376,9 +50425,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: In the lower right corner of the main menu there is a button, click on
-    which you will open the store. Here you can buy yourself a new character, power-up
-    or background. The store also has a daily reward button
+  m_text: In the lower right corner of the main menu, there is a button that opens
+    the store. Here you can buy a new character, power-up or background, as well
+    as receive a daily reward
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
@@ -50475,32 +50524,28 @@ MonoBehaviour:
     \u0432\u0456\u0434\u043A\u0440\u0438\u0432\u0430\u0454 \u043C\u0430\u0433\u0430\u0437\u0438\u043D.
     \u0422\u0443\u0442 \u0432\u0438 \u043C\u043E\u0436\u0435\u0442\u0435 \u043A\u0443\u043F\u0438\u0442\u0438
     \u043D\u043E\u0432\u043E\u0433\u043E \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430,
-    \u043F\u043E\u0441\u0438\u043B\u0435\u043D\u043D\u044F \u0430\u0431\u043E \u0444\u043E\u043D.
-    \u0423 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456 \u0442\u0430\u043A\u043E\u0436
-    \u0454 \u043A\u043D\u043E\u043F\u043A\u0430 \u0434\u043B\u044F \u043E\u0442\u0440\u0438\u043C\u0430\u043D\u043D\u044F
-    \u0449\u043E\u0434\u0435\u043D\u043D\u0438\u0445 \u043D\u0430\u0433\u043E\u0440\u043E\u0434"
-  textEng: In the lower right corner of the main menu there is a button, click on
-    which you will open the store. Here you can buy yourself a new character, power-up
-    or background. The store also has a daily reward button
+    \u043F\u043E\u0441\u0438\u043B\u0435\u043D\u043D\u044F \u0430\u0431\u043E \u0444\u043E\u043D,
+    \u0430 \u0442\u0430\u043A\u043E\u0436, \u0434\u043E\u0434\u0430\u0442\u043A\u043E\u0432\u043E,
+    \u043E\u0442\u0440\u0438\u043C\u0430\u0442\u0438 \u0449\u043E\u0434\u0435\u043D\u043D\u0443
+    \u043D\u0430\u0433\u043E\u0440\u043E\u0434\u0443"
+  textEng: In the lower right corner of the main menu, there is a button that opens
+    the store. Here you can buy a new character, power-up or background, as well
+    as receive a daily reward
   textDen: "In der unteren rechten Ecke des Hauptmen\xFCs befindet sich eine Schaltfl\xE4che,
     die den Shop \xF6ffnet. Hier kannst du einen neuen Charakter, ein Power-Up oder
-    einen Hintergrund kaufen. Der Laden hat auch eine Schaltfl\xE4che f\xFCr t\xE4gliche
-    Belohnungen"
+    einen Hintergrund kaufen und eine t\xE4gliche Belohnung erhalten"
   textFra: "Dans le coin inf\xE9rieur droit du menu principal, un bouton permet d'ouvrir
-    la boutique. Vous pouvez y acheter un nouveau personnage, un bonus ou un arri\xE8re-plan.
-    La boutique comporte \xE9galement un bouton permettant de recevoir des r\xE9compenses
-    quotidiennes"
+    la boutique. Vous pouvez y acheter un nouveau personnage, une am\xE9lioration
+    ou un arri\xE8re-plan, et recevoir une r\xE9compense quotidienne"
   textEs: "En la esquina inferior derecha del men\xFA principal hay un bot\xF3n que
     abre la tienda. Aqu\xED puedes comprar un nuevo personaje, potenciador o fondo.
-    La tienda tambi\xE9n tiene un bot\xF3n para recibir recompensas diarias."
-  textIta: "Nell'angolo in basso a destra del menu principale c'\xE8 un pulsante
-    che apre il negozio. Qui \xE8 possibile acquistare un nuovo personaggio, un potenziamento
-    o uno sfondo. Nel negozio c'\xE8 anche un pulsante per ricevere le ricompense
-    giornaliere."
+    La tienda tambi\xE9n tiene un bot\xF3n para recibir recompensas diarias"
+  textIta: "En la esquina inferior derecha del men\xFA principal hay un bot\xF3n
+    que abre la tienda. Aqu\xED puedes comprar un nuevo personaje, potenciador o
+    fondo, as\xED como recibir una recompensa diaria"
   textPl: "W prawym dolnym rogu menu g\u0142\xF3wnego znajduje si\u0119 przycisk
-    otwieraj\u0105cy sklep. Mo\u017Cna w nim kupi\u0107 now\u0105 posta\u0107, ulepszenie
-    lub t\u0142o. W sklepie znajduje si\u0119 r\xF3wnie\u017C przycisk do odbierania
-    codziennych nagr\xF3d"
+    otwieraj\u0105cy sklep. Tutaj mo\u017Cesz kupi\u0107 now\u0105 posta\u0107, ulepszenie
+    lub t\u0142o, a tak\u017Ce otrzyma\u0107 codzienn\u0105 nagrod\u0119"
 --- !u!1 &1481524958
 GameObject:
   m_ObjectHideFlags: 0
@@ -52443,8 +52488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -320}
-  m_SizeDelta: {x: 660, y: 380}
+  m_AnchoredPosition: {x: 0, y: -362.5}
+  m_SizeDelta: {x: 660, y: 465}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1538850652
 MonoBehaviour:
@@ -52466,10 +52511,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'There are two types of coins in the game: flycoin and supercoin. You can
-    get them by collecting them on the map or by completing tasks. Needed for the
-    store. The game also has a level system. The level can be increased by playing
-    or completing tasks'
+  m_text: 'There are two types of coins in the game: flycoins and supercoins. They
+    can be obtained by collecting them on the map and then used in the store. The
+    level system is used to define a player as an expert in the game. The level can
+    be increased by playing on the map. The higher you fly, the more experience points
+    you get'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
@@ -52564,38 +52610,48 @@ MonoBehaviour:
     \u043C\u043E\u043D\u0435\u0442: \u0444\u043B\u0430\u0439\u043A\u043E\u0456\u043D\u0438
     \u0442\u0430 \u0441\u0443\u043F\u0435\u0440\u043A\u043E\u0456\u043D\u0438. \u0407\u0445
     \u043C\u043E\u0436\u043D\u0430 \u043E\u0442\u0440\u0438\u043C\u0430\u0442\u0438,
-    \u0437\u0431\u0438\u0440\u0430\u044E\u0447\u0438 \u043D\u0430 \u043A\u0430\u0440\u0442\u0456
-    \u0430\u0431\u043E \u0432\u0438\u043A\u043E\u043D\u0443\u044E\u0447\u0438 \u0437\u0430\u0432\u0434\u0430\u043D\u043D\u044F.
-    \u041F\u043E\u0442\u0440\u0456\u0431\u043D\u0456 \u0434\u043B\u044F \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0443.
-    \u0423 \u0433\u0440\u0456 \u0442\u0430\u043A\u043E\u0436 \u0454 \u0441\u0438\u0441\u0442\u0435\u043C\u0430
-    \u0440\u0456\u0432\u043D\u0456\u0432. \u0420\u0456\u0432\u0435\u043D\u044C \u043C\u043E\u0436\u043D\u0430
+    \u0437\u0431\u0438\u0440\u0430\u044E\u0447\u0438 \u043D\u0430 \u043A\u0430\u0440\u0442\u0456,
+    \u0430 \u043F\u043E\u0442\u0456\u043C \u0432\u0438\u043A\u043E\u0440\u0438\u0441\u0442\u0430\u0442\u0438
+    \u0443 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0456. \u0421\u0438\u0441\u0442\u0435\u043C\u0430
+    \u0440\u0456\u0432\u043D\u0456\u0432 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0430
+    \u0434\u043B\u044F \u0432\u0438\u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F
+    \u0433\u0440\u0430\u0432\u0446\u044F \u044F\u043A \u0437\u043D\u0430\u0432\u0446\u044F
+    \u0433\u0440\u0438. \u0420\u0456\u0432\u0435\u043D\u044C \u043C\u043E\u0436\u043D\u0430
     \u043F\u0456\u0434\u0432\u0438\u0449\u0443\u0432\u0430\u0442\u0438, \u0433\u0440\u0430\u044E\u0447\u0438
-    \u0430\u0431\u043E \u0432\u0438\u043A\u043E\u043D\u0443\u044E\u0447\u0438 \u0437\u0430\u0432\u0434\u0430\u043D\u043D\u044F"
-  textEng: 'There are two types of coins in the game: flycoin and supercoin. You
-    can get them by collecting them on the map or by completing tasks. Needed for
-    the store. The game also has a level system. The level can be increased by playing
-    or completing tasks'
+    \u043D\u0430 \u043A\u0430\u0440\u0442\u0456. \u0427\u0438\u043C \u0432\u0438\u0449\u0435
+    \u0432\u0438 \u043F\u0440\u043E\u043B\u0435\u0442\u0438\u0442\u0435 - \u0442\u0438\u043C
+    \u0431\u0456\u043B\u044C\u0448\u0435 \u043E\u0447\u043A\u0456\u0432 \u0434\u043E\u0441\u0432\u0456\u0434\u0443
+    \u043E\u0442\u0440\u0438\u043C\u0430\u0454\u0442\u0435"
+  textEng: 'There are two types of coins in the game: flycoins and supercoins. They
+    can be obtained by collecting them on the map and then used in the store. The
+    level system is used to define a player as an expert in the game. The level can
+    be increased by playing on the map. The higher you fly, the more experience points
+    you get'
   textDen: "Es gibt zwei Arten von M\xFCnzen im Spiel: Flycoins und Supercoins, die
-    man erh\xE4lt, indem man sie auf der Karte sammelt oder Aufgaben erf\xFCllt.
-    Sie werden f\xFCr den Laden ben\xF6tigt. Das Spiel hat auch ein Levelsystem.
-    Du kannst aufsteigen, indem du spielst oder Aufgaben erf\xFCllst."
+    man durch Sammeln auf der Karte erh\xE4lt und dann im Laden einl\xF6sen kann.
+    Das Levelsystem wird verwendet, um einen Spieler als Experten im Spiel zu definieren.
+    Die Stufe kann durch das Spielen auf der Karte erh\xF6ht werden. Je h\xF6her
+    man fliegt, desto mehr Erfahrungspunkte erh\xE4lt man"
   textFra: "Il existe deux types de pi\xE8ces dans le jeu : les flycoins et les supercoins,
-    que vous pouvez obtenir en les collectant sur la carte ou en accomplissant des
-    t\xE2ches. Elles sont n\xE9cessaires pour le magasin. Le jeu dispose \xE9galement
-    d'un syst\xE8me de niveaux. Vous pouvez monter en niveau en jouant ou en accomplissant
-    des t\xE2ches"
-  textEs: "En el juego hay dos tipos de monedas: flycoins y supercoins. Se pueden
-    obtener recogi\xE9ndolas en el mapa o completando tareas. Son necesarias para
-    la tienda. El juego tambi\xE9n tiene un sistema de niveles. Puedes subir de nivel
-    jugando o completando tareas."
-  textIta: "Nel gioco ci sono due tipi di monete: le flycoins e le supercoins, che
-    si possono ottenere raccogliendole sulla mappa o completando le attivit\xE0.
-    Sono necessarie per il negozio. Il gioco ha anche un sistema di livelli. Si pu\xF2
-    salire di livello giocando o completando le attivit\xE0."
+    que l'on obtient en les collectant sur la carte et que l'on utilise ensuite dans
+    la boutique. Le syst\xE8me de niveau est utilis\xE9 pour d\xE9finir un joueur
+    en tant qu'expert du jeu. Le niveau peut \xEAtre augment\xE9 en jouant sur la
+    carte. Plus vous volez haut, plus vous obtenez de points d'exp\xE9rience"
+  textEs: "En el juego hay dos tipos de monedas: flycoins y supercoins, que se obtienen
+    recogi\xE9ndolas en el mapa y luego se usan en la tienda. El sistema de niveles
+    se utiliza para definir a un jugador como experto en el juego. El nivel se puede
+    aumentar jugando en el mapa. Cuanto m\xE1s alto vueles, m\xE1s puntos de experiencia
+    obtendr\xE1s"
+  textIta: "Nel gioco esistono due tipi di monete: le flycoins e le supercoins, che
+    possono essere ottenute raccogliendole sulla mappa e poi utilizzate nel negozio.
+    Il sistema di livelli \xE8 utilizzato per definire un giocatore esperto nel gioco.
+    Il livello pu\xF2 essere aumentato giocando sulla mappa. Pi\xF9 si vola in alto,
+    pi\xF9 punti esperienza si ottengono"
   textPl: "W grze wyst\u0119puj\u0105 dwa rodzaje monet: flycoiny i supercoiny. Mo\u017Cna
-    je zdoby\u0107, zbieraj\u0105c je na mapie lub wykonuj\u0105c zadania. S\u0105
-    one potrzebne w sklepie. Gra posiada r\xF3wnie\u017C system poziom\xF3w. Mo\u017Cesz
-    awansowa\u0107, graj\u0105c lub wykonuj\u0105c zadania"
+    je zdoby\u0107, zbieraj\u0105c je na mapie, a nast\u0119pnie wykorzysta\u0107
+    w sklepie. System poziom\xF3w s\u0142u\u017Cy do okre\u015Blenia gracza jako
+    eksperta w grze. Poziom mo\u017Cna zwi\u0119kszy\u0107, graj\u0105c na mapie.
+    Im wy\u017Cej lecisz, tym wi\u0119cej punkt\xF3w do\u015Bwiadczenia otrzymujesz"
 --- !u!1 &1545301843
 GameObject:
   m_ObjectHideFlags: 0
@@ -56628,11 +56684,11 @@ MonoBehaviour:
   tmp: {fileID: 0}
   textUa: "\u0406\u043D\u0448\u0456 \u043D\u0430\u043B\u0430\u0448\u0442\u0443\u0432\u0430\u043D\u043D\u044F"
   textEng: Other settings
-  textDen: 
-  textFra: 
-  textEs: 
-  textIta: 
-  textPl: 
+  textDen: Andere Einstellungen
+  textFra: "Autres r\xE9glages"
+  textEs: Otros ajustes
+  textIta: Altre impostazioni
+  textPl: Inne ustawienia
 --- !u!114 &1661094980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60092,8 +60148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -100, y: -218.58011}
-  m_SizeDelta: {x: 460, y: 267.16}
+  m_AnchoredPosition: {x: -100, y: -237.50003}
+  m_SizeDelta: {x: 460, y: 305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751781739
 MonoBehaviour:
@@ -63733,9 +63789,9 @@ RectTransform:
   m_Father: {fileID: 833464015}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -396}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 104}
   m_SizeDelta: {x: 660, y: 182.27002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1849645883
@@ -67715,7 +67771,7 @@ RectTransform:
   m_GameObject: {fileID: 1981185936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.04210526, y: 0.05050505, z: 0.005208333}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.005208333}
   m_Children: []
   m_Father: {fileID: 515111856}
   m_RootOrder: 0
@@ -68824,6 +68880,7 @@ GameObject:
   - component: {fileID: 2014473682}
   - component: {fileID: 2014473684}
   - component: {fileID: 2014473683}
+  - component: {fileID: 2014473685}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -68897,8 +68954,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -68947,6 +69004,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014473681}
   m_CullTransparentMesh: 1
+--- !u!114 &2014473685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014473681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u043E\u0432\u0435\u0440\u043D\u0443\u0442\u0438\u0441\u044F"
+  textEng: Return
+  textDen: "R\xFCckkehr"
+  textFra: Retour
+  textEs: "Devoluci\xF3n"
+  textIta: Ritorno
+  textPl: "Powr\xF3t"
 --- !u!1 &2015161507
 GameObject:
   m_ObjectHideFlags: 0

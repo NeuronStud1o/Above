@@ -41,6 +41,7 @@ public class DataBase : MonoBehaviour
 
     public void SetActiveLoadingScreen(bool isActive)
     {
+        Debug.Log("Ok");
         loadingScreen.SetActive(isActive);
     }
 

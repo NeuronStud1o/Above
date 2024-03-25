@@ -51,8 +51,7 @@ public class JsonStorage : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
 
-        if (!File.Exists(filePath) || FirebaseAuthManager.instance.user.UserId == null ||
-            FirebaseAuthManager.instance.user == null || isDataException || jsonData.userData.level == 0)
+        if (!File.Exists(filePath) || StorageData.instance.auth == null || isDataException || jsonData.userData.level == 0)
         {
             Handheld.Vibrate();
             UnityEngine.Debug.Log("Vibration");
