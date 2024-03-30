@@ -638,7 +638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Noob
+  m_text: Beginner
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef0b981736d7121429fe8662b7e1b70e, type: 2}
   m_sharedMaterial: {fileID: -6494925865017531481, guid: ef0b981736d7121429fe8662b7e1b70e, type: 2}
@@ -46715,13 +46715,13 @@ MonoBehaviour:
   keyFrame:
   - Level: 5
     CountToNextLevel: 50
-    Title: Beginer
+    Title: Beginner
   - Level: 10
     CountToNextLevel: 100
     Title: Flyer
   - Level: 25
     CountToNextLevel: 150
-    Title: Pro
+    Title: Professional
   - Level: 50
     CountToNextLevel: 200
     Title: Connoisseur
@@ -46730,7 +46730,7 @@ MonoBehaviour:
     Title: Experienced
   - Level: 150
     CountToNextLevel: 300
-    Title: Vip
+    Title: Elite
 --- !u!114 &1349516976
 MonoBehaviour:
   m_ObjectHideFlags: 0
