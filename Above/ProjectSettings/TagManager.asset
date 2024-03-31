@@ -13,6 +13,8 @@ TagManager:
   - DownEnemy
   - FlyCoin
   - SuperCoin
+  - TutorialEnemyTrigger
+  - FinishTutorial
   layers:
   - Default
   - TransparentFX

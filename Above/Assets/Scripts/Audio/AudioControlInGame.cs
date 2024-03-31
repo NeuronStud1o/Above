@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class AudioControlInGame : MonoBehaviour
 {
-    public AudioSource Music;
-    public AudioSource[] SFX;
+    [SerializeField] private AudioSource[] SFX;
 
-    IEnumerator AudioVolume()
-    {
-        yield return new WaitForSeconds(0.1f);
-        GetComponent<AudioSource>().enabled = true;
-    }
-
+    private AudioSource audioSource;
+    
     void Start()
     {
-        StartCoroutine(AudioVolume());
-        Music.volume = PlayerPrefs.GetFloat("Slider3");
+        audioSource = GetComponent<AudioSource>();
+        
+        audioSource.volume = JsonStorage.instance.jsonData.audioSettings.musicGame;
+
+        float sfxVolume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
 
         for (int i = 0; i < SFX.Length; i++)
         {
-            SFX[i].volume = PlayerPrefs.GetFloat("Slider4");
+            SFX[i].volume = sfxVolume;
         }
+        
+        StartCoroutine(GameMusicOn());
+    }
+
+    private IEnumerator GameMusicOn()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        audioSource.enabled = true;
     }
 }

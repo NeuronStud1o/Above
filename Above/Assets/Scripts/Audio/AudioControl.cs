@@ -1,46 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioControl : MonoBehaviour
 {
-    public Slider[] slider;
+    [SerializeField] private Slider[] slider;
+    private AudioSource musicMainMenu;
+    [SerializeField] private AudioSource[] SFX;
 
-    public AudioSource AllAudio;
-    public AudioSource[] SFX;
-
-    private void Start()
+    void Start()
     {
-        if (PlayerPrefs.GetInt("FirstTimeInGameAudio") == 0)
+        musicMainMenu = DataBase.instance.gameObject.GetComponent<AudioSource>();
+        
+        bool isAudioSettings = JsonStorage.instance.jsonData.boolean.isFirstTimeAudio;
+
+        if (!isAudioSettings)
         {
-            PlayerPrefs.SetFloat("Slider", 1f);
-            PlayerPrefs.SetFloat("Slider2", 1f);
-            PlayerPrefs.SetFloat("Slider3", 1f);
-            PlayerPrefs.SetFloat("Slider4", 1f);
-            PlayerPrefs.SetInt("FirstTimeInGameAudio", 1);
+            JsonStorage.instance.jsonData.audioSettings.musicGame = 0.5f;
+            JsonStorage.instance.jsonData.audioSettings.musicMainMenu = 0.5f;
+            JsonStorage.instance.jsonData.audioSettings.sfxGame = 1;
+            JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = 1;
+
+            JsonStorage.instance.jsonData.boolean.isFirstTimeAudio = true;
         }
 
-        slider[0].value = PlayerPrefs.GetFloat("Slider");
-        slider[1].value = PlayerPrefs.GetFloat("Slider2");
-        slider[2].value = PlayerPrefs.GetFloat("Slider3");
-        slider[3].value = PlayerPrefs.GetFloat("Slider4");
+        LoadAudioValue();
     }
 
-    void Update()
+    private void LoadAudioValue()
     {
-        AllAudio.volume = slider[0].value;
+        float musicMainMenuValue = JsonStorage.instance.jsonData.audioSettings.musicMainMenu;
+        float sfxMainMenuValue = JsonStorage.instance.jsonData.audioSettings.sfxMainMenu;
+        float musicGameValue = JsonStorage.instance.jsonData.audioSettings.musicGame;
+        float sfxGameValue = JsonStorage.instance.jsonData.audioSettings.sfxGame;
 
-        PlayerPrefs.SetFloat("Slider", slider[0].value);
+        slider[0].value = musicMainMenuValue;
+        slider[1].value = sfxMainMenuValue;
+        slider[2].value = musicGameValue;
+        slider[3].value = sfxGameValue;
+
+        musicMainMenu.enabled = true;
+        SetAudioValue();
+    }
+
+    private void SetAudioValue()
+    {
+        musicMainMenu.volume = slider[0].value;
 
         for (int i = 0; i < SFX.Length; i++)
         {
             SFX[i].volume = slider[1].value;
         }
+    }
 
-        PlayerPrefs.SetFloat("Slider2", slider[1].value);
+    public void SaveAudioSettings()
+    {
+        JsonStorage.instance.jsonData.audioSettings.musicMainMenu = slider[0].value;
+        JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = slider[1].value;
+        JsonStorage.instance.jsonData.audioSettings.musicGame = slider[2].value;
+        JsonStorage.instance.jsonData.audioSettings.sfxGame = slider[3].value;
 
-        PlayerPrefs.SetFloat("Slider3", slider[2].value);
-        PlayerPrefs.SetFloat("Slider4", slider[3].value);
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+
+        SetAudioValue();
     }
 }

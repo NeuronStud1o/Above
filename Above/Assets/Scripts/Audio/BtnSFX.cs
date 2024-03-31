@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BtnSFX : MonoBehaviour
 {
-    public AudioSource myFX;
-    public AudioClip clickFX;
+    [SerializeField] private AudioSource myFX;
+    [SerializeField] private AudioClip clickFX;
     
     public void ClickSound()
     {

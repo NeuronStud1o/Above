@@ -1,43 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
 {
-    public static int coinsF;
-    public TextMeshProUGUI moneyText;
+    public static CoinsManagerInMainMenu instance;
 
-    public static int coinsS;
-    public TextMeshProUGUI moneyText2;
+    public int coinsF;
+    public int coinsS;
 
-    void Start()
+    [SerializeField] private TextMeshProUGUI SuperCoinsText;
+    [SerializeField] private TextMeshProUGUI FlyCoinsText;
+    [SerializeField] private TextMeshProUGUI SuperCoinsInShopText;
+    [SerializeField] private TextMeshProUGUI FlyCoinsInShopText;
+    [SerializeField] private TextMeshProUGUI AdsForSupercoinsCount;
+
+    [SerializeField] private GameObject fAdErrorPanel;
+    [SerializeField] private GameObject sAdErrorPanel;
+
+    private void Start()
     {
-        if (PlayerPrefs.GetInt("coinsS") >= 10)
-        {
-            PlayerPrefs.SetInt("coinsSForTasks", 1);
-        }
+        instance = this;
 
-        if (PlayerPrefs.HasKey("coinsF"))
-        {
-            coinsF = PlayerPrefs.GetInt("coinsF", coinsF);
-        }
+        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
+        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
 
-        if (PlayerPrefs.HasKey("coinsS"))
-        {
-            coinsS = PlayerPrefs.GetInt("coinsS");
-        }
+        UpdateUI();
     }
-    void FixedUpdate()
-    {
-        coinsF = PlayerPrefs.GetInt("coinsF");
-        PlayerPrefs.SetInt("coinsF", coinsF);
-        moneyText.text = "" + coinsF;
 
-        coinsS = PlayerPrefs.GetInt("coinsS");
-        PlayerPrefs.SetInt("coinsS", coinsS);
-        moneyText2.text = "" + coinsS;
+    public void UpdateUI()
+    {
+        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
+        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
+        
+        SuperCoinsText.text = coinsS + "";
+        FlyCoinsText.text = coinsF + "";
+        SuperCoinsInShopText.text = coinsS + "";
+        FlyCoinsInShopText.text = coinsF + "";
+    }
+
+    public void UpdateAdRewardUI(int ads)
+    {
+        AdsForSupercoinsCount.text = ads + " / 6"; 
+    }
+
+    public void ShowFErrorAd()
+    {
+        StartCoroutine(ErrorAd(fAdErrorPanel));
+    }
+
+    public void ShowSErrorAd()
+    {
+        StartCoroutine(ErrorAd(sAdErrorPanel));
+    }
+
+    IEnumerator ErrorAd(GameObject panel)
+    {
+        panel.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+
+        panel.SetActive(false);
     }
 }
-// sws

@@ -2,14 +2,15 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using TMPro;
+using System.IO;
 
 public class Reward : MonoBehaviour
 {
-    public float msToWait = 5000.0f;
+    [SerializeField] private float msToWait = 86400000f;
+    [SerializeField] private Button RewardButton;
 
-    private Text Timer;
-    private Button RewardButton;
-
+    private TextMeshProUGUI Timer;
     private ulong lastOpen;
 
     public GameObject Done;
@@ -18,15 +19,16 @@ public class Reward : MonoBehaviour
     public GameObject Coin;
     public GameObject coinWindow;
 
+
     void Start()
     {
-        RewardButton = GetComponent<Button>();
         if (!PlayerPrefs.HasKey("lastOpen"))
         {
             PlayerPrefs.SetString("lastOpen", "0");
         }
+
         lastOpen = ulong.Parse(PlayerPrefs.GetString("lastOpen"));
-        Timer = GetComponentInChildren<Text>();
+        Timer = RewardButton.GetComponentInChildren<TextMeshProUGUI>();
 
         if (!isReady())
         {
@@ -39,10 +41,18 @@ public class Reward : MonoBehaviour
     IEnumerator AnimationSeconds()
     {
         yield return new WaitForSeconds(2);
+
         coinWindow.SetActive(false);
-        int allCoins = PlayerPrefs.GetInt("coinsF");
-        allCoins += 10;
-        PlayerPrefs.SetInt("coinsF", allCoins);
+
+        CoinsManagerInMainMenu.instance.coinsF += 10;
+
+        JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+        JsonStorage.instance.jsonData.userData.coinsFAllTime += 10;
+
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        
+        CoinsManagerInMainMenu.instance.UpdateUI();
     }
   
     void Update()
@@ -57,7 +67,7 @@ public class Reward : MonoBehaviour
 
                 RewardButton.interactable = true;
 
-                Timer.text = "10   ";
+                Timer.text = "10  .";
 
                 return;
             }
@@ -78,7 +88,6 @@ public class Reward : MonoBehaviour
             t += ((int)seconleft % 60).ToString("00") + "s";
 
             Timer.text = t;
-
         }
     }
 
@@ -93,12 +102,8 @@ public class Reward : MonoBehaviour
         Coin.SetActive(false);
         RewardButton.interactable = false;
 
-        int count = PlayerPrefs.GetInt("RewardsCount");
-        count++;
-        PlayerPrefs.SetInt("RewardsCount", count);
-            
         coinWindow.SetActive(true);
-        StartCoroutine("AnimationSeconds");
+        StartCoroutine(AnimationSeconds());
     }
 
     public bool isReady()
@@ -109,10 +114,9 @@ public class Reward : MonoBehaviour
 
         if (seconleft < 0)
         {
-            Timer.text = "10   ";
             return true;
-
         }
+
         return false;
     }
 }

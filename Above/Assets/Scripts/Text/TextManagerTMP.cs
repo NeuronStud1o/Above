@@ -7,57 +7,52 @@ using UnityEngine.UI;
 public class TextManagerTMP : MonoBehaviour
 {
     public string language;
-    TextMeshProUGUI text;
+    public TextMeshProUGUI tmp;
 
     public string textUa;
     public string textEng;
     public string textDen;
     public string textFra;
-    public string textCn;
     public string textEs;
     public string textIta;
     public string textPl;
 
-    void Start()
+    void Awake()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        tmp = GetComponent<TextMeshProUGUI>();
+        ChooseLanguage();
     }
 
-    void Update()
+    public void ChooseLanguage()
     {
         language = PlayerPrefs.GetString("Language");
 
-        if (language == "" || language == "Eng")
+        switch (language)
         {
-            text.text = textEng;
-        }
-        else if (language == "Ua")
-        {
-            text.text = textUa;
-        }
-        else if (language == "Den")
-        {
-            text.text = textDen;
-        }
-        else if (language == "Fra")
-        {
-            text.text = textFra;
-        }
-        else if (language == "Cn")
-        {
-            text.text = textCn;
-        }
-        else if (language == "Es")
-        {
-            text.text = textEs;
-        }
-        else if (language == "Ita")
-        {
-            text.text = textIta;
-        }
-        else if (language == "Pl")
-        {
-            text.text = textPl;
+            case "Eng":
+                tmp.text = textEng;
+                break;
+            case "Ua":
+                tmp.text = textUa;
+                break;
+            case "Den":
+                tmp.text = textDen;
+                break;
+            case "Fra":
+                tmp.text = textFra;
+                break;
+            case "Es":
+                tmp.text = textEs;
+                break;
+            case "Ita":
+                tmp.text = textIta;
+                break;
+            case "Pl":
+                tmp.text = textPl;
+                break;
+            default:
+                tmp.text = textEng;
+                break;
         }
     }
 }

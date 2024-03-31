@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 enum Direction
 {
@@ -11,126 +13,233 @@ enum Direction
 
 public class Player : MonoBehaviour
 {
-    private Direction direction;
-    public GameObject Panel;
-    [SerializeField] private Score scoreScript;
-    [SerializeField] private int coins;
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip brokenShield;
+    [SerializeField] private AudioClip death;
+    [SerializeField] private AudioClip getCoin;
+    [SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject canvasInGame;
+    [SerializeField] private Color standartColor;
 
     public float jumpForce = 7f;
-    Rigidbody2D rb;
-
-    AudioSource jumpSound;
+    private Rigidbody2D rb;
+    private AudioSource audioSource;
     private Animator anim;
-    public Camera MainCamera;
+    private CameraFollow cameraFollow;
+    private int speedDirection = -1;
+    
+    private float speed = 0;
+    private int hp = 0;
+    private int coinsToAdd = 1;
 
-    public Color standartColor;
+    public bool isCanMove = false;
+    private System.Random random = new System.Random();
 
-    public AudioClip BrokenShield;
-
-    private void Awake()
-    {
-        jumpSound = GetComponent<AudioSource>();
-        jumpSound.volume = PlayerPrefs.GetFloat("Slider4");
-    }
+    bool canTouchFlycoin = true;
+    bool canTouchSupercoin = true;
 
     void Start()
     {
-        Buttons.Hero = gameObject;
+        StartOnClick.instance.player = this;
+        CoinSpawner.instance.hero = gameObject;
 
-        if (PlayerPrefs.HasKey("Speed"))
+        audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        cameraFollow = Camera.main.GetComponent<CameraFollow>();
+
+        audioSource.volume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
+        
+        hp = JsonStorage.instance.jsonData.currentShop.currentBoost == 3 ? 1 : 0;
+        speed = JsonStorage.instance.jsonData.currentShop.currentBoost == 2 ? 1.5f : 2.2f;
+        coinsToAdd = JsonStorage.instance.jsonData.currentShop.currentBoost == 1 ? 2 : 1;
+
+        PauseController.instance.Hero = gameObject;
+
+        cameraFollow.doodlePos = transform;
+    }
+
+    private async void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isCanMove)
         {
-            PlayerPrefs.SetFloat("Speed", PlayerPrefs.GetFloat("Speed"));
+            if (collision.collider.CompareTag("RightWall"))
+            {
+                TakeDirection(Direction.Left);
+            }
+            if (collision.collider.CompareTag("LeftWall"))
+            {
+                TakeDirection(Direction.Right);
+            }
+
+            if (collision.collider.CompareTag("Enemy"))
+            {
+                if (hp == 0)
+                {
+                    await Death();
+                }
+                else if (hp == 1)
+                {
+                    audioSource.PlayOneShot(brokenShield);
+                    hp = 0;
+
+                    GetComponent<SpriteRenderer>().color = standartColor;
+                }
+            }
+
+            if (collision.collider.CompareTag("DownEnemy"))
+            {
+                await Death();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "FlyCoin" && canTouchFlycoin)
+        {
+            StartCoroutine(TouchCoin(collision.gameObject, true));
+
+            CoinsManager.instance.coinsF += coinsToAdd;
+            JsonStorage.instance.jsonData.userData.coinsF = CoinsManager.instance.coinsF;
+
+            JsonStorage.instance.jsonData.userData.coinsFAllTime += coinsToAdd;
+
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+
+            audioSource.PlayOneShot(getCoin);
+
+            CoinsManager.instance.UpdateUI();
+        }
+
+        if (collision.gameObject.tag == "SuperCoin" && canTouchSupercoin)
+        {
+            StartCoroutine(TouchCoin(collision.gameObject, false));
+
+            CoinsManager.instance.coinsS++;
+            JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
+
+            JsonStorage.instance.jsonData.userData.coinsSAllTime++;
+
+            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            
+            audioSource.PlayOneShot(getCoin);
+
+            CoinsManager.instance.UpdateUI();
+        }
+    }
+
+    IEnumerator TouchCoin(GameObject coin, bool isFlycoin)
+    {
+        if (isFlycoin)
+        {
+            canTouchFlycoin = false;
         }
         else
         {
-            PlayerPrefs.SetFloat("Speed", 2.2f);
+            canTouchSupercoin = false;
         }
 
-        direction = Direction.Right;
-        rb = GetComponent<Rigidbody2D>();
+        coin.GetComponentInChildren<Animator>().SetTrigger("Touch");
 
-        
-        anim = GetComponent<Animator>();
+        yield return new WaitForSeconds(0.6f);
 
-        MainCamera.GetComponent<CameraFollow>().doodlePos = transform;
+        Destroy(coin);
+
+        if (isFlycoin)
+        {
+            canTouchFlycoin = true;
+        }
+        else
+        {
+            canTouchSupercoin = true;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void TakeDirection(Direction flip)
     {
-        if (collision.collider.CompareTag("RightWall"))
+        switch (flip)
         {
-            direction = Direction.Left;
-
-        }
-        if (collision.collider.CompareTag("LeftWall"))
-        {
-            direction = Direction.Right;
-        }
-
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            if (PlayerPrefs.GetInt("HeroHP") == 0)
-            {
-                GetComponent<Player>().enabled = false;
-                Panel.SetActive(true);
-                int lastRunScore = int.Parse(scoreScript.scoreText.text.ToString());
-                PlayerPrefs.SetInt("lastRunScore", lastRunScore);
-                MainCamera.GetComponent<AudioSource>().enabled = false;
-            }
-            else if (PlayerPrefs.GetInt("HeroHP") == 1)
-            {
-                GetComponent<AudioSource>().PlayOneShot(BrokenShield);
-                PlayerPrefs.SetInt("HeroHP", 0);
-
-                GetComponent<SpriteRenderer>().color = standartColor;
-
-                if (direction == Direction.Right)
-                {
-                    direction = Direction.Left;
-                }
-                else if (direction == Direction.Left)
-                {
-                    direction = Direction.Right;
-                }
-            }
+            case Direction.Left:
+                transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
+                speedDirection = 1;
+                break;
+            case Direction.Right:
+                transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
+                speedDirection = -1;
+                break;
         }
     }
 
     void Update()
-    {      
-            switch (direction)
-            {
-                case Direction.Left:
-                    transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
-                    transform.position += Vector3.left * PlayerPrefs.GetFloat("Speed") * Time.deltaTime;
-                    break;
-                case Direction.Right:
-                    transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
-                    transform.position += Vector3.right * PlayerPrefs.GetFloat("Speed") * Time.deltaTime;
-                    break;
-            }
-
-            rb.velocity = new Vector2(0, rb.velocity.y);
-
-        if (GetComponent<Player>().enabled == true)
+    {   
+        if (isCanMove)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            transform.position += Vector3.left * speed * Time.deltaTime * speedDirection;
+        } 
+    }
+
+    public void Jump()
+    {
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.velocity = new Vector2(0, jumpForce);
+
+        audioSource.PlayOneShot(jumpClip);
+        
+        anim.SetTrigger("Jump");
+    }
+    
+    private async Task Death()
+    {
+        canvasInGame.SetActive(false);
+        
+        if (JsonStorage.instance.jsonData.otherSettings.vibration)
+        {
+            Handheld.Vibrate();
+            Debug.Log("Vibration");
+        }
+        
+        audioSource.PlayOneShot(death);
+        
+        cameraFollow.enabled = false;
+        Camera.main.GetComponent<AudioSource>().enabled = false;
+        isCanMove = false;
+        
+        GetComponent<Collider2D>().enabled = false;
+
+        await Task.Delay(TimeSpan.FromSeconds(0.05f));
+
+        if (JsonStorage.instance.jsonData.otherSettings.cameraShake)
+        {
+            for (int i = 0; i < 10; i++)
             {
-                rb.velocity = new Vector2(0, jumpForce);
-                jumpSound.Play();
-                anim.SetTrigger("Jump");
-
-                int taskJump = PlayerPrefs.GetInt("Jumps");
-                taskJump++;
-                PlayerPrefs.SetInt("Jumps", taskJump);
-
-                if (ProgressEveryDayTasks.jumps != 0)
+                if (i % 2 != 0)
                 {
-                    int jumps = PlayerPrefs.GetInt("TasksJumps");
-                    jumps++;
-                    PlayerPrefs.SetInt("TasksJumps", jumps);
+                    await Task.Delay(TimeSpan.FromSeconds(0.05f));
+                    Camera.main.gameObject.transform.position = new Vector3(-0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
+                }
+                else
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(0.05f));
+                    Camera.main.gameObject.transform.position = new Vector3(0.1f, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
                 }
             }
         }
+
+        Camera.main.gameObject.transform.position = new Vector3(0, Camera.main.gameObject.transform.position.y, Camera.main.gameObject.transform.position.z);
+
+        await Task.Delay(TimeSpan.FromSeconds(0.45f));
+
+        int a = random.Next(1, 5);
+
+        if (a == 2)
+        {
+            AdsManager.instance.ShowInterstitialAd();
+        }
+
+        deathPanel.SetActive(true);
+        LosePanel.instance.Death(int.Parse(Score.instance.scoreText.text));
     }
 }
