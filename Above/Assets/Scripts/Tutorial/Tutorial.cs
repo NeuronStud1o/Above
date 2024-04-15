@@ -40,6 +40,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject heroThirdPart;
     [SerializeField] private GameObject dialog3;
     [SerializeField] private GameObject jumpButtonThirdPart;
+    [SerializeField] private GameObject path;
+    [SerializeField] private GameObject pathTog;
 
     [Header("#### ALL PARTS")]
     [SerializeField] private GameObject cameraGo;
@@ -227,6 +229,8 @@ public class Tutorial : MonoBehaviour
         heroThirdPart.SetActive(false);
         dialog3.SetActive(false);
 
+        path.SetActive(true);
+        pathTog.SetActive(true);
     }
 
     public void FinishTutorial()
