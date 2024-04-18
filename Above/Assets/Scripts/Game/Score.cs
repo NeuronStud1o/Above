@@ -9,6 +9,13 @@ public class Score : MonoBehaviour
     public static Score instance;
     public TextMeshProUGUI scoreText;
 
+    [SerializeField] private List<SpawnObstKoefManager> listOfKoefs;
+    public List<SpawnObstKoefManager> ListOfKoefs
+    {
+        get => listOfKoefs;
+        private set => listOfKoefs = value;
+    }
+
     void Start()
     {
         instance = this;

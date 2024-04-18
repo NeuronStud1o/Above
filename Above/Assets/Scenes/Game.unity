@@ -166,15 +166,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 5972989397014983799, guid: acd9839a57fd12c43997f4ede5813008, type: 3}
-  - {fileID: 7970215843760892717, guid: e24578c5b44ec9b47bd51a540e2f2d1e, type: 3}
-  - {fileID: 4995921617682559222, guid: a7720de8b517c854289eecaf3bde3bf0, type: 3}
+  enemies:
   - {fileID: 4508863570334650682, guid: 860a52cc830fbbd429c7a71332206820, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  - {fileID: 7970215843760892717, guid: e24578c5b44ec9b47bd51a540e2f2d1e, type: 3}
+  - {fileID: 5972989397014983799, guid: acd9839a57fd12c43997f4ede5813008, type: 3}
+  - {fileID: 4995921617682559222, guid: a7720de8b517c854289eecaf3bde3bf0, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 0
 --- !u!1 &17072331
 GameObject:
@@ -3551,15 +3550,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 74331713961932261, guid: 79e5071d68659124b923a80a568560ec, type: 3}
-  - {fileID: 2897956538049459191, guid: a10125011b4bd354ebcff0ddebb93a3a, type: 3}
-  - {fileID: 7310655433261933811, guid: 4ad57973a7945e44f8c9b2eade726f6f, type: 3}
-  - {fileID: 7490127301535164483, guid: af8043a4dcb495b42a8c14118a690425, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  enemies:
+  - {fileID: 8847025293357703843, guid: 4e075fe4fb067114db523b74dee76e7c, type: 3}
+  - {fileID: 1082073914568091951, guid: d2a636844ebf4b9478a120d55ec86548, type: 3}
+  - {fileID: 2995765279680493590, guid: 6e42c4c474bbced4f9c6a1b52eb9606e, type: 3}
+  - {fileID: 8546801664971482825, guid: e52c566820dff8b47b2b0039734e206d, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 1
 --- !u!1 &534346044
 GameObject:
@@ -3738,15 +3736,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 3664882417580669987, guid: a7ab34b6e0c75fd4a938170312bd66d8, type: 3}
-  - {fileID: 3701007095229606261, guid: 2cf89ff26ff78d443a53d61d3636a30b, type: 3}
-  - {fileID: 6800091752417666115, guid: 02fac17006ef4874b90486f875ad1312, type: 3}
-  - {fileID: 8587525198079110080, guid: 30bfff03be251114b8c19f2fd629c117, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  enemies:
+  - {fileID: 587746908385118161, guid: 74e5d19a887ce0b429aded22de6e0daf, type: 3}
+  - {fileID: 4335080262141000495, guid: 6c216c7d8496a504ab707fe7643982d7, type: 3}
+  - {fileID: 8327797648895949824, guid: 6b264544432af4044b33434272c15914, type: 3}
+  - {fileID: 2556796111684622148, guid: 17d11756be98b364d900b1eca4b982ed, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 0
 --- !u!1 &536858597
 GameObject:
@@ -4728,15 +4725,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 759236936746771160, guid: 18566eca56102d24a9fc906332833060, type: 3}
+  enemies:
   - {fileID: 360334485067421535, guid: cf451a6480df8e04a9a588abde03b503, type: 3}
+  - {fileID: 759236936746771160, guid: 18566eca56102d24a9fc906332833060, type: 3}
   - {fileID: 5199403076211087849, guid: a48780e0252c39c4fbc859e658ae117e, type: 3}
   - {fileID: 4450220009733186916, guid: 55c3a257f7805f041aaa802e70b2aec2, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 1
 --- !u!1 &728170635
 GameObject:
@@ -6021,15 +6017,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
+  enemies:
   - {fileID: 4154088295708818036, guid: 59c6789543130c64b980e5c3927ee4ef, type: 3}
   - {fileID: 5314766935019172881, guid: b5f9c12a21d6aff468847f29a2e05612, type: 3}
-  - {fileID: 1111777086933739004, guid: f8cf4994deaf5254e8707748f3504198, type: 3}
   - {fileID: 8301896980667265982, guid: 7434a1725b7c61745abc6ea3c0d80e80, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  - {fileID: 1111777086933739004, guid: f8cf4994deaf5254e8707748f3504198, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 1
 --- !u!1 &858801808
 GameObject:
@@ -8296,15 +8291,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 1061769754003541729, guid: dd444344f32bf324e9fb83f4157f250b, type: 3}
+  enemies:
   - {fileID: 6503716855193370546, guid: 42ea6bfff3052b940a1fa146f8b1e9c4, type: 3}
   - {fileID: 3484716776880755040, guid: 2823ef87332261c4c98986940fada860, type: 3}
   - {fileID: 2735754356271837126, guid: 569d247ad0a40ea4ba088b491dfe1be6, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  - {fileID: 1061769754003541729, guid: dd444344f32bf324e9fb83f4157f250b, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 0
 --- !u!1 &1076384024
 GameObject:
@@ -8576,15 +8570,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 2278741825720580269, guid: de96b47704a172b44a32b91ca4ff4383, type: 3}
+  enemies:
   - {fileID: 7221275972052034100, guid: 152bf6bd80934f84580cd7c41e43c13b, type: 3}
-  - {fileID: 3677738387596580392, guid: aedea8e02dde69f4f9013d5889c880d9, type: 3}
+  - {fileID: 2278741825720580269, guid: de96b47704a172b44a32b91ca4ff4383, type: 3}
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  - {fileID: 3677738387596580392, guid: aedea8e02dde69f4f9013d5889c880d9, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 1
 --- !u!4 &1106430830
 Transform:
@@ -9126,6 +9119,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 519420032}
   scoreText: {fileID: 1190642327}
+  listOfKoefs:
+  - maxScoreValue: 50
+    minScoreValue: 0
+    minKoef: 5
+    maxKoef: 9
+  - maxScoreValue: 100
+    minScoreValue: 50
+    minKoef: 4.8
+    maxKoef: 8
+  - maxScoreValue: 150
+    minScoreValue: 100
+    minKoef: 4.6
+    maxKoef: 7
+  - maxScoreValue: 200
+    minScoreValue: 150
+    minKoef: 4.4
+    maxKoef: 7
+  - maxScoreValue: 300
+    minScoreValue: 200
+    minKoef: 4.2
+    maxKoef: 6.5
+  - maxScoreValue: 500
+    minScoreValue: 300
+    minKoef: 4
+    maxKoef: 6
+  - maxScoreValue: 750
+    minScoreValue: 500
+    minKoef: 3.5
+    maxKoef: 5.5
+  - maxScoreValue: 1000
+    minScoreValue: 750
+    minKoef: 3.1
+    maxKoef: 5
 --- !u!114 &1190642327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10712,15 +10738,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 2995765279680493590, guid: 6e42c4c474bbced4f9c6a1b52eb9606e, type: 3}
-  - {fileID: 8546801664971482825, guid: e52c566820dff8b47b2b0039734e206d, type: 3}
-  - {fileID: 8847025293357703843, guid: 4e075fe4fb067114db523b74dee76e7c, type: 3}
-  - {fileID: 1082073914568091951, guid: d2a636844ebf4b9478a120d55ec86548, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  enemies:
+  - {fileID: 2897956538049459191, guid: a10125011b4bd354ebcff0ddebb93a3a, type: 3}
+  - {fileID: 74331713961932261, guid: 79e5071d68659124b923a80a568560ec, type: 3}
+  - {fileID: 7310655433261933811, guid: 4ad57973a7945e44f8c9b2eade726f6f, type: 3}
+  - {fileID: 7490127301535164483, guid: af8043a4dcb495b42a8c14118a690425, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 1
 --- !u!1 &1405952457
 GameObject:
@@ -11007,15 +11032,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 2775779476811573806, guid: 4a8b154d076bb7243aa22e7cb94e8f5d, type: 3}
+  enemies:
   - {fileID: 4939562088805895318, guid: a4cad5ad9b288c94196e1ba2841254e2, type: 3}
   - {fileID: 5250396775020985620, guid: 715e02ecd72e1a04092ab6b14300e95b, type: 3}
   - {fileID: 2625409659405930893, guid: 98eab04802877e9458067931ee8ed8a0, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  - {fileID: 2775779476811573806, guid: 4a8b154d076bb7243aa22e7cb94e8f5d, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 0
 --- !u!4 &1473674056
 Transform:
@@ -11030,6 +11054,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 901092211}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1488403790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488403792}
+  - component: {fileID: 1488403791}
+  m_Layer: 0
+  m_Name: KoefsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1488403791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488403790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca60b92b5cce73429b614cc89816c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfKoefs:
+  - maxScoreValue: 50
+    minScoreValue: 0
+    minKoef: 6.5
+    maxKoef: 9
+  - maxScoreValue: 100
+    minScoreValue: 50
+    minKoef: 6
+    maxKoef: 8
+  - maxScoreValue: 150
+    minScoreValue: 100
+    minKoef: 5.5
+    maxKoef: 7
+  - maxScoreValue: 200
+    minScoreValue: 150
+    minKoef: 5
+    maxKoef: 6
+  - maxScoreValue: 300
+    minScoreValue: 200
+    minKoef: 4.5
+    maxKoef: 5.5
+  - maxScoreValue: 500
+    minScoreValue: 300
+    minKoef: 4
+    maxKoef: 5
+  - maxScoreValue: 750
+    minScoreValue: 500
+    minKoef: 3.5
+    maxKoef: 4.5
+  - maxScoreValue: 1000
+    minScoreValue: 750
+    minKoef: 3.2
+    maxKoef: 4
+--- !u!4 &1488403792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488403790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1504738725
 GameObject:
@@ -11532,15 +11632,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 7055265806703408228, guid: da18a643a93081a45a976c0e2045fd3e, type: 3}
+  enemies:
   - {fileID: 1860134640848184264, guid: 9cdf158bb39f1b545b15571d6f3e5bfd, type: 3}
   - {fileID: 8988635473442305623, guid: 2a1c323167146954c95500f09098fda7, type: 3}
   - {fileID: 275177155207104446, guid: 11e8198f2b385b14ca05b19e3335007c, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  - {fileID: 7055265806703408228, guid: da18a643a93081a45a976c0e2045fd3e, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 1
 --- !u!1 &1653532795
 GameObject:
@@ -14782,15 +14881,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
+  enemies:
+  - {fileID: 7013638232466221003, guid: bc42660ba80f8334ea03c52f97dfe61b, type: 3}
   - {fileID: 4031549556666119777, guid: eea21ec51a371894baa3c26a021d29db, type: 3}
   - {fileID: 5561906124041078740, guid: 771296e475a2d5a48b4bebbf148675f2, type: 3}
-  - {fileID: 7013638232466221003, guid: bc42660ba80f8334ea03c52f97dfe61b, type: 3}
   - {fileID: 7341912656544496277, guid: f80d196089c239944b1dd7949d619a65, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 0
 --- !u!1 &2048156114
 GameObject:
@@ -15224,15 +15322,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281339093d4433428a90f16f37078e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-  - {fileID: 4335080262141000495, guid: 6c216c7d8496a504ab707fe7643982d7, type: 3}
-  - {fileID: 587746908385118161, guid: 74e5d19a887ce0b429aded22de6e0daf, type: 3}
-  - {fileID: 8327797648895949824, guid: 6b264544432af4044b33434272c15914, type: 3}
-  - {fileID: 2556796111684622148, guid: 17d11756be98b364d900b1eca4b982ed, type: 3}
-  distance: 0
-  koef: 10
-  minKoef: 0
+  enemies:
+  - {fileID: 8587525198079110080, guid: 30bfff03be251114b8c19f2fd629c117, type: 3}
+  - {fileID: 6800091752417666115, guid: 02fac17006ef4874b90486f875ad1312, type: 3}
+  - {fileID: 3664882417580669987, guid: a7ab34b6e0c75fd4a938170312bd66d8, type: 3}
+  - {fileID: 3701007095229606261, guid: 2cf89ff26ff78d443a53d61d3636a30b, type: 3}
+  listOfKoefs: []
   deadLineForObstacles: {fileID: 1260428316}
+  distance: 0
   isFirstSpawner: 0
 --- !u!1001 &149187188912607027
 PrefabInstance:
