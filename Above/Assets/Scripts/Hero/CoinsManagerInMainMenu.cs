@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class CoinsManagerInMainMenu : MonoBehaviour
 {
@@ -24,16 +22,16 @@ public class CoinsManagerInMainMenu : MonoBehaviour
     {
         instance = this;
 
-        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
-        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
+        coinsF = JsonStorage.instance.data.userData.coinsF;
+        coinsS = JsonStorage.instance.data.userData.coinsS;
 
         UpdateUI();
     }
 
     public void UpdateUI()
     {
-        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
-        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
+        coinsF = JsonStorage.instance.data.userData.coinsF;
+        coinsS = JsonStorage.instance.data.userData.coinsS;
         
         SuperCoinsText.text = coinsS + "";
         FlyCoinsText.text = coinsF + "";

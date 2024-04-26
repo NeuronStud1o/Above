@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class SelectCharacter : MonoBehaviour
@@ -15,7 +11,7 @@ public class SelectCharacter : MonoBehaviour
 
     void Start()
     {
-        i = JsonStorage.instance.jsonData.currentShop.currentSkin;
+        i = JsonStorage.instance.data.currentShop.currentSkin;
 
         EquipedButtons[i].SetActive(true);
         EquipButtons[i].SetActive(false);
@@ -32,10 +28,9 @@ public class SelectCharacter : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        JsonStorage.instance.jsonData.currentShop.currentSkin = thisCharacter;
+        JsonStorage.instance.data.currentShop.currentSkin = thisCharacter;
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
         AllCharacters[thisCharacter].SetActive(true);
 

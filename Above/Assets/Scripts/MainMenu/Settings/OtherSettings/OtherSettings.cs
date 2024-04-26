@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,34 +10,32 @@ public class OtherSettings : MonoBehaviour
     {
         if (tog == true)
         {
-            JsonStorage.instance.jsonData.otherSettings.showLevelRanks = true;
+            JsonStorage.instance.data.otherSettings.showLevelRanks = true;
         }
         else
         {
-            JsonStorage.instance.jsonData.otherSettings.showLevelRanks = false;
+            JsonStorage.instance.data.otherSettings.showLevelRanks = false;
         }
 
         controller.ShowLevelRanks(tog);
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 
     public void AutoSaveSettings(bool tog)
     {
         if (tog == true)
         {
-            JsonStorage.instance.jsonData.otherSettings.autoSave = true;
+            JsonStorage.instance.data.otherSettings.autoSave = true;
         }
         else
         {
-            JsonStorage.instance.jsonData.otherSettings.autoSave = false;
+            JsonStorage.instance.data.otherSettings.autoSave = false;
         }
 
         controller.AutoSaveSettings(tog);
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 
     public void OpenDocumentation()
@@ -82,63 +77,59 @@ public class OtherSettings : MonoBehaviour
     {
         if (tog == true)
         {
-            JsonStorage.instance.jsonData.otherSettings.particles = true;
+            JsonStorage.instance.data.otherSettings.particles = true;
         }
         else
         {
-            JsonStorage.instance.jsonData.otherSettings.particles = false;
+            JsonStorage.instance.data.otherSettings.particles = false;
         }
 
         controller.ActivateParticles(tog);
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 
     public void ShowTheSelectedBoost(bool tog)
     {
         if (tog == true)
         {
-            JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame = true;
+            JsonStorage.instance.data.otherSettings.showSelectedBoostInGame = true;
         }
         else
         {
-            JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame = false;
+            JsonStorage.instance.data.otherSettings.showSelectedBoostInGame = false;
         }
 
         controller.ShowTheSelectedBoost(tog);
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 
     public void CameraShake(bool tog)
     {
         if (tog == true)
         {
-            JsonStorage.instance.jsonData.otherSettings.cameraShake = true;
+            JsonStorage.instance.data.otherSettings.cameraShake = true;
         }
         else
         {
-            JsonStorage.instance.jsonData.otherSettings.cameraShake = false;
+            JsonStorage.instance.data.otherSettings.cameraShake = false;
         }
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 
     public void Vibration(bool tog)
     {
         if (tog == true)
         {
-            JsonStorage.instance.jsonData.otherSettings.vibration = true;
+            JsonStorage.instance.data.otherSettings.vibration = true;
         }
         else
         {
-            JsonStorage.instance.jsonData.otherSettings.vibration = false;
+            JsonStorage.instance.data.otherSettings.vibration = false;
         }
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 }

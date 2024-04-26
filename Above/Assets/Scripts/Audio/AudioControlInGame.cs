@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioControlInGame : MonoBehaviour
@@ -12,9 +11,9 @@ public class AudioControlInGame : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         
-        audioSource.volume = JsonStorage.instance.jsonData.audioSettings.musicGame;
+        audioSource.volume = JsonStorage.instance.data.audioSettings.musicGame;
 
-        float sfxVolume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
+        float sfxVolume = JsonStorage.instance.data.audioSettings.sfxGame;
 
         for (int i = 0; i < SFX.Length; i++)
         {

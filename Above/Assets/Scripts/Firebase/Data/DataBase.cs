@@ -4,7 +4,6 @@ using UnityEngine;
 using Firebase.Database;
 using System.Threading.Tasks;
 using TMPro;
-using Firebase;
 
 public class DataBase : MonoBehaviour
 {
@@ -41,7 +40,6 @@ public class DataBase : MonoBehaviour
 
     public void SetActiveLoadingScreen(bool isActive)
     {
-        Debug.Log("Ok");
         loadingScreen.SetActive(isActive);
     }
 

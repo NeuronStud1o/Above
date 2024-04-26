@@ -177,34 +177,28 @@ public class AdsManager : MonoBehaviour
 
     public void RewardedAdEvents(RewardedAd ad)
     {
-        // Raised when the ad is estimated to have earned money.
         ad.OnAdPaid += (AdValue adValue) =>
         {
             print("Rewarded ad paid {0} {1}." +
                 adValue.Value +
                 adValue.CurrencyCode);
         };
-        // Raised when an impression is recorded for an ad.
         ad.OnAdImpressionRecorded += () =>
         {
             print("Rewarded ad recorded an impression.");
         };
-        // Raised when a click is recorded for an ad.
         ad.OnAdClicked += () =>
         {
             print("Rewarded ad was clicked.");
         };
-        // Raised when an ad opened full screen content.
         ad.OnAdFullScreenContentOpened += () =>
         {
             print("Rewarded ad full screen content opened.");
         };
-        // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             print("Rewarded ad full screen content closed.");
         };
-        // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             print("Rewarded ad failed to open full screen content " +
@@ -214,12 +208,10 @@ public class AdsManager : MonoBehaviour
 
     void GrantCoinsF()
     {
-        JsonStorage.instance.jsonData.userData.coinsF += 2;
-        JsonStorage.instance.jsonData.userData.coinsFAllTime += 2;
+        JsonStorage.instance.data.userData.coinsF += 2;
+        JsonStorage.instance.data.userData.coinsFAllTime += 2;
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
         StorageData.instance.SaveJsonData();
         collectFlycoinsPanel.SetActive(true);
@@ -231,12 +223,10 @@ public class AdsManager : MonoBehaviour
 
         if (adsCoinsSCount == 6)
         {
-            JsonStorage.instance.jsonData.userData.coinsS += 1;
-            JsonStorage.instance.jsonData.userData.coinsSAllTime += 1;
+            JsonStorage.instance.data.userData.coinsS += 1;
+            JsonStorage.instance.data.userData.coinsSAllTime += 1;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
             StorageData.instance.SaveJsonData();
             collectSuperCoinsPanel.SetActive(true);

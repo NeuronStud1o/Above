@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,16 +11,16 @@ public class AudioControl : MonoBehaviour
     {
         musicMainMenu = DataBase.instance.gameObject.GetComponent<AudioSource>();
         
-        bool isAudioSettings = JsonStorage.instance.jsonData.boolean.isFirstTimeAudio;
+        bool isAudioSettings = JsonStorage.instance.data.boolean.isFirstTimeAudio;
 
         if (!isAudioSettings)
         {
-            JsonStorage.instance.jsonData.audioSettings.musicGame = 0.5f;
-            JsonStorage.instance.jsonData.audioSettings.musicMainMenu = 0.5f;
-            JsonStorage.instance.jsonData.audioSettings.sfxGame = 1;
-            JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = 1;
+            JsonStorage.instance.data.audioSettings.musicGame = 0.5f;
+            JsonStorage.instance.data.audioSettings.musicMainMenu = 0.5f;
+            JsonStorage.instance.data.audioSettings.sfxGame = 1;
+            JsonStorage.instance.data.audioSettings.sfxMainMenu = 1;
 
-            JsonStorage.instance.jsonData.boolean.isFirstTimeAudio = true;
+            JsonStorage.instance.data.boolean.isFirstTimeAudio = true;
         }
 
         LoadAudioValue();
@@ -31,10 +28,10 @@ public class AudioControl : MonoBehaviour
 
     private void LoadAudioValue()
     {
-        float musicMainMenuValue = JsonStorage.instance.jsonData.audioSettings.musicMainMenu;
-        float sfxMainMenuValue = JsonStorage.instance.jsonData.audioSettings.sfxMainMenu;
-        float musicGameValue = JsonStorage.instance.jsonData.audioSettings.musicGame;
-        float sfxGameValue = JsonStorage.instance.jsonData.audioSettings.sfxGame;
+        float musicMainMenuValue = JsonStorage.instance.data.audioSettings.musicMainMenu;
+        float sfxMainMenuValue = JsonStorage.instance.data.audioSettings.sfxMainMenu;
+        float musicGameValue = JsonStorage.instance.data.audioSettings.musicGame;
+        float sfxGameValue = JsonStorage.instance.data.audioSettings.sfxGame;
 
         slider[0].value = musicMainMenuValue;
         slider[1].value = sfxMainMenuValue;
@@ -57,14 +54,12 @@ public class AudioControl : MonoBehaviour
 
     public void SaveAudioSettings()
     {
-        JsonStorage.instance.jsonData.audioSettings.musicMainMenu = slider[0].value;
-        JsonStorage.instance.jsonData.audioSettings.sfxMainMenu = slider[1].value;
-        JsonStorage.instance.jsonData.audioSettings.musicGame = slider[2].value;
-        JsonStorage.instance.jsonData.audioSettings.sfxGame = slider[3].value;
+        JsonStorage.instance.data.audioSettings.musicMainMenu = slider[0].value;
+        JsonStorage.instance.data.audioSettings.sfxMainMenu = slider[1].value;
+        JsonStorage.instance.data.audioSettings.musicGame = slider[2].value;
+        JsonStorage.instance.data.audioSettings.sfxGame = slider[3].value;
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
         SetAudioValue();
     }

@@ -24,22 +24,22 @@ public class CheckActiveOtherSettingTog : MonoBehaviour
         switch (setting)
         {
             case OtherSetting.ShowLevelRank:
-                tog.isOn = JsonStorage.instance.jsonData.otherSettings.showLevelRanks;
+                tog.isOn = JsonStorage.instance.data.otherSettings.showLevelRanks;
                 break; 
             case OtherSetting.AutoSave:
-                tog.isOn = JsonStorage.instance.jsonData.otherSettings.autoSave;
+                tog.isOn = JsonStorage.instance.data.otherSettings.autoSave;
                 break;
             case OtherSetting.Particles:
-                tog.isOn = JsonStorage.instance.jsonData.otherSettings.particles;
+                tog.isOn = JsonStorage.instance.data.otherSettings.particles;
                 break;
             case OtherSetting.ShowTheSelectedBoost:
-                tog.isOn = JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame;
+                tog.isOn = JsonStorage.instance.data.otherSettings.showSelectedBoostInGame;
                 break;
             case OtherSetting.CameraShake:
-                tog.isOn = JsonStorage.instance.jsonData.otherSettings.cameraShake;
+                tog.isOn = JsonStorage.instance.data.otherSettings.cameraShake;
                 break;
             case OtherSetting.Vibration:
-                tog.isOn = JsonStorage.instance.jsonData.otherSettings.vibration;
+                tog.isOn = JsonStorage.instance.data.otherSettings.vibration;
                 break;
         }
     }

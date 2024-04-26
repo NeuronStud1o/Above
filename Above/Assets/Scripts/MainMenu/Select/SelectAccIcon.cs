@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +13,7 @@ public class SelectAccIcon : MonoBehaviour
 
         CheckLock();
 
-        if (iconName == JsonStorage.instance.jsonData.userData.userIcon)
+        if (iconName == JsonStorage.instance.data.userData.userIcon)
         {
             Change();
         }
@@ -24,9 +21,9 @@ public class SelectAccIcon : MonoBehaviour
 
     public void CheckLock()
     {
-        KeyForm key = JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == iconName);
-        
-        if (key.isPurchased)
+        bool isBought = JsonStorage.instance.data.icons.icons.Contains(iconName);
+
+        if (isBought == true)
         {
             blockedPanel.SetActive(false);
         }

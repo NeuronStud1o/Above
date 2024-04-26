@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,24 +13,18 @@ public class KeyForm
 
 public class JsonStorage : MonoBehaviour
 {
-    public string password;
+    public static JsonStorage instance;
+    
     private int seconds = 0;
     private bool isCanCheck = true;
-    public bool isFrozenTimer = false;
-    public bool isDataException = false;
-    public static JsonStorage instance;
 
     [Header ("## Json file :")]
-    public JsonData jsonData;
-    public JsonData pastData;
+    public Data data;
 
-    [Header ("## Initial store settings :")]
-    [SerializeField] private List<KeyForm> startSkinsList = new List<KeyForm>();
-    [SerializeField] private List<KeyForm> startBgsList = new List<KeyForm>();
-    [SerializeField] private List<KeyForm> startBoostsList = new List<KeyForm>();
-
-    [Header ("## Initial account icons settings :")]
-    [SerializeField] private List<KeyForm> startIcons = new List<KeyForm>();
+    [Header ("## References :")]
+    public string password;
+    public bool isFrozenTimer = false;
+    public bool isDataException = false;
 
     void Awake()
     {
@@ -49,9 +41,9 @@ public class JsonStorage : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        string filePath = Path.Combine(Application.persistentDataPath, "data.json");
 
-        if (!File.Exists(filePath) || StorageData.instance.auth == null || isDataException || jsonData.userData.level == 0)
+        if (!File.Exists(filePath) || StorageData.instance.auth == null || isDataException || data.userData.level == 0)
         {
             Handheld.Vibrate();
             UnityEngine.Debug.Log("Vibration");
@@ -60,33 +52,9 @@ public class JsonStorage : MonoBehaviour
 
         UnityEngine.Debug.Log("User is not null");
 
-        SaveEncryptDataOnExit(filePath);
+        SaveEncryptDataOnExit();
 
         UnityEngine.Debug.Log("Exit");
-
-        if (pastData.userData.record != jsonData.userData.record)
-        {
-            UnityEngine.Debug.Log("Record is saved");
-            DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
-        }
-
-        if (pastData.userData.coinsF != jsonData.userData.coinsF)
-        {
-            UnityEngine.Debug.Log("Fly coins is saved");
-            DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
-        }
-
-        if (pastData.userData.coinsS != jsonData.userData.coinsS)
-        {
-            UnityEngine.Debug.Log("Super coins is saved");
-            DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
-        }
-
-        if (pastData.userData.level != jsonData.userData.level)
-        {
-            UnityEngine.Debug.Log("Level is saved");
-            DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
-        }
     }
 
     private void FixedUpdate()
@@ -98,80 +66,31 @@ public class JsonStorage : MonoBehaviour
             return;
         }
 
-        if (seconds % 10 == 0 && isCanCheck && !isDataException && password != null && jsonData.userData.level != 0)
+        if (seconds == 5 && isCanCheck && !isDataException && password != null && data.userData.level != 0)
         {
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-            CryptoHelper.Encrypt(filePath, jsonData, password);
+            CryptoHelper.Encrypt(data, password);
             StorageData.instance.SaveJsonData();
-            isCanCheck = false;
-        }
-
-        if (seconds == 10 && isCanCheck && !isDataException)
-        {
-            if (pastData.userData.record != jsonData.userData.record)
-            {
-                pastData.userData.record = jsonData.userData.record;
-
-                DataBase.instance.SaveData(jsonData.userData.record, "game", "recordScore");
-                UnityEngine.Debug.Log("Record is saved");
-            }
-
-            isCanCheck = false;
-        }
-
-        if (seconds == 20 && isCanCheck && !isDataException)
-        {
-            if (pastData.userData.coinsF != jsonData.userData.coinsF)
-            {
-                pastData.userData.coinsF = jsonData.userData.coinsF;
-                pastData.userData.coinsFAllTime = jsonData.userData.coinsFAllTime;
-
-                DataBase.instance.SaveData(jsonData.userData.coinsFAllTime, "menu", "coins", "coinsFAllTime");
-                UnityEngine.Debug.Log("All time flyCoins is saved");
-            }
-
-            isCanCheck = false;
-        }
-
-        if (seconds == 30 && isCanCheck && !isDataException)
-        {
-            if (pastData.userData.coinsS != jsonData.userData.coinsS)
-            {
-                pastData.userData.coinsS = jsonData.userData.coinsS;
-                pastData.userData.coinsSAllTime = jsonData.userData.coinsSAllTime;
-
-                DataBase.instance.SaveData(jsonData.userData.coinsSAllTime, "menu", "coins", "coinsSAllTime");
-                UnityEngine.Debug.Log("All time superCoins is saved");
-            }
-
-            isCanCheck = false;
-        }
-
-        if (seconds == 40 && isCanCheck && !isDataException)
-        {
-            if (pastData.userData.level != jsonData.userData.level)
-            {
-                pastData.userData.level = jsonData.userData.level;
-
-                DataBase.instance.SaveData(jsonData.userData.level, "menu", "levelManager", "level");
-                UnityEngine.Debug.Log("Level is saved");
-            }
 
             seconds = 0;
+
             isCanCheck = false;
         }
     }
 
     public async Task StartAction()
     {
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        Debug.Log("Start action");
 
         password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
-
         DataBase.instance.SetMessage("Checking the availability of a file");
 
-        UnityEngine.Debug.Log(File.Exists(filePath) + " is file exist");
+        await JsonFilter.StartFilter();
+    }
+
+    public async Task CheckJsons()
+    {
+        Debug.Log("Check json");
+        string filePath = Path.Combine(Application.persistentDataPath, "data.json");
 
         if (!File.Exists(filePath))
         {
@@ -183,23 +102,21 @@ public class JsonStorage : MonoBehaviour
                     {
                         DataBase.instance.SetMessage("Creating new json data");
 
-                        jsonData = CreateNewJsonData();
-                        pastData = CreateNewJsonData();
+                        data = CreateNewJsonData();
 
-                        SaveEncryptDataOnExit(filePath);
-
+                        SaveEncryptDataOnExit();
                         StartTimer();
 
-                        UnityEngine.Debug.Log("File is created in storage");
+                        Debug.Log("File is created in storage");
 
                         return;
                     }
                     else
                     {
-                        UnityEngine.Debug.Log("File is received from storage");
+                        Debug.Log("File is received from storage");
                         DataBase.instance.SetMessage("Loading json data");
 
-                        jsonData = await StorageData.instance.LoadJsonData<JsonData>();
+                        data = await StorageData.instance.LoadJsonData<Data>();
 
                         while (!File.Exists(filePath))
                         {
@@ -208,7 +125,7 @@ public class JsonStorage : MonoBehaviour
 
                         await Task.Delay(1000);
 
-                        CryptoHelper.Encrypt(filePath, jsonData, password);
+                        CryptoHelper.Encrypt(data, password);
 
                         return;
                     }
@@ -221,7 +138,7 @@ public class JsonStorage : MonoBehaviour
             }
             catch (System.Exception e)
             {
-                UnityEngine.Debug.LogError(e);
+                Debug.LogError(e);
                 DataBase.instance.SetMessage(e.ToString());
             }
             
@@ -232,12 +149,11 @@ public class JsonStorage : MonoBehaviour
             await Task.Delay(1000);
         }
 
-        jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
-        pastData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
+        data = CryptoHelper.LoadAndDecrypt<Data>(filePath, password);
 
         DataBase.instance.SetMessage("Enabling add-ons");
 
-        if (jsonData.userData.level == 0)
+        if (data.userData.level == 0)
         {
             isDataException = true;
             DataBase.instance.SetActiveLoadingScreen(true);
@@ -248,7 +164,7 @@ public class JsonStorage : MonoBehaviour
         StartTimer();
     }
 
-    private void SaveEncryptDataOnExit(string filePath)
+    private void SaveEncryptDataOnExit()
     {
         if (UserData.instance.User != null)
         {
@@ -257,24 +173,24 @@ public class JsonStorage : MonoBehaviour
             string password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
             
             StorageData.instance.SaveJsonData();
-            CryptoHelper.Encrypt(filePath, jsonData, password);
+            CryptoHelper.Encrypt(data, password);
         }
         else
         {
-            UnityEngine.Debug.LogError("User is null, cannot save encrypted data.");
+            Debug.LogError("User is null, cannot save encrypted data.");
         }
     }
 
-    private JsonData CreateNewJsonData()
+    private Data CreateNewJsonData()
     {
-        return new JsonData
+        return new Data
         {
-            boolean = new JsonData.Boolean
+            boolean = new Data.Boolean
             {
                 isTutorial = false
             },
 
-            userData = new JsonData.UserData
+            userData = new Data.UserData
             {
                 userName = UserData.instance.User.DisplayName,
                 userEmail = UserData.instance.User.Email,
@@ -289,21 +205,32 @@ public class JsonStorage : MonoBehaviour
                 coinsSAllTime = 0
             },
 
-            shop = new JsonData.Shop
+            purchasedItems = new Data.PurchasedItems
             {
-                skins = startSkinsList,
-                bgs = startBgsList,
-                boosts = startBoostsList,
+                skins = new List<string>()
+                {
+                    "blackThrush"
+                },
+
+                bgs = new List<string>()
+                {
+                    "street"
+                },
+
+                boosts = new List<string>()
+                {
+                    "none"
+                },
             },
 
-            currentShop = new JsonData.CurrentShop
+            currentShop = new Data.CurrentShop
             {
                 currentSkin = 0,
                 currentBg = 0,
                 currentBoost = 0
             },
 
-            audioSettings = new JsonData.AudioSettings
+            audioSettings = new Data.AudioSettings
             {
                 musicMainMenu = 0.5f,
                 musicGame = 0.5f,
@@ -311,7 +238,7 @@ public class JsonStorage : MonoBehaviour
                 sfxGame = 1
             },
 
-            otherSettings = new JsonData.OtherSettings
+            otherSettings = new Data.OtherSettings
             {
                 showLevelRanks = true,
                 autoSave = false,
@@ -321,9 +248,13 @@ public class JsonStorage : MonoBehaviour
                 vibration = true
             },
 
-            accountIcons = new JsonData.AccountIcons
+            icons = new Data.Icons
             {
-                icons = startIcons
+                icons = new List<string>()
+                {
+                    "blackThrush",
+                    "chimney"
+                }
             }
         };
     }

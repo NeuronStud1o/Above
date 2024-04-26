@@ -28,27 +28,27 @@ public class DataBuySystem : MonoBehaviour
     {
         if (purchaseType == Think.Skin)
         {
-            KeyForm key = JsonStorage.instance.jsonData.shop.skins.FirstOrDefault(item => item.name == purchaseName);
+            bool isBought = JsonStorage.instance.data.purchasedItems.skins.Contains(purchaseName);
 
-            if (key.isPurchased == true)
+            if (isBought == true)
             {
                 gameObject.SetActive(false);
             }
         }
         if (purchaseType == Think.Bg)
         {
-            KeyForm key = JsonStorage.instance.jsonData.shop.bgs.FirstOrDefault(item => item.name == purchaseName);
+            bool isBought = JsonStorage.instance.data.purchasedItems.bgs.Contains(purchaseName);
 
-            if (key.isPurchased == true)
+            if (isBought == true)
             {
                 gameObject.SetActive(false);
             }
         }
         if (purchaseType == Think.Boost)
         {
-            KeyForm key = JsonStorage.instance.jsonData.shop.boosts.FirstOrDefault(item => item.name == purchaseName);
+            bool isBought = JsonStorage.instance.data.purchasedItems.boosts.Contains(purchaseName);
 
-            if (key.isPurchased == true)
+            if (isBought == true)
             {
                 gameObject.SetActive(false);
             }
@@ -63,44 +63,28 @@ public class DataBuySystem : MonoBehaviour
             {
                 if (purchaseType == Think.Skin)
                 {
-                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.skins.FirstOrDefault(item => item.name == purchaseName);
-
-                    if (purchaseItem.name != null)
-                    {
-                        purchaseItem.isPurchased = true;
-                    }
+                    JsonStorage.instance.data.purchasedItems.skins.Add(purchaseName);
                 }
                 else if (purchaseType == Think.Bg)
                 {
-                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.bgs.FirstOrDefault(item => item.name == purchaseName);
-
-                    if (purchaseItem.name != null)
-                    {
-                        purchaseItem.isPurchased = true;
-                    }
+                    JsonStorage.instance.data.purchasedItems.bgs.Add(purchaseName);
                 }
                 else if (purchaseType == Think.Boost)
                 {
-                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.boosts.FirstOrDefault(item => item.name == purchaseName);
-
-                    if (purchaseItem.name != null)
-                    {
-                        purchaseItem.isPurchased = true;
-                    }
+                    JsonStorage.instance.data.purchasedItems.boosts.Add(purchaseName);
                 }
 
                 if (GetComponent<AccIconsUnlockManager>())
                 {
-                    GetComponent<AccIconsUnlockManager>().Unlock(true);
+                    GetComponent<AccIconsUnlockManager>().Unlock();
                 }
 
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsF -= price;
-                JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+                JsonStorage.instance.data.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
 
-                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-                CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+                CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
                 CoinsManagerInMainMenu.instance.UpdateUI();
             }
@@ -111,44 +95,28 @@ public class DataBuySystem : MonoBehaviour
             {
                 if (purchaseType == Think.Skin)
                 {
-                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.skins.FirstOrDefault(item => item.name == purchaseName);
-
-                    if (purchaseItem.name != null)
-                    {
-                        purchaseItem.isPurchased = true;
-                    }
+                    JsonStorage.instance.data.purchasedItems.skins.Add(purchaseName);
                 }
                 else if (purchaseType == Think.Bg)
                 {
-                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.bgs.FirstOrDefault(item => item.name == purchaseName);
-
-                    if (purchaseItem.name != null)
-                    {
-                        purchaseItem.isPurchased = true;
-                    }
+                    JsonStorage.instance.data.purchasedItems.bgs.Add(purchaseName);
                 }
                 else if (purchaseType == Think.Boost)
                 {
-                    KeyForm purchaseItem = JsonStorage.instance.jsonData.shop.boosts.FirstOrDefault(item => item.name == purchaseName);
-
-                    if (purchaseItem.name != null)
-                    {
-                        purchaseItem.isPurchased = true;
-                    }
+                    JsonStorage.instance.data.purchasedItems.boosts.Add(purchaseName);
                 }
 
                 if (GetComponent<AccIconsUnlockManager>())
                 {
-                    GetComponent<AccIconsUnlockManager>().Unlock(true);
+                    GetComponent<AccIconsUnlockManager>().Unlock();
                 }
 
                 gameObject.SetActive(false);
 
                 CoinsManagerInMainMenu.instance.coinsS -= price;
-                JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
+                JsonStorage.instance.data.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
 
-                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-                CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+                CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
                 
                 CoinsManagerInMainMenu.instance.UpdateUI();
             }
