@@ -35755,7 +35755,7 @@ MonoBehaviour:
   - profileIcon: {fileID: 21300000, guid: ba06ef29d7a032c4d97f3750e1d6f0c5, type: 3}
   - profileIcon: {fileID: 21300000, guid: 8fd337b0f0ac0794f925f0f0e5eb0579, type: 3}
   - profileIcon: {fileID: 21300000, guid: b638d05aa9fc4a447b5cd0c9f69c8cb2, type: 3}
-  - profileIcon: {fileID: 21300000, guid: 0d2061bf047c0be4f8dd044f38cd806b, type: 3}
+  - profileIcon: {fileID: 21300000, guid: f37f269a5f410c842b05764d9b0fdc66, type: 3}
 --- !u!114 &993806774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56204,7 +56204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb898460e2f8e348afec02236ba9e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 0d2061bf047c0be4f8dd044f38cd806b, type: 3}
+  icon: {fileID: 21300000, guid: f37f269a5f410c842b05764d9b0fdc66, type: 3}
   description:
     textUa: "\u0406\u043A\u043E\u043D\u043A\u0430 \u0432\u0438\u0434\u0430\u0454\u0442\u044C\u0441\u044F
       \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0442\u0430\u043A\u043E\u0433\u043E
@@ -58850,7 +58850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0d2061bf047c0be4f8dd044f38cd806b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f37f269a5f410c842b05764d9b0fdc66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
