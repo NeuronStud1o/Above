@@ -31,7 +31,7 @@ public class BuySystem : MonoBehaviour
 
     public List<GameObject> equipButtons;
 
-    void Start()
+    void Awake()
     {
         filePath = Path.Combine(Application.persistentDataPath, "shop.json"); 
         skins = LoadFromJson();
@@ -107,6 +107,7 @@ public class BuySystem : MonoBehaviour
                 new Skins.OpenSkin { name = "nightingaleFemale", isOpen = false, isFlyCoin = true, price = 215 },
                 new Skins.OpenSkin { name = "whitePigeon", isOpen = false, isFlyCoin = true, price = 240 },
                 new Skins.OpenSkin { name = "redCardinal", isOpen = false, isFlyCoin = false, price = 12 },
+                new Skins.OpenSkin { name = "flamingo", isOpen = false, isFlyCoin = false, price = 15 },
                 new Skins.OpenSkin { name = "kiwi", isOpen = false, isFlyCoin = false, price = 30 },
             }
         };
