@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -18,7 +15,7 @@ public class LosePanel : MonoBehaviour
     {
         int gainedExp;
         
-        int recordScore = JsonStorage.instance.jsonData.userData.record;
+        int recordScore = JsonStorage.instance.data.userData.record;
         gainedExp = lastRunScore / 14;
 
         if (gainedExp > 100)
@@ -26,19 +23,17 @@ public class LosePanel : MonoBehaviour
             gainedExp = 100;
         }
 
-        int doneExp = JsonStorage.instance.jsonData.userData.exp + gainedExp;
+        int doneExp = JsonStorage.instance.data.userData.exp + gainedExp;
 
-        JsonStorage.instance.jsonData.userData.exp = doneExp;
+        JsonStorage.instance.data.userData.exp = doneExp;
 
         if (lastRunScore > recordScore)
         {
             recordScore = lastRunScore;
-            JsonStorage.instance.jsonData.userData.record = recordScore;
+            JsonStorage.instance.data.userData.record = recordScore;
         }
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
         scoreText.text = recordScore.ToString();
     }

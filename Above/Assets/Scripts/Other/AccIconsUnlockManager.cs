@@ -1,5 +1,3 @@
-using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class AccIconsUnlockManager : MonoBehaviour
@@ -11,20 +9,18 @@ public class AccIconsUnlockManager : MonoBehaviour
     {
         if (isNeedToBuy)
         {
-            KeyForm data = JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == iconName);
+            bool isBought = JsonStorage.instance.data.icons.icons.Contains(iconName);
 
-            if (data.isPurchased)
+            if (isBought)
             {
                 gameObject.SetActive(false);
             }
         }
     }
 
-    public void Unlock(bool isUlock)
+    public void Unlock()
     {
-        KeyForm icon = JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == iconName);
-
-        icon.isPurchased = isUlock;
+        JsonStorage.instance.data.icons.icons.Add(iconName);
 
         EquipAccIcon.instance.CheckLock();
     }
@@ -33,21 +29,16 @@ public class AccIconsUnlockManager : MonoBehaviour
     {
         if (CoinsManagerInMainMenu.instance.coinsF >= price)
         {
-            KeyForm purchaseItem = JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == iconName);
+            JsonStorage.instance.data.icons.icons.Add(iconName);
 
-            if (purchaseItem.name != null)
-            {
-                purchaseItem.isPurchased = true;
-                gameObject.SetActive(false);
-            }
+            gameObject.SetActive(false);
 
             EquipAccIcon.instance.CheckLock();
             
             CoinsManagerInMainMenu.instance.coinsF -= price;
-            JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+            JsonStorage.instance.data.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
             CoinsManagerInMainMenu.instance.UpdateUI();
         }
@@ -57,21 +48,16 @@ public class AccIconsUnlockManager : MonoBehaviour
     {
         if (CoinsManagerInMainMenu.instance.coinsS >= price)
         {
-            KeyForm purchaseItem = JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == iconName);
+            JsonStorage.instance.data.icons.icons.Add(iconName);
 
-            if (purchaseItem.name != null)
-            {
-                purchaseItem.isPurchased = true;
-                gameObject.SetActive(false);
-            }
+            gameObject.SetActive(false);
 
             EquipAccIcon.instance.CheckLock();
-
+            
             CoinsManagerInMainMenu.instance.coinsS -= price;
-            JsonStorage.instance.jsonData.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
+            JsonStorage.instance.data.userData.coinsS = CoinsManagerInMainMenu.instance.coinsS;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
             CoinsManagerInMainMenu.instance.UpdateUI();
         }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -12,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (isTutorial) return;
 
-        if (!JsonStorage.instance.jsonData.otherSettings.showSelectedBoostInGame)
+        if (!JsonStorage.instance.data.otherSettings.showSelectedBoostInGame)
         {
             boost.SetActive(false);
         }

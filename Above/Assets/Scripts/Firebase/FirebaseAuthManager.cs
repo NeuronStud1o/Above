@@ -166,6 +166,8 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private void AutoLogin()
     {
+        //JsonFilter.StartFilter();
+
         if (user != null && user.IsEmailVerified)
         {
             if (storage != null)
@@ -237,13 +239,13 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         if (auth != null && user != null)
         {
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+            string filePath = Path.Combine(Application.persistentDataPath, "data.json");
             string password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
 
             StorageData.instance.SetStorage(storageInstance);
             StorageData.instance.SetReference();
 
-            if (JsonStorage.instance.jsonData.userData.level == 0)
+            if (JsonStorage.instance.data.userData.level == 0)
             {
                 if (!File.Exists(filePath))
                 {
@@ -255,7 +257,7 @@ public class FirebaseAuthManager : MonoBehaviour
                             {
                                 UnityEngine.Debug.Log("File is received from storage");
 
-                                JsonStorage.instance.jsonData = await StorageData.instance.LoadJsonData<JsonData>();
+                                JsonStorage.instance.data = await StorageData.instance.LoadJsonData<Data>();
 
                                 while (!File.Exists(filePath))
                                 {
@@ -264,7 +266,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
                                 await Task.Delay(1000);
 
-                                CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, password);
+                                CryptoHelper.Encrypt(JsonStorage.instance.data, password);
 
                                 return;
                             }
@@ -283,7 +285,7 @@ public class FirebaseAuthManager : MonoBehaviour
                 }
                 else
                 {
-                    JsonStorage.instance.jsonData = CryptoHelper.LoadAndDecrypt<JsonData>(filePath, password);
+                    JsonStorage.instance.data = CryptoHelper.LoadAndDecrypt<Data>(filePath, password);
                 }
             }
             
@@ -558,9 +560,9 @@ public class FirebaseAuthManager : MonoBehaviour
 
         await Task.Delay(1000);
         
-        DataBase.instance.GetComponent<AudioSource>().volume = JsonStorage.instance.jsonData.audioSettings.musicMainMenu;
+        DataBase.instance.GetComponent<AudioSource>().volume = JsonStorage.instance.data.audioSettings.musicMainMenu;
 
-        bool tutorial = JsonStorage.instance.jsonData.boolean.isTutorial;
+        bool tutorial = JsonStorage.instance.data.boolean.isTutorial;
 
         DataBase.instance.SetMessage("");
 
@@ -570,7 +572,7 @@ public class FirebaseAuthManager : MonoBehaviour
         if (tutorial == false)
         {
             DataBase.instance.GetComponent<AudioSource>().enabled = false;
-            JsonStorage.instance.jsonData.boolean.isTutorial = true;
+            JsonStorage.instance.data.boolean.isTutorial = true;
 
             DataBase.instance.SetActiveLoadingScreen(false);
 

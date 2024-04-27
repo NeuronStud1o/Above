@@ -32,18 +32,18 @@ public class ManagerEXP : MonoBehaviour
     
     void Start()
     {
-        if (JsonStorage.instance.jsonData.userData.level >= 20)
+        if (JsonStorage.instance.data.userData.level >= 20)
         {
-            KeyForm icon =  JsonStorage.instance.jsonData.accountIcons.icons.FirstOrDefault(item => item.name == "exp");
+            bool isBought = JsonStorage.instance.data.icons.icons.Contains("exp");
 
-            if (icon.isPurchased == false)
+            if (isBought == false)
             {
-                icon.isPurchased = true;
+                JsonStorage.instance.data.icons.icons.Add("exp");
                 EquipAccIcon.instance.CheckLock();
             }
         }
 
-        hightScore.text = "" + JsonStorage.instance.jsonData.userData.record;
+        hightScore.text = "" + JsonStorage.instance.data.userData.record;
 
         GetValues();
 
@@ -60,8 +60,8 @@ public class ManagerEXP : MonoBehaviour
 
     public void GetValues()
     {
-        exp = JsonStorage.instance.jsonData.userData.exp;
-        level = JsonStorage.instance.jsonData.userData.level;
+        exp = JsonStorage.instance.data.userData.exp;
+        level = JsonStorage.instance.data.userData.level;
     }
 
     private void SetValues()
@@ -91,11 +91,10 @@ public class ManagerEXP : MonoBehaviour
         {
             exp -= countToNextLevel;
             level++;
-            JsonStorage.instance.jsonData.userData.exp -= countToNextLevel;
-            JsonStorage.instance.jsonData.userData.level++;
+            JsonStorage.instance.data.userData.exp -= countToNextLevel;
+            JsonStorage.instance.data.userData.level++;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
             SetValues();
         }

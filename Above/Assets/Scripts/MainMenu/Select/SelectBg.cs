@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class SelectBg : MonoBehaviour
@@ -16,7 +13,7 @@ public class SelectBg : MonoBehaviour
 
     void Start()
     {
-        i = JsonStorage.instance.jsonData.currentShop.currentBg;
+        i = JsonStorage.instance.data.currentShop.currentBg;
 
         EquipedButtons[i].SetActive(true);
         EquipButtons[i].SetActive(false);
@@ -45,10 +42,9 @@ public class SelectBg : MonoBehaviour
             EquipButtons[i].SetActive(true);
         }
 
-        JsonStorage.instance.jsonData.currentShop.currentBg = thisBg;
+        JsonStorage.instance.data.currentShop.currentBg = thisBg;
         
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
         AllBg[thisBg].SetActive(true);
         AllRailings[thisBg].SetActive(true);

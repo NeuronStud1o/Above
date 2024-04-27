@@ -48,11 +48,11 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
-        audioSource.volume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
+        audioSource.volume = JsonStorage.instance.data.audioSettings.sfxGame;
         
-        hp = JsonStorage.instance.jsonData.currentShop.currentBoost == 3 ? 1 : 0;
-        speed = JsonStorage.instance.jsonData.currentShop.currentBoost == 2 ? 1.5f : 2.2f;
-        coinsToAdd = JsonStorage.instance.jsonData.currentShop.currentBoost == 1 ? 2 : 1;
+        hp = JsonStorage.instance.data.currentShop.currentBoost == 3 ? 1 : 0;
+        speed = JsonStorage.instance.data.currentShop.currentBoost == 2 ? 1.5f : 2.2f;
+        coinsToAdd = JsonStorage.instance.data.currentShop.currentBoost == 1 ? 2 : 1;
 
         PauseController.instance.Hero = gameObject;
 
@@ -101,12 +101,11 @@ public class Player : MonoBehaviour
             StartCoroutine(TouchCoin(collision.gameObject, true));
 
             CoinsManager.instance.coinsF += coinsToAdd;
-            JsonStorage.instance.jsonData.userData.coinsF = CoinsManager.instance.coinsF;
+            JsonStorage.instance.data.userData.coinsF = CoinsManager.instance.coinsF;
 
-            JsonStorage.instance.jsonData.userData.coinsFAllTime += coinsToAdd;
+            JsonStorage.instance.data.userData.coinsFAllTime += coinsToAdd;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
             audioSource.PlayOneShot(getCoin);
 
@@ -118,12 +117,11 @@ public class Player : MonoBehaviour
             StartCoroutine(TouchCoin(collision.gameObject, false));
 
             CoinsManager.instance.coinsS++;
-            JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
+            JsonStorage.instance.data.userData.coinsS = CoinsManager.instance.coinsS;
 
-            JsonStorage.instance.jsonData.userData.coinsSAllTime++;
+            JsonStorage.instance.data.userData.coinsSAllTime++;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
             
             audioSource.PlayOneShot(getCoin);
 
@@ -195,7 +193,7 @@ public class Player : MonoBehaviour
     {
         canvasInGame.SetActive(false);
         
-        if (JsonStorage.instance.jsonData.otherSettings.vibration)
+        if (JsonStorage.instance.data.otherSettings.vibration)
         {
             Handheld.Vibrate();
             Debug.Log("Vibration");
@@ -211,7 +209,7 @@ public class Player : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.05f));
 
-        if (JsonStorage.instance.jsonData.otherSettings.cameraShake)
+        if (JsonStorage.instance.data.otherSettings.cameraShake)
         {
             for (int i = 0; i < 10; i++)
             {

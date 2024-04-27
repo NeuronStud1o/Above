@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectBgInGame : MonoBehaviour
@@ -16,7 +15,7 @@ public class SelectBgInGame : MonoBehaviour
 
     IEnumerator StartActivity()
     {
-        i = JsonStorage.instance.jsonData.currentShop.currentBg;
+        i = JsonStorage.instance.data.currentShop.currentBg;
 
         AllBg[i].SetActive(true);
         AllRailings[i].SetActive(true);

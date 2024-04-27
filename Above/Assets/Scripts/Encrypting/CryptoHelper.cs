@@ -23,8 +23,10 @@ public static class CryptoHelper
         }
     }
 
-    public static void Encrypt(string filePath, object jsonData, string password)
+    public static void Encrypt(object jsonData, string password)
     {
+        string filePath = Path.Combine(Application.persistentDataPath, "data.json");
+
         string jsonString = JsonUtility.ToJson(jsonData, true);
         EncryptInternal(filePath, jsonString, password);
     }
@@ -37,7 +39,6 @@ public static class CryptoHelper
 
     private static void EncryptInternal(string filePath, string json, string password)
     {
-        //Debug.Log("Encrypting");
         using (Aes aesAlg = Aes.Create())
         {
             aesAlg.KeySize = KeySize;
