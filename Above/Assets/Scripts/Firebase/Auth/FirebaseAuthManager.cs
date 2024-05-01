@@ -41,6 +41,7 @@ public class FirebaseAuthManager : MonoBehaviour
     [Space]
     [Header("Other")]
     [SerializeField] private GameObject loading;
+    [SerializeField] private GameObject supportButtonsPanel;
     [SerializeField] private TextMeshProUGUI initText;
 
     private static bool isReady = false;
@@ -158,6 +159,8 @@ public class FirebaseAuthManager : MonoBehaviour
         else
         {
             initText.gameObject.SetActive(false);
+            supportButtonsPanel.SetActive(true);
+
             loading.SetActive(false);
 
             UIManager.Instance.OpenLoginPanel();
@@ -166,8 +169,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private void AutoLogin()
     {
-        //JsonFilter.StartFilter();
-
         if (user != null && user.IsEmailVerified)
         {
             if (storage != null)
@@ -186,6 +187,8 @@ public class FirebaseAuthManager : MonoBehaviour
         }
 
         initText.gameObject.SetActive(false);
+        supportButtonsPanel.SetActive(true);
+        
         loading.SetActive(false);
     }
 

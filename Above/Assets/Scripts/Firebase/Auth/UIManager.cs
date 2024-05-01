@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using System.IO;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [Header("## Authentication :")]
     [SerializeField] private GameObject authPanel;
     [SerializeField] private GameObject buttonsPanel;
     [SerializeField] private GameObject loginPanel;
@@ -18,7 +15,7 @@ public class UIManager : MonoBehaviour
     [Space]
     [SerializeField] private GameObject emailVerificationPanel;
     [SerializeField] private TextMeshProUGUI emailVerificationText;
-    
+
     private void Awake()
     {
         CreateInstance();
@@ -75,17 +72,22 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowVerificationResponse(bool isEmailSent, string emailId, string errorMessage)
-        {
-            ClearUI();
-            emailVerificationPanel.SetActive(true);
+    {
+        ClearUI();
+        emailVerificationPanel.SetActive(true);
 
-            if(isEmailSent)
-            {
-                emailVerificationText.text = $"Please verify your email address \n Verification email has been sent to {emailId}";
-            }
-            else
-            {
-                emailVerificationText.text = $"Couldn't sent email : {errorMessage}";
-            }
+        if(isEmailSent)
+        {
+            emailVerificationText.text = $"Please verify your email address \n Verification email has been sent to {emailId}";
+        }
+        else
+        {
+            emailVerificationText.text = $"Couldn't sent email : {errorMessage}";
         }
     }
+
+    public void OpenDocumentation()
+    {
+        Application.OpenURL("https://docs.google.com/document/d/1ANJd7XmfpLubOtsssmON4Fuc_4nhoc4LQUoeockF8RY/edit?usp=sharing");
+    } 
+}
