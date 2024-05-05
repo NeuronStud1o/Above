@@ -73,34 +73,42 @@ public static class CryptoHelper
 
     private static string LoadAndDecryptInternal(string filePath, string password)
     {
-        using (FileStream fileStream = File.OpenRead(filePath))
+        try
         {
-            byte[] iv = new byte[BlockSize / 8];
-            fileStream.Read(iv, 0, iv.Length);
-
-            using (Aes aesAlg = Aes.Create())
+            using (FileStream fileStream = File.OpenRead(filePath))
             {
-                aesAlg.KeySize = KeySize;
-                aesAlg.BlockSize = BlockSize;
+                byte[] iv = new byte[BlockSize / 8];
+                fileStream.Read(iv, 0, iv.Length);
 
-                Rfc2898DeriveBytes keyDerivation = new Rfc2898DeriveBytes(password, salt: GenerateSalt(password), iterations: DerivationIterations);
-                aesAlg.Key = keyDerivation.GetBytes(KeySize / 8);
-                aesAlg.IV = iv;
-
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-
-                using (MemoryStream msDecrypt = new MemoryStream())
+                using (Aes aesAlg = Aes.Create())
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Write))
-                    {
-                        fileStream.CopyTo(csDecrypt);
-                    }
+                    aesAlg.KeySize = KeySize;
+                    aesAlg.BlockSize = BlockSize;
 
-                    byte[] decryptedData = msDecrypt.ToArray();
-                    return System.Text.Encoding.UTF8.GetString(decryptedData);
+                    Rfc2898DeriveBytes keyDerivation = new Rfc2898DeriveBytes(password, salt: GenerateSalt(password), iterations: DerivationIterations);
+                    aesAlg.Key = keyDerivation.GetBytes(KeySize / 8);
+                    aesAlg.IV = iv;
+
+                    ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                    using (MemoryStream msDecrypt = new MemoryStream())
+                    {
+                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Write))
+                        {
+                            fileStream.CopyTo(csDecrypt);
+                        }
+
+                        byte[] decryptedData = msDecrypt.ToArray();
+                        return System.Text.Encoding.UTF8.GetString(decryptedData);
+                    }
                 }
             }
         }
+        catch (Exception)
+        {
+            return default;
+        }
+        
     }
 
     private static byte[] GenerateSalt(string pass)

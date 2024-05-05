@@ -155,12 +155,12 @@ RectTransform:
   m_Children:
   - {fileID: 1671110721}
   m_Father: {fileID: 1712740523}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 350}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14373332
 MonoBehaviour:
@@ -1139,6 +1139,7 @@ GameObject:
   - component: {fileID: 108504061}
   - component: {fileID: 108504063}
   - component: {fileID: 108504062}
+  - component: {fileID: 108504064}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1262,6 +1263,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108504060}
   m_CullTransparentMesh: 1
+--- !u!114 &108504064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108504060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0417\u0430\u0440\u0435\u0454\u0441\u0442\u0440\u0443\u0432\u0430\u0442\u0438\u0441\u044F"
+  textEng: Register
+  textDen: Register
+  textFra: Registre
+  textEs: Registro
+  textIta: Registro
+  textPl: Rejestr
 --- !u!1 &114811356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1554,7 @@ GameObject:
   - component: {fileID: 172652462}
   - component: {fileID: 172652464}
   - component: {fileID: 172652463}
+  - component: {fileID: 172652465}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1578,7 +1601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go back
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
@@ -1655,6 +1678,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172652461}
   m_CullTransparentMesh: 1
+--- !u!114 &172652465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172652461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u043E\u0432\u0435\u0440\u043D\u0443\u0442\u0438\u0441\u044C"
+  textEng: Return
+  textDen: "R\xFCckkehr"
+  textFra: Retour
+  textEs: "Devoluci\xF3n"
+  textIta: Ritorno
+  textPl: "Powr\xF3t"
 --- !u!1 &180439457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,6 +2053,7 @@ GameObject:
   - component: {fileID: 200703552}
   - component: {fileID: 200703554}
   - component: {fileID: 200703553}
+  - component: {fileID: 200703555}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2132,6 +2177,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200703551}
   m_CullTransparentMesh: 1
+--- !u!114 &200703555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200703551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044C \u043C\u043E\u0432\u0443"
+  textEng: Select a language
+  textDen: "W\xE4hlen Sie eine Sprache"
+  textFra: "S\xE9lectionner une langue"
+  textEs: Seleccione un idioma
+  textIta: Selezionare una lingua
+  textPl: "Wybierz j\u0119zyk"
 --- !u!1 &208782393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,7 +2285,7 @@ RectTransform:
   m_Children:
   - {fileID: 1705434904}
   m_Father: {fileID: 1712740523}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -2539,6 +2605,7 @@ GameObject:
   - component: {fileID: 259407673}
   - component: {fileID: 259407675}
   - component: {fileID: 259407674}
+  - component: {fileID: 259407676}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2662,6 +2729,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259407672}
   m_CullTransparentMesh: 1
+--- !u!114 &259407676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259407672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041B\u043E\u0433\u0456\u043D"
+  textEng: Login
+  textDen: Anmeldung
+  textFra: Connexion
+  textEs: "Inicio de sesi\xF3n"
+  textIta: Login
+  textPl: Logowanie
 --- !u!1 &272357420
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,6 +4099,7 @@ GameObject:
   - component: {fileID: 434970392}
   - component: {fileID: 434970391}
   - component: {fileID: 434970390}
+  - component: {fileID: 434970393}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -4154,6 +4243,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434970388}
   m_CullTransparentMesh: 1
+--- !u!114 &434970393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434970388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0442\u0435\u043A\u0441\u0442..."
+  textEng: Enter text...
+  textDen: Geben Sie den Text ein...
+  textFra: Saisissez le texte...
+  textEs: Introduce el texto...
+  textIta: Immettere il testo...
+  textPl: "Wprowad\u017A tekst..."
 --- !u!1 &444267940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,7 +4435,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &447392256
 MonoBehaviour:
@@ -4432,6 +4542,7 @@ GameObject:
   - component: {fileID: 474079920}
   - component: {fileID: 474079922}
   - component: {fileID: 474079921}
+  - component: {fileID: 474079923}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4555,6 +4666,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474079919}
   m_CullTransparentMesh: 1
+--- !u!114 &474079923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474079919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u0430\u0440\u043E\u043B\u044C"
+  textEng: Password
+  textDen: Kennwort
+  textFra: Mot de passe
+  textEs: "Contrase\xF1a"
+  textIta: Password
+  textPl: "Has\u0142o"
 --- !u!1 &475334271
 GameObject:
   m_ObjectHideFlags: 0
@@ -4590,7 +4722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -200.00002, y: 75}
+  m_AnchoredPosition: {x: -200, y: 75}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475334273
@@ -4965,6 +5097,7 @@ GameObject:
   - component: {fileID: 490034269}
   - component: {fileID: 490034268}
   - component: {fileID: 490034267}
+  - component: {fileID: 490034270}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -5108,6 +5241,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490034265}
   m_CullTransparentMesh: 1
+--- !u!114 &490034270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490034265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0442\u0435\u043A\u0441\u0442..."
+  textEng: Enter text...
+  textDen: Geben Sie den Text ein...
+  textFra: Saisissez le texte...
+  textEs: Introduce el texto...
+  textIta: Immettere il testo...
+  textPl: "Wprowad\u017A tekst..."
 --- !u!1 &492491522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,6 +5840,7 @@ GameObject:
   - component: {fileID: 630235421}
   - component: {fileID: 630235423}
   - component: {fileID: 630235422}
+  - component: {fileID: 630235424}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5809,6 +5964,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630235420}
   m_CullTransparentMesh: 1
+--- !u!114 &630235424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630235420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0456\u0434\u043A\u0440\u0438\u0442\u0438 gmail"
+  textEng: Open gmail
+  textDen: "Google Mail \xF6ffnen"
+  textFra: Ouvrir gmail
+  textEs: Abrir gmail
+  textIta: Aprire gmail
+  textPl: "Otw\xF3rz gmail"
 --- !u!1 &648402337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5860,6 +6036,7 @@ GameObject:
   - component: {fileID: 649752795}
   - component: {fileID: 649752797}
   - component: {fileID: 649752796}
+  - component: {fileID: 649752798}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5983,6 +6160,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649752794}
   m_CullTransparentMesh: 1
+--- !u!114 &649752798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649752794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0438 \u043F\u0430\u0440\u043E\u043B\u044C"
+  textEng: Confirm password
+  textDen: "Best\xE4tigen Sie Ihr Kennwort"
+  textFra: Confirmez votre mot de passe
+  textEs: "Confirme su contrase\xF1a"
+  textIta: Confermare la password
+  textPl: "Potwierd\u017A has\u0142o"
 --- !u!1 &650148592
 GameObject:
   m_ObjectHideFlags: 0
@@ -6095,7 +6293,7 @@ RectTransform:
   m_Children:
   - {fileID: 108504061}
   m_Father: {fileID: 1712740523}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -6591,6 +6789,7 @@ GameObject:
   - component: {fileID: 720627943}
   - component: {fileID: 720627945}
   - component: {fileID: 720627944}
+  - component: {fileID: 720627946}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6637,7 +6836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Already User? Login
+  m_text: Already registered? Log in
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
@@ -6714,6 +6913,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720627942}
   m_CullTransparentMesh: 1
+--- !u!114 &720627946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720627942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0436\u0435 \u0437\u0430\u0440\u0435\u0454\u0441\u0442\u0440\u0443\u0432\u0430\u043B\u0438\u0441\u044F?
+    \u0423\u0432\u0456\u0439\u0434\u0456\u0442\u044C"
+  textEng: Already registered? Sign in
+  textDen: Sind Sie bereits registriert? Anmelden
+  textFra: "D\xE9j\xE0 inscrit ? S'identifier"
+  textEs: "\xBFYa est\xE1 registrado? Iniciar sesi\xF3n"
+  textIta: "Gi\xE0 registrato? Accedi"
+  textPl: "Jeste\u015B ju\u017C zarejestrowany? Zaloguj si\u0119"
 --- !u!1 &738215562
 GameObject:
   m_ObjectHideFlags: 0
@@ -7294,7 +7515,7 @@ RectTransform:
   m_Children:
   - {fileID: 172652462}
   m_Father: {fileID: 1051491779}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -7455,6 +7676,7 @@ GameObject:
   - component: {fileID: 802873611}
   - component: {fileID: 802873613}
   - component: {fileID: 802873612}
+  - component: {fileID: 802873614}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7578,6 +7800,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802873610}
   m_CullTransparentMesh: 1
+--- !u!114 &802873614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802873610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u0430\u0440\u043E\u043B\u044C"
+  textEng: Password
+  textDen: Kennwort
+  textFra: Mot de passe
+  textEs: "Contrase\xF1a"
+  textIta: Password
+  textPl: "Has\u0142o"
 --- !u!1 &804019360
 GameObject:
   m_ObjectHideFlags: 0
@@ -8365,6 +8608,7 @@ GameObject:
   - component: {fileID: 840162711}
   - component: {fileID: 840162713}
   - component: {fileID: 840162712}
+  - component: {fileID: 840162714}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -8389,7 +8633,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -200}
-  m_SizeDelta: {x: 623.17, y: 100}
+  m_SizeDelta: {x: 620, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840162712
 MonoBehaviour:
@@ -8488,6 +8732,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840162710}
   m_CullTransparentMesh: 1
+--- !u!114 &840162714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840162710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0411\u0443\u0434\u044C \u043B\u0430\u0441\u043A\u0430, \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435
+    \u0441\u0432\u043E\u044E \u0435\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u0443
+    \u0430\u0434\u0440\u0435\u0441\u0443"
+  textEng: Please verify your email address
+  textDen: "Bitte \xFCberpr\xFCfen Sie Ihre E-Mail Adresse"
+  textFra: "Veuillez v\xE9rifier votre adresse \xE9lectronique"
+  textEs: "Compruebe su direcci\xF3n de correo electr\xF3nico"
+  textIta: Controllare l'indirizzo e-mail
+  textPl: "Sprawd\u017A sw\xF3j adres e-mail"
 --- !u!1 &844284356
 GameObject:
   m_ObjectHideFlags: 0
@@ -9149,6 +9416,7 @@ GameObject:
   - component: {fileID: 899673662}
   - component: {fileID: 899673664}
   - component: {fileID: 899673663}
+  - component: {fileID: 899673665}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9272,6 +9540,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899673661}
   m_CullTransparentMesh: 1
+--- !u!114 &899673665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899673661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041B\u043E\u0433\u0456\u043D"
+  textEng: Login
+  textDen: Anmeldung
+  textFra: Connexion
+  textEs: "Inicio de sesi\xF3n"
+  textIta: Login
+  textPl: Logowanie
 --- !u!1 &907755504
 GameObject:
   m_ObjectHideFlags: 0
@@ -9556,6 +9845,7 @@ GameObject:
   - component: {fileID: 928686876}
   - component: {fileID: 928686878}
   - component: {fileID: 928686877}
+  - component: {fileID: 928686879}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9679,6 +9969,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928686875}
   m_CullTransparentMesh: 1
+--- !u!114 &928686879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928686875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u043E\u0433\u0430\u043D\u0435 \u0437'\u0454\u0434\u043D\u0430\u043D\u043D\u044F
+    \u0437 WIFI"
+  textEng: Bad WIFI connection
+  textDen: Schlechte WIFI-Verbindung
+  textFra: Mauvaise connexion WIFI
+  textEs: "Mala conexi\xF3n WIFI"
+  textIta: Scarsa connessione WIFI
+  textPl: "S\u0142abe po\u0142\u0105czenie WIFI"
 --- !u!1 &948501986
 GameObject:
   m_ObjectHideFlags: 0
@@ -10286,6 +10598,7 @@ GameObject:
   - component: {fileID: 1019455601}
   - component: {fileID: 1019455603}
   - component: {fileID: 1019455602}
+  - component: {fileID: 1019455604}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10409,6 +10722,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019455600}
   m_CullTransparentMesh: 1
+--- !u!114 &1019455604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019455600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0421\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0449\u0435 \u0440\u0430\u0437"
+  textEng: Try again
+  textDen: Erneut versuchen
+  textFra: "R\xE9essayer"
+  textEs: "Int\xE9ntalo de nuevo"
+  textIta: Riprova
+  textPl: "Spr\xF3buj ponownie"
 --- !u!1 &1028060549
 GameObject:
   m_ObjectHideFlags: 0
@@ -10730,8 +11064,8 @@ RectTransform:
   - {fileID: 155723762}
   - {fileID: 1789970565}
   - {fileID: 1494834882}
-  - {fileID: 773469767}
   - {fileID: 1273351219}
+  - {fileID: 773469767}
   m_Father: {fileID: 650148593}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10862,6 +11196,7 @@ GameObject:
   - component: {fileID: 1082900562}
   - component: {fileID: 1082900561}
   - component: {fileID: 1082900560}
+  - component: {fileID: 1082900563}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -11005,6 +11340,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082900558}
   m_CullTransparentMesh: 1
+--- !u!114 &1082900563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082900558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0442\u0435\u043A\u0441\u0442..."
+  textEng: Enter text...
+  textDen: Geben Sie den Text ein...
+  textFra: Saisissez le texte...
+  textEs: Introduce el texto...
+  textIta: Immettere il testo...
+  textPl: "Wprowad\u017A tekst..."
 --- !u!1 &1100284664
 GameObject:
   m_ObjectHideFlags: 0
@@ -11128,7 +11484,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1100284667
@@ -11838,6 +12194,7 @@ GameObject:
   - component: {fileID: 1138955486}
   - component: {fileID: 1138955488}
   - component: {fileID: 1138955487}
+  - component: {fileID: 1138955489}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11961,6 +12318,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138955485}
   m_CullTransparentMesh: 1
+--- !u!114 &1138955489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138955485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0417\u0430\u0440\u0435\u0454\u0441\u0442\u0440\u0443\u0432\u0430\u0442\u0438\u0441\u044F"
+  textEng: Register
+  textDen: Register
+  textFra: Registre
+  textEs: Registro
+  textIta: Registro
+  textPl: Rejestr
 --- !u!1 &1172082750
 GameObject:
   m_ObjectHideFlags: 0
@@ -12114,6 +12492,7 @@ GameObject:
   - component: {fileID: 1217696318}
   - component: {fileID: 1217696320}
   - component: {fileID: 1217696319}
+  - component: {fileID: 1217696321}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -12237,6 +12616,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217696317}
   m_CullTransparentMesh: 1
+--- !u!114 &1217696321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217696317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041D\u0430\u0434\u0456\u0441\u043B\u0430\u0442\u0438"
+  textEng: Send
+  textDen: Senden Sie
+  textFra: Envoyer
+  textEs: Enviar
+  textIta: Inviare
+  textPl: "Wy\u015Blij"
 --- !u!1 &1222180560
 GameObject:
   m_ObjectHideFlags: 0
@@ -12249,6 +12649,7 @@ GameObject:
   - component: {fileID: 1222180564}
   - component: {fileID: 1222180563}
   - component: {fileID: 1222180562}
+  - component: {fileID: 1222180565}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -12392,6 +12793,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222180560}
   m_CullTransparentMesh: 1
+--- !u!114 &1222180565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222180560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0442\u0435\u043A\u0441\u0442..."
+  textEng: Enter text...
+  textDen: Geben Sie den Text ein...
+  textFra: Saisissez le texte...
+  textEs: Introduce el texto...
+  textIta: Immettere il testo...
+  textPl: "Wprowad\u017A tekst..."
 --- !u!1 &1273351218
 GameObject:
   m_ObjectHideFlags: 0
@@ -12424,7 +12846,7 @@ RectTransform:
   m_Children:
   - {fileID: 1217696318}
   m_Father: {fileID: 1051491779}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -12500,7 +12922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12156863, g: 0.9607843, b: 0.23529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12671,7 +13093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -100.000046, y: 75}
+  m_AnchoredPosition: {x: -100.00006, y: 75}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296060557
@@ -12913,6 +13335,7 @@ GameObject:
   - component: {fileID: 1319388929}
   - component: {fileID: 1319388928}
   - component: {fileID: 1319388927}
+  - component: {fileID: 1319388930}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -13056,6 +13479,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319388925}
   m_CullTransparentMesh: 1
+--- !u!114 &1319388930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319388925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0442\u0435\u043A\u0441\u0442..."
+  textEng: Enter text...
+  textDen: Geben Sie den Text ein...
+  textFra: Saisissez le texte...
+  textEs: Introduce el texto...
+  textIta: Immettere il testo...
+  textPl: "Wprowad\u017A tekst..."
 --- !u!1 &1398359958
 GameObject:
   m_ObjectHideFlags: 0
@@ -13146,6 +13590,7 @@ GameObject:
   - component: {fileID: 1448446226}
   - component: {fileID: 1448446228}
   - component: {fileID: 1448446227}
+  - component: {fileID: 1448446229}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -13269,6 +13714,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448446225}
   m_CullTransparentMesh: 1
+--- !u!114 &1448446229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448446225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0417\u0430\u0431\u0443\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C?"
+  textEng: Forgot your password?
+  textDen: Haben Sie Ihr Passwort vergessen?
+  textFra: "Vous avez oubli\xE9 votre mot de passe ?"
+  textEs: "\xBFHa olvidado su contrase\xF1a?"
+  textIta: Avete dimenticato la password?
+  textPl: "Zapomnia\u0142e\u015B has\u0142a?"
 --- !u!1 &1470442372
 GameObject:
   m_ObjectHideFlags: 0
@@ -13728,6 +14194,7 @@ GameObject:
   - component: {fileID: 1569160742}
   - component: {fileID: 1569160744}
   - component: {fileID: 1569160743}
+  - component: {fileID: 1569160745}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -13851,6 +14318,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569160741}
   m_CullTransparentMesh: 1
+--- !u!114 &1569160745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569160741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0435\u0440\u0438\u0444\u0456\u043A\u0430\u0446\u0456\u044F"
+  textEng: Verification
+  textDen: Verifizierung
+  textFra: "V\xE9rification"
+  textEs: "Verificaci\xF3n"
+  textIta: Verifica
+  textPl: Weryfikacja
 --- !u!1 &1576007851
 GameObject:
   m_ObjectHideFlags: 0
@@ -14212,6 +14700,7 @@ GameObject:
   - component: {fileID: 1593818264}
   - component: {fileID: 1593818266}
   - component: {fileID: 1593818265}
+  - component: {fileID: 1593818267}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -14335,6 +14824,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593818263}
   m_CullTransparentMesh: 1
+--- !u!114 &1593818267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593818263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044F"
+  textEng: Registration
+  textDen: Registrierung
+  textFra: Inscription
+  textEs: "Inscripci\xF3n"
+  textIta: Registrazione
+  textPl: Rejestracja
 --- !u!1 &1596389000
 GameObject:
   m_ObjectHideFlags: 0
@@ -14346,6 +14856,7 @@ GameObject:
   - component: {fileID: 1596389001}
   - component: {fileID: 1596389003}
   - component: {fileID: 1596389002}
+  - component: {fileID: 1596389004}
   m_Layer: 5
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
@@ -14392,7 +14903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Verification email has been sent to email@gmail.com
+  m_text: Verification email has been sent to
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
   m_sharedMaterial: {fileID: -5187574834531901291, guid: 3a09938b7196c9648a57909b4df1347a, type: 2}
@@ -14469,6 +14980,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596389000}
   m_CullTransparentMesh: 1
+--- !u!114 &1596389004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596389000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 1596389002}
+  textUa: "\u041B\u0438\u0441\u0442-\u043F\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043D\u043D\u044F
+    \u043D\u0430\u0434\u0456\u0441\u043B\u0430\u043D\u043E \u043D\u0430 \u0435\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u0443
+    \u043F\u043E\u0448\u0442\u0443"
+  textEng: Confirmation letter sent to email
+  textDen: "Best\xE4tigungsschreiben an Ihre E-Mail-Adresse"
+  textFra: "Un courriel de confirmation a \xE9t\xE9 envoy\xE9 \xE0 votre adresse
+    \xE9lectronique."
+  textEs: "Se ha enviado un correo electr\xF3nico de confirmaci\xF3n a su direcci\xF3n
+    de correo electr\xF3nico"
+  textIta: Lettera di conferma inviata al vostro indirizzo e-mail
+  textPl: "List potwierdzaj\u0105cy wys\u0142any na adres e-mail"
 --- !u!1 &1601434620
 GameObject:
   m_ObjectHideFlags: 0
@@ -14957,6 +15493,7 @@ GameObject:
   - component: {fileID: 1649018292}
   - component: {fileID: 1649018294}
   - component: {fileID: 1649018293}
+  - component: {fileID: 1649018295}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -15080,6 +15617,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649018291}
   m_CullTransparentMesh: 1
+--- !u!114 &1649018295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649018291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0421\u043A\u0438\u043D\u0443\u0442\u0438 \u043F\u0430\u0440\u043E\u043B\u044C"
+  textEng: Reset password
+  textDen: "Passwort zur\xFCcksetzen"
+  textFra: "R\xE9initialiser le mot de passe"
+  textEs: "Restablecer contrase\xF1a"
+  textIta: Reimpostare la password
+  textPl: "Resetowanie has\u0142a"
 --- !u!1 &1659557037
 GameObject:
   m_ObjectHideFlags: 0
@@ -15091,6 +15649,7 @@ GameObject:
   - component: {fileID: 1659557038}
   - component: {fileID: 1659557040}
   - component: {fileID: 1659557039}
+  - component: {fileID: 1659557041}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -15214,6 +15773,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659557037}
   m_CullTransparentMesh: 1
+--- !u!114 &1659557041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659557037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0406\u043C'\u044F \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430"
+  textEng: Username
+  textDen: Benutzername
+  textFra: Nom d'utilisateur
+  textEs: Nombre de usuario
+  textIta: Nome utente
+  textPl: "Nazwa u\u017Cytkownika"
 --- !u!1 &1671110720
 GameObject:
   m_ObjectHideFlags: 0
@@ -15225,6 +15805,7 @@ GameObject:
   - component: {fileID: 1671110721}
   - component: {fileID: 1671110723}
   - component: {fileID: 1671110722}
+  - component: {fileID: 1671110724}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -15348,6 +15929,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671110720}
   m_CullTransparentMesh: 1
+--- !u!114 &1671110724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671110720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0413\u0440\u0430\u0442\u0438 \u043E\u0444\u043B\u0430\u0439\u043D"
+  textEng: Play offline
+  textDen: Offline spielen
+  textFra: Jouer hors ligne
+  textEs: "Jugar sin conexi\xF3n"
+  textIta: Gioca offline
+  textPl: Graj w trybie offline
 --- !u!1 &1672436239
 GameObject:
   m_ObjectHideFlags: 0
@@ -15699,6 +16301,7 @@ GameObject:
   - component: {fileID: 1705434904}
   - component: {fileID: 1705434906}
   - component: {fileID: 1705434905}
+  - component: {fileID: 1705434907}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -15822,6 +16425,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705434903}
   m_CullTransparentMesh: 1
+--- !u!114 &1705434907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705434903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041B\u043E\u0433\u0456\u043D"
+  textEng: Login
+  textDen: Anmeldung
+  textFra: Connexion
+  textEs: "Inicio de sesi\xF3n"
+  textIta: Login
+  textPl: Logowanie
 --- !u!1 &1712740522
 GameObject:
   m_ObjectHideFlags: 0
@@ -15853,9 +16477,9 @@ RectTransform:
   - {fileID: 953591860}
   - {fileID: 1102331881}
   - {fileID: 66202914}
+  - {fileID: 14373331}
   - {fileID: 229115757}
   - {fileID: 664746044}
-  - {fileID: 14373331}
   m_Father: {fileID: 650148593}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16528,6 +17152,7 @@ GameObject:
   - component: {fileID: 1787975788}
   - component: {fileID: 1787975790}
   - component: {fileID: 1787975789}
+  - component: {fileID: 1787975791}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -16651,6 +17276,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787975787}
   m_CullTransparentMesh: 1
+--- !u!114 &1787975791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787975787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0413\u0440\u0430\u0442\u0438 \u043E\u0444\u043B\u0430\u0439\u043D"
+  textEng: Play offline
+  textDen: Offline spielen
+  textFra: Jouer hors ligne
+  textEs: "Jugar sin conexi\xF3n"
+  textIta: Gioca offline
+  textPl: Graj w trybie offline
 --- !u!1 &1789970562
 GameObject:
   m_ObjectHideFlags: 0
@@ -16797,6 +17443,7 @@ GameObject:
   - component: {fileID: 1801254179}
   - component: {fileID: 1801254177}
   - component: {fileID: 1801254178}
+  - component: {fileID: 1801254181}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -16940,6 +17587,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1801254181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801254176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0442\u0435\u043A\u0441\u0442..."
+  textEng: Enter text...
+  textDen: Geben Sie den Text ein...
+  textFra: Saisissez le texte...
+  textEs: Introduce el texto...
+  textIta: Immettere il testo...
+  textPl: "Wprowad\u017A tekst..."
 --- !u!1 &1805266303
 GameObject:
   m_ObjectHideFlags: 0
@@ -17027,6 +17695,7 @@ GameObject:
   - component: {fileID: 1841098847}
   - component: {fileID: 1841098846}
   - component: {fileID: 1841098845}
+  - component: {fileID: 1841098848}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -17170,6 +17839,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841098843}
   m_CullTransparentMesh: 1
+--- !u!114 &1841098848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841098843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u0442\u0435\u043A\u0441\u0442..."
+  textEng: Enter text...
+  textDen: Geben Sie den Text ein...
+  textFra: Saisissez le texte...
+  textEs: Introduce el texto...
+  textIta: Immettere il testo...
+  textPl: "Wprowad\u017A tekst..."
 --- !u!1 &1843162983
 GameObject:
   m_ObjectHideFlags: 0
@@ -17584,6 +18274,7 @@ MonoBehaviour:
   errorText: {fileID: 2014243061}
   emailVerificationPanel: {fileID: 190966319}
   emailVerificationText: {fileID: 1596389002}
+  verificationTextManager: {fileID: 1596389004}
 --- !u!4 &1858990978
 Transform:
   m_ObjectHideFlags: 0

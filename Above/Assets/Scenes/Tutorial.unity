@@ -523,6 +523,7 @@ GameObject:
   - component: {fileID: 107268784}
   - component: {fileID: 107268783}
   - component: {fileID: 107268785}
+  - component: {fileID: 107268786}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -742,6 +743,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &107268786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107268781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u043E\u0433\u043B\u044F\u043D\u044C\u0442\u0435! \u0426\u0435 \u043F\u0435\u0440\u0435\u0448\u043A\u043E\u0434\u0430.
+    \u042F\u043A\u0449\u043E \u0434\u043E\u0442\u043E\u0440\u043A\u043D\u0435\u0442\u0435\u0441\u044F
+    \u0434\u043E \u043D\u0435\u0457, \u0442\u043E \u043F\u0440\u043E\u0433\u0440\u0430\u0454\u0442\u0435"
+  textEng: Look! This is an obstacle. If you touch it, you will lose
+  textDen: "Schauen Sie! Das ist ein Hindernis. Wenn du es ber\xFChrst, verlierst
+    du"
+  textFra: Regardez ! C'est un obstacle. Si vous le touchez, vous perdez
+  textEs: "\xA1Mira! Es un obst\xE1culo. Si lo tocas, pierdes"
+  textIta: "Guardate! \xC8 un ostacolo. Se lo tocchi, perdi"
+  textPl: "Sp\xF3jrz! To jest przeszkoda. Je\u015Bli jej dotkniesz, stracisz"
 --- !u!1 &115568981
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +936,7 @@ GameObject:
   - component: {fileID: 120580972}
   - component: {fileID: 120580974}
   - component: {fileID: 120580973}
+  - component: {fileID: 120580975}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1034,6 +1060,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120580971}
   m_CullTransparentMesh: 1
+--- !u!114 &120580975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120580971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0413\u0430\u0440\u0430\u0437\u0434"
+  textEng: Okay
+  textDen: Ja, okay
+  textFra: D'accord
+  textEs: Bien
+  textIta: Ok
+  textPl: Dobrze
 --- !u!1 &134154908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1189,7 @@ GameObject:
   - component: {fileID: 155475535}
   - component: {fileID: 155475534}
   - component: {fileID: 155475536}
+  - component: {fileID: 155475537}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -1188,7 +1236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Please click on the screen to jump
+  m_text: Please click on the screen to make the jump
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1361,6 +1409,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &155475537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155475532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0411\u0443\u0434\u044C \u043B\u0430\u0441\u043A\u0430, \u043D\u0430\u0442\u0438\u0441\u043D\u0456\u0442\u044C
+    \u043D\u0430 \u0435\u043A\u0440\u0430\u043D, \u0449\u043E\u0431 \u0437\u0440\u043E\u0431\u0438\u0442\u0438
+    \u0441\u0442\u0440\u0438\u0431\u043E\u043A"
+  textEng: Please click on the screen to make the jump
+  textDen: Bitte klicken Sie auf den Bildschirm, um zu springen
+  textFra: "Veuillez cliquer sur l'\xE9cran pour sauter"
+  textEs: Por favor haga clic en la pantalla para saltar
+  textIta: Fare clic sullo schermo per saltare
+  textPl: "Aby skoczy\u0107, kliknij ekran"
 --- !u!1 &163307575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,6 +1609,7 @@ GameObject:
   - component: {fileID: 170178289}
   - component: {fileID: 170178288}
   - component: {fileID: 170178287}
+  - component: {fileID: 170178290}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1565,15 +1637,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Do not touch the obstacles
-
-
-    Click on the screen to continue
-
-'
+  m_text: 'Do not touch the obstacles. Click on the screen to continue '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1604,8 +1671,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1661,11 +1728,34 @@ RectTransform:
   m_Father: {fileID: 1208998136}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -350, y: 90}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 650, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &170178290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170178286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041D\u0435 \u0442\u043E\u0440\u043A\u0430\u0439\u0442\u0435\u0441\u044F
+    \u043F\u0435\u0440\u0435\u0448\u043A\u043E\u0434. \u041D\u0430\u0442\u0438\u0441\u043D\u0456\u0442\u044C
+    \u043D\u0430 \u0435\u043A\u0440\u0430\u043D, \u0449\u043E\u0431 \u043F\u0440\u043E\u0434\u043E\u0432\u0436\u0438\u0442\u0438 "
+  textEng: 'Do not touch the obstacles. Click on the screen to continue '
+  textDen: "Hindernisse nicht ber\xFChren. Tippen Sie auf den Bildschirm, um fortzufahren "
+  textFra: "Ne pas toucher les obstacles. Toucher l'\xE9cran pour continuer "
+  textEs: "No toque los obst\xE1culos. Toque la pantalla para continuar "
+  textIta: 'Non toccare gli ostacoli. Toccare lo schermo per continuare '
+  textPl: "Nie dotykaj przeszk\xF3d. Dotknij ekranu, aby kontynuowa\u0107. "
 --- !u!1 &184857003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1768,7 @@ GameObject:
   - component: {fileID: 184857006}
   - component: {fileID: 184857005}
   - component: {fileID: 184857007}
+  - component: {fileID: 184857008}
   m_Layer: 5
   m_Name: text (2)
   m_TagString: Untagged
@@ -1897,6 +1988,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &184857008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184857003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0421\u0442\u0440\u0438\u0431\u0430\u0439\u0442\u0435 \u0442\u0430 \u043B\u0435\u0442\u0456\u0442\u044C
+    \u0432\u0441\u0435 \u0432\u0438\u0449\u0435 \u0456 \u0432\u0438\u0449\u0435"
+  textEng: Jump and fly higther and higther
+  textDen: "Springen und fliegen Sie h\xF6her und h\xF6her"
+  textFra: Sautez et volez de plus en plus haut
+  textEs: "Salta y vuela cada vez m\xE1s alto"
+  textIta: "Saltare e volare sempre pi\xF9 in alto"
+  textPl: "Skacz i lataj coraz wy\u017Cej"
 --- !u!1 &210825601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,6 +2394,7 @@ GameObject:
   - component: {fileID: 242016975}
   - component: {fileID: 242016974}
   - component: {fileID: 242016976}
+  - component: {fileID: 242016977}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -2327,7 +2441,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hi! I'm Bonnie. I want to teach you to play. Are you ready?
+  m_text: Hello! My name is Bonnie. I want to teach you how to play. Are you ready?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2500,6 +2614,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &242016977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242016972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u0440\u0438\u0432\u0456\u0442! \u041C\u0435\u043D\u0435 \u0437\u0432\u0443\u0442\u044C
+    \u0411\u043E\u043D\u043D\u0456. \u042F \u0445\u043E\u0447\u0443 \u043D\u0430\u0432\u0447\u0438\u0442\u0438
+    \u0432\u0430\u0441 \u0433\u0440\u0430\u0442\u0438. \u0413\u043E\u0442\u043E\u0432\u0456?"
+  textEng: Hi! I'm Bonnie. I want to teach you to play. Are you ready?
+  textDen: "Hallo! Mein Name ist Bonnie. Ich m\xF6chte dir zeigen, wie man spielt.
+    Bist du bereit?"
+  textFra: "Bonjour ! Je m'appelle Bonnie. Je veux t'apprendre \xE0 jouer. Es-tu
+    pr\xEAt ?"
+  textEs: "\xA1Hola! Me llamo Bonnie. Quiero ense\xF1arte a jugar. \xBFEst\xE1s lista?"
+  textIta: Ciao! Mi chiamo Bonnie. Voglio insegnarti a giocare. Sei pronto?
+  textPl: "Cze\u015B\u0107! Nazywam si\u0119 Bonnie. Chc\u0119 nauczy\u0107 ci\u0119
+    gra\u0107. Jeste\u015B gotowy?"
 --- !u!1 &250474673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,7 +4233,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603252852
 MonoBehaviour:
@@ -4232,10 +4372,10 @@ RectTransform:
   m_Father: {fileID: 1191999188}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.095000006, y: 0.8274999}
-  m_AnchorMax: {x: 0.90500003, y: 1}
-  m_AnchoredPosition: {x: 0, y: 11.149994}
-  m_SizeDelta: {x: -31.65, y: 22.3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: -40, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620095620
 MonoBehaviour:
@@ -4540,6 +4680,7 @@ GameObject:
   - component: {fileID: 697734188}
   - component: {fileID: 697734187}
   - component: {fileID: 697734189}
+  - component: {fileID: 697734190}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -4589,7 +4730,7 @@ MonoBehaviour:
   m_text: Look out!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4759,6 +4900,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &697734190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697734185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0411\u0435\u0440\u0435\u0436\u0456\u0442\u044C\u0441\u044F!"
+  textEng: Look out!
+  textDen: Aufgepasst!
+  textFra: Attention !
+  textEs: "\xA1Cuidado!"
+  textIta: Attenzione!
+  textPl: "Uwa\u017Caj!"
 --- !u!1 &712814409
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,6 +5653,7 @@ GameObject:
   - component: {fileID: 963962719}
   - component: {fileID: 963962721}
   - component: {fileID: 963962720}
+  - component: {fileID: 963962722}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5614,6 +5777,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963962718}
   m_CullTransparentMesh: 1
+--- !u!114 &963962722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963962718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0413\u0430\u0440\u0430\u0437\u0434"
+  textEng: Okay
+  textDen: Ja, okay
+  textFra: D'accord
+  textEs: Bien
+  textIta: Ok
+  textPl: Dobrze
 --- !u!1 &964598075
 GameObject:
   m_ObjectHideFlags: 0
@@ -5952,6 +6136,7 @@ GameObject:
   - component: {fileID: 1007820982}
   - component: {fileID: 1007820981}
   - component: {fileID: 1007820983}
+  - component: {fileID: 1007820984}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -6171,6 +6356,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1007820984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007820979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0427\u0443\u0434\u043E\u0432\u043E!"
+  textEng: Good!
+  textDen: Gut!
+  textFra: "C'est tr\xE8s bien !"
+  textEs: "\xA1Bien!"
+  textIta: Bene!
+  textPl: "To \u015Bwietnie!"
 --- !u!1 &1012348552
 GameObject:
   m_ObjectHideFlags: 0
@@ -6182,6 +6388,7 @@ GameObject:
   - component: {fileID: 1012348553}
   - component: {fileID: 1012348555}
   - component: {fileID: 1012348554}
+  - component: {fileID: 1012348556}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6305,6 +6512,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012348552}
   m_CullTransparentMesh: 1
+--- !u!114 &1012348556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012348552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0417\u0440\u043E\u0431\u0456\u043C\u043E \u0446\u0435!"
+  textEng: Let's do it!
+  textDen: Los geht's!
+  textFra: C'est parti !
+  textEs: "\xA1Hag\xE1moslo!"
+  textIta: Facciamolo!
+  textPl: "Do dzie\u0142a!"
 --- !u!1 &1024660535
 GameObject:
   m_ObjectHideFlags: 0
@@ -6771,6 +6999,7 @@ GameObject:
   - component: {fileID: 1118456317}
   - component: {fileID: 1118456316}
   - component: {fileID: 1118456318}
+  - component: {fileID: 1118456319}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -6991,6 +7220,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1118456319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118456314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0427\u0443\u0434\u043E\u0432\u043E! Above - \u0433\u0440\u0430, \u0432
+    \u044F\u043A\u0456\u0439 \u0432\u0430\u043C \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E
+    \u0432\u0438\u043A\u043E\u0440\u0438\u0441\u0442\u043E\u0432\u0443\u0432\u0430\u0442\u0438
+    \u0441\u043F\u0440\u0438\u0442\u043D\u0456\u0441\u0442\u044C \u0440\u0443\u043A
+    \u0456 \u0441\u0432\u043E\u044E \u043A\u043E\u043D\u0446\u0435\u043D\u0442\u0440\u0430\u0446\u0456\u044E"
+  textEng: Fine! Above is a game in which you need to use your sleight of hand and
+    concentration
+  textDen: Above ist ein Spiel, bei dem man seine Geschicklichkeit und Konzentration
+    einsetzen muss
+  textFra: "Au-dessus. Above est un jeu dans lequel vous devez faire preuve d'habilet\xE9
+    et de concentration"
+  textEs: "Arriba. Above es un juego en el que hay que usar la prestidigitaci\xF3n
+    y la concentraci\xF3n"
+  textIta: "Sopra. Above \xE8 un gioco in cui \xE8 necessario usare giochi di prestigio
+    e concentrazione."
+  textPl: "Above to gra, w kt\xF3rej trzeba u\u017Cy\u0107 zr\u0119czno\u015Bci i
+    koncentracji"
 --- !u!1 &1119287243
 GameObject:
   m_ObjectHideFlags: 0
@@ -7631,7 +7891,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 800}
+  m_SizeDelta: {x: 600, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191999189
 MonoBehaviour:
@@ -7655,7 +7915,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 8df78021bc6ca53469ffabfe0bd7b30d, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -9133,6 +9393,7 @@ GameObject:
   - component: {fileID: 1559468156}
   - component: {fileID: 1559468158}
   - component: {fileID: 1559468157}
+  - component: {fileID: 1559468159}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9156,8 +9417,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 518.08, y: 452.28}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 535, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559468157
 MonoBehaviour:
@@ -9179,8 +9440,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have completed the training. Return to the lobby to familiarize yourself
-    with the main menu interface
+  m_text: You have completed the training. Return to the main menu to familiarise
+    yourself with the game interface
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef0b981736d7121429fe8662b7e1b70e, type: 2}
   m_sharedMaterial: {fileID: -6494925865017531481, guid: ef0b981736d7121429fe8662b7e1b70e, type: 2}
@@ -9207,15 +9468,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -9257,6 +9518,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559468155}
   m_CullTransparentMesh: 1
+--- !u!114 &1559468159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559468155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043B\u0438 \u043D\u0430\u0432\u0447\u0430\u043D\u043D\u044F.
+    \u041F\u043E\u0432\u0435\u0440\u043D\u0456\u0442\u044C\u0441\u044F \u0443 \u0433\u043E\u043B\u043E\u0432\u043D\u0435
+    \u043C\u0435\u043D\u044E \u0434\u043B\u044F \u043E\u0437\u043D\u0430\u0439\u043E\u043C\u043B\u0435\u043D\u043D\u044F
+    \u0437 \u0456\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u043E\u043C \u0433\u0440\u0438"
+  textEng: You have completed the training. Return to the main menu to familiarise
+    yourself with the game interface
+  textDen: "Sie haben das Training abgeschlossen. Kehren Sie zum Hauptmen\xFC zur\xFCck,
+    um sich mit der Spieloberfl\xE4che vertraut zu machen"
+  textFra: "Vous avez termin\xE9 l'entra\xEEnement. Retournez au menu principal pour
+    vous familiariser avec l'interface du jeu"
+  textEs: "Has completado el entrenamiento. Vuelve al men\xFA principal para familiarizarte
+    con la interfaz del juego"
+  textIta: Avete completato l'addestramento. Tornate al menu principale per familiarizzare
+    con l'interfaccia di gioco
+  textPl: "Szkolenie zosta\u0142o zako\u0144czone. Wr\xF3\u0107 do menu g\u0142\xF3wnego,
+    aby zapozna\u0107 si\u0119 z interfejsem gry"
 --- !u!1 &1592434691
 GameObject:
   m_ObjectHideFlags: 0
@@ -10655,6 +10946,7 @@ GameObject:
   - component: {fileID: 1863977437}
   - component: {fileID: 1863977439}
   - component: {fileID: 1863977438}
+  - component: {fileID: 1863977440}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10678,8 +10970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 49.999996, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 45, y: 0}
+  m_SizeDelta: {x: 310, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863977438
 MonoBehaviour:
@@ -10728,12 +11020,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 45
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 45
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -10778,6 +11070,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863977436}
   m_CullTransparentMesh: 1
+--- !u!114 &1863977440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863977436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u041F\u043E\u0442\u0440\u0456\u0431\u043D\u0430 \u0434\u043E\u043F\u043E\u043C\u043E\u0433\u0430"
+  textEng: Need help
+  textDen: "Hilfe wird ben\xF6tigt"
+  textFra: Besoin d'aide
+  textEs: Se necesita ayuda
+  textIta: "C'\xE8 bisogno di aiuto"
+  textPl: Potrzebna jest pomoc
 --- !u!1 &1880710710
 GameObject:
   m_ObjectHideFlags: 0
@@ -11022,9 +11335,9 @@ RectTransform:
   m_Father: {fileID: 1817055554}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -250, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 250, y: 100}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1930078126
@@ -11234,6 +11547,7 @@ GameObject:
   - component: {fileID: 1971432215}
   - component: {fileID: 1971432217}
   - component: {fileID: 1971432216}
+  - component: {fileID: 1971432218}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11255,10 +11569,10 @@ RectTransform:
   m_Father: {fileID: 620095619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000026703, y: -80.149}
-  m_SizeDelta: {x: 616.35, y: 160.3}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 500, y: 143.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1971432216
 MonoBehaviour:
@@ -11307,13 +11621,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 45.35
   m_fontSizeBase: 60
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontSizeMax: 60
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -11357,6 +11671,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971432214}
   m_CullTransparentMesh: 1
+--- !u!114 &1971432218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971432214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0412\u0456\u0442\u0430\u0454\u043C\u043E"
+  textEng: Congratulations
+  textDen: Gratulation
+  textFra: "F\xE9licitations"
+  textEs: Enhorabuena
+  textIta: Congratulazioni
+  textPl: Gratulacje
 --- !u!1 &1977074880
 GameObject:
   m_ObjectHideFlags: 0
@@ -11583,6 +11918,7 @@ GameObject:
   - component: {fileID: 1991208795}
   - component: {fileID: 1991208794}
   - component: {fileID: 1991208796}
+  - component: {fileID: 1991208797}
   m_Layer: 5
   m_Name: text (1)
   m_TagString: Untagged
@@ -11802,6 +12138,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1991208797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991208792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646a14645e28db942be74bcdf1cc5a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 
+  tmp: {fileID: 0}
+  textUa: "\u0422\u0435\u043F\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435
+    \u0434\u043E\u0434\u0430\u043C\u043E \u0442\u0440\u043E\u0445\u0438 \u0440\u0443\u0445\u0443"
+  textEng: Now let's add some movement
+  textDen: "F\xFCgen wir nun etwas Bewegung hinzu"
+  textFra: Ajoutons maintenant un peu de mouvement
+  textEs: "Ahora vamos a a\xF1adir algo de movimiento"
+  textIta: Ora aggiungiamo un po' di movimento
+  textPl: "Teraz dodajmy troch\u0119 ruchu"
 --- !u!1 &1992599207
 GameObject:
   m_ObjectHideFlags: 0

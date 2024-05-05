@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [Space]
     [SerializeField] private GameObject emailVerificationPanel;
     [SerializeField] private TextMeshProUGUI emailVerificationText;
+    [SerializeField] private TextManagerTMP verificationTextManager;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
         emailVerificationPanel.SetActive(false);
         buttonsPanel.SetActive(false);
         errorText.text = "";
+        verificationTextManager.ChooseLanguage();
     }
 
     public void OpenLoginPanel()
@@ -78,7 +80,7 @@ public class UIManager : MonoBehaviour
 
         if(isEmailSent)
         {
-            emailVerificationText.text = $"Please verify your email address \n Verification email has been sent to {emailId}";
+            emailVerificationText.text += emailId;
         }
         else
         {
