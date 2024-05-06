@@ -1,10 +1,21 @@
+using System.Collections;
 using System.Threading.Tasks;
+using Firebase;
+using Firebase.Auth;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OtherSettings : MonoBehaviour
 {
     [SerializeField] private ControllerOtherSettings controller;
+
+    [Header ("## Rename nickname : ")]
+    [SerializeField] private TMP_InputField renameNickField;
+    [SerializeField] private Button renameNickButton;
+    [SerializeField] private GameObject renameNickPanel;
+    [SerializeField] private TextMeshProUGUI renameNickcoinsCountText;
 
     public void ShowLevelRanks(bool tog)
     {
@@ -68,9 +79,54 @@ public class OtherSettings : MonoBehaviour
         SceneManager.LoadSceneAsync("Authentication");
     }
 
+    public void OpenRanameNicknamePanel()
+    {
+        renameNickPanel.SetActive(true);
+
+        if (JsonStorage.instance.data.userData.coinsS >= 5)
+        {
+            renameNickButton.interactable = true;
+            renameNickcoinsCountText.color = Color.white;
+        }
+        else
+        {
+            renameNickButton.interactable = false;
+            renameNickcoinsCountText.color = Color.red;
+        }
+    }
+
     public void RenameNick()
     {
+        StartCoroutine(TryRenameNickname());
+    }
 
+    private IEnumerator TryRenameNickname()
+    {
+        if (JsonStorage.instance.data.userData.coinsS >= 5)
+        {
+            UserProfile profile = new UserProfile { DisplayName = renameNickField.text };
+
+            var updateProfileTask = UserData.instance.User.UpdateUserProfileAsync(profile);
+
+            yield return new WaitUntil(() => updateProfileTask.IsCompleted);
+
+            if (updateProfileTask.Exception != null)
+            {
+                Debug.LogError(updateProfileTask.Exception);
+
+                FirebaseException firebaseException = updateProfileTask.Exception.GetBaseException() as FirebaseException;
+                AuthError authError = (AuthError)firebaseException.ErrorCode;
+            }
+            else
+            {
+                JsonStorage.instance.data.userData.coinsS -= 5;
+
+                JsonStorage.instance.data.userData.userName = UserData.instance.User.DisplayName;
+                StorageData.instance.SaveJsonData();
+
+                SceneManager.LoadSceneAsync(1);
+            }
+        }
     }
 
     public void ActivateParticles(bool tog)

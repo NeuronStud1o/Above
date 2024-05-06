@@ -175,7 +175,7 @@ public class FirebaseAuthManager : MonoBehaviour
             }
 
             References.userName = user.DisplayName;
-            UserData.instance.SetUser(user);
+            UserData.instance.User = user;
 
             UIManager.Instance.OpenButtonsPanel();
         }
@@ -349,7 +349,7 @@ public class FirebaseAuthManager : MonoBehaviour
                 yield return new WaitForSeconds(2);
 
                 References.userName = user.DisplayName;
-                UserData.instance.SetUser(user);
+                UserData.instance.User = user;
 
                 DataBase.instance.SetMessage("Opening game scene");
 
@@ -475,9 +475,6 @@ public class FirebaseAuthManager : MonoBehaviour
                     if (user.IsEmailVerified)
                     {
                         UIManager.Instance.OpenLoginPanel();
-                        DataBase.instance.SaveData(UserData.instance.User.DisplayName, "userSettings", "name");
-                        DataBase.instance.SaveData(UserData.instance.User.Email, "userSettings", "email");
-                        DataBase.instance.SaveData("blackThrush", "userSettings", "icon");
 
                         DataBase.instance.SetActiveLoadingScreen(false);
                     }

@@ -43,7 +43,7 @@ public class DataBase : MonoBehaviour
         loadingScreen.SetActive(isActive);
     }
 
-    public void SaveData(int i, params string[] keys)
+    /*public void SaveData(int i, params string[] keys)
     {
         string path = string.Join("/", keys);
         dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
@@ -180,5 +180,5 @@ public class DataBase : MonoBehaviour
         }
 
         return false;
-    }
+    }*/
 }
