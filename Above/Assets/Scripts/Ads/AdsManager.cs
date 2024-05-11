@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+using System;
 using GoogleMobileAds.Api;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
     public static AdsManager instance;
-    string interstitialId = "ca-app-pub-9185697735170935/3389741167";
-    string rewardedId = "ca-app-pub-9185697735170935/3240749118";
+    string interstitialId = "ca-app-pub-3940256099942544/1033173712";
+    string rewardedId = "ca-app-pub-3940256099942544/5224354917";
+
+    //string interstitialId = "ca-app-pub-9185697735170935/3389741167";
+    //string rewardedId = "ca-app-pub-9185697735170935/3240749118";
 
     int adsCoinsSCount = 0;
 
@@ -44,6 +44,32 @@ public class AdsManager : MonoBehaviour
         LoadRewardedAd();
     }
 
+    public void AdvertisingProcessor()
+    {
+        int count = PlayerPrefs.GetInt("GamesToNextAd");
+
+        Debug.Log(count + " - is count");
+        
+        if (count > 0)
+        {
+            System.Random r = new System.Random();
+
+            int view = r.Next(0, 3);
+            Debug.Log(view + " - is random (we need 1)");
+
+            if (view == 1)
+            {
+                ShowInterstitialAd();
+            }
+
+            PlayerPrefs.SetInt("GamesToNextAd", 0);
+
+            return;
+        }
+
+        PlayerPrefs.SetInt("GamesToNextAd", PlayerPrefs.GetInt("GamesToNextAd") + 1);
+    }
+
     public void LoadInterstitialAd()
     {
         if (interstitialAd != null)
@@ -73,12 +99,13 @@ public class AdsManager : MonoBehaviour
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
             interstitialAd.Show();
-            LoadInterstitialAd();
         }
         else
         {
             print("Intersititial ad not ready!!");
         }
+
+        LoadInterstitialAd();
     }
 
     public void InterstitialEvent(InterstitialAd ad)

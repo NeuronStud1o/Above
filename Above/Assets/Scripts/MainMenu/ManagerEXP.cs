@@ -32,6 +32,11 @@ public class ManagerEXP : MonoBehaviour
     
     void Start()
     {
+        if (WIFIChecking.instance != null)
+        {
+            WIFIChecking.instance.ChangeSceneName();
+        }
+        
         if (JsonStorage.instance.data.userData.level >= 20)
         {
             bool isBought = JsonStorage.instance.data.icons.icons.Contains("exp");

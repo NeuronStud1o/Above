@@ -61,6 +61,14 @@ public class FirebaseAuthManager : MonoBehaviour
         await CheckIfReady();
     }
 
+    void Start()
+    {
+        if (WIFIChecking.instance != null)
+        {
+            WIFIChecking.instance.ChangeSceneName();
+        }
+    }
+
     public async void StartAction()
     {
         initText.text = "Check and fix dependencies";
@@ -586,6 +594,7 @@ public class FirebaseAuthManager : MonoBehaviour
     public void PlayOffline()
     {
         DataBase.instance.GetComponent<AudioSource>().volume = 0.7f;
+
         SceneManager.LoadSceneAsync("OfflineMenu");
     }
 

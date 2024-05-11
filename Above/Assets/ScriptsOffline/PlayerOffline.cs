@@ -159,13 +159,7 @@ public class PlayerOffline : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        int a = random.Next(1, 4);
-        Debug.Log(a);
-
-        if (a == 2)
-        {
-            AdsManager.instance.ShowInterstitialAd();
-        }
+        AdsManager.instance.AdvertisingProcessor();
 
         deathPanel.SetActive(true);
     }

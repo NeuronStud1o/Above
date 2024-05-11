@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     private int coinsToAdd = 1;
 
     public bool isCanMove = false;
-    private System.Random random = new System.Random();
 
     bool canTouchFlycoin = true;
     bool canTouchSupercoin = true;
@@ -230,14 +229,11 @@ public class Player : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        int a = random.Next(1, 5);
-
-        if (a == 2)
-        {
-            AdsManager.instance.ShowInterstitialAd();
-        }
+        AdsManager.instance.AdvertisingProcessor();
 
         deathPanel.SetActive(true);
         LosePanel.instance.Death(int.Parse(Score.instance.scoreText.text));
     }
+
+    
 }

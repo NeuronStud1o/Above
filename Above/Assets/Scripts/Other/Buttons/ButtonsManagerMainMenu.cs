@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsManagerMainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject playTransition;
     [SerializeField] private GameObject shopWindow;
     [SerializeField] private GameObject settingsWindow;
 
@@ -25,7 +24,6 @@ public class ButtonsManagerMainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        playTransition.SetActive(true);
         DataBase.instance.gameObject.GetComponent<AudioSource>().enabled = false;
         DataBase.instance.SetActiveLoadingScreen(true);
 

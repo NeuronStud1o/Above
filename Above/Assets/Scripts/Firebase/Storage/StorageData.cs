@@ -125,15 +125,6 @@ public class StorageData : MonoBehaviour
             {
                 reference.PutFileAsync(local_file_uri).ContinueWith(task => 
                 {
-                    if (task.IsCompleted)
-                    {
-                        Debug.Log("SAVE");
-                    }
-                    else if (task.IsFaulted)
-                    {
-                        //Debug.Log("FAIL");
-                    }
-
                     StorageMetadata metadata = task.Result;
                     string md5Hash = metadata.Md5Hash;
                 });

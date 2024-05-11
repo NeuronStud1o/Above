@@ -8,6 +8,8 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
+        WIFIChecking.instance.ChangeSceneName();
+        
         if (isTutorial) return;
 
         if (!JsonStorage.instance.data.otherSettings.showSelectedBoostInGame)
