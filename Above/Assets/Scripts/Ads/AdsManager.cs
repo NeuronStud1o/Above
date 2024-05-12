@@ -50,11 +50,11 @@ public class AdsManager : MonoBehaviour
 
         Debug.Log(count + " - is count");
         
-        if (count > 0)
+        if (count > 1)
         {
             System.Random r = new System.Random();
 
-            int view = r.Next(0, 3);
+            int view = r.Next(0, 2);
             Debug.Log(view + " - is random (we need 1)");
 
             if (view == 1)
