@@ -9,6 +9,7 @@ using Firebase.Extensions;
 using System;
 using Firebase.Storage;
 using System.IO;
+using UnityEngine.UI;
 
 public class FirebaseAuthManager : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class FirebaseAuthManager : MonoBehaviour
     [Space]
     [Header("Other")]
     [SerializeField] private GameObject loading;
-    [SerializeField] private TextMeshProUGUI initText;
+    [SerializeField] private Button startOnlineGameButton;
 
     private static bool isReady = false;
     public static string exeption = "";
@@ -71,25 +72,11 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public async void StartAction()
     {
-        initText.text = "Check and fix dependencies";
-
-        if (exeption != "")
-        {
-            initText.text = "Exception: " + exeption;
-        }
-
-        int attemps = 1;
-
         while (isReady == false)
         {
-            initText.text = "";
-            initText.text += exeption + attemps;
-
             await Task.Delay(1000);
 
             await CheckIfReady();
-
-            attemps++;
         }
 
         InitializeFirebase();
@@ -102,8 +89,6 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             await FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
             {
-                initText.text = "Checking the readiness of dependencies";
-
                 var dependencyStatus = task.Result;
 
                 if (dependencyStatus == DependencyStatus.Available)
@@ -141,8 +126,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
     void InitializeFirebase()
     {
-        initText.text = "Initialize data base";
-
         auth = FirebaseAuth.DefaultInstance;
 
         auth.StateChanged += AuthStateChanged;
@@ -153,8 +136,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private IEnumerator CheckForAutoLogin()
     {
-        initText.text = "Checking the automatic login";
-
         if (user != null)
         {
             var reloadUserTask = user.ReloadAsync();
@@ -165,12 +146,18 @@ public class FirebaseAuthManager : MonoBehaviour
         }
         else
         {
-            initText.gameObject.SetActive(false);
-
             loading.SetActive(false);
 
-            UIManager.Instance.OpenLoginPanel();
+            AddListenerToStartButton(UIManager.Instance.OpenLoginPanel);
+
+            UIManager.Instance.ActivateButtons();
         }
+    }
+
+    public void AddListenerToStartButton(Action a)
+    {
+        startOnlineGameButton.onClick.RemoveAllListeners();
+        startOnlineGameButton.onClick.AddListener(a.Invoke);
     }
 
     private void AutoLogin()
@@ -185,15 +172,14 @@ public class FirebaseAuthManager : MonoBehaviour
             References.userName = user.DisplayName;
             UserData.instance.User = user;
 
-            UIManager.Instance.OpenButtonsPanel();
+            AddListenerToStartButton(OpenGameScene);
         }
         else
         {
-            UIManager.Instance.OpenLoginPanel();
+            AddListenerToStartButton(UIManager.Instance.OpenLoginPanel);
         }
-
-        initText.gameObject.SetActive(false);
         
+        UIManager.Instance.ActivateButtons();
         loading.SetActive(false);
     }
 
@@ -209,7 +195,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
                 if (UIManager.Instance != null)
                 {
-                    UIManager.Instance.OpenLoginPanel();
+                    AddListenerToStartButton(UIManager.Instance.OpenLoginPanel);
                 }
                 
                 ClearLoginInputFieldText();

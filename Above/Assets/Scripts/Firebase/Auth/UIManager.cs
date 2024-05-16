@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -7,7 +8,6 @@ public class UIManager : MonoBehaviour
 
     [Header("## Authentication :")]
     [SerializeField] private GameObject authPanel;
-    [SerializeField] private GameObject buttonsPanel;
     [SerializeField] private GameObject loginPanel;
     [SerializeField] private GameObject registrationPanel;
     [SerializeField] private TextMeshProUGUI errorText;
@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject emailVerificationPanel;
     [SerializeField] private TextMeshProUGUI emailVerificationText;
     [SerializeField] private TextManagerTMP verificationTextManager;
+
+    [SerializeField] private Button playOnlineButton;
+    [SerializeField] private Button logoutButton;
 
     private void Awake()
     {
@@ -45,7 +48,6 @@ public class UIManager : MonoBehaviour
         loginPanel.SetActive(false);
         registrationPanel.SetActive(false);
         emailVerificationPanel.SetActive(false);
-        buttonsPanel.SetActive(false);
         errorText.text = "";
         verificationTextManager.ChooseLanguage();
     }
@@ -67,10 +69,17 @@ public class UIManager : MonoBehaviour
         registrationPanel.SetActive(true);
     }
 
-    public void OpenButtonsPanel()
+    public void CloseAuthPanel()
     {
         ClearUI();
-        buttonsPanel.SetActive(true);
+        authPanel.SetActive(false);
+    }
+
+    public void ActivateButtons()
+    {
+        ClearUI();
+        playOnlineButton.interactable = true;
+        logoutButton.interactable = true;
     }
 
     public void ShowVerificationResponse(bool isEmailSent, string emailId, string errorMessage)
