@@ -9,8 +9,7 @@ public class UserData : MonoBehaviour
 
     public FirebaseUser User;
 
-    private UserMetadata metadata;
-    public UserMetadata Metadata { get => metadata; private set => metadata = value; }
+    public UserMetadata metadata;
 
     private void Awake()
     {

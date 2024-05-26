@@ -171,6 +171,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
             References.userName = user.DisplayName;
             UserData.instance.User = user;
+            UserData.instance.metadata = user.Metadata;
 
             AddListenerToStartButton(OpenGameScene);
         }
@@ -344,6 +345,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
                 References.userName = user.DisplayName;
                 UserData.instance.User = user;
+                UserData.instance.metadata = user.Metadata;
 
                 DataBase.instance.SetMessage("Opening game scene");
 

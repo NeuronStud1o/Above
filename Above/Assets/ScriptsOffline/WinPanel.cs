@@ -8,12 +8,9 @@ using UnityEngine.UI;
 public class WinPanel : MonoBehaviour
 {
     [SerializeField] private Button NextLevelButton;
-    [SerializeField] private TextMeshProUGUI Description;
 
     void Start()
     {
-        Description.text = "You have completed level " + LevelManager.instance.eqipedLevel;
-
         if (PlayerPrefs.GetInt("Levels") <= LevelManager.instance.eqipedLevel)
         {
             PlayerPrefs.SetInt("Levels", PlayerPrefs.GetInt("Levels") + 1);

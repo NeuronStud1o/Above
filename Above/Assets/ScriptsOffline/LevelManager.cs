@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
         }
 
         instance = this;
+        equipedHero = PlayerPrefs.GetInt("currentHero");
 
         DontDestroyOnLoad(gameObject);
     }
@@ -28,6 +29,5 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         DataBase.instance.GetComponent<AudioSource>().enabled = true;
-        equipedHero = PlayerPrefs.GetInt("currentHero");
     }
 }

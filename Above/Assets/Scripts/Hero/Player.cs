@@ -5,12 +5,6 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
-enum Direction
-{
-    Right,
-    Left
-}
-
 public class Player : MonoBehaviour
 {
     [SerializeField] private AudioClip jumpClip;
@@ -26,7 +20,7 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     private Animator anim;
     private CameraFollow cameraFollow;
-    private int speedDirection = -1;
+    [SerializeField] private int speedDirection = -1;
     
     private float speed = 0;
     private int hp = 0;
@@ -36,6 +30,7 @@ public class Player : MonoBehaviour
 
     bool canTouchFlycoin = true;
     bool canTouchSupercoin = true;
+    bool canChangeRotation = true;
 
     void Start()
     {
@@ -62,13 +57,15 @@ public class Player : MonoBehaviour
     {
         if (isCanMove)
         {
-            if (collision.collider.CompareTag("RightWall"))
+            if (collision.collider.CompareTag("RightWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Left);
+                canChangeRotation = false;
+                TakeDirection();
             }
-            if (collision.collider.CompareTag("LeftWall"))
+            if (collision.collider.CompareTag("LeftWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Right);
+                canChangeRotation = false;
+                TakeDirection();
             }
 
             if (collision.collider.CompareTag("Enemy"))
@@ -155,19 +152,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    void TakeDirection(Direction flip)
+    void TakeDirection()
     {
-        switch (flip)
-        {
-            case Direction.Left:
-                transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
-                speedDirection = 1;
-                break;
-            case Direction.Right:
-                transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
-                speedDirection = -1;
-                break;
-        }
+        StartCoroutine(NewDirection());
+    }
+
+    IEnumerator NewDirection()
+    {
+        anim.SetBool("RightDirection", !anim.GetBool("RightDirection"));
+        speedDirection *= -1;
+
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+        yield return new WaitForSeconds(0.5f);
+
+        canChangeRotation = true;
     }
 
     void Update()

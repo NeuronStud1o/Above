@@ -30,7 +30,7 @@ public class AccStatistic : MonoBehaviour
         hightScore.text = JsonStorage.instance.data.userData.record + "";
         level.text = JsonStorage.instance.data.userData.level + "";
 
-        ulong creationTimestamp = UserData.instance.Metadata.CreationTimestamp;
+        ulong creationTimestamp = UserData.instance.metadata.CreationTimestamp;
         long signedTimestamp = (long)creationTimestamp;
 
         DateTime creationDateTime = DateTimeOffset.FromUnixTimeMilliseconds(signedTimestamp).DateTime;

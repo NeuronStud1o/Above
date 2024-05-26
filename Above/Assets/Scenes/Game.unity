@@ -2069,6 +2069,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &340858929
 SpriteRenderer:
@@ -2612,7 +2613,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.2334533}
+  m_Offset: {x: 0, y: -1.4138331}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2623,7 +2624,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 23.62223, y: 22.103092}
+  m_Size: {x: 23.62223, y: 21.742332}
   m_EdgeRadius: 0
 --- !u!212 &460867618
 SpriteRenderer:
@@ -3140,8 +3141,8 @@ MonoBehaviour:
   - {fileID: 219013125}
   - {fileID: 450908718}
   - {fileID: 471785072}
-  - {fileID: 91905922}
   - {fileID: 1849597405}
+  - {fileID: 91905922}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3166,6 +3167,7 @@ MonoBehaviour:
   - {fileID: 1039948079}
   - {fileID: 1653532795}
   - {fileID: 920682195}
+  - {fileID: 1382160800}
   AllBoosts:
   - {fileID: 326456645}
   - {fileID: 1955701453}
@@ -5053,6 +5055,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &767015172
 SpriteRenderer:
@@ -5525,6 +5528,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &821722125
 SpriteRenderer:
@@ -6446,6 +6450,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &920682204
 SpriteRenderer:
@@ -7441,6 +7446,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &1039948088
 SpriteRenderer:
@@ -7887,6 +7893,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &1055376979
 SpriteRenderer:
@@ -8491,7 +8498,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017550707, y: -0.0027025938}
+  m_Offset: {x: -0.017550707, y: -0.08656037}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8502,7 +8509,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.9276633, y: 4.6597824}
+  m_Size: {x: 6.9276633, y: 4.4920673}
   m_EdgeRadius: 0
 --- !u!212 &1145186456
 SpriteRenderer:
@@ -9616,6 +9623,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &1282955947
 SpriteRenderer:
@@ -10224,7 +10232,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07960272, y: -0.3691347}
+  m_Offset: {x: -0.07960272, y: -0.43697187}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10235,7 +10243,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.220317, y: 0.8220419}
+  m_Size: {x: 4.220317, y: 0.6863676}
   m_EdgeRadius: 0
 --- !u!212 &1353911818
 SpriteRenderer:
@@ -10758,6 +10766,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &1382160809
 SpriteRenderer:
@@ -11912,9 +11921,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.2, y: -1.36}
+  m_Offset: {x: 0, y: -1.36}
   serializedVersion: 2
-  m_Radius: 1.3960917
+  m_Radius: 1.56
 --- !u!114 &1653532802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11947,6 +11956,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &1653532804
 SpriteRenderer:
@@ -12871,6 +12881,7 @@ MonoBehaviour:
   canvasInGame: {fileID: 1942106992}
   standartColor: {r: 1, g: 1, b: 1, a: 1}
   jumpForce: 5
+  speedDirection: -1
   isCanMove: 0
 --- !u!212 &1801404981
 SpriteRenderer:
@@ -14003,7 +14014,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -4.015889}
+  m_Offset: {x: 0, y: -4.400426}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14014,7 +14025,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 23.62223, y: 16.538221}
+  m_Size: {x: 23.62223, y: 15.769148}
   m_EdgeRadius: 0
 --- !u!212 &1987830687
 SpriteRenderer:

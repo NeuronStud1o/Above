@@ -23,6 +23,7 @@ public class PlayerTutorial : MonoBehaviour
 
     private bool isCanMove = true;
     int jumpCount = 0;
+    bool canChangeRotation = true;
 
     void Start()
     {
@@ -35,13 +36,13 @@ public class PlayerTutorial : MonoBehaviour
     {
         if (isCanMove)
         {
-            if (collision.collider.CompareTag("RightWall"))
+            if (collision.collider.CompareTag("RightWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Left);
+                TakeDirection();
             }
-            if (collision.collider.CompareTag("LeftWall"))
+            if (collision.collider.CompareTag("LeftWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Right);
+                TakeDirection();
             }
 
             if (collision.collider.CompareTag("Enemy"))
@@ -70,19 +71,21 @@ public class PlayerTutorial : MonoBehaviour
         }
     }
 
-    void TakeDirection(Direction flip)
+    void TakeDirection()
     {
-        switch (flip)
-        {
-            case Direction.Left:
-                transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
-                speedDirection = 1;
-                break;
-            case Direction.Right:
-                transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
-                speedDirection = -1;
-                break;
-        }
+        StartCoroutine(NewDirection());
+    }
+
+    IEnumerator NewDirection()
+    {
+        anim.SetBool("RightDirection", !anim.GetBool("RightDirection"));
+        speedDirection *= -1;
+
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+        yield return new WaitForSeconds(0.5f);
+
+        canChangeRotation = true;
     }
 
     void Update()
