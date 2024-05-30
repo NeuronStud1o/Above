@@ -5,8 +5,8 @@ using UnityEngine;
 public class AdsManager : MonoBehaviour
 {
     public static AdsManager instance;
-    string interstitialId = "ca-app-pub-3940256099942544/1033173712";
-    string rewardedId = "ca-app-pub-3940256099942544/5224354917";
+    string interstitialId = "ca-app-pub-9185697735170935/3389741167";
+    string rewardedId = "ca-app-pub-9185697735170935/3240749118";
 
     //string interstitialId = "ca-app-pub-9185697735170935/3389741167";
     //string rewardedId = "ca-app-pub-9185697735170935/3240749118";
