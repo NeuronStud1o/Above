@@ -17,19 +17,21 @@ public static class JsonFilter
     private static async Task CheckingJsons()
     {
         filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        bool isFileOnServer = await StorageData.instance.CheckAdditionalJson();
+        bool isAdditionallyFileOnServer = await StorageData.instance.CheckAdditionalJson();
+        bool isFileOnServer = await StorageData.instance.CheckIfJsonDataExists();
 
-        Debug.Log(isFileOnServer);
-
-        if (isFileOnServer)
+        if (!isFileOnServer)
         {
-            ReplacingInfo();
-        }
-        else
-        {
-            if (File.Exists(filePath))
+            if (isAdditionallyFileOnServer)
             {
-                File.Delete(filePath);
+                ReplacingInfo();
+            }
+            else
+            {
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
             }
         }
 

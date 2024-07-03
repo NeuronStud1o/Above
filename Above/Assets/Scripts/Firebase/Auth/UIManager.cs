@@ -78,8 +78,16 @@ public class UIManager : MonoBehaviour
     public void ActivateButtons()
     {
         ClearUI();
+
+        if (FirebaseAuthManager.instance != null)
+        {
+            if (FirebaseAuthManager.instance.user != null && FirebaseAuthManager.instance.user.IsEmailVerified)
+            {
+                logoutButton.interactable = true;
+            }
+        }
+
         playOnlineButton.interactable = true;
-        logoutButton.interactable = true;
     }
 
     public void ShowVerificationResponse(bool isEmailSent, string emailId, string errorMessage)
