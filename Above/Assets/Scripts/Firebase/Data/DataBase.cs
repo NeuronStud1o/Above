@@ -4,7 +4,6 @@ using UnityEngine;
 using Firebase.Database;
 using System.Threading.Tasks;
 using TMPro;
-using Firebase;
 
 public class DataBase : MonoBehaviour
 {
@@ -41,11 +40,10 @@ public class DataBase : MonoBehaviour
 
     public void SetActiveLoadingScreen(bool isActive)
     {
-        Debug.Log("Ok");
         loadingScreen.SetActive(isActive);
     }
 
-    public void SaveData(int i, params string[] keys)
+    /*public void SaveData(int i, params string[] keys)
     {
         string path = string.Join("/", keys);
         dbRef.Child("user").Child(UserData.instance.User.UserId).Child(path).SetValueAsync(i);
@@ -182,5 +180,5 @@ public class DataBase : MonoBehaviour
         }
 
         return false;
-    }
+    }*/
 }

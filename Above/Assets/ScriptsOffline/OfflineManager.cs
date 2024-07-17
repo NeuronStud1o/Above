@@ -8,6 +8,11 @@ public class OfflineManager : MonoBehaviour
     void Start()
     {
         DataBase.instance.SetActiveLoadingScreen(false);
+
+        if (WIFIChecking.instance != null)
+        {
+            WIFIChecking.instance.ChangeSceneName();
+        }
     }
 
     public void EquipHero(int index)

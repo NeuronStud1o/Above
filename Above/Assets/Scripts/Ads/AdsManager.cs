@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+using System;
 using GoogleMobileAds.Api;
 using UnityEngine;
 
@@ -10,6 +7,9 @@ public class AdsManager : MonoBehaviour
     public static AdsManager instance;
     string interstitialId = "ca-app-pub-9185697735170935/3389741167";
     string rewardedId = "ca-app-pub-9185697735170935/3240749118";
+
+    //string interstitialId = "ca-app-pub-9185697735170935/3389741167";
+    //string rewardedId = "ca-app-pub-9185697735170935/3240749118";
 
     int adsCoinsSCount = 0;
 
@@ -44,6 +44,32 @@ public class AdsManager : MonoBehaviour
         LoadRewardedAd();
     }
 
+    public void AdvertisingProcessor()
+    {
+        int count = PlayerPrefs.GetInt("GamesToNextAd");
+
+        Debug.Log(count + " - is count");
+        
+        if (count > 1)
+        {
+            System.Random r = new System.Random();
+
+            int view = r.Next(0, 2);
+            Debug.Log(view + " - is random (we need 1)");
+
+            if (view == 1)
+            {
+                ShowInterstitialAd();
+            }
+
+            PlayerPrefs.SetInt("GamesToNextAd", 0);
+
+            return;
+        }
+
+        PlayerPrefs.SetInt("GamesToNextAd", PlayerPrefs.GetInt("GamesToNextAd") + 1);
+    }
+
     public void LoadInterstitialAd()
     {
         if (interstitialAd != null)
@@ -73,12 +99,13 @@ public class AdsManager : MonoBehaviour
         if (interstitialAd != null && interstitialAd.CanShowAd())
         {
             interstitialAd.Show();
-            LoadInterstitialAd();
         }
         else
         {
             print("Intersititial ad not ready!!");
         }
+
+        LoadInterstitialAd();
     }
 
     public void InterstitialEvent(InterstitialAd ad)
@@ -177,34 +204,28 @@ public class AdsManager : MonoBehaviour
 
     public void RewardedAdEvents(RewardedAd ad)
     {
-        // Raised when the ad is estimated to have earned money.
         ad.OnAdPaid += (AdValue adValue) =>
         {
             print("Rewarded ad paid {0} {1}." +
                 adValue.Value +
                 adValue.CurrencyCode);
         };
-        // Raised when an impression is recorded for an ad.
         ad.OnAdImpressionRecorded += () =>
         {
             print("Rewarded ad recorded an impression.");
         };
-        // Raised when a click is recorded for an ad.
         ad.OnAdClicked += () =>
         {
             print("Rewarded ad was clicked.");
         };
-        // Raised when an ad opened full screen content.
         ad.OnAdFullScreenContentOpened += () =>
         {
             print("Rewarded ad full screen content opened.");
         };
-        // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             print("Rewarded ad full screen content closed.");
         };
-        // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             print("Rewarded ad failed to open full screen content " +
@@ -214,12 +235,10 @@ public class AdsManager : MonoBehaviour
 
     void GrantCoinsF()
     {
-        JsonStorage.instance.jsonData.userData.coinsF += 2;
-        JsonStorage.instance.jsonData.userData.coinsFAllTime += 2;
+        JsonStorage.instance.data.userData.coinsF += 2;
+        JsonStorage.instance.data.userData.coinsFAllTime += 2;
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
         StorageData.instance.SaveJsonData();
         collectFlycoinsPanel.SetActive(true);
@@ -231,12 +250,10 @@ public class AdsManager : MonoBehaviour
 
         if (adsCoinsSCount == 6)
         {
-            JsonStorage.instance.jsonData.userData.coinsS += 1;
-            JsonStorage.instance.jsonData.userData.coinsSAllTime += 1;
+            JsonStorage.instance.data.userData.coinsS += 1;
+            JsonStorage.instance.data.userData.coinsSAllTime += 1;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
             StorageData.instance.SaveJsonData();
             collectSuperCoinsPanel.SetActive(true);

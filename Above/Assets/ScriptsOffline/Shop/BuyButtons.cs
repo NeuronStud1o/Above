@@ -2,16 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Threading.Tasks;
 
 public class BuyButtons : MonoBehaviour
 {
     [SerializeField] private string nameSkin;
     [SerializeField] private BuySystem buySystem;
+    [SerializeField] private int price;
+    [SerializeField] private bool buyWithFlycoin;
+
     Skins.OpenSkin skin;
 
     void Start()
     {
         skin = buySystem.skins.skinsList.FirstOrDefault(item => item.name == nameSkin);
+
+        if (skin == null)
+        {
+            Skins.OpenSkin skin = new Skins.OpenSkin
+            {
+                name = nameSkin,
+                price = price,
+                isOpen = false,
+                isFlyCoin = buyWithFlycoin
+            };
+
+            buySystem.skins.skinsList.Add(skin);
+            buySystem.SaveToJson();
+
+            skin = buySystem.skins.skinsList.FirstOrDefault(item => item.name == nameSkin);
+        }
 
         if (skin.isOpen)
         {

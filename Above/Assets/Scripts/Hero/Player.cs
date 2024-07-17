@@ -5,12 +5,6 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
-enum Direction
-{
-    Right,
-    Left
-}
-
 public class Player : MonoBehaviour
 {
     [SerializeField] private AudioClip jumpClip;
@@ -26,17 +20,17 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     private Animator anim;
     private CameraFollow cameraFollow;
-    private int speedDirection = -1;
+    [SerializeField] private int speedDirection = -1;
     
     private float speed = 0;
     private int hp = 0;
     private int coinsToAdd = 1;
 
     public bool isCanMove = false;
-    private System.Random random = new System.Random();
 
     bool canTouchFlycoin = true;
     bool canTouchSupercoin = true;
+    bool canChangeRotation = true;
 
     void Start()
     {
@@ -48,11 +42,11 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
-        audioSource.volume = JsonStorage.instance.jsonData.audioSettings.sfxGame;
+        audioSource.volume = JsonStorage.instance.data.audioSettings.sfxGame;
         
-        hp = JsonStorage.instance.jsonData.currentShop.currentBoost == 3 ? 1 : 0;
-        speed = JsonStorage.instance.jsonData.currentShop.currentBoost == 2 ? 1.5f : 2.2f;
-        coinsToAdd = JsonStorage.instance.jsonData.currentShop.currentBoost == 1 ? 2 : 1;
+        hp = JsonStorage.instance.data.currentShop.currentBoost == 3 ? 1 : 0;
+        speed = JsonStorage.instance.data.currentShop.currentBoost == 2 ? 1.5f : 2.2f;
+        coinsToAdd = JsonStorage.instance.data.currentShop.currentBoost == 1 ? 2 : 1;
 
         PauseController.instance.Hero = gameObject;
 
@@ -63,13 +57,15 @@ public class Player : MonoBehaviour
     {
         if (isCanMove)
         {
-            if (collision.collider.CompareTag("RightWall"))
+            if (collision.collider.CompareTag("RightWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Left);
+                canChangeRotation = false;
+                TakeDirection();
             }
-            if (collision.collider.CompareTag("LeftWall"))
+            if (collision.collider.CompareTag("LeftWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Right);
+                canChangeRotation = false;
+                TakeDirection();
             }
 
             if (collision.collider.CompareTag("Enemy"))
@@ -101,12 +97,11 @@ public class Player : MonoBehaviour
             StartCoroutine(TouchCoin(collision.gameObject, true));
 
             CoinsManager.instance.coinsF += coinsToAdd;
-            JsonStorage.instance.jsonData.userData.coinsF = CoinsManager.instance.coinsF;
+            JsonStorage.instance.data.userData.coinsF = CoinsManager.instance.coinsF;
 
-            JsonStorage.instance.jsonData.userData.coinsFAllTime += coinsToAdd;
+            JsonStorage.instance.data.userData.coinsFAllTime += coinsToAdd;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
             audioSource.PlayOneShot(getCoin);
 
@@ -118,12 +113,11 @@ public class Player : MonoBehaviour
             StartCoroutine(TouchCoin(collision.gameObject, false));
 
             CoinsManager.instance.coinsS++;
-            JsonStorage.instance.jsonData.userData.coinsS = CoinsManager.instance.coinsS;
+            JsonStorage.instance.data.userData.coinsS = CoinsManager.instance.coinsS;
 
-            JsonStorage.instance.jsonData.userData.coinsSAllTime++;
+            JsonStorage.instance.data.userData.coinsSAllTime++;
 
-            string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-            CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+            CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
             
             audioSource.PlayOneShot(getCoin);
 
@@ -158,19 +152,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    void TakeDirection(Direction flip)
+    void TakeDirection()
     {
-        switch (flip)
-        {
-            case Direction.Left:
-                transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
-                speedDirection = 1;
-                break;
-            case Direction.Right:
-                transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
-                speedDirection = -1;
-                break;
-        }
+        StartCoroutine(NewDirection());
+    }
+
+    IEnumerator NewDirection()
+    {
+        anim.SetBool("RightDirection", !anim.GetBool("RightDirection"));
+        speedDirection *= -1;
+
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+        yield return new WaitForSeconds(0.5f);
+
+        canChangeRotation = true;
     }
 
     void Update()
@@ -195,7 +191,7 @@ public class Player : MonoBehaviour
     {
         canvasInGame.SetActive(false);
         
-        if (JsonStorage.instance.jsonData.otherSettings.vibration)
+        if (JsonStorage.instance.data.otherSettings.vibration)
         {
             Handheld.Vibrate();
             Debug.Log("Vibration");
@@ -211,7 +207,7 @@ public class Player : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.05f));
 
-        if (JsonStorage.instance.jsonData.otherSettings.cameraShake)
+        if (JsonStorage.instance.data.otherSettings.cameraShake)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -232,14 +228,11 @@ public class Player : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        int a = random.Next(1, 5);
-
-        if (a == 2)
-        {
-            AdsManager.instance.ShowInterstitialAd();
-        }
+        AdsManager.instance.AdvertisingProcessor();
 
         deathPanel.SetActive(true);
         LosePanel.instance.Death(int.Parse(Score.instance.scoreText.text));
     }
+
+    
 }

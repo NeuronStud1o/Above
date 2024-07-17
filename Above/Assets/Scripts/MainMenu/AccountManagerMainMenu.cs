@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -22,7 +21,7 @@ public class AccountManagerMainMenu : MonoBehaviour
     {
         userName.text = UserData.instance.User.DisplayName;
 
-        string equipedIcon = JsonStorage.instance.jsonData.userData.userIcon;
+        string equipedIcon = JsonStorage.instance.data.userData.userIcon;
 
         foreach (Icons i in icons)
         {

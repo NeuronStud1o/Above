@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +24,7 @@ public class EquipAccIcon : MonoBehaviour
 
     public void Change(string name, Image button)
     {
-        JsonStorage.instance.jsonData.userData.userIcon = name;
+        JsonStorage.instance.data.userData.userIcon = name;
 
         foreach (SelectAccIcon select in equipButtonsList)
         {
@@ -42,7 +39,6 @@ public class EquipAccIcon : MonoBehaviour
 
         accountManagerMainMenu.ChangeIcon(name);
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 }

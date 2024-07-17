@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Storage;
 using System.IO;
@@ -7,15 +6,16 @@ using System.Threading.Tasks;
 using System;
 using Firebase.Extensions;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using Firebase.Auth;
 
 public class StorageData : MonoBehaviour
 {
     public static StorageData instance;
-    StorageReference reference;
 
+    StorageReference reference;
     FirebaseStorage storage;
+    StorageMetadata metadata;
+
     public FirebaseAuth auth;
 
     private TaskCompletionSource<bool> downloadTaskCompletionSource;
@@ -37,7 +37,7 @@ public class StorageData : MonoBehaviour
 
     public void SetReference()
     {
-        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+        reference = storage.RootReference.Child(UserData.instance.User.UserId).Child("data");
     }
 
     public async Task DeleteUser()
@@ -45,19 +45,40 @@ public class StorageData : MonoBehaviour
         await DeleteFolderAsync();
     }
 
-    async Task DeleteFolderAsync()
+    public async Task DeleteFolderAsync()
     {
         DataBase.instance.SetActiveLoadingScreen(true);
 
         StorageReference storageRef = storage.GetReferenceFromUrl("gs://above-acb46.appspot.com");
-        StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId).Child("gameData");
+        StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId);
 
         await folderRef.DeleteAsync().ContinueWith(async task =>
         {
             if (task.IsCompleted)
             {
                 Debug.Log("Folder deleted successfully.");
-                await DeleteUserAsync(); // Викликаємо метод видалення користувача після видалення папки
+                await DeleteUserAsync();
+            }
+            else if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to delete folder: " + task.Exception);
+                DataBase.instance.SetActiveLoadingScreen(false);
+            }
+        });
+    }
+
+    public void DeleteAdditionalJson()
+    {
+        DataBase.instance.SetActiveLoadingScreen(true);
+
+        StorageReference storageRef = storage.GetReferenceFromUrl("gs://above-acb46.appspot.com");
+        StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId).Child("gameData");
+
+        folderRef.DeleteAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                Debug.Log("Json is deleted");
             }
             else if (task.IsFaulted)
             {
@@ -69,7 +90,7 @@ public class StorageData : MonoBehaviour
 
     async Task DeleteUserAsync()
     {
-        Firebase.Auth.FirebaseUser user = auth.CurrentUser;
+        FirebaseUser user = auth.CurrentUser;
         if (user != null)
         {
             await user.DeleteAsync().ContinueWith(task =>
@@ -95,7 +116,7 @@ public class StorageData : MonoBehaviour
         string local_file = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
         string local_file_uri = string.Format("{0}://{1}", Uri.UriSchemeFile, local_file);
 
-        string jsonDataTemp = JsonUtility.ToJson(JsonStorage.instance.jsonData, true);
+        string jsonDataTemp = JsonUtility.ToJson(JsonStorage.instance.data, true);
         System.IO.File.WriteAllText(local_file, jsonDataTemp);
         
         if (System.IO.File.Exists(local_file) && UserData.instance.User != null)
@@ -104,15 +125,6 @@ public class StorageData : MonoBehaviour
             {
                 reference.PutFileAsync(local_file_uri).ContinueWith(task => 
                 {
-                    if (task.IsCompleted)
-                    {
-                        Debug.Log("SAVE");
-                    }
-                    else if (task.IsFaulted)
-                    {
-                        Debug.Log("FAIL");
-                    }
-
                     StorageMetadata metadata = task.Result;
                     string md5Hash = metadata.Md5Hash;
                 });
@@ -147,31 +159,24 @@ public class StorageData : MonoBehaviour
             JsonStorage.instance.CancelTimer();
         }
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        string filePath2 = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
+        string filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        string filePath2 = Path.Combine(Application.persistentDataPath, "gameData.json");
+        string filePath3 = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
 
-        if (System.IO.File.Exists(filePath))
+        DeletingFile(filePath);
+        DeletingFile(filePath2);
+        DeletingFile(filePath3);
+    }
+
+    void DeletingFile(string path)
+    {
+        if (File.Exists(path))
         {
             try
             {
-                System.IO.File.Delete(filePath);
-                System.IO.File.Delete(filePath2);
+                File.Delete(path);
 
-                Debug.Log("File is deleted: " + filePath);
-            }
-            catch (Exception e)
-            {
-                Debug.Log("Delete file exeption: " + e.Message);
-            }
-        }
-
-        if (System.IO.File.Exists(filePath2))
-        {
-            try
-            {
-                System.IO.File.Delete(filePath2);
-
-                Debug.Log("File is deleted: " + filePath2);
+                Debug.Log("File is deleted: " + path);
             }
             catch (Exception e)
             {
@@ -182,7 +187,7 @@ public class StorageData : MonoBehaviour
 
     public async Task<T> LoadJsonData<T>()
     {
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        string filePath = Path.Combine(Application.persistentDataPath, "data.json");
 
         if (!await CheckIfJsonDataExists())
         {
@@ -198,7 +203,7 @@ public class StorageData : MonoBehaviour
             if (!task.IsFaulted && !task.IsCanceled)
             {
                 string downloadUrl = task.Result.ToString();
-                StartCoroutine(DownloadFile(downloadUrl));
+                StartCoroutine(DownloadFile(downloadUrl, filePath));
             }
             else
             {
@@ -208,14 +213,50 @@ public class StorageData : MonoBehaviour
 
         await downloadTaskCompletionSource.Task;
 
-        string jsonData = System.IO.File.ReadAllText(filePath);
+        string jsonData = File.ReadAllText(filePath);
 
         T loadedData = JsonUtility.FromJson<T>(jsonData);
 
         return loadedData;
     }
 
-    private IEnumerator DownloadFile(string downloadUrl)
+    public async Task<T> LoadAdditionalJsonData<T>()
+    {
+        StorageReference reference2 = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+
+        if (!await CheckAdditionalJson())
+        {
+            Debug.Log("File does not exist in storage.");
+            return default;
+        }
+
+        downloadTaskCompletionSource = new TaskCompletionSource<bool>();
+
+        var downloadUrlTask = reference2.GetDownloadUrlAsync();
+        await downloadUrlTask.ContinueWithOnMainThread(task =>
+        {
+            if (!task.IsFaulted && !task.IsCanceled)
+            {
+                string downloadUrl = task.Result.ToString();
+                StartCoroutine(DownloadFile(downloadUrl, filePath));
+            }
+            else
+            {
+                Debug.LogError("Error getting download URL: " + task.Exception);
+            }
+        });
+
+        await downloadTaskCompletionSource.Task;
+
+        string jsonData = File.ReadAllText(filePath);
+
+        T loadedData = JsonUtility.FromJson<T>(jsonData);
+
+        return loadedData;
+    }
+
+    private IEnumerator DownloadFile(string downloadUrl, string filePath)
     {
         using (UnityWebRequest www = UnityWebRequest.Get(downloadUrl))
         {
@@ -223,8 +264,7 @@ public class StorageData : MonoBehaviour
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-                System.IO.File.WriteAllBytes(filePath, www.downloadHandler.data);
+                File.WriteAllBytes(filePath, www.downloadHandler.data);
 
                 downloadTaskCompletionSource.TrySetResult(true);
             }
@@ -239,20 +279,29 @@ public class StorageData : MonoBehaviour
     {
         try
         {
-            StorageMetadata metadata = await reference.GetMetadataAsync();
+            metadata = await reference.GetMetadataAsync();
             return true;
         }
-        catch (StorageException ex)
+        catch (StorageException)
         {
-            if (ex.HttpResultCode == 404)
-            {
-                return false;
-            }
-            else
-            {
-                Debug.LogError("Error checking file existence: " + ex.Message);
-                return false;
-            }
+            return false;
+        }
+    }
+
+    public async Task<bool> CheckAdditionalJson()
+    {
+        Debug.Log("Checking game data");
+        StorageReference additionalJsonRef = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
+
+        try
+        {
+            metadata = await additionalJsonRef.GetMetadataAsync();
+
+            return true;
+        }
+        catch (StorageException)
+        {
+            return false;
         }
     }
 }

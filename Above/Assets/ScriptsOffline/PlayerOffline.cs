@@ -23,6 +23,7 @@ public class PlayerOffline : MonoBehaviour
 
     public bool isCanMove = false;
     bool isCanTouchCoin = true;
+    bool canChangeRotation = true;
 
     private System.Random random = new System.Random();
 
@@ -46,13 +47,15 @@ public class PlayerOffline : MonoBehaviour
     {
         if (isCanMove)
         {
-            if (collision.collider.CompareTag("RightWall"))
+            if (collision.collider.CompareTag("RightWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Left);
+                canChangeRotation = false;
+                TakeDirection();
             }
-            if (collision.collider.CompareTag("LeftWall"))
+            if (collision.collider.CompareTag("LeftWall") && canChangeRotation)
             {
-                TakeDirection(Direction.Right);
+                canChangeRotation = false;
+                TakeDirection();
             }
 
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("DownEnemy"))
@@ -95,19 +98,21 @@ public class PlayerOffline : MonoBehaviour
         Destroy(coin);
     }
 
-    void TakeDirection(Direction flip)
+    void TakeDirection()
     {
-        switch (flip)
-        {
-            case Direction.Left:
-                transform.localScale = new Vector3(-0.2954769f, 0.2954769f, 0f);
-                speedDirection = 1;
-                break;
-            case Direction.Right:
-                transform.localScale = new Vector3(0.2954769f, 0.2954769f, 0f);
-                speedDirection = -1;
-                break;
-        }
+        StartCoroutine(NewDirection());
+    }
+
+    IEnumerator NewDirection()
+    {
+        anim.SetBool("RightDirection", !anim.GetBool("RightDirection"));
+        speedDirection *= -1;
+
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+        yield return new WaitForSeconds(0.5f);
+
+        canChangeRotation = true;
     }
 
     void Update()
@@ -159,13 +164,7 @@ public class PlayerOffline : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        int a = random.Next(1, 4);
-        Debug.Log(a);
-
-        if (a == 2)
-        {
-            AdsManager.instance.ShowInterstitialAd();
-        }
+        AdsManager.instance.AdvertisingProcessor();
 
         deathPanel.SetActive(true);
     }

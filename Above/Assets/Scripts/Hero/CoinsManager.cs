@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CoinsManager : MonoBehaviour
 {
@@ -18,8 +15,8 @@ public class CoinsManager : MonoBehaviour
     {
         instance = this;
 
-        coinsF = JsonStorage.instance.jsonData.userData.coinsF;
-        coinsS = JsonStorage.instance.jsonData.userData.coinsS;
+        coinsF = JsonStorage.instance.data.userData.coinsF;
+        coinsS = JsonStorage.instance.data.userData.coinsS;
 
         UpdateUI();
     }

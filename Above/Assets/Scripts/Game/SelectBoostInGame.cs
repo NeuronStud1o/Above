@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectBoostInGame : MonoBehaviour
@@ -14,7 +12,7 @@ public class SelectBoostInGame : MonoBehaviour
 
     void Start()
     {
-        i = JsonStorage.instance.jsonData.currentShop.currentBoost;
+        i = JsonStorage.instance.data.currentShop.currentBoost;
 
         if (i == 3)
         {

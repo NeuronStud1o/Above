@@ -7,11 +7,9 @@ public class UserData : MonoBehaviour
 {
     public static UserData instance;
 
-    private FirebaseUser user;
-    public FirebaseUser User { get => user; private set => user = value; }
+    public FirebaseUser User;
 
-    private UserMetadata metadata;
-    public UserMetadata Metadata { get => metadata; private set => metadata = value; }
+    public UserMetadata metadata;
 
     private void Awake()
     {
@@ -25,11 +23,5 @@ public class UserData : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }
-
-    public void SetUser(FirebaseUser newUser)
-    {
-        user = newUser;
-        metadata = user.Metadata;
     }
 }

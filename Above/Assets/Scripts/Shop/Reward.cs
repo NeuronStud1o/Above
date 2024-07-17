@@ -46,11 +46,10 @@ public class Reward : MonoBehaviour
 
         CoinsManagerInMainMenu.instance.coinsF += 10;
 
-        JsonStorage.instance.jsonData.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
-        JsonStorage.instance.jsonData.userData.coinsFAllTime += 10;
+        JsonStorage.instance.data.userData.coinsF = CoinsManagerInMainMenu.instance.coinsF;
+        JsonStorage.instance.data.userData.coinsFAllTime += 10;
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
         
         CoinsManagerInMainMenu.instance.UpdateUI();
     }

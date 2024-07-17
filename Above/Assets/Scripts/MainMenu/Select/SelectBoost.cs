@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class SelectBoost : MonoBehaviour
@@ -19,7 +15,7 @@ public class SelectBoost : MonoBehaviour
 
     void Start()
     {
-        if (JsonStorage.instance.jsonData.currentShop.currentBoost == 3)
+        if (JsonStorage.instance.data.currentShop.currentBoost == 3)
         {
             foreach (GameObject hero in Heroes)
             {
@@ -34,7 +30,7 @@ public class SelectBoost : MonoBehaviour
             }
         }
 
-        currentBoost = JsonStorage.instance.jsonData.currentShop.currentBoost;
+        currentBoost = JsonStorage.instance.data.currentShop.currentBoost;
 
         EquipedButtons[currentBoost].SetActive(true);
         EquipButtons[currentBoost].SetActive(false);
@@ -66,10 +62,9 @@ public class SelectBoost : MonoBehaviour
             }
         }
 
-        JsonStorage.instance.jsonData.currentShop.currentBoost = thisBoost;
+        JsonStorage.instance.data.currentShop.currentBoost = thisBoost;
 
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-        CryptoHelper.Encrypt(filePath, JsonStorage.instance.jsonData, JsonStorage.instance.password);
+        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
 
         AllBoosts[thisBoost].SetActive(true);
 

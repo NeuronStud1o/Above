@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,16 +25,16 @@ public class AccStatistic : MonoBehaviour
     {
         userIcon.sprite = icon.sprite;
 
-        flyCoinsAllTime.text = JsonStorage.instance.jsonData.userData.coinsFAllTime + "";
-        superCoinsAllTime.text = JsonStorage.instance.jsonData.userData.coinsSAllTime + "";
-        hightScore.text = JsonStorage.instance.jsonData.userData.record + "";
-        level.text = JsonStorage.instance.jsonData.userData.level + "";
+        flyCoinsAllTime.text = JsonStorage.instance.data.userData.coinsFAllTime + "";
+        superCoinsAllTime.text = JsonStorage.instance.data.userData.coinsSAllTime + "";
+        hightScore.text = JsonStorage.instance.data.userData.record + "";
+        level.text = JsonStorage.instance.data.userData.level + "";
 
-        ulong creationTimestamp = UserData.instance.Metadata.CreationTimestamp;
+        ulong creationTimestamp = UserData.instance.metadata.CreationTimestamp;
         long signedTimestamp = (long)creationTimestamp;
 
         DateTime creationDateTime = DateTimeOffset.FromUnixTimeMilliseconds(signedTimestamp).DateTime;
-        string formattedDate = creationDateTime.ToString("yyyy-MM-dd HH:mm");
+        string formattedDate = creationDateTime.ToString("yyyy-MM-dd");
 
         createdAccount.text = formattedDate;
 
