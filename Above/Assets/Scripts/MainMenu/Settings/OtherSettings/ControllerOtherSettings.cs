@@ -13,7 +13,6 @@ public class ControllerOtherSettings : MonoBehaviour
     void Start()
     {
         ShowLevelRanks(JsonStorage.instance.data.otherSettings.showLevelRanks);
-        AutoSaveSettings(JsonStorage.instance.data.otherSettings.autoSave);
         ActivateParticles(JsonStorage.instance.data.otherSettings.particles);
         ShowTheSelectedBoost(JsonStorage.instance.data.otherSettings.showSelectedBoostInGame);
     }
@@ -27,24 +26,6 @@ public class ControllerOtherSettings : MonoBehaviour
         else
         {
             levelRanks.SetActive(false);
-        }
-    }
-
-    public void AutoSaveSettings(bool tog)
-    {
-        if (tog == true)
-        {
-            foreach (MonoBehaviour script in autoSaveScripts)
-            {
-                script.enabled = true;
-            }
-        }
-        else
-        {
-            foreach (MonoBehaviour script in autoSaveScripts)
-            {
-                script.enabled = false;
-            }
         }
     }
 

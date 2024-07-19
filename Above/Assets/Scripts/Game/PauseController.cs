@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseController : MonoBehaviour
 {
     [SerializeField] private GameObject timerGameObject;
+
     private GameObject hero;
     private GameObject timerChildren;
     public GameObject Hero { get => hero; set => hero = value; }
@@ -72,4 +74,6 @@ public class PauseController : MonoBehaviour
 
         isPause = false;
     }
+
+    
 }

@@ -25,7 +25,6 @@ public class Data
 
     public void CopyFromJsonData(JsonData other)
     {
-        boolean.isFirstTimeAudio = other.boolean.isFirstTimeAudio;
         boolean.isTutorial = other.boolean.isTutorial;
 
         userData.coinsF = other.userData.coinsF;
@@ -35,9 +34,7 @@ public class Data
         userData.exp = other.userData.exp;
         userData.level = other.userData.level;
         userData.record = other.userData.record;
-        userData.userEmail = other.userData.userEmail;
         userData.userIcon = other.userData.userIcon;
-        userData.userName = other.userData.userName;
  
         currentShop.currentBg = other.currentShop.currentBg;
         currentShop.currentBoost = other.currentShop.currentBoost;
@@ -48,7 +45,6 @@ public class Data
         audioSettings.sfxGame = other.audioSettings.sfxGame;
         audioSettings.sfxMainMenu = other.audioSettings.sfxMainMenu;
 
-        otherSettings.autoSave = other.otherSettings.autoSave;
         otherSettings.cameraShake = other.otherSettings.cameraShake;
         otherSettings.particles = other.otherSettings.particles;
         otherSettings.showLevelRanks = other.otherSettings.showLevelRanks;
@@ -79,14 +75,11 @@ public class Data
     public struct Boolean
     {
         public bool isTutorial;
-        public bool isFirstTimeAudio;
     }
 
     [System.Serializable]
     public struct UserData
     {
-        public string userName;
-        public string userEmail;
         public string userIcon;
 
         public int exp;
@@ -128,7 +121,6 @@ public class Data
     public struct OtherSettings
     {
         public bool showLevelRanks;
-        public bool autoSave;
         public bool particles;
         public bool showSelectedBoostInGame;
         public bool cameraShake;

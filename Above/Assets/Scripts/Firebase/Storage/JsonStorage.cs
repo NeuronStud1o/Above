@@ -192,8 +192,6 @@ public class JsonStorage : MonoBehaviour
 
             userData = new Data.UserData
             {
-                userName = UserData.instance.User.DisplayName,
-                userEmail = UserData.instance.User.Email,
                 userIcon = "blackThrush",
 
                 exp = 0,
@@ -241,7 +239,6 @@ public class JsonStorage : MonoBehaviour
             otherSettings = new Data.OtherSettings
             {
                 showLevelRanks = true,
-                autoSave = false,
                 particles = true,
                 showSelectedBoostInGame = true,
                 cameraShake = true,

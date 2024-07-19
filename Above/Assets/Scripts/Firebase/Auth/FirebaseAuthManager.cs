@@ -567,6 +567,11 @@ public class FirebaseAuthManager : MonoBehaviour
             DataBase.instance.GetComponent<AudioSource>().enabled = false;
             JsonStorage.instance.data.boolean.isTutorial = true;
 
+            JsonStorage.instance.data.audioSettings.musicGame = 0.5f;
+            JsonStorage.instance.data.audioSettings.musicMainMenu = 0.5f;
+            JsonStorage.instance.data.audioSettings.sfxGame = 1;
+            JsonStorage.instance.data.audioSettings.sfxMainMenu = 1;
+
             DataBase.instance.SetActiveLoadingScreen(false);
 
             await Task.Delay(500);
