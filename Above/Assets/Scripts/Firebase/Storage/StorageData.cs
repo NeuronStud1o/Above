@@ -47,7 +47,7 @@ public class StorageData : MonoBehaviour
 
     public async Task DeleteFolderAsync()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
 
         StorageReference storageRef = storage.GetReferenceFromUrl("gs://above-acb46.appspot.com");
         StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId);
@@ -62,28 +62,7 @@ public class StorageData : MonoBehaviour
             else if (task.IsFaulted)
             {
                 Debug.LogError("Failed to delete folder: " + task.Exception);
-                DataBase.instance.SetActiveLoadingScreen(false);
-            }
-        });
-    }
-
-    public void DeleteAdditionalJson()
-    {
-        DataBase.instance.SetActiveLoadingScreen(true);
-
-        StorageReference storageRef = storage.GetReferenceFromUrl("gs://above-acb46.appspot.com");
-        StorageReference folderRef = storageRef.Child(UserData.instance.User.UserId).Child("gameData");
-
-        folderRef.DeleteAsync().ContinueWith(task =>
-        {
-            if (task.IsCompleted)
-            {
-                Debug.Log("Json is deleted");
-            }
-            else if (task.IsFaulted)
-            {
-                Debug.LogError("Failed to delete folder: " + task.Exception);
-                DataBase.instance.SetActiveLoadingScreen(false);
+                GameManager.instance.SetActiveLoadingScreen(false);
             }
         });
     }
@@ -135,8 +114,8 @@ public class StorageData : MonoBehaviour
 
                 Debug.Log(e);
 
-                DataBase.instance.SetActiveLoadingScreen(true);
-                DataBase.instance.SetMessage(e.HttpResultCode.ToString());
+                GameManager.instance.SetActiveLoadingScreen(true);
+                GameManager.instance.SetMessage(e.HttpResultCode.ToString());
 
                 //ErrorUnknown	Сталася невідома помилка.
                 //ErrorObjectNotFound	Жодного об'єкта не існує в потрібному посиланні.
@@ -220,42 +199,6 @@ public class StorageData : MonoBehaviour
         return loadedData;
     }
 
-    public async Task<T> LoadAdditionalJsonData<T>()
-    {
-        StorageReference reference2 = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
-        string filePath = Path.Combine(Application.persistentDataPath, "gameData.json");
-
-        if (!await CheckAdditionalJson())
-        {
-            Debug.Log("File does not exist in storage.");
-            return default;
-        }
-
-        downloadTaskCompletionSource = new TaskCompletionSource<bool>();
-
-        var downloadUrlTask = reference2.GetDownloadUrlAsync();
-        await downloadUrlTask.ContinueWithOnMainThread(task =>
-        {
-            if (!task.IsFaulted && !task.IsCanceled)
-            {
-                string downloadUrl = task.Result.ToString();
-                StartCoroutine(DownloadFile(downloadUrl, filePath));
-            }
-            else
-            {
-                Debug.LogError("Error getting download URL: " + task.Exception);
-            }
-        });
-
-        await downloadTaskCompletionSource.Task;
-
-        string jsonData = File.ReadAllText(filePath);
-
-        T loadedData = JsonUtility.FromJson<T>(jsonData);
-
-        return loadedData;
-    }
-
     private IEnumerator DownloadFile(string downloadUrl, string filePath)
     {
         using (UnityWebRequest www = UnityWebRequest.Get(downloadUrl))
@@ -280,23 +223,6 @@ public class StorageData : MonoBehaviour
         try
         {
             metadata = await reference.GetMetadataAsync();
-            return true;
-        }
-        catch (StorageException)
-        {
-            return false;
-        }
-    }
-
-    public async Task<bool> CheckAdditionalJson()
-    {
-        Debug.Log("Checking game data");
-        StorageReference additionalJsonRef = storage.RootReference.Child(UserData.instance.User.UserId).Child("gameData");
-
-        try
-        {
-            metadata = await additionalJsonRef.GetMetadataAsync();
-
             return true;
         }
         catch (StorageException)

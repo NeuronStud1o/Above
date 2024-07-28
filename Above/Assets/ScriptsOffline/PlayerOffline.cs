@@ -29,7 +29,7 @@ public class PlayerOffline : MonoBehaviour
 
     void Start()
     {
-        DataBase.instance.SetActiveLoadingScreen(false);
+        GameManager.instance.SetActiveLoadingScreen(false);
         
         StartOnClick.instance.playerOffline = this;
 

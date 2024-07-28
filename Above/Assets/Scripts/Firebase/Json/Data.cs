@@ -22,35 +22,6 @@ public class Data
         otherSettings = other.otherSettings;
         icons = other.icons;
     }
-
-    public void CopyFromJsonData(JsonData other)
-    {
-        boolean.isTutorial = other.boolean.isTutorial;
-
-        userData.coinsF = other.userData.coinsF;
-        userData.coinsS = other.userData.coinsS;
-        userData.coinsFAllTime = other.userData.coinsFAllTime;
-        userData.coinsSAllTime = other.userData.coinsSAllTime;
-        userData.exp = other.userData.exp;
-        userData.level = other.userData.level;
-        userData.record = other.userData.record;
-        userData.userIcon = other.userData.userIcon;
- 
-        currentShop.currentBg = other.currentShop.currentBg;
-        currentShop.currentBoost = other.currentShop.currentBoost;
-        currentShop.currentSkin = other.currentShop.currentSkin;
-
-        audioSettings.musicGame = other.audioSettings.musicGame;
-        audioSettings.musicMainMenu = other.audioSettings.musicMainMenu;
-        audioSettings.sfxGame = other.audioSettings.sfxGame;
-        audioSettings.sfxMainMenu = other.audioSettings.sfxMainMenu;
-
-        otherSettings.cameraShake = other.otherSettings.cameraShake;
-        otherSettings.particles = other.otherSettings.particles;
-        otherSettings.showLevelRanks = other.otherSettings.showLevelRanks;
-        otherSettings.showSelectedBoostInGame = other.otherSettings.showSelectedBoostInGame;
-        otherSettings.vibration = other.otherSettings.vibration;
-    }
     
     public Data()
     {

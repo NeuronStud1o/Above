@@ -24,8 +24,8 @@ public class ButtonsManagerMainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        DataBase.instance.gameObject.GetComponent<AudioSource>().enabled = false;
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.gameObject.GetComponent<AudioSource>().enabled = false;
+        GameManager.instance.SetActiveLoadingScreen(true);
 
         StartCoroutine(LoadGameSceneAsync());
     }

@@ -61,8 +61,8 @@ public class JsonStorage : MonoBehaviour
     {
         if (isDataException)
         {
-            DataBase.instance.SetActiveLoadingScreen(true);
-            DataBase.instance.SetMessage("Data loading error.\nPlease re-enter the game");
+            GameManager.instance.SetActiveLoadingScreen(true);
+            GameManager.instance.SetMessage("Data loading error.\nPlease re-enter the game");
             return;
         }
 
@@ -82,12 +82,12 @@ public class JsonStorage : MonoBehaviour
         Debug.Log("Start action");
 
         password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
-        DataBase.instance.SetMessage("Checking the availability of a file");
+        GameManager.instance.SetMessage("Checking the availability of a file");
 
-        await JsonFilter.StartFilter();
+        await CheckJson();
     }
 
-    public async Task CheckJsons()
+    public async Task CheckJson()
     {
         Debug.Log("Check json");
         string filePath = Path.Combine(Application.persistentDataPath, "data.json");
@@ -100,7 +100,7 @@ public class JsonStorage : MonoBehaviour
                 {
                     if (await StorageData.instance.CheckIfJsonDataExists() == false)
                     {
-                        DataBase.instance.SetMessage("Creating new json data");
+                        GameManager.instance.SetMessage("Creating new json data");
 
                         data = CreateNewJsonData();
 
@@ -114,7 +114,7 @@ public class JsonStorage : MonoBehaviour
                     else
                     {
                         Debug.Log("File is received from storage");
-                        DataBase.instance.SetMessage("Loading json data");
+                        GameManager.instance.SetMessage("Loading json data");
 
                         data = await StorageData.instance.LoadJsonData<Data>();
 
@@ -132,14 +132,14 @@ public class JsonStorage : MonoBehaviour
                 }
                 else
                 {
-                    DataBase.instance.SetMessage("User exception");
+                    GameManager.instance.SetMessage("User exception");
                 }
                 
             }
             catch (System.Exception e)
             {
                 Debug.LogError(e);
-                DataBase.instance.SetMessage(e.ToString());
+                GameManager.instance.SetMessage(e.ToString());
             }
             
         }
@@ -151,13 +151,13 @@ public class JsonStorage : MonoBehaviour
 
         data = CryptoHelper.LoadAndDecrypt<Data>(filePath, password);
 
-        DataBase.instance.SetMessage("Enabling add-ons");
+        GameManager.instance.SetMessage("Enabling add-ons");
 
         if (data.userData.level == 0)
         {
             isDataException = true;
-            DataBase.instance.SetActiveLoadingScreen(true);
-            DataBase.instance.SetMessage("Data loading error.\nPlease re-enter the game");
+            GameManager.instance.SetActiveLoadingScreen(true);
+            GameManager.instance.SetMessage("Data loading error.\nPlease re-enter the game");
             return;
         }
 

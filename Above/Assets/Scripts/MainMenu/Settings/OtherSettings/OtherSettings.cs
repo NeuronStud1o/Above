@@ -59,7 +59,7 @@ public class OtherSettings : MonoBehaviour
 
         Debug.Log("Data is deleted");
 
-        DataBase.instance.SetActiveLoadingScreen(false);
+        GameManager.instance.SetActiveLoadingScreen(false);
         SceneManager.LoadSceneAsync("Authentication");
     }
 

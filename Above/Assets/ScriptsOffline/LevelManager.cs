@@ -28,6 +28,6 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        DataBase.instance.GetComponent<AudioSource>().enabled = true;
+        GameManager.instance.GetComponent<AudioSource>().enabled = true;
     }
 }

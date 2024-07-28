@@ -22,6 +22,6 @@ public class SelectBgInGame : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        DataBase.instance.SetActiveLoadingScreen(false);
+        GameManager.instance.SetActiveLoadingScreen(false);
     }
 }

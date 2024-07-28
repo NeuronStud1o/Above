@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-        musicMainMenu = DataBase.instance.gameObject.GetComponent<AudioSource>();
+        musicMainMenu = GameManager.instance.gameObject.GetComponent<AudioSource>();
 
         LoadAudioValue();
     }

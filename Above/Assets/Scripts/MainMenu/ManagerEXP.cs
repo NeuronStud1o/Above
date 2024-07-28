@@ -58,8 +58,8 @@ public class ManagerEXP : MonoBehaviour
         if (level == 0)
         {
             JsonStorage.instance.isDataException = true;
-            DataBase.instance.SetActiveLoadingScreen(true);
-            DataBase.instance.SetMessage("Data loading error. Please re-enter the game");
+            GameManager.instance.SetActiveLoadingScreen(true);
+            GameManager.instance.SetMessage("Data loading error. Please re-enter the game");
         }
     }
 

@@ -56,9 +56,9 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        if (DataBase.instance != null)
+        if (GameManager.instance != null)
         {
-            DataBase.instance.GetComponent<AudioSource>().enabled = false;
+            GameManager.instance.GetComponent<AudioSource>().enabled = false;
         }
         
         rb = hero.GetComponent<Rigidbody2D>();
@@ -247,10 +247,10 @@ public class Tutorial : MonoBehaviour
 
     private IEnumerator ToLobby()
     {
-        if (DataBase.instance != null)
+        if (GameManager.instance != null)
         {
-            DataBase.instance.GetComponent<AudioSource>().enabled = true;
-            DataBase.instance.SetActiveLoadingScreen(true);
+            GameManager.instance.GetComponent<AudioSource>().enabled = true;
+            GameManager.instance.SetActiveLoadingScreen(true);
         }
         
         yield return new WaitForSeconds(0.5f);

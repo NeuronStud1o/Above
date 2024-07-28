@@ -24,15 +24,15 @@ public class WinPanel : MonoBehaviour
 
     public void GoToMenu()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
 
-        DataBase.instance.GetComponent<AudioSource>().enabled = true;
+        GameManager.instance.GetComponent<AudioSource>().enabled = true;
         SceneManager.LoadSceneAsync("OfflineMenu");
     }
 
     public void NextLevel()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
 
         LevelManager.instance.eqipedLevel++;
         SceneManager.LoadSceneAsync("OfflineGame");
@@ -40,7 +40,7 @@ public class WinPanel : MonoBehaviour
 
     public void RetryLevel()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
         
         SceneManager.LoadSceneAsync("OfflineGame");
     }

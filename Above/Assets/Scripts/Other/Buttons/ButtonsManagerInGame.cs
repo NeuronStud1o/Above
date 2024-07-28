@@ -7,7 +7,7 @@ public class ButtonsManagerInGame : MonoBehaviour
 {
     IEnumerator RetryGameAsync()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
 
         yield return new WaitForSeconds(3);
 
@@ -16,7 +16,7 @@ public class ButtonsManagerInGame : MonoBehaviour
 
     IEnumerator ReturnToMainMenuAsync()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
 
         yield return new WaitForSeconds(3);
 
