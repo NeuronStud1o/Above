@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UpgradeSystem;
 
 public class WIFIChecking : MonoBehaviour
 {
@@ -90,7 +91,9 @@ public class WIFIChecking : MonoBehaviour
         }
         else
         {
-            FirebaseAuthManager.instance.StartAction();
+            Debug.Log("No wifi errors");
+            
+            NewUpdatesPopupUI.instance.StartAction();
             errorPanel.SetActive(false);
 
             isAuthInitialized = true;
@@ -102,6 +105,7 @@ public class WIFIChecking : MonoBehaviour
     {
         if (sceneName == "Authentication" && !isAuthInitialized)
         {
+            Debug.Log("Scene is auth");
             StartCoroutine(AuthCheckWIFI());
             return;
         }
@@ -111,6 +115,7 @@ public class WIFIChecking : MonoBehaviour
 
     void RepeatCheck()
     {
+        Debug.Log("RepeatCheck");
         ChangeSceneName();
 
         InvokeRepeating("CheckInternet", 0, 3);

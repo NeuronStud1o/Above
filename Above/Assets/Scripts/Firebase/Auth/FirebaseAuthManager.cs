@@ -169,7 +169,6 @@ public class FirebaseAuthManager : MonoBehaviour
                 storage.SetActive(true);
             }
 
-            References.userName = user.DisplayName;
             UserData.instance.User = user;
             UserData.instance.metadata = user.Metadata;
 
@@ -343,7 +342,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
                 yield return new WaitForSeconds(2);
 
-                References.userName = user.DisplayName;
                 UserData.instance.User = user;
                 UserData.instance.metadata = user.Metadata;
 
