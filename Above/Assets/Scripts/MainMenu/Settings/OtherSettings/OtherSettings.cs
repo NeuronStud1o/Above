@@ -33,22 +33,6 @@ public class OtherSettings : MonoBehaviour
         CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
     }
 
-    public void AutoSaveSettings(bool tog)
-    {
-        if (tog == true)
-        {
-            JsonStorage.instance.data.otherSettings.autoSave = true;
-        }
-        else
-        {
-            JsonStorage.instance.data.otherSettings.autoSave = false;
-        }
-
-        controller.AutoSaveSettings(tog);
-
-        CryptoHelper.Encrypt(JsonStorage.instance.data, JsonStorage.instance.password);
-    }
-
     public void OpenDocumentation()
     {
         Application.OpenURL("https://docs.google.com/document/d/1ANJd7XmfpLubOtsssmON4Fuc_4nhoc4LQUoeockF8RY/edit?usp=sharing");
@@ -75,7 +59,7 @@ public class OtherSettings : MonoBehaviour
 
         Debug.Log("Data is deleted");
 
-        DataBase.instance.SetActiveLoadingScreen(false);
+        GameManager.instance.SetActiveLoadingScreen(false);
         SceneManager.LoadSceneAsync("Authentication");
     }
 
@@ -121,7 +105,6 @@ public class OtherSettings : MonoBehaviour
             {
                 JsonStorage.instance.data.userData.coinsS -= 5;
 
-                JsonStorage.instance.data.userData.userName = UserData.instance.User.DisplayName;
                 StorageData.instance.SaveJsonData();
 
                 SceneManager.LoadSceneAsync(1);

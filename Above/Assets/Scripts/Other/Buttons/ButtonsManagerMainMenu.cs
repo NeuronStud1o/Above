@@ -24,8 +24,8 @@ public class ButtonsManagerMainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        DataBase.instance.gameObject.GetComponent<AudioSource>().enabled = false;
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.gameObject.GetComponent<AudioSource>().enabled = false;
+        GameManager.instance.SetActiveLoadingScreen(true);
 
         StartCoroutine(LoadGameSceneAsync());
     }
@@ -42,16 +42,6 @@ public class ButtonsManagerMainMenu : MonoBehaviour
         settingsWindow.GetComponent<Animator>().SetTrigger("Exit");
 
         StartCoroutine(ExitWindowAsync(settingsWindow));
-    }
-
-    public void Instagram()
-    {
-        Application.OpenURL("https://instagram.com/neuron.studio.official?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D");
-    }
-
-    public void TikTok()
-    {
-        Application.OpenURL("https://www.tiktok.com/@neuron.studio.official?_t=8jzqf9PMyfe&_r=1");
     }
 
     public void PrivacyPolicy()

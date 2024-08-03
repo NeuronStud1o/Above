@@ -16,6 +16,7 @@ namespace UpgradeSystem
 
     public class NewUpdatesPopupUI : MonoBehaviour
     {
+        public static NewUpdatesPopupUI instance;
 
         [Header ("## UI References :")]
         [SerializeField] GameObject updateCanvas;
@@ -27,49 +28,61 @@ namespace UpgradeSystem
         [Header ("## Settings :")]
         [SerializeField] [TextArea (1, 5)] string jsonDataURL;
 
-        static bool isAlreadyCheckedForUpdates = false;
+        bool isAlreadyCheckedForUpdates = false;
 
         GameData latestGameData;
 
-        [System.Obsolete]
-        void Start()
+        void Awake()
         {
+            instance = this;
+        }
+
+        public void StartAction()
+        {
+            Debug.Log(isAlreadyCheckedForUpdates);
+
             if (!isAlreadyCheckedForUpdates)
             {
+                Debug.Log("is not already checked");
                 StopAllCoroutines();
                 StartCoroutine(CheckForUpdates());
             }
         }
 
-        [System.Obsolete]
+        
         private IEnumerator CheckForUpdates()
         {
             UnityWebRequest request = UnityWebRequest.Get(jsonDataURL);
-            request.chunkedTransfer = false;
             request.disposeDownloadHandlerOnDispose = true;
             request.timeout = 60;
 
             yield return request.SendWebRequest();
 
-            if (request.isDone)
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                GameManager.instance.SetActiveLoadingScreen(true);
+                GameManager.instance.SetMessage("Error");
+            }
+            else
             {
                 isAlreadyCheckedForUpdates = true;
 
-                if (!request.isNetworkError && !request.isHttpError)
+                latestGameData = JsonUtility.FromJson<GameData>(request.downloadHandler.text);
+
+                if (!string.IsNullOrEmpty(latestGameData.Version) && !Application.version.Equals(latestGameData.Version))
                 {
-                    latestGameData = JsonUtility.FromJson<GameData>(request.downloadHandler.text);
-
-                    if (!string.IsNullOrEmpty(latestGameData.Version) && !Application.version.Equals(latestGameData.Version))
-                    {
-                        Debug.Log("Latest game version: " + latestGameData.Version + " and latest game version on device: " + Application.version);
-                        uiDescriptionText.text = latestGameData.Description;
-                        ShowPopup();
-                    }
-
-                    if (!string.IsNullOrEmpty(latestGameData.TechnicalBreak) && latestGameData.TechnicalBreak == "true")
-                    {
-                        ShowTechPopup();
-                    }
+                    Debug.Log("Latest game version: " + latestGameData.Version + " and latest game version on device: " + Application.version);
+                    uiDescriptionText.text = latestGameData.Description;
+                    ShowPopup();
+                }
+                else if (!string.IsNullOrEmpty(latestGameData.TechnicalBreak) && latestGameData.TechnicalBreak == "true")
+                {
+                    ShowTechPopup();
+                }
+                else
+                {
+                    Debug.Log("No updates");
+                    FirebaseAuthManager.instance.StartAction();
                 }
             }
 
@@ -83,19 +96,9 @@ namespace UpgradeSystem
 
         void ShowPopup()
         {
-            //uiNotNowButton.onClick.AddListener (() => { HidePopup(); });
-
-            uiUpdateButton.onClick.AddListener (() => { Application.OpenURL(latestGameData.Url); HidePopup(); });
+            uiUpdateButton.onClick.AddListener (() => { Application.OpenURL(latestGameData.Url); });
 
             updateCanvas.SetActive (true);
-        }
-
-        void HidePopup()
-        {
-            updateCanvas.SetActive (false);
-
-            //uiNotNowButton.onClick.RemoveAllListeners();
-            uiUpdateButton.onClick.RemoveAllListeners();
         }
 
         void OnDestroy()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.IO;
 
 public class UIManager : MonoBehaviour
 {
@@ -54,7 +55,9 @@ public class UIManager : MonoBehaviour
 
     public void OpenLoginPanel()
     {
-        StorageData.instance.DeleteJson();
+        string filePath = Path.Combine(Application.persistentDataPath, "data.json");
+        
+        StorageData.instance.DeletingFile(filePath);
 
         ClearUI();
         

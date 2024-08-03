@@ -28,7 +28,7 @@ public class SelectBg : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        DataBase.instance.SetActiveLoadingScreen(false);
+        GameManager.instance.SetActiveLoadingScreen(false);
     }
 
     public void Change(int thisBg)

@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject canvasInGame;
     [SerializeField] private Color standartColor;
+    [SerializeField] private AudioSource audioSource;
 
     public float jumpForce = 7f;
     private Rigidbody2D rb;
-    private AudioSource audioSource;
     private Animator anim;
     private CameraFollow cameraFollow;
     [SerializeField] private int speedDirection = -1;
@@ -37,7 +37,6 @@ public class Player : MonoBehaviour
         StartOnClick.instance.player = this;
         CoinSpawner.instance.hero = gameObject;
 
-        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         cameraFollow = Camera.main.GetComponent<CameraFollow>();

@@ -7,7 +7,7 @@ public class OfflineManager : MonoBehaviour
 {
     void Start()
     {
-        DataBase.instance.SetActiveLoadingScreen(false);
+        GameManager.instance.SetActiveLoadingScreen(false);
 
         if (WIFIChecking.instance != null)
         {
@@ -22,7 +22,7 @@ public class OfflineManager : MonoBehaviour
 
     public void ToLobby()
     {
-        DataBase.instance.gameObject.GetComponent<AudioSource>().volume = 0.2f;
+        GameManager.instance.gameObject.GetComponent<AudioSource>().volume = 0.2f;
         SceneManager.LoadSceneAsync("Authentication");
     }
 
@@ -33,12 +33,12 @@ public class OfflineManager : MonoBehaviour
 
     private IEnumerator GameIsStarted(int index)
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
 
         yield return new WaitForSeconds(0.5f);
 
         LevelManager.instance.eqipedLevel = index;
-        DataBase.instance.GetComponent<AudioSource>().enabled = false;
+        GameManager.instance.GetComponent<AudioSource>().enabled = false;
 
         SceneManager.LoadSceneAsync("OfflineGame");
     }

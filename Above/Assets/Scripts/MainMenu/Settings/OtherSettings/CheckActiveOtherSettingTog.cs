@@ -11,7 +11,6 @@ public class CheckActiveOtherSettingTog : MonoBehaviour
     enum OtherSetting
     {
         ShowLevelRank,
-        AutoSave,
         Particles,
         ShowTheSelectedBoost,
         CameraShake,
@@ -26,9 +25,6 @@ public class CheckActiveOtherSettingTog : MonoBehaviour
             case OtherSetting.ShowLevelRank:
                 tog.isOn = JsonStorage.instance.data.otherSettings.showLevelRanks;
                 break; 
-            case OtherSetting.AutoSave:
-                tog.isOn = JsonStorage.instance.data.otherSettings.autoSave;
-                break;
             case OtherSetting.Particles:
                 tog.isOn = JsonStorage.instance.data.otherSettings.particles;
                 break;

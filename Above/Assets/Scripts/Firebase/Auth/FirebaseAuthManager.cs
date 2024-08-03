@@ -169,7 +169,6 @@ public class FirebaseAuthManager : MonoBehaviour
                 storage.SetActive(true);
             }
 
-            References.userName = user.DisplayName;
             UserData.instance.User = user;
             UserData.instance.metadata = user.Metadata;
 
@@ -225,71 +224,9 @@ public class FirebaseAuthManager : MonoBehaviour
         confirmPasswordRegisterField.text = "";
     }
 
-    public async void Logout()
+    public void Logout()
     {
-        await ExitGame();
-    }
-
-    async Task ExitGame()
-    {
-        if (auth != null && user != null)
-        {
-            string filePath = Path.Combine(Application.persistentDataPath, "data.json");
-            string password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
-
-            StorageData.instance.SetStorage(storageInstance);
-            StorageData.instance.SetReference();
-
-            if (JsonStorage.instance.data.userData.level == 0)
-            {
-                if (!File.Exists(filePath))
-                {
-                    try
-                    {
-                        if (UserData.instance.User != null)
-                        {
-                            if (await StorageData.instance.CheckIfJsonDataExists() == true)
-                            {
-                                UnityEngine.Debug.Log("File is received from storage");
-
-                                JsonStorage.instance.data = await StorageData.instance.LoadJsonData<Data>();
-
-                                while (!File.Exists(filePath))
-                                {
-                                    await Task.Delay(100);
-                                }
-
-                                await Task.Delay(1000);
-
-                                CryptoHelper.Encrypt(JsonStorage.instance.data, password);
-
-                                return;
-                            }
-                            else
-                            {
-                                auth.SignOut();
-                                Application.Quit();
-                            }
-                        }   
-                    }
-                    catch (System.Exception e)
-                    {
-                        UnityEngine.Debug.LogError(e);
-                    }
-                    
-                }
-                else
-                {
-                    JsonStorage.instance.data = CryptoHelper.LoadAndDecrypt<Data>(filePath, password);
-                }
-            }
-            
-            StorageData.instance.SaveJsonData();
-            auth.SignOut();
-            Application.Quit();
-
-            Debug.Log("Exit");
-        }
+        StorageData.instance.DeleteJson();
     }
 
     public void Login()
@@ -337,17 +274,16 @@ public class FirebaseAuthManager : MonoBehaviour
 
             if (user.IsEmailVerified)
             {
-                DataBase.instance.SetActiveLoadingScreen(true);
+                GameManager.instance.SetActiveLoadingScreen(true);
 
-                DataBase.instance.SetMessage("User login");
+                GameManager.instance.SetMessage("User login");
 
                 yield return new WaitForSeconds(2);
 
-                References.userName = user.DisplayName;
                 UserData.instance.User = user;
                 UserData.instance.metadata = user.Metadata;
 
-                DataBase.instance.SetMessage("Opening game scene");
+                GameManager.instance.SetMessage("Opening game scene");
 
                 OpenGameScene();
             }
@@ -360,7 +296,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void Register()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
         StartCoroutine(RegisterAsync(nameRegisterField.text, emailRegisterField.text, passwordRegisterField.text, confirmPasswordRegisterField.text));
     }
 
@@ -371,17 +307,17 @@ public class FirebaseAuthManager : MonoBehaviour
         if (name == "")
         {
             UIManager.Instance.SetErrorMessage("User Name is empty");
-            DataBase.instance.SetActiveLoadingScreen(false);
+            GameManager.instance.SetActiveLoadingScreen(false);
         }
         else if (email == "")
         {
             UIManager.Instance.SetErrorMessage("email field is empty");
-            DataBase.instance.SetActiveLoadingScreen(false);
+            GameManager.instance.SetActiveLoadingScreen(false);
         }
         else if (!string.Equals(password, confirmPassword, StringComparison.Ordinal))
         {
             UIManager.Instance.SetErrorMessage("Password does not match");
-            DataBase.instance.SetActiveLoadingScreen(false);
+            GameManager.instance.SetActiveLoadingScreen(false);
             yield break;
         }
         else
@@ -392,7 +328,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
             if (registerTask.Exception != null)
             {
-                DataBase.instance.SetActiveLoadingScreen(false);
+                GameManager.instance.SetActiveLoadingScreen(false);
                 Debug.LogError(registerTask.Exception);
 
                 FirebaseException firebaseException = registerTask.Exception.GetBaseException() as FirebaseException;
@@ -462,7 +398,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
                     UIManager.Instance.SetErrorMessage(failedMessage);
 
-                    DataBase.instance.SetActiveLoadingScreen(false);
+                    GameManager.instance.SetActiveLoadingScreen(false);
                 }
                 else
                 {
@@ -472,13 +408,13 @@ public class FirebaseAuthManager : MonoBehaviour
                     {
                         UIManager.Instance.OpenLoginPanel();
 
-                        DataBase.instance.SetActiveLoadingScreen(false);
+                        GameManager.instance.SetActiveLoadingScreen(false);
                     }
                     else
                     {
                         SendEmailForVerification();
 
-                        DataBase.instance.SetActiveLoadingScreen(false);
+                        GameManager.instance.SetActiveLoadingScreen(false);
                     }
                 }
             }
@@ -535,9 +471,9 @@ public class FirebaseAuthManager : MonoBehaviour
 
     async Task StartGame()
     {
-        DataBase.instance.SetActiveLoadingScreen(true);
+        GameManager.instance.SetActiveLoadingScreen(true);
         
-        DataBase.instance.SetMessage("Start game");
+        GameManager.instance.SetMessage("Start game");
 
         if (storage != null)
         {
@@ -549,25 +485,30 @@ public class FirebaseAuthManager : MonoBehaviour
         
         await JsonStorage.instance.StartAction();
 
-        DataBase.instance.SetMessage("Start action");
+        GameManager.instance.SetMessage("Start action");
 
         await Task.Delay(1000);
         
-        DataBase.instance.GetComponent<AudioSource>().volume = JsonStorage.instance.data.audioSettings.musicMainMenu;
+        GameManager.instance.GetComponent<AudioSource>().volume = JsonStorage.instance.data.audioSettings.musicMainMenu;
 
         bool tutorial = JsonStorage.instance.data.boolean.isTutorial;
 
-        DataBase.instance.SetMessage("");
+        GameManager.instance.SetMessage("");
 
         instance = null;
         UIManager.Instance = null;
 
         if (tutorial == false)
         {
-            DataBase.instance.GetComponent<AudioSource>().enabled = false;
+            GameManager.instance.GetComponent<AudioSource>().enabled = false;
             JsonStorage.instance.data.boolean.isTutorial = true;
 
-            DataBase.instance.SetActiveLoadingScreen(false);
+            JsonStorage.instance.data.audioSettings.musicGame = 0.5f;
+            JsonStorage.instance.data.audioSettings.musicMainMenu = 0.5f;
+            JsonStorage.instance.data.audioSettings.sfxGame = 1;
+            JsonStorage.instance.data.audioSettings.sfxMainMenu = 1;
+
+            GameManager.instance.SetActiveLoadingScreen(false);
 
             await Task.Delay(500);
 
@@ -581,7 +522,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void PlayOffline()
     {
-        DataBase.instance.GetComponent<AudioSource>().volume = 0.7f;
+        GameManager.instance.GetComponent<AudioSource>().volume = 0.7f;
 
         SceneManager.LoadSceneAsync("OfflineMenu");
     }
