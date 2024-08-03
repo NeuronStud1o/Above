@@ -28,7 +28,7 @@ namespace UpgradeSystem
         [Header ("## Settings :")]
         [SerializeField] [TextArea (1, 5)] string jsonDataURL;
 
-        static bool isAlreadyCheckedForUpdates = false;
+        bool isAlreadyCheckedForUpdates = false;
 
         GameData latestGameData;
 
@@ -39,6 +39,8 @@ namespace UpgradeSystem
 
         public void StartAction()
         {
+            Debug.Log(isAlreadyCheckedForUpdates);
+
             if (!isAlreadyCheckedForUpdates)
             {
                 Debug.Log("is not already checked");

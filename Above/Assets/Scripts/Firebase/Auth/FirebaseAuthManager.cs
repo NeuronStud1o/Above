@@ -224,71 +224,9 @@ public class FirebaseAuthManager : MonoBehaviour
         confirmPasswordRegisterField.text = "";
     }
 
-    public async void Logout()
+    public void Logout()
     {
-        await ExitGame();
-    }
-
-    async Task ExitGame()
-    {
-        if (auth != null && user != null)
-        {
-            string filePath = Path.Combine(Application.persistentDataPath, "data.json");
-            string password = CryptoHelper.GenerateKeyFromUid(UserData.instance.User.UserId);
-
-            StorageData.instance.SetStorage(storageInstance);
-            StorageData.instance.SetReference();
-
-            if (JsonStorage.instance.data.userData.level == 0)
-            {
-                if (!File.Exists(filePath))
-                {
-                    try
-                    {
-                        if (UserData.instance.User != null)
-                        {
-                            if (await StorageData.instance.CheckIfJsonDataExists() == true)
-                            {
-                                UnityEngine.Debug.Log("File is received from storage");
-
-                                JsonStorage.instance.data = await StorageData.instance.LoadJsonData<Data>();
-
-                                while (!File.Exists(filePath))
-                                {
-                                    await Task.Delay(100);
-                                }
-
-                                await Task.Delay(1000);
-
-                                CryptoHelper.Encrypt(JsonStorage.instance.data, password);
-
-                                return;
-                            }
-                            else
-                            {
-                                auth.SignOut();
-                                Application.Quit();
-                            }
-                        }   
-                    }
-                    catch (System.Exception e)
-                    {
-                        UnityEngine.Debug.LogError(e);
-                    }
-                    
-                }
-                else
-                {
-                    JsonStorage.instance.data = CryptoHelper.LoadAndDecrypt<Data>(filePath, password);
-                }
-            }
-            
-            StorageData.instance.SaveJsonData();
-            auth.SignOut();
-            Application.Quit();
-
-            Debug.Log("Exit");
-        }
+        StorageData.instance.DeleteJson();
     }
 
     public void Login()

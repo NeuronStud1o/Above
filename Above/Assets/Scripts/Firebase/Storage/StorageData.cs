@@ -7,6 +7,7 @@ using System;
 using Firebase.Extensions;
 using UnityEngine.Networking;
 using Firebase.Auth;
+using UnityEngine.SceneManagement;
 
 public class StorageData : MonoBehaviour
 {
@@ -131,23 +132,96 @@ public class StorageData : MonoBehaviour
         }
     }
 
-    public void DeleteJson()
+    public async void DeleteJson()
     {
         if (JsonStorage.instance != null)
         {
             JsonStorage.instance.CancelTimer();
         }
 
-        string filePath = Path.Combine(Application.persistentDataPath, "data.json");
-        string filePath2 = Path.Combine(Application.persistentDataPath, "gameData.json");
-        string filePath3 = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
+        string filePath = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
 
-        DeletingFile(filePath);
-        DeletingFile(filePath2);
-        DeletingFile(filePath3);
+        await DeletingFileSignOut(filePath);
     }
 
-    void DeletingFile(string path)
+    public async Task DeletingFileSignOut(string path)
+    {
+        if (File.Exists(path))
+        {
+            try
+            {
+                await SaveJsonAsync();
+                
+                await Task.Delay(1000);
+
+                if (IsFileAvailableForDeletion(path))
+                {
+                    File.Delete(path);
+                    Debug.Log("File is deleted: " + path);
+                }
+                else
+                {
+                    Debug.Log("File is not available for deletion: " + path);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Delete file exception: " + e.Message);
+            }
+        }
+
+        FirebaseAuthManager.instance.auth.SignOut();
+
+        Debug.Log("Signed out");
+        SceneManager.LoadSceneAsync("Authentication");
+    }
+
+    private bool IsFileAvailableForDeletion(string path)
+    {
+        try
+        {
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                return true;
+            }
+        }
+        catch (IOException)
+        {
+            return false;
+        }
+    }
+
+    async Task SaveJsonAsync()
+    {
+        string local_file = Path.Combine(Application.persistentDataPath, "gameDataTemp.json");
+        string local_file_uri = string.Format("{0}://{1}", Uri.UriSchemeFile, local_file);
+
+        string jsonDataTemp = JsonUtility.ToJson(JsonStorage.instance.data, true);
+        System.IO.File.WriteAllText(local_file, jsonDataTemp);
+
+        using (StreamWriter writer = new StreamWriter(local_file, false))
+        {
+            await writer.WriteAsync(jsonDataTemp);
+        }
+        
+        if (System.IO.File.Exists(local_file) && FirebaseAuthManager.instance.user != null)
+        {
+            try
+            {
+                var task = reference.PutFileAsync(local_file_uri);
+                await task;
+
+                StorageMetadata metadata = task.Result;
+                string md5Hash = metadata.Md5Hash;
+            }
+            catch (StorageException e)
+            {
+                Debug.Log(e);
+            }
+        }
+    }
+
+    public void DeletingFile(string path)
     {
         if (File.Exists(path))
         {
