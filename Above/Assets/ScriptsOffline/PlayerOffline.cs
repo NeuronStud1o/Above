@@ -164,8 +164,6 @@ public class PlayerOffline : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        AdsManager.instance.AdvertisingProcessor();
-
         deathPanel.SetActive(true);
     }
 }

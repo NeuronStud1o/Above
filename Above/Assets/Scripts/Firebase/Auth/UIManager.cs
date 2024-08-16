@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button playOnlineButton;
     [SerializeField] private Button logoutButton;
 
+    [SerializeField] private TextMeshProUGUI testText;
+
     private void Awake()
     {
         CreateInstance();
@@ -42,6 +44,11 @@ public class UIManager : MonoBehaviour
     public void SetErrorMessage(string error)
     {
         errorText.text = error;
+    }
+
+    public void SetTestMessage(string text)
+    {
+        testText.text = text;
     }
 
     public void ClearUI()

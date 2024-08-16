@@ -39,6 +39,7 @@ namespace UpgradeSystem
 
         public void StartAction()
         {
+            UIManager.Instance.SetTestMessage("New epdates start action");
             Debug.Log(isAlreadyCheckedForUpdates);
 
             if (!isAlreadyCheckedForUpdates)

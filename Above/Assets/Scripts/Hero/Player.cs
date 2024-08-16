@@ -227,8 +227,6 @@ public class Player : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(0.45f));
 
-        AdsManager.instance.AdvertisingProcessor();
-
         deathPanel.SetActive(true);
         LosePanel.instance.Death(int.Parse(Score.instance.scoreText.text));
     }
