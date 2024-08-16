@@ -72,16 +72,12 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public async void StartAction()
     {
-        UIManager.Instance.SetTestMessage("Firebase auth start action");
-
         while (isReady == false)
         {
             await Task.Delay(1000);
 
             await CheckIfReady();
         }
-
-        UIManager.Instance.SetTestMessage("Check if ready done");
 
         InitializeFirebase();
         StartCoroutine(CheckForAutoLogin());
@@ -140,8 +136,6 @@ public class FirebaseAuthManager : MonoBehaviour
 
     private IEnumerator CheckForAutoLogin()
     {
-        UIManager.Instance.SetTestMessage("Check for auto login");
-
         if (user != null)
         {
             var reloadUserTask = user.ReloadAsync();

@@ -79,7 +79,6 @@ public class WIFIChecking : MonoBehaviour
 
     IEnumerator AuthCheckWIFI()
     {
-        UIManager.Instance.SetTestMessage("Auth check wifi");
         UnityWebRequest request = new UnityWebRequest("https://www.google.com/");
 
         var asyncOperation = request.SendWebRequest();
